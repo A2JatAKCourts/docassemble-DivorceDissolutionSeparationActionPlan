@@ -324,44 +324,6 @@ fields:
     js show if: |
       val('minor_children') == true && (val('agree_or_settle_kids') == true || val('agree_or_settle_kids'))
 ---
-#  id: what new payment method
-#  question: |
-#    What type of payment method do you want to make?
-#  subquestion: |
-#  fields:
-#    - Global: new_account_is_global
-#      datatype: yesno
-#      default: False
-#      show if:
-#        code: |
-#          logged_in_user_is_global_admin
-#    - Name of payment method: new_account_name
-#      help: |
-#        You can name it anything. For example: "My Visa card", or "My bank". This name can help you identify the payment method on other screens.
-#    - Type: new_account_type_code
-#      datatype: radio
-#      choices:
-#        - Fee Waiver: WV
-#        - Bank account: BankAccount
-#          help: |
-#            The bank account can be a checking or savings account. This is also known as an eCheck or an ACH transfer.
-#        - Credit Card: CC
-#    - note: |
-#        On the next screen, you'll be sent to a secure payments site to enter your credit card information.
-#      show if:
-#        variable: new_account_type_code
-#        is: CC
-#    - note: |
-#        On the next screen, you'll be sent to a secure payments site to enter your bank information.
-#      show if:
-#        variable: new_account_type_code
-#        is: BankAccount
-#    - note: |
-#        Note: ${ fees_explain.content }
-#      js show if: |
-#        val("new_account_type_code") !== "WV"
-#  ---
----
 id: Dissolution or uncontested divorce
 question: |
   Dissolution or uncontested divorce
