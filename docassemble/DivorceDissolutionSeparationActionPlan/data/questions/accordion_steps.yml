@@ -1,0 +1,516 @@
+id: final screen
+decoration: pen-to-square
+event: confirmation_and_download
+question: |
+  % if len(step_list) < 2:
+  Get more information or help
+  % else:
+  # <i class="fa-thin fa-list"></i>Your Personal Action Plan is ready!
+  % endif
+subquestion: |
+  
+  #### Your Personal Action Plan for asking the court for a divorce, dissolution or legal separation in Alaska in ${ len(step_list) } steps
+  
+  % for iteration_index, step_tuple in enumerate( step_list ):
+  ${ collapse_template(step_tuple[0], closed_icon="plus", open_icon="minus") }
+  % endfor
+  
+  ${ download_buttons_html(al_user_bundle) }
+  
+buttons:
+  - Start over: restart          
+---
+code: |
+  legal_separation_or_divorce
+  if not minor_children:
+    if agree_or_settle == 'no prop debt or pregnancy':
+      if no_prop_or_debt_agree:
+        add_unique_step((dissolution_agree_step, "dissolution_agree_idx"), step_list)
+        add_unique_step((get_help, "get_help_idx"), step_list)
+      else:
+        if not know_spouse_whereabouts:
+          add_unique_step((learn_about_missing_spouse_step, "learn_about_missing_spouse_idx"), step_list)   
+        wife_is_pregnant
+        if info_on_agree:
+          add_unique_step((talk_to_spouse_step, "talk_to_spouse_idx"), step_list)
+        if not know_spouse_whereabouts: 
+          if legal_separation_or_divorce == 'divorce':
+            add_unique_step((divorce_forms_step, "divorce_forms_idx"), step_list)
+          else:
+            add_unique_step((legal_separation_not_agree_forms_step, "egal_separation_not_agree_forms_idx"), step_list)
+        if domestic_violence:
+          add_unique_step((domestic_violence_step, "domestic_violence_idx"), step_list)  
+        if default:
+          add_unique_step((default_step, "default_idx"), step_list)
+        add_unique_step((get_help, "get_help_idx"), step_list)
+    elif agree_or_settle in( 'agree', 'do not know', 'none'):
+      if agree_or_settle == 'do not know':
+        add_unique_step((talk_to_spouse_step, "talk_to_spouse_idx"), step_list)
+        wife_is_pregnant
+        if domestic_violence:
+          add_unique_step((domestic_violence_step, "domestic_violence_idx"), step_list)
+    not_minor_children_block = True
+  else:
+    not_minor_children_block = False
+---
+id: dissolution block
+code: |
+  if (minor_children and agree_or_settle_kids in('yes', 'dont know') \
+    or (not minor_children and agree_or_settle in('no prop debt or pregnancy','agree','dont know'))):
+    if minor_children and agree_or_settle_kids == 'yes':
+      have_property_and_debt
+    if not minor_children and agree_or_settle == 'no prop debt or pregnancy':
+      if not no_prop_or_debt_agree:
+        know_spouse_whereabouts
+    if (minor_children and agree_or_settle_kids == 'do not know') \
+      or (not minor_children and agree_or_settle == 'do not know'):
+      talk_to_spouse
+      add_unique_step((talk_to_spouse_step, "talk_to_spouse_idx"), step_list)
+    if minor_children:
+      paternity
+    wife_is_pregnant
+    if (minor_children and agree_or_settle_kids in('yes', 'dont know')) \
+        or (not minor_children and agree_or_settle in('agree','dont know')):  
+      domestic_violence
+  for iter_idx, step_tuple in enumerate( step_list ):
+    define(step_tuple[ 1 ], iter_idx + 1)
+    dissolution_block = True
+  else:
+    dissolution_block = False
+---
+id: divorce block
+code: |
+  if (minor_children and agree_or_settle_kids == 'no') \
+    or (not minor_children and agree_or_settle == 'no'):
+    know_spouse_whereabouts
+    if minor_children:
+      paternity
+    wife_is_pregnant
+    if info_on_agree:
+      domestic_violence_question = "and how domestic violence can affect your agreement"
+    else:
+      if minor_children:
+        domestic_violence_question = "and how domestic violence affects your case"
+    domestic_violence
+    if not info_on_agree and default_info:
+      property_for_default
+    divorce_block = True
+  else:
+    divorce_block = False
+---
+id: legal separation agree block
+code: |
+  if agree_or_settle_kids:
+    domestic_violence_question = "and how domestic violence can affect your agreement"
+    if minor_children:
+      paternity
+    wife_is_pregnant
+    domestic_violence
+    legal_separation_agree_block = True
+  else:    
+      legal_separation_agree_block = False
+---
+id: legal separation not agree block
+code: |
+  if not agree_or_settle_kids:
+    know_spouse_whereabouts
+    domestic_violence_question = "and how domestic violence affects your case"
+    if minor_children:
+      paternity
+    wife_is_pregnant
+    if not info_on_agree and not minor_children and wife_is_pregnant in ('not husband','not pregnant'):
+      domestic_violence_question = ""
+    domestic_violence
+    default_info
+    legal_separation_not_agree_block = True
+  else:
+    legal_separation_not_agree_block = False
+---
+code: |
+  step_list = []
+    # if len(step_list) >= 2:
+    #  pdf_pap_multistep_subtitle = True
+    # images_list = []
+    
+  if other_case:
+    if ongoing == 'marriage ended':
+      already_divorced
+      add_unique_step((review_options_step, "review_options_idx"), step_list)
+      add_unique_step((get_help, "get_help_idx"), step_list)
+    elif ongoing == 'yes':
+      military
+      add_unique_step((pick_court_step, "pick_court_idx"), step_list)
+      if other_state_case :
+        add_unique_step((get_help, "get_help_idx"), step_list)
+        
+  if (other_case and (ongoing == 'no' or (ongoing == 'yes' and other_state_case == 'continue'))) or not other_case:
+    if legal_separation_or_divorce == 'divorce' \
+      and ((minor_children and agree_or_settle_kids == 'no') \
+        or (not minor_children and agree_or_settle == 'no')):
+      divorce_block
+    elif legal_separation_or_divorce == 'divorce' \
+      and (minor_children and agree_or_settle_kids in('yes', 'dont know') \
+        or (not minor_children and agree_or_settle in('no prop debt or pregnancy','agree','dont know'))):
+      dissolution_block
+    if legal_separation_or_divorce == 'legal separation':
+      if agree_or_settle_kids:
+        legal_separation_agree_block
+      else:
+        legal_separation_not_agree_block
+  
+  add_unique_step((get_help, "get_help_idx"), step_list)
+    
+  for iter_idx, step_tuple in enumerate( step_list ):
+    define(step_tuple[ 1 ], iter_idx + 1)
+  get_steps = True
+---
+code: |
+  # Alternatives to make sure we don't get duplicate steps
+
+  #### Alternative 1:
+  # Define them all at the top
+  add_cert_of_service = False
+  
+  # Set which steps to add (interview order)
+  if foo:
+    add_cert_of_service = True
+  if bar:
+    add_cert_of_service = True
+  make_steps
+  
+  ## Didn't like this part (like "alternative 1")
+  ## If there are any special cases that are hard to keep track of
+  ## and need to be in a specific visual order
+  #add_file_step = False
+  #if some_condition_that_adds_modify_step:
+  #  add_file_step = True
+  ## At the very end
+  #if add_file_step:
+  #  add_unique_step("")
+    
+  # Other code block or something. Maybe.
+  # Gives better control over what order to add steps in the list
+  step_list = []
+  if add_cert_of_service:
+    add_unique_step((cert_of_service_step, "cert_of_service_idx"), step_list)
+  if add_other:
+    add_unique_step("blah")
+  make_steps = True
+---
+code: |
+  #### Alternative 2:
+  def add_unique_step(step, step_list):
+    is_unique = True
+    for chair in step_list:
+      if chair[1] == step[1]:
+        is_unique = False
+    if is_unique:
+      step_list.append(step)
+      
+  #if foo:
+  #  add_unique_step((file_step, "file_idx"), step_list)
+---
+template: review_options_step
+subject: |
+  Step ${ review_options_idx }: Review your options if a court in another state already ended your marriage
+content: |
+  If a court in a different state already ended your marriage, the Alaska court will not hear a case to end your marriage.
+  
+  If you are trying to enforce a court order from another state or change something about the order, see one of these Alaska divorce topics: 
+  
+  [Enforcing a Divorce Court Order](https://docassemble.akcourts.gov/start/EnforcingDivorce)
+  
+  [Changing a Divorce Court Order](https://docassemble.akcourts.gov/start/ChangingDivorce/)
+---
+template: pick_court_step
+subject: |
+  Step ${ pick_court_idx }: Decide
+  % if ongoing == 'yes':
+  which court should hear your case
+  % else:
+  if Alaska is the right state for your case
+  % endif
+content: |
+  
+  % if ongoing == 'yes':
+   <div class="step-subheading">Background</div>
+  Only one state court can end a marriage.  If you and your spouse have an open case to end your marriage in another state, and you file a case in Alaska, one of the courts will close their case. 
+  To decide  the correct state for your case, the courts will look at:
+  
+  *	both spouses' "residency" and
+  *	which court has the authority, called "jurisdiction", to end the marriage.
+  
+   <div class="step-subheading">Check if there is residency and jurisdiction in Alaska</div>
+  % endif
+  There is a residency requirement in Alaska.  Generally, you meet the residency requirement for the court to end your marriage if either 
+  % if military:
+  you or your spouse are serving in the military and are continuously stationed at a military base in Alaska for at least 30 days, or
+  % endif
+  you or your spouse are in Alaska and intend to stay as a resident.
+  
+  % if minor_children:
+  To enter a parenting plan, a child support order, or divide marital property and debt, the court also needs authority called “jurisdiction.”
+  Children: Generally, only the court in the state where the child has lived for the last 6 months has jurisdiction to make decisions, enter a parenting plan, or order child support.  This is called the child’s "home state."
+  Spouses: Generally, the court has jurisdiction if a married couple lived in Alaska for at least 6 months in a row within the 6 years before filing for divorce.
+  Jurisdiction and residency can be very complicated.  For example, if a baby is less than 6 months old and has moved between states, there may not be a “home state.”  This is one example of an exception when the Alaska court may be able to decide issues about a child that hasn’t lived here for 6 months.
+  Similarly,
+  % else:
+  To divide marital property and debt, the court also needs authority called “jurisdiction.” Generally, the court has jurisdiction if a married couple lived in Alaska for at least 6 months in a row within the 6 years before filing for divorce.
+  
+  Jurisdiction and residency can be very complicated. For example,
+  % endif
+   if you have property such as a home outside Alaska, the court may not have the authority to enforce any orders about that property if problems arise after the final order.
+   
+  % if defined('residency_and_jurisdiction') and not residency_and_jurisdiction:
+  If the Alaska court has residency and jurisdiction, you can start your case in Alaska, but only one state court can end your marriage.  If you and your spouse disagree about which state, the courts will decide which case to close after hearing both side's arguments.  The decision generally depends on each state's residency and jurisdiction laws.
+  <div class="step-subheading">To start a case in Alaska: file a complaint in Alaska and ask the court in the other state to close its case</div>
+  **Fill out and file a complaint**
+  Fill out and file a Complaint form and tell the court what you want to happen in the divorce.
+  If you need information about filling out and filing a Complaint, return to the Guided Assist page and start over.  If you want to save this Action Plan, be sure to download, save, or print it.  
+  **Ask the other state to close its case**
+  You will have to ask the court in the other stateto close its case.  Talk to a lawyer in the other state or search the Internet to learn about that state's self-help resources and forms.
+  **What to expect if you start a case in Alaska**
+  Every case is different, but sometimes it is clear only one of the courts has jurisdiction over the case.  When this happens, one state court may close its case.
+  If it is not clear, the Alaska court will often hold a hearing and call the other court to talk about which case will move forward. 
+  It is important to pay attention to what is happening in both cases until you know which state will decide the case.
+  Jurisdiction can be very complicated.  Talking to a lawyer can help you decide which is the best state for your case.
+  % else:
+  
+  If your spouse has never been to Alaska or no longer lives in Alaska, it is possible he or she will ask the court to dismiss the case.  If the court finds it does not have jurisdiction, it might dismiss your case.  If you have any questions about whether Alaska is the right place for your case, you may want to talk to a lawyer. Review the options below to get more information or help.
+  % endif
+---
+template: talk_to_spouse_step
+subject: |
+  Step ${ talk_to_spouse_idx }: |
+content: |
+  <div class="step-subheading">The benefits of reaching an agreement</div>
+  If you and your spouse reach an agreement about the issues in the case, you can avoid a trial.  Some benefits are:
+  *
+  *
+  •	You decide the outcome rather than a judge - you know more about the issues in your case than the judge ever will
+  •	If you have children together, working out the parenting plan instead of fighting is better for the children
+  •	Reaching an agreement may be more cooperative than dealing with the issues in a trial, where each spouse presents evidence and makes arguments about what they want the judge to decide
+  •	Reaching an agreement outside of court can save time and money, and provide more privacy and confidentiality
+  
+  
+  If you want help reaching an agreement before the case is open, some options are:
+  
+  *
+  *
+  *
+  •	Talk to your spouse about settling the case without a trial.
+  •	Mediation.
+  •	Collaborative Law.
+  
+  <div class="step-subheading">Talk to your spouse about settling the case without a trial</div>
+  Some couples want to work out the issues by agreement without a trial and are able to talk to each other in person, on-line, or with the help of a friend or family member.  You can use the dissolution and uncontested divorce forms in the next section of this Action Plan to see what you need agree on.
+  
+  <div class="step-subheading">Mediation</div>
+  Mediation is an informal, voluntary and confidential way to resolve disagreements without giving the decision-making power to someone else, like a judge. A neutral person, called the mediator, helps people outside the court process:
+  *
+  *
+  *
+  *
+  *
+  •	Figure out the important issues in the disagreement.
+  •	Explain and understand each other's needs.
+  •	Clear up misunderstandings.
+  •	Explore creative solutions.
+  •	Reach acceptable agreements.
+  
+   Spouses can hire their own private mediators to help resolve any issue in the case.  If there was abuse or domestic violence in your marriage, be sure to hire someone with training and experience working with domestic violence, and tell your mediator if you want to bring a trusted support person with you.  Read about mediation.
+  <div class="step-subheading">Collaborative Law</div>
+  The Alaska Association of Collaborative Professionals helps people resolve divorce cases outside of the court process without a judge making decisions.
+  
+  [Watch a video]
+  Watch a short video that discusses resolving your case by reaching agreement with your spouse.  It discusses mediation and settlement conferences which may be available to you using free court programs once you file your case.
+  
+  [Talk to a lawyer]
+  It is a good idea to get legal advice by talking to an attorney about an agreement. Both spouses need to understand how agreeing to each issue affects the other issues in the agreement. If you agree to something without thinking it through, there can be serious and long-standing consequences. Once a judge signs off on your agreement, it will be a binding court order that outlines each spouses’ responsibilities and rights regarding the issues in the case.
+  
+  *	Many lawyers offer free or flat fee consultations without having to hire them for the whole case.  Find a lawyer.
+  *	Depending on your income, you may qualify for free legal answers.  
+  *	Depending on your income and circumstances, you may qualify for a free lawyer.  Alaska Legal Services Corporation.
+  
+  If you and your spouse reach an agreement
+  *	Use the dissolution or uncontested divorce forms below to tell the court about your agreement.
+  If you and your spouse do not reach an agreement
+  *	Return to the Guided Assistant to answer questions for spouses that do not agree to get the specific forms for your case, or
+  *	Fill out the [Filing for Dissolution, Divorce, or Custody forms](http://courts.alaska.gov/shc/family/shcforms.htm#start) listed under "Spouses do not agree or do not know if they agree"
+  Links in this step
+  mediation
+  .courts.alaska.gov/mediation/index.htm
+  Alaska Association of Collaborative Professionals
+  .alaskacollaborative.org
+  a short video that discusses resolving your case
+  youtu.be/4EuW9HET3nM
+  Find a Lawyer
+  courts.alaska.gov/shc/shclawyer.htm
+  Alaska Free Legal Answers
+  LegalNav.org/resource/alaska-free-legal-answers
+  Alaska Legal Services
+  alsc-law.org/apply-for-services
+
+---
+template: domestic_violence_step
+subject: |
+  Step ${ domestic_violence_idx }: |
+    Learn about abuse or domestic violence
+    % if not minor_children:
+    % if agree_or_settle == 'no' or (agree_or_settle == 'no prop debt or pregnancy' and not no_prop_or_debt_agree):
+    resources
+    % else:
+    resources & reaching an agreement
+    % endif
+    % else:
+    % if agree_or_settle_kids in('yes', 'do not know'):
+    resources & reaching an agreement
+    % else:
+    and Parenting
+    % endif
+    % endif
+content: |
+  If you are in immediate danger, call 911.
+
+  People who have experienced domestic violence can be at greater risk when they separate from their spouse or start a court case to end the marriage.  During this time, safety is very important.  The dynamics in a relationship with domestic violence may also cause people to feel pressured to agree to something they do not want.  If this is your situation, these resources may help:
+  
+  *	Find a domestic violence program in your area to learn about what services they offer (counseling, financial assistance, housing and safe shelter, resources for children, and help with court).
+  *	You can get information about asking the court for a protective order by answering more questions.  If you want to save this Action Plan, be sure to download, save, or print it.  then return to the Guided Assist page and use the Guided Assist search box to find ""Protective Orders.”
+  *	See if You Qualify For A Free Lawyer Through Your Local Domestic Violence Program.
+  *	See if You Qualify For A Free Lawyer Through Alaska Legal Services.
+  % if not minor_children:
+  % if ((agree_or_settle == 'no prop debt or pregnancy' and no_prop_or_debt_agree) or agree_or_settle in ('yes','do not know')):
+  However, some people in a marriage with domestic violence are comfortable reaching an agreement about dividing marital property and debt for a variety of reasons. Sometimes:
+
+  * the domestic violence does not make either spouse uncomfortable or afraid to ask for what they want in the property & debt division;
+  * if the domestic violence does make a spouse uncomfortable or afraid, provisions are used to make the process of trying to reach an agreement feel safer (having a support person present, having a mediator or a trusted third person help with discussions, not meeting in-person, meeting in different rooms, or talking about an agreement through email, text or telephone);
+  * one spouse’s main goal is to finish the case and be done in a safe manner so they are willing to give up some things in the agreement that they may be entitled to under the law.
+  
+  You can decide whether you are comfortable trying to reach an agreement with your spouse based on the facts and circumstances of your case.
+  % endif
+  % else: 
+  % if agree_or_settle_kids in('yes', 'do not know'):
+  However, some people in a marriage with domestic violence are comfortable reaching an agreement about dividing marital property and debt for a variety of reasons. Sometimes:
+
+  * the domestic violence does not make either spouse uncomfortable or afraid to ask for what they want in the property & debt division;
+  * if the domestic violence does make a spouse uncomfortable or afraid, provisions are used to make the process of trying to reach an agreement feel safer (having a support person present, having a mediator or a trusted third person help with discussions, not meeting in-person, meeting in different rooms, or talking about an agreement through email, text or telephone);
+  * one spouse’s main goal is to finish the case and be done in a safe manner so they are willing to give up some things in the agreement that they may be entitled to under the law.
+  
+  You can decide whether you are comfortable trying to reach an agreement with your spouse based on the facts and circumstances of your case. As explained below, if you want to try to reach an agreement with your spouse about the parenting plan, your options may be limited if there has been domestic violence.
+  
+  <div class="step-subheading">Your Parenting Plan agreement may be limited if there is domestic</div> Violence
+  % endif
+  % if agree_or_settle_kids == 'no':
+  <div class="step-subheading">How domestic violence affects a custody case</div> 
+  % endif
+  
+  * The law presumes that a parent with a ""history of domestic violence"" not get custody or unsupervised visitation unless he or she meets certain requirements. These may include completing a batterer’s intervention or substance abuse treatment program.
+  * A "history of domestic violence" is defined by the law as either one incident of domestic violence that caused serious physical injury, or more than one incident.  The 
+  % if agree_or_settle_kids in('yes', 'do not know'):
+  parent's 
+  % else:
+  spouse's
+  % endif
+  domestic violence behavior needs to fit under one of the domestic violence crimes in the law.  There does not have to be a protective order or criminal case for the court to find a parent has a history of domestic violence.  The court can find domestic violence based on one 
+  % if agree_or_settle_kids in('yes', 'do not know'):
+  parent's 
+  % else:
+  spouse's
+  % endif
+   testimony.
+  % if agree_or_settle_kids in('yes', 'do not know'):  
+  <div class="step-subheading">Considerations if You and Your Spouse Do Not Reach an Agreement
+  % else:
+  <div class="step-subheading">Contact between Parent & Children
+  % endif
+  If you think the other parent should not have any contact with your children, you will need to convince the judge that it is in the children’s best interest. Generally, it is unusual for a judge in a divorce or custody case to decide that a parent cannot see his or her children. There is research that shows it is important for children to have a relationship with both parents if it can happen in a safe manner. If the judge finds the domestic violence presumption applies, the judge will usually permit supervised contact between the parent and the children while the parent is completing a batterer’s intervention or substance abuse treatment program. After the parent finishes the program and any other requirements the judge ordered, the judge may lift the supervision restriction and allow a different parenting schedule.
+  % if agree_or_settle_kids == 'no':
+  <div class="step-subheading">Tell the Judge Your Concerns</div>
+  % endif
+  The judge will only know about your domestic violence concerns if you state them in the documents you file and when you talk in court.  If you have concerns for the children’s safety when in the care of the other parent, or for yourself when interacting with the other parent, describe them to the judge.  If the judge is going to allow the other parent to have parenting time (visitation) with the children, you can suggest ways to address your concerns.  Some options include:
+  
+  *	no drugs or alcohol prior to or during the visits,
+  * drug or alcohol testing and/or treatment,
+  *	no overnight visitation,
+  *	no excessive discipline or spanking,
+  *	no emotional abuse such as cursing at or name calling,
+  *	no saying anything bad about you to or in front the children or letting anyone else do it,
+  *	no inappropriate exposure to adult activities such as pornography,
+  *	exchanges only at public or specified places,
+  *	supervised exchanges by a willing and available third party who you trust,
+  *	parenting time only occur in a public or specified place,
+  *	supervised parenting time with a willing and available third party who you trust, or
+  *	no contact between the children and specific individuals you are concerned about.
+  
+  If you think you or your children's health, safety, or liberty would be harmed by providing the information on the **Child Custody Jurisdiction Affidavit, [DR-150**](https://public.courts.alaska.gov/web/forms/docs/dr-150.pdf) to the other parent:
+  
+  *	do not give the other parent a copy of the completed Child Custody Jurisdiction Affidavit after you file it with the court, and
+  *	file **Direction to Seal Child Custody Jurisdiction Affidavit, [DR-151**](https://public.courts.alaska.gov/web/forms/docs/dr-151.pdf).
+  % endif
+---
+template: default_step
+subject: |
+  Step ${ default_idx }: |
+    File for default if your spouse does not respond within 20 days
+content: |
+  Wait 20 days
+  If your spouse does not file an Answer within 20 days of being served your Complaint, you may ask the court to “default” the other side and grant you everything you asked for. To do this, you must have proof that you served the other party according to the rules.
+  
+  <div class="step-subheading">Tell the court how you served your spouse</div>
+  Fill out a **Proof of Service Form, SHC-405**: [Word](https://www.courts.alaska.gov/shc/family/docs/shc-405.doc) | [PDF](http://www.courts.alaska.gov/shc/family/docs/shc-405n.pdf)
+  <div class="step-subheading">Ask for a Default</div>
+  Fill out a **Default Application, SHC-400**: [Word](https://www.courts.alaska.gov/shc/family/docs/shc-400.doc) | [PDF](https://www.courts.alaska.gov/shc/family/docs/shc-400n.pdf)
+  % if military:
+  Be aware that if your spouse is on active duty in the military, the court likely will not enter a default judgment right away.  The court may appoint a lawyer to contact your spouse first.
+  % endif
+  <div class="step-subheading">Include the final forms for your type of case</div>
+  
+  <div class="step-subheading">Serve your spouse</div>
+  Send your spouse a copy of your default application by first class U.S. mail or hand delivery.
+  % if legal_separation_or_divorce == 'divorce':
+  Fill out the top section, but do not sign where it says “Judge” at the end.
+  % if minor_children:
+  % if property_for_default:
+   *	**Findings of Fact and Conclusions of Law & Decree of Divorce**, [DR-800-805](https://public.courts.alaska.gov/web/forms/docs/dr-800-805.pdf) (fill out the “Findings of Fact” section)
+  % else:
+  * **Divorce Findings of Fact & Conclusions of Law, SHC-520**: [Word](https://www.courts.alaska.gov/shc/family/docs/shc-520.doc) | [PDF](https://www.courts.alaska.gov/shc/family/docs/shc-520n.pdf) (fill out the "Findings of Fact" section)
+  *  **Divorce Judgment and Decree, SHC-525**: [Word](https://www.courts.alaska.gov/shc/family/docs/shc-525.doc) | [PDF](https://www.courts.alaska.gov/shc/family/docs/shc-525n.pdf)
+  % endif
+  % else: 
+  % if property_for_default:
+  * **Divorce Findings of Fact & Conclusions  of Law with Property and No Children**, [DR-801-806](https://public.courts.alaska.gov/web/forms/docs/dr-801-806.pdf) (fill out the “Findings of Fact” section)
+  % else:
+  
+  *	**Divorce Findings of Fact & Conclusions of Law, SHC-540**: [Word](https://www.courts.alaska.gov/shc/family/docs/shc-540.doc) | [PDF](https://www.courts.alaska.gov/shc/family/docs/shc-540n.pdf) (fill out the “Findings of Fact” section)
+  * **Divorce Judgment and Decree, SHC-545**: [Word](https://www.courts.alaska.gov/shc/family/docs/shc-545.doc) | [PDF](https://www.courts.alaska.gov/shc/family/docs/shc-545n.pdf).
+  % endif
+  % endif
+  % else: #legal_separation_or_divorce == 'legal separation'
+  % if minor_children:
+ 
+    * Legal Separation with Children and Property Findings of Fact and Conclusions of Law, SHC-590
+      *	Fill out the top section of page 1 with your contact information and the case name and number just like it appears on the Complaint.
+      *	Fill out the Findings of Fact section (paragraphs 1 through 13 on pages 2 to 5).
+      *	Fill out paragraph 7 on page 6 if the wife wants to return to her maiden name.
+      *	Do not sign where it says “Judge” at the end.
+    *	Judgment and Decree for Legal Separation with Children and Property, SHC-595
+      *	Fill out the top section with your contact information and the case name and number just like it appears on the Complaint.
+      *	Fill out paragraph 6 on page 1 if the wife wants to return to her maiden name.
+      *	Do not sign where it says “Judge” at the end.
+  % else:
+    *	Legal Separation with Property and No Children Findings of Fact and Conclusions of Law, SHC-591
+      *	Fill out the top section of page 1 with your contact information and the case name and number just like it appears on the Complaint.
+      *	Fill out the Findings of Fact section (paragraphs 1 through 8 on pages 2 to 4).
+      *	Fill out paragraph 7 on page 4 if the wife wants to return to her maiden name. 
+      *	Do not sign where it says “Judge” at the end.
+    *	Judgment and Decree for Legal Separation with Property and No Children, SHC-596
+      *	Fill out the top section with your contact information and the case name and number just like it appears on the Complaint.
+      *	Fill out paragraph 3 on page 1 if the wife wants to return to her maiden name. 
+      *	Do not sign where it says “Judge” at the end.
+  % endif
+  % endif
+  
+  File with the court and find out about a default hearing.
+  
+  File your forms and ask your local court if they will contact you or you need to contact them to schedule a default hearing.
+---

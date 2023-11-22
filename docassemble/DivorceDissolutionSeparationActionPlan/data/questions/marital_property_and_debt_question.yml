@@ -1,0 +1,66 @@
+mandatory: True
+code: |
+  marital_property
+  marital_debt
+---
+question: |
+  Do you and your spouse agree about your marital property?
+subquestion: |
+  **Marital property** 
+  is everything you or your spouse earned or bought during your marriage.
+  
+  It includes houses, land, vehicles, money, retirement accounts, pensions, household goods, furniture, snowmachines, four-wheelers and each spouse’s personal property.
+
+
+fields:
+  - "Do you and your spouse have any marital property?": marital_property
+    datatype: yesnoradio
+  - "Does your spouse agree that you have marital property?": agree_on_property
+    datatype: yesnomaybe
+    show if: marital_property
+  - "Do you agree about how to divide the marital property between you?": agree_on_property_division
+    datatype: yesnomaybe
+    js show if: |
+      val('agree_on_property') == true
+  - "Does your spouse agree that you have no marital property?": agree_on_no_property
+    datatype: yesnomaybe
+    show if:
+      variable: marital_property
+      is: false
+  - "Do you want your Action Plan to include resources to help you and your spouse work out an agreement?": agreement_resources
+    datatype: yesnoradio
+    js show if: |
+      (val('marital_property') == true && (val('agree_on_property') == false || val('agree_on_property') === 'None')) || (val('marital_property') == true && val('agree_on_property') == true && (val('agree_on_property_division') == false || val('agree_on_property_division') === 'None' )) || (val('marital_property') == false && (val('agree_on_no_property') == false || val('agree_on_no_property') === 'None'))
+---
+question: |
+  Do you and your spouse agree about your marital debt?
+subquestion: |
+  
+  **Marital debt**
+  is money you or your spouse owed a business or person during your marriage and is still not paid off. Marital debt includes credit card debt, medical bills, mortgages, car loans, and personal loans.
+  
+  Some couples have no marital property or debt if they have:
+  
+  *	only been married a short time, or
+  *	been living apart for a long time and already split everything between them.
+
+fields:
+  - "Do you and your spouse have any marital debt?": marital_debt
+    datatype: yesnoradio
+  - "Does your spouse agree that you have marital debt?": agree_on_debt
+    datatype: yesnomaybe
+    show if: marital_debt
+  - "Do you agree about how to divide the marital debt between you?": agree_on_debt_division
+    datatype: yesnomaybe
+    js show if: |
+      val('agree_on_debt') == true
+  - "Does your spouse agree that you have no marital debt?": agree_on_no_debt
+    datatype: yesnomaybe
+    show if:
+      variable: marital_debt
+      is: false
+  - "Do you want your Action Plan to include resources to help you and your spouse work out an agreement?": agreement_resources
+    datatype: yesnoradio
+    js show if: |
+      (val('marital_debt') == true && (val('agree_on_debt') == false || val('agree_on_debt') === 'None')) || (val('marital_debt') == true && val('agree_on_debt') == true && (val('agree_on_debt_division') == false || val('agree_on_debt_division') === 'None' )) || (val('marital_debt') == false && (val('agree_on_no_debt') == false || val('agree_on_no_debt') === 'None'))
+---
