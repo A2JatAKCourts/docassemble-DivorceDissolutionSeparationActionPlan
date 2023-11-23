@@ -336,13 +336,15 @@ fields:
   - note: |
       #### <i class="fa-regular fa-lightbulb"></i> Learn more ####
       The law presumes that a parent with "a history of domestic violence" may not get custody or unsupervised visitation without completing some court-approved treatment. A "history of domestic violence" is defined by law as either one incident of domestic violence that caused serious physical injury, or more than one incident. The spouse's domestic violence behavior needs to fit under one of the domestic violence crimes in the law. There does not have to be a protective order or criminal case for the court to find a parent has a history of domestic violence. The court can find domestic violence based on one spouse's testimony.
-    js show if: |
-      val ('minor_children') == true && val('agree_or_settle_kids') == false
+    show if:
+      code: |
+        minor_children and agree_or_settle_kids == 'no'
   - note: |
       #### <i class="fa-regular fa-lightbulb"></i> Learn more ####
       Sometimes a person in a relationship with domestic violence feels pressured to agree to things they don’t want. And the law presumes that a parent with a "history of domestic violence" may not get custody and unsupervised visitation without completing some court-approved treatment. The spouse's domestic violence behavior needs to fit under one of the domestic violence crimes in the law. A "history of domestic violence" is defined as one incident that caused serious physical injury, or more than one incident. The court can find domestic violence based on one spouse's testimony even if there was no protective order or criminal case.
-    js show if: |
-      val('minor_children') == true && (val('agree_or_settle_kids') == true || val('agree_or_settle_kids'))
+    show if: 
+      code: |
+        minor_children and agree_or_settle_kids in('yes','do not know')
 ---
 question: |
   Do you want your Action Plan to include information about asking the court for a default judgment against your spouse?
