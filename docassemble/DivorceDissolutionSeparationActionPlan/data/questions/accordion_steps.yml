@@ -49,10 +49,10 @@ code: |
       paternity
     wife_is_pregnant
     if info_on_agree:
-      domestic_violence_question = "and how domestic violence can affect your agreement"
+      domestic_violence_question = " and how domestic violence can affect your agreement"
     else:
       if minor_children:
-        domestic_violence_question = "and how domestic violence affects your case"
+        domestic_violence_question = " and how domestic violence affects your case"
     domestic_violence
     if not info_on_agree and default_info:
       property_for_default
@@ -63,7 +63,7 @@ code: |
 id: legal separation agree block
 code: |
   if agree_or_settle_kids:
-    domestic_violence_question = "and how domestic violence can affect your agreement"
+    domestic_violence_question = " and how domestic violence can affect your agreement"
     if minor_children:
       paternity
     wife_is_pregnant
@@ -76,7 +76,7 @@ id: legal separation not agree block
 code: |
   if not agree_or_settle_kids:
     know_spouse_whereabouts
-    domestic_violence_question = "and how domestic violence affects your case"
+    domestic_violence_question = " and how domestic violence affects your case"
     if minor_children:
       paternity
     wife_is_pregnant
@@ -93,7 +93,11 @@ code: |
     # if len(step_list) >= 2:
     #  pdf_pap_multistep_subtitle = True
     # images_list = []
-    
+  
+  domestic_violence_question = ''
+  domestic_violence_subquestion = ''
+  
+  
   if other_case:
     if ongoing == 'marriage ended':
       already_divorced
@@ -135,7 +139,6 @@ code: |
           know_spouse_whereabouts
       if (minor_children and agree_or_settle_kids == 'do not know') \
         or (not minor_children and agree_or_settle == 'do not know'):
-        add_talk_to_spouse_step = True
         talk_to_spouse
         add_unique_step((talk_to_spouse_step, "talk_to_spouse_idx"), step_list)
       if minor_children:
@@ -292,76 +295,754 @@ content: |
 ---
 template: talk_to_spouse_step
 subject: |
-  Step ${ talk_to_spouse_idx }: |
+  Step ${ talk_to_spouse_idx }: 
+    % if legal_separation_or_divorce == 'divorce' \
+      and (minor_children and agree_or_settle_kids in('yes', 'do not know') \
+        or (not minor_children and agree_or_settle in('no prop debt or pregnancy','agree','do not know'))):
+    Talk to your spouse to see if you agree
+    % else:
+    Learn about options to help you and your spouse reach an agreement
+    % endif
 content: |
   <div class="step-subheading">The benefits of reaching an agreement</div>
   If you and your spouse reach an agreement about the issues in the case, you can avoid a trial.  Some benefits are:
-  *
-  *
-  •	You decide the outcome rather than a judge - you know more about the issues in your case than the judge ever will
-  •	If you have children together, working out the parenting plan instead of fighting is better for the children
-  •	Reaching an agreement may be more cooperative than dealing with the issues in a trial, where each spouse presents evidence and makes arguments about what they want the judge to decide
-  •	Reaching an agreement outside of court can save time and money, and provide more privacy and confidentiality
   
+  * You decide the outcome rather than a judge - you know more about the issues in your case than the judge ever will.
+  % if minor_children:
+  * If you have children together, working out the parenting plan instead of fighting is better for the children.
+  % endif
+  * Reaching an agreement may be more cooperative than dealing with the issues in a trial, where each spouse presents evidence and makes arguments about what they want the judge to decide.
+  *	Reaching an agreement outside of court can save time and money, and provide more privacy and confidentiality.
   
   If you want help reaching an agreement before the case is open, some options are:
   
-  *
-  *
-  *
-  •	Talk to your spouse about settling the case without a trial.
-  •	Mediation.
-  •	Collaborative Law.
+  *  Talk to your spouse about settling the case without a trial.
+  *  Mediation.
+  *  Collaborative Law.
   
   <div class="step-subheading">Talk to your spouse about settling the case without a trial</div>
   Some couples want to work out the issues by agreement without a trial and are able to talk to each other in person, on-line, or with the help of a friend or family member.  You can use the dissolution and uncontested divorce forms in the next section of this Action Plan to see what you need agree on.
   
   <div class="step-subheading">Mediation</div>
   Mediation is an informal, voluntary and confidential way to resolve disagreements without giving the decision-making power to someone else, like a judge. A neutral person, called the mediator, helps people outside the court process:
-  *
-  *
-  *
-  *
-  *
-  •	Figure out the important issues in the disagreement.
-  •	Explain and understand each other's needs.
-  •	Clear up misunderstandings.
-  •	Explore creative solutions.
-  •	Reach acceptable agreements.
   
-   Spouses can hire their own private mediators to help resolve any issue in the case.  If there was abuse or domestic violence in your marriage, be sure to hire someone with training and experience working with domestic violence, and tell your mediator if you want to bring a trusted support person with you.  Read about mediation.
+  *	Figure out the important issues in the disagreement.
+  *	Explain and understand each other's needs.
+  *	Clear up misunderstandings.
+  *	Explore creative solutions.
+  *	Reach acceptable agreements.
+  
+   Spouses can hire their own private mediators to help resolve any issue in the case.  If there was abuse or domestic violence in your marriage, be sure to hire someone with training and experience working with domestic violence, and tell your mediator if you want to bring a trusted support person with you.  [Read about mediation](http://www.courts.alaska.gov/mediation/index.htm).
+   
   <div class="step-subheading">Collaborative Law</div>
-  The Alaska Association of Collaborative Professionals helps people resolve divorce cases outside of the court process without a judge making decisions.
+  The [Alaska Association of Collaborative Professionals](https://www.alaskacollaborative.org/) helps people resolve divorce cases outside of the court process without a judge making decisions.
   
-  [Watch a video]
-  Watch a short video that discusses resolving your case by reaching agreement with your spouse.  It discusses mediation and settlement conferences which may be available to you using free court programs once you file your case.
+  <div class="step-subheading">Watch a video</div>
+  Watch [a short video that discusses resolving your case](https://youtu.be/4EuW9HET3nM) by reaching agreement with your spouse.  It discusses mediation and settlement conferences which may be available to you using free court programs once you file your case.
   
-  [Talk to a lawyer]
+  <div class="step-subheading">Talk to a lawyer</div>
   It is a good idea to get legal advice by talking to an attorney about an agreement. Both spouses need to understand how agreeing to each issue affects the other issues in the agreement. If you agree to something without thinking it through, there can be serious and long-standing consequences. Once a judge signs off on your agreement, it will be a binding court order that outlines each spouses’ responsibilities and rights regarding the issues in the case.
   
-  *	Many lawyers offer free or flat fee consultations without having to hire them for the whole case.  Find a lawyer.
-  *	Depending on your income, you may qualify for free legal answers.  
-  *	Depending on your income and circumstances, you may qualify for a free lawyer.  Alaska Legal Services Corporation.
+  *	Many lawyers offer free or flat fee consultations without having to hire them for the whole case.  [Find a lawyer](http://courts.alaska.gov/shc/shclawyer.htm).
+  *	Depending on your income, you may qualify for [free legal answers](https://alaska.freelegalanswers.org).  
+  *	Depending on your income and circumstances, you may qualify for a free lawyer. [Alaska Legal Services Corporation](https://www.alsc-law.org/apply-for-services).
   
-  If you and your spouse reach an agreement
+  % if legal_separation_or_divorce == 'divorce' \
+      and ((minor_children and agree_or_settle_kids in('yes', 'do not know') \
+        or (not minor_children and agree_or_settle in('no prop debt or pregnancy','agree','do not know')))) and talk_to_spouse:  
+  <div class="step-subheading">If you and your spouse reach an agreement</div>
+  
   *	Use the dissolution or uncontested divorce forms below to tell the court about your agreement.
   If you and your spouse do not reach an agreement
   *	Return to the Guided Assistant to answer questions for spouses that do not agree to get the specific forms for your case, or
-  *	Fill out the [Filing for Dissolution, Divorce, or Custody forms](http://courts.alaska.gov/shc/family/shcforms.htm#start) listed under "Spouses do not agree or do not know if they agree"
-  Links in this step
-  mediation
-  .courts.alaska.gov/mediation/index.htm
-  Alaska Association of Collaborative Professionals
-  .alaskacollaborative.org
-  a short video that discusses resolving your case
-  youtu.be/4EuW9HET3nM
-  Find a Lawyer
-  courts.alaska.gov/shc/shclawyer.htm
-  Alaska Free Legal Answers
-  LegalNav.org/resource/alaska-free-legal-answers
-  Alaska Legal Services
-  alsc-law.org/apply-for-services
+  *	Fill out the [Filing for Dissolution, Divorce, or Custody forms](http://courts.alaska.gov/shc/family/shcforms.htm#start) listed under "Spouses do not agree or do not know if they agree".
+  % else:
+  <div class="step-subheading">What to Do if You Reach an Agreement</div>
+  
+  Before you start a case in court  –You can get the right forms for your case by re-taking this Guided Assistant and answering questions for spouses that agree, or fill out 
+  % if legal_separation_or_divorce == 'divorce':
+  % if minor_children:
+  [Uncontested Divorce With Children Packet](https://courts.alaska.gov/shc/family/shcforms.htm#shc-pac9a).
+  % else:
+  [Uncontested Complaint for Divorce without Children Packet](https://courts.alaska.gov/shc/family/shcforms.htm#shc-pac9b).
+  % endif
+  % else:
+  [Forms for Starting a Legal Separation When Both Spouses Agree](http://www.courts.alaska.gov/shc/family/shclegsep.htm#agree).
+  % endif
+  
+  After you start a court case - Fill out and file:
+  
+  * **Marital Property and Debt Division Agreement, SHC-1005** [Word](https://courts.alaska.gov/shc/family/docs/shc-1128.docx) | [PDF](https://courts.alaska.gov/shc/family/docs/shc-1128n.pdf) (do **not** sign the Order section)
+  % if minor_children:
+  
+  * **Parenting Plan Agreement & Order, SHC-1128** [Word](https://courts.alaska.gov/shc/family/docs/shc-1128.docx) | [PDF](https://courts.alaska.gov/shc/family/docs/shc-1128n.pdf) (for custody agreements) (do **not** sign the Order section)
+  % endif
+  
+  * **Joint Motion to Put Settlement on the Record, SHC-1063** [Word](https://courts.alaska.gov/shc/family/docs/shc-1063.doc) | [PDF](https://courts.alaska.gov/shc/family/docs/shc-1063n.pdf)
+ 
+  % if legal_separation_or_divorce == 'divorce':
+  
+  * **Findings of Fact and Conclusions of Law & Decree of Divorce, DR 800 & 805** [[Fill-In PDF](https://public.courts.alaska.gov/web/forms/docs/dr-800-805.pdf)]
 
+  % else:
+  % if minor_children:
+  * **Legal Separation with Children and Property Findings of Fact and Conclusions of Law**, [SHC-590](http://www.courts.alaska.gov/shc/family/docs/shc-590.doc), and
+  * **Judgment and Decree for Legal Separation with Children and Property**, [SHC-595](http://www.courts.alaska.gov/shc/family/docs/shc-595.doc)
+  % else:
+  * **Legal Separation with Property and No Children Findings of Fact and Conclusions of Law**, [SHC-591](http://www.courts.alaska.gov/shc/family/docs/shc-591.doc), and
+  * **Judgment and Decree for Legal Separation with Property and No Children**, [SHC-596](https://www.courts.alaska.gov/shc/family/docs/shc-596.doc)
+  % endif
+  % endif
+
+  % endif
+---
+template: not_know_spouse_whereabouts_step
+subject: |
+  Step ${ not_know_spouse_whereabouts_idx }: Learn about starting a case when you do not know where your spouse is
+content: |
+  Usually when you start a case you must give your spouse every form you file with the court.  This is called “service.” If you do not know where your spouse is, you can ask the court to let you use “alternate service,” which is described below.
+  
+  <div class="step-subheading">After you start your case by filing a complaint  and other documents, and cannot serve your spouse, ask the court to let you use alternate service</div>
+  
+  * Read: [Tips on Locating People](https://courts.alaska.gov/shc/family/shctips.htm).
+  *	Review and fill out the **Request to Serve Defendant by Posting or Alternative Service, and Affidavit of Diligent Inquiry**, [CIV-145](https://public.courts.alaska.gov/web/forms/docs/civ-145.pdf) (this form tells you the things you must do to try to find your spouse before asking for alternate service).
+  * Make 1 copy of the form and any attachments.
+  *	File the original documents at your local court. Keep one copy for your records.
+  
+  <div class="step-subheading">Final Steps</div>
+  
+  * Now you wait. The clerk will sign the Notice to Absent Spouse if the court finds you did enough to try to serve your spouse. The court will then post the notice on the Alaska Court System's legal notice website for 4 weeks in a row.
+  * Before the last week of posting, you must send a copy of the Notice and the Complaint by regular first class mail and registered or certified mail to your spouse at your spouse's last known residence or workplace. However, if you have already tried to serve your spouse by certified mail, then before the last week of posting, just send by regular first class mail.  File:
+    
+    * Affidavit, SHC-1625 Word | PDF (1 week before posting ends that states you):
+    
+      * tried to serve your spouse by regular first class mail and registered or certified mail **or**
+      *	could **not** serve by mail because you cannot find your spouse's last known mailing address
+      
+    *	After the Notice has been posted on the legal notice website for 4 weeks, the clerk will complete a certificate of service of posting to the Alaska Court System’s legal notice website. The court will put the certificate of service of posting in your case file and send you a copy in the mail.
+---
+template: review_common_situations_step
+subject: |
+  Step ${ review_common_situations_idx }: |
+    Review common situations where there are no marital assets and debts to divide
+content: |
+  <div class="step-subheading">Very short marriage</div>
+  Short marriages often result in each spouse keeping their own possessions and debts as if they had never gotten married.  This is common with marriages of 2 years or less if the couple did not buy a house together or save any significant money.  However, sometimes even in short marriages the spouses have bought expensive items like a home or taken on a lot of debt that needs to be divided.
+  <div class="step-subheading">Very long separation</div>
+   Sometimes spouses have been separated many months or years and have divided all their property and money; paid or split up debt; taken each other’s names off bank accounts, credit cards, utilities, titles, etc.; and sold large joint property like houses.  If the division was fair, these couples may not need to divide anything else.
+---
+template: do_not_have_common_step
+subject: |
+  Step ${ do_not_have_common_idx }: |
+    Make sure you do not have marital assets and debts to divide
+content: |
+  When people get a divorce, the court signs an order dividing all the marital property.  Marital property is anything earned or bought during the marriage.  This commonly includes houses, land, vehicles, money, retirement accounts, pensions, household goods, furniture, snowmachines, four-wheelers and each spouse’s personal property. 
+
+  Generally, the following are not considered marital property so the court will not divide them, unless one spouse did something that changed the separate property to marital:
+  
+  * Inheritance,
+  *	Gifts to one spouse (engagement ring),
+  *	Premarital assets,
+  *	Property acquired during marriage solely from separate sources,
+  *	Social Security benefits,
+  *	Military disability payments, and
+  *	Post-separation credit card debt that is not marital debt because one spouse had no other way to support him or herself.
+  
+comment: |
+  If you are unsure whether or not you have marital property and debt to divide, you can answer more questions.  If you want to save this Action Plan, be sure to download, save, or print it.  Then return to the Guided Assist page and use the Guided Assist search box to find "Dividing Property and Debt in a Divorce." 
+---
+template: learn_disso_div_step
+subject: |
+  Step ${ learn_disso_div_idx }: |
+    Learn about dissolutions and uncontested divorces 
+content: |
+
+  *	If you and your spouse agree on all issues (ending the marriage, dividing marital property and debt
+  % if minor_children:
+  , parenting plan including decision-making and schedule, paternity, and child support
+  % endif
+  ) you can both sign forms to ask for a “dissolution” or “uncontested divorce.” 
+  * Asking for a dissolution or uncontested divorce means you and your spouse agree on what will happen.  You do not have a trial.  Most courts will set a hearing to ask you about the agreement and make sure 
+  % if minor_children:
+  the parenting plan is in the children’s best interest and 
+  % endif
+  that the property and debt division is fair. 
+  * A dissolution and an uncontested divorce have the same result.  Both end the marriage based on your agreement without a trial.  You start a dissolution with a form called a "Petition" and pick one spouse to be "Party A" and the other to be "Party B."  You start an uncontested divorce with a "Complaint" and pick one spouse to be "Plaintiff" and the other to be "Defendant."  There is no difference in the case if you are Party A, Party B, Plaintiff, or Defendant.
+  * The uncontested divorce forms have choices not in the dissolution forms, such as a box to check if there is no marital property or debt to divide.  If you need one of these choices, you will only get the uncontested divorce forms below.  If not, you will be given information on both sets of forms and can choose which to use. 
+  % if military:
+  * If you are filing in Fairbanks and at least one spouse is a military member, it is strongly suggested that you use Uncontested Complaint for Divorce form because the court prefers those documents.
+  % endif
+---
+template: learn_legal_sep_step
+subject: |
+  Step ${ learn_legal_sep_idx }: |
+    Learn about legal separation
+content: |
+  If you and your spouse want to separate but stay legally married to protect significant religious, financial, social or legal interests, the court can issue a Decree of Legal Separation.
+  % if minor_children:
+  You will still be married, but the court will:
+  
+  * Divide the property and debt earned or received during the marriage.
+  *	Issue a parenting plan that states (1) a schedule for each parent to spend time with the child(ren) and (2) how the parents make decisions about the child(ren), and
+  * Issue a child support order that states which parent will pay child support according to the child support rule.
+  % else:
+  You will still be married, but the court will divide the property and debt earned or received during the marriage.
+  % endif
+  **If your spouse does not agree to a Legal Separation, he or she can turn it into a divorce.**
+---
+template: uncontested_divorce_step
+subject: |
+  Step ${ uncontested_divorce_idx }: |
+    Fill out the forms 
+    % if (minor_children and have_property_and_debt and paternity == 'no' and wife_is_pregnant == 'not pregnant') or ( not minor_children and (agree_or_settle == 'agree' and wife_is_pregnant in('husband', 'not pregnant'))):
+    to start your case
+    % else:
+    for an uncontested divorce
+    % endif
+content: |
+  % if not minor_children and agree_or_settle == 'agree' and wife_is_pregnant in('husband', 'not pregnant'):
+  * Read "Decide Between Dissolution & Uncontested Divorce," above.  Then pick 1 of the following options.  Note: If you choose dissolution, the link below takes you to the Alaska Court System Website to find the forms and instructions you need.  If you choose uncontested divorce, the forms and instructions you need are listed below.
+  % elif minor_children and have_property and paternity == 'no' and wife_is_pregnant == 'not pregnant':
+  % else:
+  *	Generally, if spouses agree on all issues they can use either "dissolution" or "uncontested divorce" forms to ask to end the marriage. Uncontested divorce forms are best for your case 
+  % if minor_children and have_property_and_debt and paternity in('yes','do not know') :
+  because they have a place to tell the court you have a paternity issue.
+  % elif minor_children and have_property_and_debt and paternity == 'no' and wife_is_pregnant == 'husband':
+  because paragraph 5(a) of the complaint has a place to tell the court wife is pregnant.
+  % elif minor_children and have_property_and_debt and paternity == 'no' and wife_is_pregnant in('not husband','not pregnant'):
+  because paragraph 5(d) of the Complaint has a place to tell the court paternity is an issue for a child conceived during the marriage.
+  % elif minor_children and not have_property_and_debt and paternity in('yes','do not know'):
+  because they have a place to tell the court (1) you have a paternity issue; and (2) you have no property of debt.
+  % elif minor_children and not have_property_and_debt and paternity == 'no' and wife_is_pregnant == 'husband':
+  because (1) paragraph 5(a) of the complaint has a place to tell the court wife is pregnant and (2) they have a place to tell the court you have no marital property or debt.
+  % elif minor_children and not have_property_and_debt and paternity == 'no' and wife_is_pregnant in('not husband','not pregnant'):
+  because (1) paragraph 5(d) of the complaint has a place to tell the court paternity is an issue for a child conceived during the marriage. and (2) they have a place to tell the court you have no marital property or debt.
+  % elif minor_children and not have_property_and_debt and paternity == 'no' and  wife_is_pregnant =='not pregnant':
+  because they have a place to tell the court you have no marital property or debt.
+  % elif not minor_children and wife_is_pregnant == 'husband':
+  because paragraph 5(a) of the Complaint has a place to tell the court wife is pregnant.
+  % elif not minor_children and wife_is_pregnant in('not husband','not pregnant'):
+  because paragraph 5(d) of the Complaint has a place to tell the court paternity is an issue for a child conceived during the marriage.
+  % endif
+  % endif
+  *	You will not know your case number until you file your documents with the court.  You can write the case number on all your forms then.
+
+  % if minor_children or wife_is_pregnant in('husband','not husband'):
+  **Dissolution Packet #1: [DR-1 ANCH](https://courts.alaska.gov/forms/index.htm#dr-1anc) (Anchorage) | [DR-1](https://courts.alaska.gov/forms/index.htm#dr-1) (Not Anchorage) 
+  [Anchorage Dissolution Packet #1](https://public.courts.alaska.gov/web/forms/docs/dr-1total.pdf) | All Other Cities Dissolution Packet #1 
+  % if wife_is_pregnant in('husband','not husband'):
+  (you must use this packet because wife is pregnant)
+  % endif
+  or
+  **Uncontested Divorce**
+  % endif
+  
+  <div class="step-subheading">Required Forms</div>
+  1 copy that both spouses sign if signatures are needed.
+  % if minor_children or wife_is_pregnant in('husband','not husband'):
+  * **Uncontested Complaint for Divorce with Children, SHC-110** [Word](https://courts.alaska.gov/shc/family/docs/shc-110.doc) | [PDF](https://courts.alaska.gov/shc/family/docs/shc-110n.pdf)
+  % if wife_is_pregnant in('husband','not husband'):
+  You must use this form because wife is pregnant.
+  % endif
+  % else:
+  * **Uncontested Complaint for Divorce without Children, SHC-111** [Word](https://courts.alaska.gov/shc/family/docs/shc-111.doc) | [PDF](https://courts.alaska.gov/shc/family/docs/shc-111n.pdf)
+  % endif
+    
+    *	Print your name, address, and phone number in the upper left-hand corner of the first page.
+    *	In the caption, print your name above "Plaintiff" and your spouse's name above "Defendant."
+    *	Follow the directions on the form and fill out every section.
+    
+  *	**Joint Motion to put a Settlement on Record, SHC-1063** [Word](https://courts.alaska.gov/shc/family/docs/shc-1063.doc) | [PDF](https://www.courts.alaska.gov/shc/family/docs/shc-1063n.pdf)
+    Do **not** sign the Order section.
+    *	**Case Description Form**, [CIV-125S](https://public.courts.alaska.gov/web/forms/docs/civ-125s.pdf) 
+
+  % if minor_children:
+  Check "Uncontested Divorce with Children (or pregnant)".
+  % else:
+  Check "Uncontested Divorce Without Children".
+  % endif
+  
+  *	**Certificate of Divorce**, VS-401 - Get this form at the court or at Health Analytics & Vital Records. You must use an original form - they are printed on archival-quality, acid-free paper. You may not use a photocopy.  Fill in boxes 9-32 in black ink without cross-outs or corrections; if you don't know an answer about your spouse, leave it blank.
+  
+  
+  <div class="step-subheading">Required forms - 2 copies</div>
+  Each spouse fills out and signs a separate copy.
+  % if minor_children or wife_is_pregnant in('husband','not husband'):
+  
+  *	**Child Custody Jurisdiction Affidavit**, [DR-150](https://public.courts.alaska.gov/web/forms/docs/dr-150.pdf) & **Child Support Guidelines Affidavit**, [DR-305](https://public.courts.alaska.gov/web/forms/docs/dr-305.pdf)
+  
+    *	Answer each question completely.
+    *	See [**How to Fill out the Child Support Guidelines Affidavit**](http://courts.alaska.gov/shc/family/docs/shc-dr305f-sample.pdf).
+    *	Attach your most recent tax return and pay stubs to the **Child Support Guidelines Affidavit**.
+    *	Wait to sign these forms them until you are in front of someone who has the power to take oaths, like a notary public. The court clerk can do this for free. Bring a valid photo ID with you.
+  % endif
+  
+  *	**Information Sheet**, [DR-314](https://public.courts.alaska.gov/web/forms/docs/dr-314.pdf)
+  Fill in 1-3 with complete information for yourself, 
+  % if minor_children:
+  the children in the case,
+  % endif
+  your spouse if you know it, and then sign and date.
+  
+  <div class="step-subheading">Required Forms</div>
+  
+  Fill out but do not sign because the judge will sign them.
+  % if minor_children:
+  
+  *	**Child Support Order**, [DR-300](https://public.courts.alaska.gov/web/forms/docs/dr-300.pdf)
+  * **Finding of Fact and Conclusions of Law & Decree of Divorce**, [DR- 800 & 805](https://public.courts.alaska.gov/web/forms/docs/dr-800-805.pdf)
+  Fill out the “Findings of Fact” section
+  % if not have_property_and_debt:
+  
+  *	**Decree and Judgment, SHC-525** [Word](https://www.courts.alaska.gov/shc/family/docs/shc-525.doc) | [PDF](https://www.courts.alaska.gov/shc/family/docs/shc-525n.pdf)
+  % endif
+  % else:
+  
+  *	**Finding of Fact and Conclusions of Law, SHC-540** [Word](http://www.courts.alaska.gov/shc/family/docs/shc-540.doc) | [PDF](http://www.courts.alaska.gov/shc/family/docs/shc-540n.pdf) (fill out the “Findings of Fact” section)
+  *	**Decree and Judgment, SHC-545** [Word](https://www.courts.alaska.gov/shc/family/docs/shc-545.doc) | [PDF](https://www.courts.alaska.gov/shc/family/docs/shc-545n.pdf)
+  % endif
+  
+  % if wife_is_pregnant in('husband','not husband'):
+  <div class="step-subheading">Form if wife is pregnant</div>
+  % if wife_is_pregnant == 'husband':
+  Some courts will allow a divorce case to move forward when the wife is pregnant. Other courts require that the child be born before completing the case.  You can ask the court to divorce you before the child is born, and deal with the parenting plan and child support after by filing:
+  % else:
+  If a wife is pregnant when a marriage ends the law considers the husband to be the father.  If the husband is not the father, the court can remove the husband’s rights and responsibilities for that child.  This is called “disestablishing paternity.”  You can ask the court to divorce you before the child is born, and deal with the paternity after by filing:
+  % endif
+  
+  *	**Joint Motion, Affidavit and Order to Bifurcate Divorce for Subsequent Determination of Paternity, SHC-153** [Word](http://courts.alaska.gov/shc/family/docs/shc-153.doc) | [PDF](http://courts.alaska.gov/shc/family/docs/shc-153n.pdf) (do **not** sign the order section)
+  % endif
+  % if paternity in('yes','do not know'):
+  <div class="step-subheading">Paternity form</div>
+  
+  If the husband is not the biological or adopted father of a child born during the marriage you can ask the court to remove the husband’s rights and responsibilities for that child. This is called “disestablishing paternity.” Use:
+  
+  * **Three-Way Affidavit to Disestablish and Establish Paternity, SHC-151** [Word](http://courts.alaska.gov/shc/family/docs/shc-151.doc) | [PDF](http://courts.alaska.gov/shc/family/docs/shc-151n.pdf). This can be filled out by:
+  
+    *	the mother, the husband and the man who is the father stating the husband is **not** the father and that the man is the biological father
+    *	the mother and the husband saying the husband is **not** the father to disestablish the husband as the biological father
+  % endif
+  
+  
+  <div class="step-subheading">Optional forms depending on your situation</div>
+  
+  % if minor_children:
+  
+    * **Shared Custody Child Support Calculation**, [DR-306](https://public.courts.alaska.gov/web/forms/docs/dr-306.pdf)
+  % endif
+  
+  * **Joint Motion, Affidavit & Order to Appear and Testify By Telephone, SHC-1342** [Word](https://www.courts.alaska.gov/shc/family/docs/shc-1342.doc) | [PDF](http://www.courts.alaska.gov/shc/family/docs/shc-1342n.pdf) (do **not** sign the Order section) 
+
+  <div class="step-subheading">If you and your spouse realize you do not agree, you can:</div>
+  
+  *	return to the Guided Assistant to answer questions and get the specific forms for your case, or
+  *	find the forms you need on-line:  [Filing for Divorce, Dissolution, or Custody Forms](https://courts.alaska.gov/shc/family/shcforms.htm#start)
+---
+template: divorce_step
+subject: |
+  Step ${ divorce_idx }: |
+    Fill out the forms to start your case
+content: |
+  You get your case number when you file your documents with the court.  Write the case number on your forms when you file them.
+  <div class="step-subheading">Required Forms</div>Required forms</div>
+  % if minor_children or wife_is_pregnant in('husband', 'not husband'):
+    * **Divorce Complaint With Children, SHC-101** [Word](http://courts.alaska.gov/shc/family/docs/shc-101.doc) | [PDF](http://courts.alaska.gov/shc/family/docs/shc-101n.pdf)
+  % else:
+    * **Divorce Complaint Without Children, SHC-102:** [Word](http://www.courts.alaska.gov/shc/family/docs/shc-102.doc) | [PDF](http://www.courts.alaska.gov/shc/family/docs/shc-102n.pdf)
+  % endif
+      * Print your name, address, phone number in the upper left corner of the first page.
+      * Print your name above "Plaintiff" and your spouse's name above "Defendant."
+      * Follow the directions on the form and fill out every section.
+      
+  % if minor_children or wife_is_pregnant in('husband', 'not husband'):
+  
+      * **Child Custody Jurisdiction Affidavit**, [DR-150](https://public.courts.alaska.gov/web/forms/docs/dr-150.pdf
+      * ) & **Child Support Guidelines Affidavit**, [DR-305](https://public.courts.alaska.gov/web/forms/docs/dr-305.pdf)
+        * Answer each question completely.
+        * See [**How to Fill out the Child Support Guidelines Affidavit**](http://courts.alaska.gov/shc/family/docs/shc-dr305f-sample.pdf).
+    *	Attach your most recent tax return and pay stubs to the **Child Support Guidelines Affidavit**.
+    *	Wait to sign these forms them until you are in front of someone who has the power to take oaths, like a notary public. The court clerk can do this for free. Bring a valid photo ID with you.
+  % endif
+  
+  *	**Information Sheet**, [DR-314](https://public.courts.alaska.gov/web/forms/docs/dr-314.pdf)
+  Fill in 1-3 with complete information for yourself, 
+  % if minor_children:
+  the children in the case,
+  % endif
+  your spouse if you know it, and then sign and date.
+  
+  * **Summons, CIV-100** [Fill-in PDF] [Anchorage](https://public.courts.alaska.gov/web/forms/docs/civ-100ancno.pdf) | [Fairbanks](https://public.courts.alaska.gov/web/forms/docs/civ-100faino.pdf) | [Kenai](https://public.courts.alaska.gov/web/forms/docs/civ-100kenno.pdf) | [Palmer](https://public.courts.alaska.gov/web/forms/docs/civ-100palno.pdf) | [All Other Locations](https://public.courts.alaska.gov/web/forms/docs/civ-100.pdf) (fill in the blank spaces on the top half of the form and the clerk will fill out the case number and the lower half when you file your case)
+  * **Case Description Form, [CIV-125S](https://public.courts.alaska.gov/web/forms/docs/civ-125s.pdf)** (check {% if minor\_children or wife\_is\_pregnant in('husband', 'not husband')%}"Divorce With Children (or Pregnant)"{% else %}” Divorce Without Children"{% endif %}**)**
+  * **Certificate of Divorce, Dissolution or Annulment, VS-401 - Get** this form at the court or at Health Analytics & Vital Records. You must use an original form (printed on archival-quality, acid-free paper). **You may not use a photocopy.**  Fill in boxes 9-32 in black ink without cross-outs or corrections; if you don't know an answer about your spouse, leave it blank.
+
+  <div class="step-subheading">Optional form depending on your circumstances</div>
+
+  * If you think your spouse might not respond to your case, which is called “default,” file: **Property & Debt Worksheet, SHC-1000** [Word](http://courts.alaska.gov/shc/family/docs/shc-1000.doc) | [PDF](http://courts.alaska.gov/shc/family/docs/shc-1000n.pdf)
+
+  % if wife_is_pregnant in('husband', 'not husband'):
+
+  <div class="step-subheading">Form if wife is pregnant</div>
+
+  % if wife_is_pregnant == 'husband':
+  Some courts allow a divorce case to move forward when the wife is pregnant.   Other courts require that the child be born before completing the case. 
+
+  You can file a motion asking the court to divorce you before the child is born, and deal with the parenting plan and child support after. There is no guarantee the judge will grant your motion. The decision depends on whether delaying your divorce until after the child is born will harm one of the spouses.  To ask the court, you can file:
+
+  * If both parents agree: **Joint Motion, Affidavit & Order to Bifurcate Divorce for Custody, SHC-155 [Word](http://courts.alaska.gov/shc/family/docs/shc-155.docx)** | [PDF](http://courts.alaska.gov/shc/family/docs/shc-155n.pdf) (Do **not** sign the order section)
+  * If 1 parent is asking: **Motion, Affidavit & Order to Bifurcate Divorce for Custody, SHC-154** [Word](http://courts.alaska.gov/shc/family/docs/shc-154.docx) | [PDF](http://courts.alaska.gov/shc/family/docs/shc-154n.pdf) (one parent files the motion on their own and the other parent will be able to file a response if he/she does not agree the divorce should move ahead before the child is born) (Do **not** sign the order section)
+  % else:
+  If a wife is pregnant when a marriage ends the law considers the husband to be the father.  If the husband is not the father, the court can remove the husband’s rights and responsibilities for that child.  This is called “disestablishing paternity.”
+
+  You usually cannot disestablish paternity before a child is born. You can file a motion asking the court to divorce you and deal with paternity after the child is born.
+
+  * If both parents agree: **Joint Motion, Affidavit and Order to Bifurcate Divorce for Subsequent Determination of Paternity, SHC-153 [Word](http://courts.alaska.gov/shc/family/docs/shc-153.docx)** | [PDF](http://courts.alaska.gov/shc/family/docs/shc-153n.pdf) (Do **not** sign the order section)
+  * If 1 parent is asking: **Motion, Affidavit and Order to Bifurcate Divorce for Subsequent Determination of Paternity, SHC-152** [Word](http://courts.alaska.gov/shc/family/docs/shc-152.docx) | [PDF](https://courts.alaska.gov/shc/family/docs/shc-152n.pdf) (one parent files the motion on their own and the other parent will be able to file a response if he/she does not agree the divorce should move ahead before the child is born) (Do **not** sign the order section)
+  % endif
+  % endif
+  % if paternity in('yes', 'do not know'):
+
+  <div class="step-subheading">Paternity Forms</div>
+  If a parent thinks the husband is not the biological or adopted father of a child born during the marriage, that parent can ask the court to remove the husband’s rights and responsibilities for that child. This is called “disestablishing paternity.”  You need clear and convincing evidence. There are different ways to do this depending on the facts of the situation. Every case is different so you need to figure out what will work in your case. Some options are:
+    * All of the people involved in the case sign affidavits: **Three-Way Affidavit to Disestablish and Establish Paternity, SHC-151** ([Word](http://courts.alaska.gov/shc/family/docs/shc-151.doc) | [PDF](http://courts.alaska.gov/shc/family/docs/shc-151n.pdf)). This can be filled out by:
+
+    * the mother, the husband, and the man who is the father stating the husband is NOT the father and that the man is the biological father
+    * the mother and the husband saying the husband is NOT the father to disestablish the husband as the biological father
+    * the mother and the man saying he IS the father to establish him as the biological father
+    * the mother only if others are not cooperating and she can provide convincing facts about the paternity
+  * Get genetic (DNA) testing of the child, the mother, the man believed to be the father, and the husband if the mother is married. The test results must be provided to the court. This can be done voluntarily if all of the people are cooperating or by court order.  To ask for a court order, you can file:
+
+    * **Motion & Affidavit for Genetic (DNA) Testing, SHC-1370 [Word](http://courts.alaska.gov/shc/family/docs/shc-1370.doc)** | [PDF](http://courts.alaska.gov/shc/family/docs/shc-1370n.pdf)
+    *  **Order for Genetic (DNA) Testing, SHC-1375** [Word](http://courts.alaska.gov/shc/family/docs/shc-1375.doc) | [PDF](http://courts.alaska.gov/shc/family/docs/shc-1375n.pdf)
+  % endif
+
+---
+template: legal_separation_agree_step
+subject: |
+  Step ${ legal_separation_agree_idx }: |
+    Fill out the forms to start your case
+content: |
+  <div class="step-subheading">Required Forms - 1 copy that both spouses sign if signatures are needed</div>
+  % if minor_children or wife_is_pregnant in('husband', 'not husband'):
+  * **Uncontested Complaint for Legal Separation With Children,[SHC-090](http://www.courts.alaska.gov/shc/family/docs/shc-090.doc)** 
+  % if wife_is_pregnant in('husband', 'not husband'):
+  You must use this form because wife is pregnant
+  % endif
+  % else:
+    * **Uncontested Complaint for Legal Separation Without Children**, [SHC-091](http://www.courts.alaska.gov/shc/family/docs/shc-091.doc)
+  courts.alaska.gov/shc/family/docs/shc-091.doc 
+  % endif
+      * Print your name, address, and phone number in the upper left-hand corner of the first page.
+      * In the caption, print your name above "Plaintiff" and your spouse's name above "Defendant."
+      * Follow the directions on the form and fill out every section.
+    * **Joint** **Motion to put a Settlement on Record**, **SHC-1063**       as a [Word](http://courts.alaska.gov/shc/family/docs/shc-1063.doc) file 
+      as a [PDF](http://www.courts.alaska.gov/shc/family/docs/shc-1063n.pdf)
+      courts.alaska.gov/shc/family/docs/shc-1063n.pdf
+      * Do **not** sign the Order section.
+  % if minor_children or wife_is_pregnant == 'husband':
+  
+    * **Case Description Form**, [CIV-125S](https://public.courts.alaska.gov/web/forms/docs/civ-125s.pdf)
+    Check "Legal Separation With Children (or Pregnant)
+  <div class="step-subheading">Required Forms * 2 copies (each spouse fills out and signs a separate copy)</div>
+  * **Child Custody Jurisdiction Affidavit**, [DR-150](https://public.courts.alaska.gov/web/forms/docs/dr-150.pdf) (you can note the child is not yet born) & **Child Support Guidelines Affidavit**, [DR-305](https://public.courts.alaska.gov/web/forms/docs/dr-305.pdf)
+  public.courts.alaska.gov/web/forms/docs/dr-305.pdf
+
+     * Answer each question completely.
+
+     * See [**How to Fill out the Child Support Guidelines Affidavit**](http://courts.alaska.gov/shc/family/docs/shc-dr305f-sample.pdf).
+
+     * Attach your most recent tax return and pay stubs to **the Child Support Guidelines Affidavit**.
+
+     * Wait to sign these forms until you are in front of someone who has the power to take oaths, like a notary public. The court clerk can do this for free. Bring a valid photo ID with you.
+
+  * **Information Sheet**, [DR-314](https://public.courts.alaska.gov/web/forms/docs/dr-314.pdf)
+
+     * Fill in 1-3 with complete information for yourself, the children in the case, your spouse if you know it, and then sign and date the form.
+
+  <div class="step-subheading">Required Form * fill out but do NOT sign because the judge will sign it</div>
+
+    * **Child Support Order**, [DR-300](https://public.courts.alaska.gov/web/forms/docs/dr-300.pdf)
+
+    * **Legal Separation with Children and Property Findings of Fact and Conclusions of Law,** [SHC-590](http://courts.alaska.gov/shc/family/docs/shc-590.doc)
+
+  % else:
+    *	**Case Description Form**, [CIV-125S](https://public.courts.alaska.gov/web/forms/docs/civ-125s.pdf)
+
+  <div class="step-subheading">Required Forms * 2 copies (each spouse fills out and signs a separate copy)</div>
+
+  *	**Information Sheet**, [DR-314](https://public.courts.alaska.gov/web/forms/docs/dr-314.pdf)
+
+    * Fill in 1-3 with complete information for yourself and your spouse if you know it, and then sign and date.
+
+  <div class="step-subheading">Required Form * fill out but do NOT sign because the judge will sign it</div>
+  
+    * **Legal Separation with Property and No Children Findings of Fact and Conclusions of Law**, [SHC-591](http://courts.alaska.gov/shc/family/docs/shc-591.doc)
+  % endif
+
+  % if wife_is_pregnant in('husband', 'not husband'):
+
+  <div class="step-subheading">Form if wife is pregnant
+
+  % if wife_is_pregnant == 'husband':
+
+  Some courts will allow a legal separation case to move forward when the wife is pregnant. Other courts require that the child be born before completing the case. You can ask the court to legally separate you before the child is born, and deal with the parenting plan and child support after by filing:
+
+  * **Joint Motion, Affidavit and Order to Bifurcate Legal Separation for Custody, SHC-155a**
+  Call the [Family Law Self-Help Center](https://courts.alaska.gov/shc/family/shcabout.htm#1c) for this form courts.alaska.gov/shc/family/shcabout.htm
+  (907) 264-0851  or (866) 279 0851
+
+  * Do **not** sign the order section
+  
+  % else:
+  
+  If a wife is pregnant when spouses legally separate the law considers the husband to be the father. If the husband is not the father, the court can remove the husband’s rights and responsibilities for that child.  This is called “disestablishing paternity.” You can ask the court to legally separate you before the child is born, and deal with the paternity after by filing:
+
+  * **Joint Motion, Affidavit and Order to Bifurcate Legal Separation for Subsequent Determination of Paternity,** **SHC-153a**
+  Call the [Family Law Self-Help Center](https://courts.alaska.gov/shc/family/shcabout.htm#1c) for this form 
+  courts.alaska.gov/shc/family/shcabout.htm
+  (907) 264-0851  or (866) 279 0851
+
+  * Do **not** sign the order section
+  % endif
+  % endif
+
+  % if minor_children or wife_is_pregnant in('husband', 'not husband'):
+  % if paternity in('yes', 'do not know'):
+
+  <div class="step-subheading">Paternity form</div>
+  If the husband is not the biological or adopted father of a child born during the marriage you can ask the court to remove the husband’s rights and responsibilities for that child. This is called “disestablishing paternity.” Use: 
+
+  * **Three-Way Affidavit to Disestablish and Establish Paternity, SHC-151** 
+  as a [Word](http://courts.alaska.gov/shc/family/docs/shc-151.doc) file
+  as a [PDF](http://courts.alaska.gov/shc/family/docs/shc-151n.pdf)
+  This can be filled out by:
+
+  * The mother, the husband and the man who is the father stating the husband is NOT the father and that the man is the biological father 
+  * The mother and the husband saying the husband is **not** the father to disestablish the husband as the biological father
+  % endif
+
+  <div class="step-subheading">Optional Forms Depending on Your Situation</div>
+
+  * **Shared Custody Child Support Calculation**, [DR-306](https://public.courts.alaska.gov/web/forms/docs/dr-306.pdf) 
+    public.courts.alaska.gov/web/forms/docs/dr-306.pdf
+
+  * **Joint Motion, Affidavit & Order to Appear and Testify By Telephone**, **SHC-1342**
+    as a**  [Word](http://www.courts.alaska.gov/shc/family/docs/shc-1342.doc) file
+    as a [PDF](http://www.courts.alaska.gov/shc/family/docs/shc-1342n.pdf)
+
+  * Do **not** sign the Order section.
+
+  % else:
+
+  <div class="step-subheading">Optional Forms Depending on Your Situation</div>
+
+  * **Joint Motion, Affidavit & Order to Appear and Testify By Telephone**, **SHC-1342**
+  as a [Word](http://www.courts.alaska.gov/shc/family/docs/shc-1342.doc) file
+  as a [PDF](http://www.courts.alaska.gov/shc/family/docs/shc-1342n.pdf)
+  * Do **not\*\* sign the Order section.
+  % endif
+---
+template: legal_separation_do_not_agree_step
+subject: |
+  Step ${ legal_separation_do_not_agree_idx }: |
+    Fill out the forms to start your case
+content: |
+  content: |
+  You get your case number when you file your documents with the court.  Write the case number on your forms when you file them.
+  <div class="step-subheading">Required forms</div>
+  % if minor_children or wife_is_pregnant in('husband', 'not husband'):
+
+  ***Complaint for Legal Separation With Children [SHC-092](http://www.courts.alaska.gov/shc/family/docs/shc-092.doc)** 
+  % if wife_is_pregnant in('husband', 'not husband'):
+  *You must use this form because wife is pregnant  
+  % endif
+
+  % else:
+  ***Complaint for Legal Separation Without Children**, [SHC-093](http://www.courts.alaska.gov/shc/family/docs/shc-093.doc)
+
+  % endif
+
+  *Print your name, address, and phone number in the upper left-hand corner of the first page.
+  *In the caption, print your name above "Plaintiff" and your spouse's name above "Defendant."
+  *Follow the directions on the form and fill out every section.
+  
+  % if minor_children or wife_is_pregnant == 'husband':
+
+  * **Child** Custody **Jurisdiction Affidavit**, [DR-150](https://public.courts.alaska.gov/web/forms/docs/dr-150.pdf)
+  % if wife_is_pregnant in('husband', 'not husband'):
+  *You can note the child is not yet born  
+  % endif
+  * **Child Support Guidelines Affidavit**, [DR-305](https://public.courts.alaska.gov/web/forms/docs/dr-305.pdf)
+  * Answer each question completely.
+  * See [**How to Fill out the Child Support Guidelines Affidavit**](http://courts.alaska.gov/shc/family/docs/shc-dr305f-sample.pdf).
+  * Attach your most recent tax return and pay stubs to **the Child Support Guidelines Affidavit**.
+  * Wait to sign these forms them until you are in front of someone who has the power to take oaths, like a notary public. The court clerk can do this for free. Bring a valid photo ID with you.
+  % endif
+  * **Information Sheet**, [DR-314](https://public.courts.alaska.gov/web/forms/docs/dr-314.pdf)
+  * Fill in 1-3 with complete information for yourself,   
+  % if minor_children:
+  the children in the case,
+  % endif 
+  your spouse if you know it, and then sign and date the form.
+  * **Summons, CIV-100** [Fill-in PDF]
+    * Fill in the blank spaces on the top half of the form and the clerk will fill out the case number and the lower half when you file your case. 
+  [Anchorage](https://public.courts.alaska.gov/web/forms/docs/civ-100ancno.pdf) | 
+  [Fairbanks](https://public.courts.alaska.gov/web/forms/docs/civ-100faino.pdf) | 
+  [Kenai](https://public.courts.alaska.gov/web/forms/docs/civ-100kenno.pdf) | 
+  [Palmer](https://public.courts.alaska.gov/web/forms/docs/civ-100palno.pdf) | 
+  [All Other Locations](https://public.courts.alaska.gov/web/forms/docs/civ-100.pdf)
+
+  % if minor_children or wife_is_pregnant in('husband', 'not husband'):
+  * **Case Description Form**, [CIV-125S](https://public.courts.alaska.gov/web/forms/docs/civ-125s.pdf)
+  * Check "Legal Separation With Children (or Pregnant) 
+  % else:
+  * **Case Description Form**, [CIV-125](https://public.courts.alaska.gov/web/forms/docs/civ-125.pdf)
+    * Check "Legal Separation Without Children"
+  % endif
+
+  % if wife_is_pregnant in('husband', 'not husband'):
+  <div class="step-subheading">Form if wife is pregnant</div>
+  % if wife_is_pregnant == 'husband':
+
+  Some courts allow a legal separation case to move forward when the wife is pregnant. Other courts require that the child be born before completing the case.
+
+  You can file a motion that asks the court for a legal separation before the child is born, and let you deal with the parenting plan and child support after.  To ask the court to allow your legal separation to move forward, you can file:
+  * If both parents agree:
+    **Joint Motion, Affidavit & Order to Bifurcate Legal Separation for Custody, SHC-155a**
+      * Call the [Family Law Self-Help Center](http://courts.alaska.gov/shc/family/shcabout.htm) for this form
+      (907) 264-0851  or (866) 279 0851
+      * Do **not** sign the order section
+      * If 1 parent is asking:
+      
+    * **Motion, Affidavit & Order to Bifurcate Divorce for Custody, SHC-155a**
+    Call the [Family Law Self-Help Center](https://courts.alaska.gov/shc/family/shcabout.htm#1c) for this form
+    
+    (907) 264-0851  or (866) 279 0851
+    
+    * One parent files the motion on their own and the other parent can file a response if they do not agree the legal separation should go forward before the child is born.
+    *Do **not** sign the order section
+  % else:
+  If a wife is pregnant when spouses become legally separated, the law considers the husband to be the father.  If the husband is not the father, the court can remove the husband’s rights and responsibilities for that child.  This is called “disestablishing paternity.”
+  You usually cannot disestablish paternity before a child is born. You can file a motion that asks the court to legally separate you and deal with paternity after the child is born. To ask the court go ahead with your legal separation case before the child is born, you can file:
+
+  * If both parents agree:  
+  * **Joint Motion, Affidavit & Order to Bifurcate Legal Separation for Subsequent Determination of Paternity, SHC-153a**,
+  Call the [Family Law Self-Help Center](https://courts.alaska.gov/shc/family/shcabout.htm#1c) for this form
+  (907) 264-0851  or (866) 279 0851.
+  * Do **not** sign the order section.
+  * If 1 parent is asking: **Motion, Affidavit & Order to Bifurcate Divorce for Subsequent Determination of Paternity**, **SHC-152a**
+  Call the [Family Law Self-Help Center](https://courts.alaska.gov/shc/family/shcabout.htm#1c), for this form
+  (907) 264-0851  or (866) 279 0851.
+
+  * One parent files the motion on their own and the other parent can file a response if they do not agree the legal separation should move ahead before the child is born
+  *Do **not** sign the order section.
+  % endif
+  % endif
+
+  % if minor_children and paternity in('yes','do not know'):
+  <div class="step-subheading">Paternity form</div>
+  If a parent thinks the husband is not the biological or adopted father of a child born during the marriage, that parent can ask the court to remove the husband’s rights and responsibilities for that child.   This is called “disestablishing paternity.”  You need clear and convincing evidence. There are different ways to do this depending on the facts of the situation. Every case is different so you need to figure out what will work in your case. Some options are:
+
+    * All of the people involved in the case sign affidavits: **Three-Way Affidavit to Disestablish and Establish Paternity, SHC-151** 
+    as a [Word](http://courts.alaska.gov/shc/family/docs/shc-151.doc) file
+    as a [PDF](http://courts.alaska.gov/shc/family/docs/shc-151n.pdf)
+      
+  * This can be filled out by:
+    * the mother, the husband and the man who is the father stating the husband is **not** the father and that the man is the biological father
+    * the mother and the husband saying the husband is **not** the father to disestablish the husband as the biological father 
+    * the mother and the man saying he IS the father to establish him as the biological father 
+    * the mother only if others are not cooperating and she can provide convincing facts about the paternity 
+  * Get genetic (DNA) testing of the child, the mother, the man believed to be the father, and the husband if the mother is married. The test results must be provided to the court. This cannot be done voluntarily if all of the people are cooperating or by court order.  To ask for a court order, you can file: 
+  * **Motion & Affidavit for Genetic (DNA) Testing, SHC-1370**
+  as a [Word](http://courts.alaska.gov/shc/family/docs/shc-1370.doc) file
+  as a [PDF](http://courts.alaska.gov/shc/family/docs/shc-1370n.pdf)
+
+  * **Order for Genetic (DNA) Testing, SHC-1375**
+  as a [Word](http://courts.alaska.gov/shc/family/docs/shc-1375.doc) file
+  as a [PDF](http://courts.alaska.gov/shc/family/docs/shc-1375n.pdf)
+  % endif
+
+  <div class="step-subheading">Optional forms depending on your situation</div>
+  * **Shared Custody Child Support Calculation**, [DR-306](https://public.courts.alaska.gov/web/forms/docs/dr-306.pdf) 
+  * **Joint Motion, Affidavit & Order to Appear and Testify By Telephone, SHC-1342**
+  as a [Word](http://www.courts.alaska.gov/shc/family/docs/shc-1342.doc) file
+  as a [PDF](http://www.courts.alaska.gov/shc/family/docs/shc-1342n.pdf)
+  * Do **not** sign the Order section.
+
+  <div class="step-subheading">Optional forms depending on your situation</div>
+  * If you think your spouse might not respond to your case, which is called “default,” file: **Property & Debt Worksheet, SHC-1000** [Word](http://courts.alaska.gov/shc/family/docs/shc-1000.doc) | [PDF](http://courts.alaska.gov/shc/family/docs/shc-1000n.pdf)
+---
+template: file_forms_step
+subject: |
+  Step ${  file_forms_idx }: |
+    File the original with your local court
+content: |
+
+  *	Make 2 copies of your forms: 1 copy for your own records and 1 copy for your spouse.
+  % if legal_separation_or_divorce == 'divorce' \
+      and (minor_children and agree_or_settle_kids in('yes', 'do not know') \
+        or (not minor_children and agree_or_settle in('no prop debt or pregnancy','agree','do not know'))):
+  Because you both signed the forms and both have a copy, you do not have to mail the documents to your spouse or send them by a process server (which is called "service" or "serving the other side").
+  * Make 2 copies of your forms: 1 copy for your own records and 1 copy for your spouse.  Because you both signed the forms and both have a copy, you do not have to formally "serve" your spouse by mailing documents or using a process server.
+  % endif
+  * Find the closest Alaska Trial Courthouse to file your petition: [Court Directory](http://courts.alaska.gov/courtdir/index.htm#trial)
+  * The clerk of court will open your case, give you 2 copies of a “Summons” and usually a “Standing Order” that contains important information about your case.  1 copy is for you; 1 copy is for your spouse.  (Note: if you file a dissolution or uncontested divorce, you may not get a Summons.)
+  * There is a fee to file a case.  If you cannot afford it and want to file the case for free, you can file: **Exemption From the Payment of Fees**, [TF-920](https://public.courts.alaska.gov/web/forms/docs/tf-920.pdf).  Usually, you file the TF-920 form with your complaint and other papers when you file your case. The judge decides whether you have to pay the filing fee or get to file for free before the case starts. After you pay the filing fee or the court says you can file for free, the court will give you a Summons.  At some courts, you must return to the court to get your Summons, other courts will issue it automatically after the deciding you don’t have to pay the filing fee.  Check with your local court to make sure you understand the procedure in using the TF-920 form and getting the Summons.  
+---
+template: read_drpo_step
+subject: |
+  Step ${ read_drpo_idx }: |
+    Read the "Domestic Relations Procedural Order" or Standing Order if the clerk gives you one when you file your case
+content: |
+  This is the first order from your judge that sets out the basic rules for you and your spouse to follow during the case.  Violating this order can affect the outcome of your case.  The Order states, unless your spouse agrees or the court gives permission:
+  % if minor_children:
+  * Do not take your child(ren) out of Alaska.
+  % endif
+  * Do not sell or get rid of marital property.
+  * Do not cancel or change any insurance policy.
+  % if minor_children:
+  Also, check with your local court for their parent education requirements.
+  % endif
+  If you want to do something forbidden by the order, and your spouse will not agree, ask the court by filing a motion and wait for the court's answer before doing it.  You can learn about motions by answering more questions.  If you want to save this Action Plan, be sure to download, save, or print it.  Then return to the Guided Assist page and use the Guided Assist search box to find "Asking for an Order in a Divorce Case When the Issue Can’t Wait for the Court’s Final Decision (Filing a Motion) and Responding to a Motion."
+---
+template: serve_complaint_step
+subject: |
+  Step ${ serve_complaint_idx }: |
+    Serve the complaint and summons 
+content: |
+  <div class="step-subheading">Regular Service</div>
+  You have to give your spouse copies of everything you file in court plus the Summons. This is called “service.” There are special requirements about how to serve your spouse the forms that start the case.
+  Choose how you want to serve the forms that start the case (you cannot serve these forms by hand delivery or 1st class mail, but you can serve later documents by these methods):
+  
+  * Certified Mail/Restricted Delivery/Return Receipt, **or**
+  * Hiring a Process Server.
+  
+  <div class="step-subheading">Certified Mail (less expensive – less than $10)</div>
+  
+  * Make sure you pay for certified mail, restricted delivery, and return receipt so that only your spouse can sign for the mail and sends the green card back to you after signing it.
+  * Save the green card in case you need to show you served your spouse.
+  
+  Read how to prepare the envelope and the certified mail postal forms in: **How to Serve a Summons**, [CIV-106](https://public.courts.alaska.gov/web/forms/docs/civ-106.pdf).
+  
+  <div class="step-subheading">Process Server: (more expensive – up to $65 in Alaska – but may be best if your spouse refused to sign for certified mail)</div>
+  
+  * Choose a process server and pay for their services. Find a [statewide list of authorized process servers](https://public.courts.alaska.gov/web/trialcourts/docs/process-servers.pdf).  For process servers outside of Alaska, contact the local court where the opposing party lives, or do internet research.
+  * Fill out the form **Service Instructions**, [CIV-615](https://public.courts.alaska.gov/web/forms/docs/civ-106.pdf).  Give this form to the process server so that when he or she completes service, you will receive a Proof of Service form.
+  * If you are hiring a process service outside of Alaska, give them the **Return of Service, SHC-194** [Word](http://www.courts.alaska.gov/shc/family/docs/shc-193.doc) | [PDF](http://www.courts.alaska.gov/shc/family/docs/shc-193n.pdf).  They will send it back to you after serving the Summons and Complaint.
+  * Save the **Proof of Service** or **Return of Service** form in case you need to show you served your spouse.
+  * You can read more about serving with a process server in: **How to Serve a Summons**, [CIV-106](https://public.courts.alaska.gov/web/forms/docs/civ-106.pdf).
+  
+  <div class="step-subheading">Options if Regular Service Doesn’t Work</div>
+  **Alternate Service**
+  If you cannot find your spouse, you may ask the court for permission to serve your spouse in a different way. For example, you can ask to post on the court’s legal notice website, post to someone’s social media account, email, publish in a newspaper that your spouse reads or post at a shelter or some other location your spouse is known to frequent.  Read more about alternate service.
+  <div class="step-subheading">Special Situations</div>
+  Read more about special situations like serving someone in a foreign country, the military or jail.
+---
+template: placeholder_step
+subject: |
+  Step ${ placeholder_idx }: |
+    placeholder
+content: |
+  some
 ---
 template: domestic_violence_step
 subject: |

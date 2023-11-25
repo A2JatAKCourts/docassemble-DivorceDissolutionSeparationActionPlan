@@ -278,7 +278,7 @@ fields:
     input type: radio
     choices:
     - Yes: yes
-    - I am not sure: dont know
+    - I am not sure: do not know
     - No: no
 ---
 id: Is wife pregnant
@@ -303,33 +303,9 @@ fields:
 ---
 id: domestic violence resources
 question: |
-  % if not minor_children:
-  % if agree_or_settle == 'no' or (agree_or_settle == 'no prop debt or pregnancy' and not no_prop_or_debt_agree):
-  Do you want your Action Plan to include information about domestic violence resources?
-  % else: 
-  Do you want your Action Plan to include information about domestic violence resources and how domestic violence can affect your agreement?
-  % endif
-  % else:
-  % if agree_or_settle_kids:
-  Do you want your Action Plan to include information about domestic violence resources and how domestic violence can affect your agreement?
-  % else:
-  Do you want your Action Plan to include information about domestic violence resources and how domestic violence affects your case?
-  % endif
-  % endif
+  Do you want your Action Plan to include information about domestic violence resources${ domestic_violence_question }?
 subquestion: |
-  % if not minor_children:
-  % if agree_or_settle == 'no' or (agree_or_settle == 'no prop debt or pregnancy' and not no_prop_or_debt_agree):
-  If there is abuse or domestic violence in your marriage there may be additional resources available to you.
-  % else: 
-  If there is abuse or domestic violence in your marriage it may affect whether you are comfortable trying to reach an agreement with your spouse about the issues in your case.
-  % endif
-  % else:
-  % if not agree_or_settle_kids:
-  If there is abuse or domestic violence in your marriage it may affect your case and the parenting plan.
-  % else:
-  If there is abuse or domestic violence in your marriage it may affect your case what you can agree to in your parenting plan.
-  % endif
-  % endif
+  ${ domestic_violence_subquestion }
 fields:
   - no label: domestic_violence
     datatype: yesnoradio
