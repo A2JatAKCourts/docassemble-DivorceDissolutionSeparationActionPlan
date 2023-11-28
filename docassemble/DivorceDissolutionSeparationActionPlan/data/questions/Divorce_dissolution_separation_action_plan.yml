@@ -1,6 +1,11 @@
 ---
 include:
   - docassemble.AssemblyLine:assembly_line.yml
+  - docassemble.AKA2JBranding:custom_organization.yml  
+  - docassemble.AKA2JBranding:aka2j_templates.yml    
+  - docassemble.AKA2JBranding:aka2j_motion_response_templates.yml    
+  - docassemble.AKA2JBranding:aka2j_mod_cust_div_templates.yml
+  - accordion_steps.yml
 ---
 metadata:
   title: >-
@@ -46,20 +51,22 @@ comment: |
 id: interview_order_Divorce_dissolution_separation_action_plan
 code: |
   # Set the allowed courts for this interview
-  allowed_courts = []
-  nav.set_section("review_Divorce_dissolution_separation_action_plan")
+  # allowed_courts = []
+  # nav.set_section("review_Divorce_dissolution_separation_action_plan")
   # Below sets the user_role and user_ask_role by asking a question.
   # You can set user_ask_role directly instead to either 'plaintiff' or 'defendant'
-  user_ask_role
-  husband_is_father
-  dissolution_or_uncontested_divorce
-  agree
-  set_progress(25)
-  kids
-  file_disso
-  divorce
-  set_progress(50)
-  military
+  # user_ask_role
+  # husband_is_father
+  # dissolution_or_uncontested_divorce
+  # agree
+  # set_progress(25)
+  # kids
+  # file_disso
+  # divorce
+  # set_progress(50)
+  # military
+  minor_children
+  get_steps
   interview_order_Divorce_dissolution_separation_action_plan = True
 ---
 ###################### Main order ######################
@@ -68,7 +75,7 @@ comment: |
   Delete mandatory: True to include in another interview
 mandatory: True
 code: |
-  al_intro_screen
+  # al_intro_screen
   Divorce_dissolution_separation_action_plan_intro
   interview_order_Divorce_dissolution_separation_action_plan
   signature_date
@@ -80,7 +87,9 @@ code: |
           "reached_interview_end": True,
       },
   )
-  Divorce_dissolution_separation_action_plan_download
+  # Divorce_dissolution_separation_action_plan_download
+  confirmation_and_download
+  
 ---
 comment: |
   This question is used to introduce your interview. Please customize
@@ -89,66 +98,296 @@ continue button field: Divorce_dissolution_separation_action_plan_intro
 question: |
   Divorce dissolution separation action plan
 subquestion: |
-  Before you get started, you need to...
+  This Guided Assistant asks you questions and uses your answers to build a Personal Action Plan - a list of steps to help you ask the court for a divorce, dissolution or legal separation in Alaska.
 ---
-id: Husband is father
+id: Minor children
 question: |
-  Husband is father
+  Do you and your spouse have any children together who are under age 18?
+subquestion: |
+  If there are any children born during the marriage and either spouse questions who the father is, answer "yes" and you will be asked about paternity later.
 fields:
-  - "Husband is father": husband_is_father
-  - "Has kids": has_kids
-  - "Wife is pregnant": wife_is_pregnant
+  - no label: minor_children
+    datatype: yesnoradio
+  - note: |
+      #### <i class="fa-regular fa-lightbulb"></i> Learn more ####
+      If you and your spouse have any children under age 18, the final divorce papers must include a custody or parenting plan order and a child support order.
 ---
-id: Dissolution or uncontested divorce
+id: Other case
 question: |
-  Dissolution or uncontested divorce
+  Have you or your spouse ever started a case to end your marriage in another state?
 fields:
-  - "Dissolution or uncontested divorce": dissolution_or_uncontested_divorce
-  - "Disso or unc div": disso_or_unc_div
-  - "Missing spouse": missing_spouse
-  - "No answer": no_answer
+  
+  - no label: other_case
+    datatype: yesnoradio
 ---
-id: Agree
+id: Is the case ongoing
 question: |
-  Agree
-fields:
-  - "Agree": agree
-  - "Wants paternity": wants_paternity
-  - "Paternity": paternity
-  - "Talk to spouse": talk_to_spouse
----
-id: Kids
-question: |
-  Kids
-fields:
-  - "Kids": kids
----
-id: File disso
-question: |
-  File disso
-fields:
-  - "File disso": file_disso
-  - "File forms": file_forms
----
-id: Divorce
-question: |
-  Divorce
-fields:
-  - "Divorce": divorce
-  - "Pregnant": pregnant
-  - "Uncontested divorce": uncontested_divorce
+  Is the case in the other state still going on?
+fields:   
+  - no label: ongoing
+    input type: radio
+    choices:
+      - Yes: yes
+      - "No, it is over and the court in that case ended our marriage.": marriage ended
+      - "No, the case was closed before it was finished and the court did not end our marriage.": no
 ---
 id: Military
 question: |
-  Military
+  Are you or your spouse in the military and stationed in Alaska?
+fields:   
+  - no label: military
+    datatype: yesnoradio
+  - note: |
+      #### <i class="fa-regular fa-lightbulb"></i> Learn more ####
+      % if other_case and ongoing:
+      Deciding which state court has the authority to grant a divorce depends on connections to each state, such as being stationed in one of the states.
+      % endif
+      % if defined('residency_and_jurisdiction') and not residency_and_jurisdiction:
+      % if minor_children:
+      The Alaska court only has the authority to grant a divorce for people who have connections to Alaska. If you haven't lived in Alaska for 6 months, being stationed in Alaska may give you enough connection for the court to grant a divorce, but authority over parenting plan or custody orders may be limited.
+      % else:
+      The Alaska court only has the authority to grant a divorce for people who have connections to Alaska. If you and your spouse haven't lived in Alaska for 6 months, being stationed in Alaska may give you enough connection for the court to grant a divorce, but authority over enforcing property and debt orders may be limited.
+      % endif
+      % endif
+---
+id: Want more information about starting case in Alaska
+question: |
+  Do you want more information about starting a case in Alaska?
+subquestion: |
+  Only one state court can enter an order ending a marriage. If you and your spouse have an open case to end your marriage in another state, and you also file a case in Alaska, one of the courts will close their case.  Information about figuring out which is the correct state for your case has been added to your Action Plan. 
+  
+  Do you want to continue answering questions for more information about starting a case in Alaska, or stop and get your Action plan now to learn more about whether or not the Alaska court is likely to keep your Alaska case open?
 fields:
-  - "Military": military
-  - "Property": property
-  - "Legal separation": legal_separation
-  - "Agreement options": agreement_options
-  - "Domestic violence": domestic_violence
-  - "Complaint contested": complaint_contested
-  - "Legal separation contested": legal_separation_contested
+  - no label: other_state_case
+    input type: radio
+    choices:
+      - Continue answering questions: continue
+      - Stop and get my Action Plan: stop
+---
+id: residency and jurisdiction
+question: |
+  Have you and your spouse both lived in Alaska for at least 6 months in a row in the last 6 years
+  % if minor_children:
+  and have your children lived in Alaska for at least the last 6 months
+  % endif
+  ?
+subquestion: |
+  The Alaska case can move forward as long as you and your spouse have lived in Alaska long enough to give the Alaska court authority over you and the issues.
+  % if minor_children:
+  The Alaska case can move forward as long as you, your spouse, and your children have lived in Alaska long enough to give the Alaska court authority over you and the issues
+  % endif
+fields:
+  - no label: residency_and_jurisdiction
+    datatype: yesnoradio
+---
+id: no residency
+question: |
+  Do you want to learn more about starting a case in Alaska or stop and get your Action Plan now?
+subquestion: |
+  Generally, both spouses 
+  % if minor_children:
+  and children 
+  % endif
+  have to live in Alaska for at least 6 months in a row in the last 6 years for the Alaska court to have the authority, called "jurisdiction," to 
+  % if minor_children:
+  decide children's issues and 
+  % endif
+  enforce property and debt divisions
+  % if minor_children:
+  in a divorce
+  % endif
+  .   
+  
+  Information about jurisdiction has been added to your Action Plan.
+fields:
+  - I want to: continue_despite_no_residency
+    input type: radio
+    choices:
+      - "continue answering questions for more information about starting a case in Alaska.": continue
+      - "stop now and get my Action Plan to learn more about jurisdiction.": stop
+---
+id: what kind of case
+question: |
+  Are you interested in divorce or dissolution or legal separation?
+subquestion: |
+  Most people who want to end their marriage file a divorce or dissolution case, which results in a court order ending the marriage.  
+  
+  % if minor_children:
+  The court generally also enters a parenting plan, a child support order, and an order dividing marital property and debt.
+  % else:
+  The court generally also enters an order dividing marital property and debt.
+  % endif
+  
+  Some people want to remain legally married to protect significant religious, financial, social, or legal interests (for example, their religion prohibits divorce).
+  
+  These couples file for legal separation and the court enters an order "legally separating" the spouses.  The court generally also enters 
+  % if minor_children:
+  a parenting plan, a child support order, and
+  % endif
+  an order dividing marital property and debt. **This is not a step to a divorce.** It is a separate legal process.  
+  
+  Either spouse can turn the legal separation into a divorce without the other person's agreement by filing a document with the court.
+  
+  Which of these are you interested in?
+fields:
+  - no label: legal_separation_or_divorce
+    input type: radio
+    choices:
+      - a divorce or dissolution: divorce
+      - legal separation: legal separation
+---
+id: No children does couple agree on everything
+question: |
+  Do any of these situations apply?
+fields:
+  - no label: agree_or_settle
+    input type: radio
+    choices:
+      - "There is no marital property or debt to divide and the wife is not pregnant (common examples are if you were married a very short time, or you have been separated a very long time and divided everything)": no prop debt or pregnancy
+      - "We agree on all major issues, such as ending the marriage and dividing marital property and debt": agree
+      - "I do not know if we agree on everything but would like to talk to my spouse to see if we do.": do not know
+      - "No, none of these situations apply": no
+  - note: |
+      #### <i class="fa-regular fa-lightbulb"></i> Learn more ####
+      Marital property is anything earned or bought during the marriage.  This commonly includes houses, land, vehicles, money, retirement accounts, pensions, household goods, furniture, snowmachines, four-wheelers and each spouse’s personal property.  Marital debt is any money owed to a business or person from during the marriage. Some common types of marital debt include credit card debt, medical bills, mortgages, car loans, or personal loans. 
+---
+id: Childless couple sure you agree on no property or debt?
+question: |
+  Are you and your spouse both:
+subquestion: |
+  (1) in agreement about ending the marriage and that there is no property or debt to divide, and 
+  
+  (2) able to sign the forms together?
+fields:
+  - no label: no_prop_or_debt_agree
+    datatype: yesnoradio 
+---
+id: Does couple with children agree on everything?
+question: |
+  Do you agree on all major issues (ending the marriage, dividing marital property and debt, parenting plan including decision-making and schedule, paternity, and child support)?
+
+fields:
+  - no label: agree_or_settle_kids
+    input type: radio
+    choices:
+      - "Yes.": yes
+      - "No.": no
+      - "I do not know if we agree on everything but would like to talk to my spouse to see if we do.": do not know
+  - note: |
+      #### <i class="fa-regular fa-lightbulb"></i> Learn more ####
+      Marital property is anything earned or bought during the marriage.  This commonly includes houses, land, vehicles, money, retirement accounts, pensions, household goods, furniture, snowmachines, four-wheelers and each spouse’s personal property.  Marital debt is any money owed to a business or person from during the marriage. Some common types of marital debt include credit card debt, medical bills, mortgages, car loans, or personal loans. 
+---
+id: Talking to your spouse has been added to your Action Plan
+continue button field: talk_to_spouse
+question: |
+  Information about talking to your spouse to see if you agree has been added to your Action Plan.
+subquestion: |
+  % if minor_children:
+  If you both agree, you can file a case called a “dissolution” together.
+  % else:
+  If you both agree, you can either file a case called a “dissolution” or an "uncontested divorce" together.
+  % endif 
+  The following questions will help find the right forms for you and your spouse to fill out together if you reach an agreement.
+---
+id: Do you know where your spouse is
+question: |
+  Do you know where your spouse is?
+fields:
+  - no label: know_spouse_whereabouts
+    datatype: yesnoradio
+  - note: |
+      #### <i class="fa-regular fa-lightbulb"></i> Learn more ####
+      You are required to give your spouse a copy of everything you file in court to start the case so your spouse can participate. You may have to work hard to find your spouse. If you cannot find your spouse, there is a special court process to follow.
+---
+id: Have property and debt?  Kids
+question: |
+  Did you or your spouse earn, buy or receive any marital assets or debts, including those listed above, during the marriage?
+subquestion: |
+  Marital property is anything earned or bought during the marriage.  This commonly includes houses, land, vehicles, money, retirement accounts, pensions, household goods, furniture, snowmachines, four-wheelers and each spouse’s personal property.  Marital debt is any money owed to a business or person from during the marriage. Some common types of marital debt include credit card debt, medical bills, mortgages, car loans, or personal loans.
+fields:
+  - no label: have_property_and_debt
+    datatype: yesnoradio
+  - note: |
+      #### <i class="fa-regular fa-lightbulb"></i> Learn more ####
+      The portion of a spouse's retirement or pension account earned during a marriage is generally considered part of the marital property to be divided between the spouses.
+---
+question: |
+  Were any children born during the marriage that are not the husband's?
+subquestion: |
+  The law considers a husband to be the father of any children born during a marriage. If the husband is not the father, the court can remove the husband's rights and responsibilities for that child.  This is called disestablishing paternity.
+fields:
+  - no label: paternity
+    input type: radio
+    choices:
+    - Yes: yes
+    - I am not sure: do not know
+    - No: no
+---
+id: Is wife pregnant
+question: |
+  Does either apply?
+subquestion: |
+  If a wife is pregnant when a marriage ends, the law considers the husband to be the father. If the husband is the father, the court will decide a parenting plan and child support. If the husband is not the father, the court can remove the husband’s rights and responsibilities for that child.
+fields:
+  - no label: wife_is_pregnant
+    input type: radio
+    choices:
+      - "Wife is pregnant and husband is the father": husband
+      - "Wife is pregnant and husband is not the father or spouses are unsure": not husband
+      - "No, the wife is not pregnant": not pregnant
+---
+id: Want resources to help couple reach agreement
+question: |
+  Do you want your Action Plan to include information about resources to help you and your spouse reach an agreement on the issues in your case?
+fields:
+  - no label: info_on_agree
+    datatype: yesnoradio
+---
+id: domestic violence resources
+question: |
+  Do you want your Action Plan to include information about domestic violence resources${ domestic_violence_question }?
+subquestion: |
+  ${ domestic_violence_subquestion }
+fields:
+  - no label: domestic_violence
+    datatype: yesnoradio
+  - note: |
+      #### <i class="fa-regular fa-lightbulb"></i> Learn more ####
+      The law presumes that a parent with "a history of domestic violence" may not get custody or unsupervised visitation without completing some court-approved treatment. A "history of domestic violence" is defined by law as either one incident of domestic violence that caused serious physical injury, or more than one incident. The spouse's domestic violence behavior needs to fit under one of the domestic violence crimes in the law. There does not have to be a protective order or criminal case for the court to find a parent has a history of domestic violence. The court can find domestic violence based on one spouse's testimony.
+    show if:
+      code: |
+        minor_children and agree_or_settle_kids == 'no'
+  - note: |
+      #### <i class="fa-regular fa-lightbulb"></i> Learn more ####
+      Sometimes a person in a relationship with domestic violence feels pressured to agree to things they don’t want. And the law presumes that a parent with a "history of domestic violence" may not get custody and unsupervised visitation without completing some court-approved treatment. The spouse's domestic violence behavior needs to fit under one of the domestic violence crimes in the law. A "history of domestic violence" is defined as one incident that caused serious physical injury, or more than one incident. The court can find domestic violence based on one spouse's testimony even if there was no protective order or criminal case.
+    show if: 
+      code: |
+        minor_children and agree_or_settle_kids in('yes','do not know')
+---
+question: |
+  Do you want your Action Plan to include information about asking the court for a default judgment against your spouse?
+subquestion: |
+  You start your case by filing documents with the court and sending them to your spouse. Your spouse has 20 days to file a written response, called an Answer.  If your spouse does not file an Answer within 20 days, you can ask the judge for a default judgment This means the case could move ahead without your spouse's participation and the court may order what you asked for. 
+fields:
+  - no label: default_info
+    datatype: yesnoradio
+---
+question: |
+  Did you or your spouse earn, buy or receive any marital property or debts, including those listed above, during the marriage?
+subquestion: |
+  There are two options for which default judgment form to file: 
+  
+  (1) if you have marital property or debt, and 
+  
+  (2) if you do not.  
+
+  Marital property is anything earned or bought during the marriage.  This commonly includes houses, land, vehicles, money, retirement accounts, pensions, household goods, furniture, snowmachines, four-wheelers, and each spouse’s personal property.  Marital debt is any money owed to a business or person from during the marriage. Some common types of debt in a divorce case are credit card debt, medical bills, mortgages, car loans, or personal loans.
+fields:
+  - no label: property_for_default
+    datatype: yesnoradio
+  - note: |
+      #### <i class="fa-regular fa-lightbulb"></i> Learn more ####
+      The portion of a spouse's retirement or pension account earned during a marriage is generally considered part of the marital property to be divided between the spouses.
 ---
 id: preview Divorce_dissolution_separation_action_plan
 question: |
@@ -257,10 +496,10 @@ review:
     button: |
       **Wife is pregnant**:
       ${ wife_is_pregnant }
-  - Edit: agreement_options
+  - Edit: info_on_agree
     button: |
       **Agreement options**:
-      ${ agreement_options }
+      ${ info_on_agree }
   - Edit: domestic_violence
     button: |
       **Domestic violence**:
@@ -323,8 +562,6 @@ attachment:
   filename: Divorce_dissolution_separation_action_plan
   variable name: Divorce_dissolution_separation_action_plan_attachment[i]
   skip undefined: True
-  docx template file: Divorce_dissolution_separation_action_plan.docx
+  docx template file: dummy_file.docx
+  # docx template file: Divorce_dissolution_separation_action_plan.docx
   tagged pdf: True
-
-
-
