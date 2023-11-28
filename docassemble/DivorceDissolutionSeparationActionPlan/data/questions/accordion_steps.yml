@@ -20,74 +20,6 @@ subquestion: |
 buttons:
   - Start over: restart          
 ---
-id: dissolution block
-code: |
-  # add_talk_to_spouse_step = False
-  if minor_children and agree_or_settle_kids == 'yes':
-    have_property_and_debt
-  if not minor_children and agree_or_settle == 'no prop debt or pregnancy':
-    if not no_prop_or_debt_agree:
-      know_spouse_whereabouts
-  if (minor_children and agree_or_settle_kids == 'do not know') \
-    or (not minor_children and agree_or_settle == 'do not know'):
-    talk_to_spouse
-    add_unique_step((talk_to_spouse_step, "talk_to_spouse_idx"), step_list)
-  if minor_children:
-    paternity
-  wife_is_pregnant
-  if (minor_children and agree_or_settle_kids in('yes', 'do not know')) \
-      or (not minor_children and agree_or_settle in('agree','do not know')):  
-    domestic_violence
-  dissolution_block = True
----
-id: divorce block
-code: |
-  if (minor_children and agree_or_settle_kids == 'no') \
-    or (not minor_children and agree_or_settle == 'no'):
-    know_spouse_whereabouts
-    if minor_children:
-      paternity
-    wife_is_pregnant
-    if info_on_agree:
-      domestic_violence_question = " and how domestic violence can affect your agreement"
-    else:
-      if minor_children:
-        domestic_violence_question = " and how domestic violence affects your case"
-    domestic_violence
-    if not info_on_agree and default_info:
-      property_for_default
-    divorce_block = True
-  else:
-    divorce_block = False
----
-id: legal separation agree block
-code: |
-  if agree_or_settle_kids:
-    domestic_violence_question = " and how domestic violence can affect your agreement"
-    if minor_children:
-      paternity
-    wife_is_pregnant
-    domestic_violence
-    legal_separation_agree_block = True
-  else:    
-      legal_separation_agree_block = False
----
-id: legal separation not agree block
-code: |
-  if not agree_or_settle_kids:
-    know_spouse_whereabouts
-    domestic_violence_question = " and how domestic violence affects your case"
-    if minor_children:
-      paternity
-    wife_is_pregnant
-    if not info_on_agree and not minor_children and wife_is_pregnant in ('not husband','not pregnant'):
-      domestic_violence_question = ""
-    domestic_violence
-    default_info
-    legal_separation_not_agree_block = True
-  else:
-    legal_separation_not_agree_block = False
----
 code: |
   step_list = []
     # if len(step_list) >= 2:
@@ -98,19 +30,20 @@ code: |
   domestic_violence_subquestion = ''
   
   
-  if other_case:
-    if ongoing == 'marriage ended':
+  if other_case and ongoing == 'marriage ended':
       already_divorced
       add_unique_step((review_options_step, "review_options_idx"), step_list)
-    elif ongoing == 'yes':
+      add_unique_step((get_help, "get_help_idx"), step_list)
+  elif other_case and ongoing == 'yes':
       military
       add_unique_step((pick_court_step, "pick_court_idx"), step_list)
-      #  if other_state_case :
-      #  add_unique_step((get_help, "get_help_idx"), step_list)
-    else:
-      if not residency_and_jurisdiction:
+      if other_state_case == 'stop':
+        add_unique_step((get_help, "get_help_idx"), step_list)
+  elif other_case and ongoing == 'no' and not residency_and_jurisdiction:
         military
-        continue_despite_no_residency
+        if continue_despite_no_residency == 'stop':
+          add_unique_step((pick_court_step, "pick_court_idx"), step_list)
+          add_unique_step((get_help, "get_help_idx"), step_list)
   
   
   elif (other_case \
