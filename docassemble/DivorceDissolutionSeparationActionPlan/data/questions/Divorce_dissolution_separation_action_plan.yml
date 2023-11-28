@@ -131,6 +131,16 @@ fields:
       - "No, it is over and the court in that case ended our marriage.": marriage ended
       - "No, the case was closed before it was finished and the court did not end our marriage.": no
 ---
+id: already divorced
+question: |
+  If the other state court already ended your marriage, the Alaska court will not hear another case to end your marriage.
+subquestion: |
+  If you are trying to enforce the other court order or change something about the order, you can use the Guided Assistants:
+  
+    *  [Enforcing a Divorce Court Order](https://docassemble.akcourts.gov/start/EnforcingDivorceOrder), or
+    *  [Changing a Divorce Court Order](https://docassemble.akcourts.gov/start/ChangingDivorceOrder).
+continue button field: already_divorced
+---
 id: Military
 question: |
   Are you or your spouse in the military and stationed in Alaska?

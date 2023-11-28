@@ -107,10 +107,15 @@ code: |
       add_unique_step((pick_court_step, "pick_court_idx"), step_list)
       #  if other_state_case :
       #  add_unique_step((get_help, "get_help_idx"), step_list)
+    else:
+      if not residency_and_jurisdiction:
+        military
+        continue_despite_no_residency
   
   
-  if (other_case \
-      and (ongoing == 'no' \
+  elif (other_case \
+      and (ongoing == 'no' and (residency_and_jurisdiction  \
+        or (not residency_and_jurisdiction and (military or not military) and continue_despite_no_residency == 'continue')) \
         or (ongoing == 'yes' and other_state_case == 'continue'))) \
     or (not other_case \
       and (residency_and_jurisdiction  \
@@ -172,11 +177,9 @@ code: |
           domestic_violence_question = ""
         domestic_violence
         default_info
-  
-  
-      
-  
-  add_unique_step((get_help, "get_help_idx"), step_list)
+    add_unique_step((get_help, "get_help_idx"), step_list)    
+  else:
+    add_unique_step((get_help, "get_help_idx"), step_list)
   
   #if add_talk_to_spouse_step:
   #  add_unique_step((talk_to_spouse_step, "talk_to_spouse_idx"), step_list)
@@ -283,7 +286,7 @@ content: |
   % endif
    if you have property such as a home outside Alaska, the court may not have the authority to enforce any orders about that property if problems arise after the final order.
    
-  % if not residency_and_jurisdiction:
+  % if defined('residency_and_jurisdiction') and not residency_and_jurisdiction:
   If the Alaska court has residency and jurisdiction, you can start your case in Alaska, but only one state court can end your marriage.  If you and your spouse disagree about which state, the courts will decide which case to close after hearing both side's arguments.  The decision generally depends on each state's residency and jurisdiction laws.
   <div class="step-subheading">To start a case in Alaska: file a complaint in Alaska and ask the court in the other state to close its case</div>
   **Fill out and file a complaint**
