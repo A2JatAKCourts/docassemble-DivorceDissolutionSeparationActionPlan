@@ -22,7 +22,7 @@ buttons:
 ---
 id: dissolution block
 code: |
-  add_talk_to_spouse_step = False
+  # add_talk_to_spouse_step = False
   if minor_children and agree_or_settle_kids == 'yes':
     have_property_and_debt
   if not minor_children and agree_or_settle == 'no prop debt or pregnancy':
@@ -102,15 +102,20 @@ code: |
     if ongoing == 'marriage ended':
       already_divorced
       add_unique_step((review_options_step, "review_options_idx"), step_list)
-      add_unique_step((get_help, "get_help_idx"), step_list)
     elif ongoing == 'yes':
       military
       add_unique_step((pick_court_step, "pick_court_idx"), step_list)
-      if other_state_case :
-        add_unique_step((get_help, "get_help_idx"), step_list)
-        
-  if (other_case and (ongoing == 'no' or (ongoing == 'yes' and other_state_case == 'continue'))) or not other_case:
+      #  if other_state_case :
+      #  add_unique_step((get_help, "get_help_idx"), step_list)
   
+  
+  if (other_case \
+      and (ongoing == 'no' \
+        or (ongoing == 'yes' and other_state_case == 'continue'))) \
+    or (not other_case \
+      and (residency_and_jurisdiction  \
+        or (not residency_and_jurisdiction and (military or not military) and continue_despite_no_residency == 'continue'))):
+    legal_separation_or_divorce
     if legal_separation_or_divorce == 'divorce' \
       and ((minor_children and agree_or_settle_kids == 'no') \
         or (not minor_children and agree_or_settle == 'no')):
@@ -168,10 +173,13 @@ code: |
         domestic_violence
         default_info
   
+  
+      
+  
   add_unique_step((get_help, "get_help_idx"), step_list)
   
-  if add_talk_to_spouse_step:
-    add_unique_step((talk_to_spouse_step, "talk_to_spouse_idx"), step_list)
+  #if add_talk_to_spouse_step:
+  #  add_unique_step((talk_to_spouse_step, "talk_to_spouse_idx"), step_list)
   
   
   for iter_idx, step_tuple in enumerate( step_list ):
@@ -249,7 +257,7 @@ content: |
   % if ongoing == 'yes':
    <div class="step-subheading">Background</div>
   Only one state court can end a marriage.  If you and your spouse have an open case to end your marriage in another state, and you file a case in Alaska, one of the courts will close their case. 
-  To decide  the correct state for your case, the courts will look at:
+  To decide the correct state for your case, the courts will look at:
   
   *	both spouses' "residency" and
   *	which court has the authority, called "jurisdiction", to end the marriage.
@@ -275,7 +283,7 @@ content: |
   % endif
    if you have property such as a home outside Alaska, the court may not have the authority to enforce any orders about that property if problems arise after the final order.
    
-  % if defined('residency_and_jurisdiction') and not residency_and_jurisdiction:
+  % if not residency_and_jurisdiction:
   If the Alaska court has residency and jurisdiction, you can start your case in Alaska, but only one state court can end your marriage.  If you and your spouse disagree about which state, the courts will decide which case to close after hearing both side's arguments.  The decision generally depends on each state's residency and jurisdiction laws.
   <div class="step-subheading">To start a case in Alaska: file a complaint in Alaska and ask the court in the other state to close its case</div>
   **Fill out and file a complaint**
@@ -1037,12 +1045,106 @@ content: |
   <div class="step-subheading">Special Situations</div>
   Read more about special situations like serving someone in a foreign country, the military or jail.
 ---
-template: placeholder_step
+template: learn_more_about_process_step
+subject: |
+  Step ${ learn_more_about_process_idx }: |
+    Learn more about the process
+content: |
+  Read 
+  % if legal_separation_or_divorce == 'legal separation':
+  (although these are about divorce, the process is the same)
+  % endif
+  
+  * Flow Chart for Case Process of Divorce and Child Custody between Unmarried Parents, SHC-185: [Word](https://courts.alaska.gov/shc/family/docs/shc-185.doc) | [PDF](https://courts.alaska.gov/shc/family/docs/shc-185n.pdf)
+  * The Life of a Divorce or Custody Case, [SHC-180](https://courts.alaska.gov/shc/family/docs/shc-180n.pdf)
+
+  <div class="step-subheading">Watch a Video</div>
+  
+  * [Introduction to Divorce and Custody Cases in Alaska](https://youtube.com/watch?v=z2d2CLllPUU&t)
+  * [Overview and Timeline of the Case](https://youtube.com/watch?v=EzSV4Caz6Co)
+  * Find other Alaska Divorce Videos: [English](https://youtube.com/playlist?list=PLRS0LlEIQsuTsfO0wSTsSTIvVE5RO8sLc) | [Spanish](https://AKlawSelfHelp.org/?page_id=29) | [Tagalog](https://AKlawSelfHelp.org/?page_id=158)
+  * Find [Alaska Family Law Hearing & Trial Preparation Videos](https://youtube.com/playlist?list=PL82589B66ED712B4B)
+---
+template: alternative_service_step
+subject: |
+  Step ${ alternative_service_idx }: |
+    File to end your marriage when you don't know where your spouse is, there are no children, and there is no property or debt to divide
+content: |
+  
+  * Usually when you start a case you are required to give your spouse all the forms you file with the court.  This is called "service."  If you don't know where your spouse is you can ask the court to let you serve by "alternate service."  You can only use "alternate service" after you look for your spouse with "diligent inquiry." These steps are described below.
+
+  <div class="step-subheading">Fill out the forms to start your dissolution case and ask the court to let you use alternate service</div>
+
+  * You will not know your case number until you file your documents with the court. You can write the case number on all your forms then.
+
+  **Petition for Dissolution of Marriage: One Spouse**, [DR-200](https://public.courts.alaska.gov/web/forms/docs/dr-200.pdf)
+
+  **Affidavit of Diligent Inquiry**, [DR-210](https://public.courts.alaska.gov/web/forms/docs/dr-210.pdf) (this form lists all the ways you should look for your spouse  * if the court thinks you did not do enough to find your spouse, you may have to do more)
+
+  **Information Sheet**, [DR-314](https://public.courts.alaska.gov/web/forms/docs/dr-314.pdf) (fill in 1-3 with complete information for yourself, your spouse if you know it, and then sign and date)
+
+  **Certificate of Divorce, Dissolution or Annulment, VS-401** - Get this form at the court or at Health Analytics & Vital Records. You must use an original form (printed on archival-quality, acid-free paper). **You may not use a photocopy**. Fill in boxes 9-32 in black ink without cross-outs or corrections; if you don't know an answer about your spouse, leave it blank.
+
+  <div class="step-subheading">Make 2 Copies of Your Forms: 1 copy for your own record and 1 copy for your spouse</div>
+
+  * **File the Original with Your Local Court** (Find the closest Alaska Trial Courthouse to file your petition: [Court Directory](http://courts.alaska.gov/courtdir/index.htm#trial).)
+
+  * There is a fee to file a case.  If you cannot afford it and want to file the case for free, you can file **Exemption From the Payment of Fees**, [TF-920](https://public.courts.alaska.gov/web/forms/docs/tf-920.pdf).  Usually, you file the TF-920 form with your complaint and other papers when you file your case. The judge decides whether you have to pay the filing fee or get to file for free before the case starts. After you pay the filing fee or the court says you can file for free, the court will give you a summons.  At some courts, you must return to the court to get your summons, other courts will issue it automatically after they decide you don't have to pay the filing fee.  Check with your local court to make sure you understand the procedure in using the TF-920 form and getting the summons.
+
+  <div class="step-subheading">Final Steps of Alternate Service</div>
+
+  The clerk will sign a **Notice to Absent Spouse** if the court finds your attempts to notify your spouse to be sufficient. The court will then post the Notice on the Alaska Court System's legal notice website for 4 weeks in a row.
+
+  After the notice has been posted 4 weeks, fill out and file the **Proof of Notice**, [DR-225](https://public.courts.alaska.gov/web/forms/docs/dr-225.pdf). When you file your Proof of Notice, ask the clerk's office for instructions on setting a hearing date. The hearing must be at least 30 days after the end of the 4 weeks the notice was posted on the court's website.
+
+  Attend the hearing.  The court will ask you questions about trying to find your spouse and about ending the marriage.
+---
+template: paternity_testing_step
 subject: |
   Step ${ placeholder_idx }: |
     placeholder
 content: |
-  some
+ <div class="step-subheading">General paternity information</div>
+
+  Establishing paternity means legally determining the biological father of a child, and can make a big difference in a child's health, financial outlook and sense of identity in knowing who both parents are.  Once established, the father's name can be placed on the child's birth certificate and he has legal and financial responsibility for the child.  Disestablishing paternity is legally un-naming a man as the child's biological father.  
+
+  Courts use genetic testing, more commonly called "DNA testing," to establish or disestablish paternity.  To take the test, a DNA sample is collected using a swab, similar to a Q-Tip, inside the cheek to pick up cells.  Samples are collected from the mother, the child, and the person who may be the father.  The testing is painless and the whole process takes about 15 minutes.  Once all the samples have been collected, the result is ready within about 3 weeks.
+
+  <div class="step-subheading">If you are unsure, you can ask for a paternity test</div>
+
+  * **In Court**: Once you open a case to end your marriage, you can file:
+
+  **Motion & Affidavit for Genetic (DNA) Testing, SHC-1370** [Word](http://www.courts.alaska.gov/shc/family/docs/shc-1370.doc) | [PDF](http://www.courts.alaska.gov/shc/family/docs/shc-1370n.pdf)
+
+  **Order for Genetic (DNA) Testing, SHC-1375** [Word](http://www.courts.alaska.gov/shc/family/docs/shc-1375.doc) | [PDF](http://www.courts.alaska.gov/shc/family/docs/shc-1375n.pdf)
+
+  The court will decide where the test is done (usually CSSD) and who will pay.
+
+  * **Child Support Services Division (CSSD)**: Before you open a case, you can ask CSSD to establish or disestablish paternity.
+
+  Either the mother or the father may complete an application for CSSD services (if there isn't already an open CSSD case) and a paternity affidavit.
+
+  If the father isn't willing to sign a voluntary affidavit, CSSD may order DNA testing to prove fatherhood.  If CSSD orders the test, the State will pay the costs for the mother, the child and the man named as the father. If the father is identified by the tests, he will be asked to reimburse the State for the costs. If the man is not the father, he will not have to pay for the tests. If either the mother or the father challenges the original test results, he or she may pay for a second test.
+
+  If the father lives outside Alaska, CSSD can ask the other state to help establish paternity.
+
+  Sometimes CSSD may decide it cannot do a DNA test based on the specific situation and tell you to file a paternity case in court.
+
+  CSSD charges about $51 per person taking the test.
+
+  See [CSSD's FAQs about paternity](http://www.childsupport.alaska.gov/FAQ/FAQ_Paternity.aspx) and [contact CSSD](http://www.childsupport.alaska.gov/contacts.aspx) for the appropriate forms.
+
+  <div class="step-subheading">Private Labs</div>
+
+  You can hire a private lab to do DNA testing.
+
+  They are usually more expensive.  You and your spouse will have to work out who pays.
+
+  The court does not accept do-it-yourself DNA tests as evidence.
+
+  <div class="step-subheading">Change the Birth Certificate</div>
+
+  * If the court decides that the biological father is someone not listed on the birth certificate, you must send a copy of the court order to the Health Analytics & Vital Records to change the birth certificate.  After the birth certificate is changed, the child is considered "legitimated" and the heir of that father. This means that if the child should be eligible for any medical or financial benefits connected to the father such as health insurance, or benefits based on military service or being Alaska Native or American Indian. Also, if the father dies, the child will be able to inherit and collect financial or medical benefits that the child may be eligible for such as Social Security Children's Insurance Benefits or military benefits. If you do not notify Health Analytics & Vital Records to change the birth certificate, the child may miss out on these benefits.
 ---
 template: domestic_violence_step
 subject: |

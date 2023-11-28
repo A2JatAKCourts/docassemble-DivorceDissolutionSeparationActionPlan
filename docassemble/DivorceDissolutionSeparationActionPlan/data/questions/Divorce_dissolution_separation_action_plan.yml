@@ -164,6 +164,48 @@ fields:
       - Continue answering questions: continue
       - Stop and get my Action Plan: stop
 ---
+id: residency and jurisdiction
+question: |
+  Have you and your spouse both lived in Alaska for at least 6 months in a row in the last 6 years
+  % if minor_children:
+  and have your children lived in Alaska for at least the last 6 months
+  % endif
+  ?
+subquestion: |
+  The Alaska case can move forward as long as you and your spouse have lived in Alaska long enough to give the Alaska court authority over you and the issues.
+  % if minor_children:
+  The Alaska case can move forward as long as you, your spouse, and your children have lived in Alaska long enough to give the Alaska court authority over you and the issues
+  % endif
+fields:
+  - no label: residency_and_jurisdiction
+    datatype: yesnoradio
+---
+id: no residency
+question: |
+  Do you want to learn more about starting a case in Alaska or stop and get your Action Plan now?
+subquestion: |
+  Generally, both spouses 
+  % if minor_children:
+  and children 
+  % endif
+  have to live in Alaska for at least 6 months in a row in the last 6 years for the Alaska court to have the authority, called "jurisdiction," to 
+  % if minor_children:
+  decide children's issues and 
+  % endif
+  enforce property and debt divisions
+  % if minor_children:
+  in a divorce
+  % endif
+  .   
+  
+  Information about jurisdiction has been added to your Action Plan.
+fields:
+  - I want to: continue_despite_no_residency
+    input type: radio
+    choices:
+      - "continue answering questions for more information about starting a case in Alaska.": continue
+      - "stop now and get my Action Plan to learn more about jurisdiction.": stop
+---
 id: what kind of case
 question: |
   Are you interested in divorce or dissolution or legal separation?
@@ -520,5 +562,6 @@ attachment:
   filename: Divorce_dissolution_separation_action_plan
   variable name: Divorce_dissolution_separation_action_plan_attachment[i]
   skip undefined: True
-  docx template file: Divorce_dissolution_separation_action_plan.docx
+  docx template file: dummy_file.docx
+  # docx template file: Divorce_dissolution_separation_action_plan.docx
   tagged pdf: True
