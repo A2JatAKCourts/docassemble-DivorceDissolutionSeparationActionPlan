@@ -31,19 +31,24 @@ code: |
   
   
   if other_case and ongoing == 'marriage ended':
-      already_divorced
-      add_unique_step((review_options_step, "review_options_idx"), step_list)
-      add_unique_step((get_help, "get_help_idx"), step_list)
+    already_divorced
+    add_unique_step((review_options_step, "review_options_idx"), step_list)
+    add_unique_step((get_help, "get_help_idx"), step_list)
   elif other_case and ongoing == 'yes':
-      military
-      add_unique_step((pick_court_step, "pick_court_idx"), step_list)
-      if other_state_case == 'stop':
-        add_unique_step((get_help, "get_help_idx"), step_list)
+    military
+    add_unique_step((pick_court_step, "pick_court_idx"), step_list)
+    if other_state_case == 'stop':
+      add_unique_step((get_help, "get_help_idx"), step_list)
   elif other_case and ongoing == 'no' and not residency_and_jurisdiction:
-        military
-        if continue_despite_no_residency == 'stop':
-          add_unique_step((pick_court_step, "pick_court_idx"), step_list)
-          add_unique_step((get_help, "get_help_idx"), step_list)
+    military
+    if continue_despite_no_residency == 'stop':
+      add_unique_step((pick_court_step, "pick_court_idx"), step_list)
+      add_unique_step((get_help, "get_help_idx"), step_list)
+  elif not other_case and not residency_and_jurisdiction:
+    military
+    if continue_despite_no_residency == 'stop':
+      add_unique_step((pick_court_step, "pick_court_idx"), step_list)
+      add_unique_step((get_help, "get_help_idx"), step_list) 
   
   
   elif (other_case \
@@ -183,14 +188,14 @@ content: |
 template: pick_court_step
 subject: |
   Step ${ pick_court_idx }: Decide
-  % if ongoing == 'yes':
+  % if other_case and ongoing == 'yes':
   which court should hear your case
   % else:
   if Alaska is the right state for your case
   % endif
 content: |
   
-  % if ongoing == 'yes':
+  % if other_case and ongoing == 'yes':
    <div class="step-subheading">Background</div>
   Only one state court can end a marriage.  If you and your spouse have an open case to end your marriage in another state, and you file a case in Alaska, one of the courts will close their case. 
   To decide the correct state for your case, the courts will look at:
