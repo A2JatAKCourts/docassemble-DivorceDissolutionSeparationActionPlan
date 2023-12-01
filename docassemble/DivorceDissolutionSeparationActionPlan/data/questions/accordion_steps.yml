@@ -1,8 +1,6 @@
 comment: |
-  Tuesday Nov 28 end of the day - got kickout paths with steps working.
-  
-  stuck on conditions to continue to the rest of the interview elif other_case and ongoing == 'no' and (residency_and_jurisdiction or (not residency_and_jurisdiction and (military or not military) and continue_despite_no_residency == 'continue')):
-    legal_separation_or_divorce
+  Friday Dec 1
+  Starting divorce accordion_steps and drafting tests
 ---
 id: final screen
 decoration: pen-to-square
@@ -115,14 +113,25 @@ code: |
       if minor_children:
         paternity
       wife_is_pregnant
+      add_unique_step((divorce_step, "divorce_idx"), step_list)
+      add_unique_step((file_forms_step, "file_forms_idx"), step_list)
+      add_unique_step((read_drpo_step, "read_drpo_idx"), step_list)
+      add_unique_step((serve_complaint_step, "serve_complaint_idx"), step_list)
+      add_unique_step((learn_more_about_process_step, "file_forms_idx"), step_list)
+      if know_spouse_whereabouts == False:
+        add_unique_step((alternative_service_step, "alternative_service_idx"), step_list)
+      if minor_children and paternity == 'do not know':
+        add_unique_step((paternity_testing_step, "paternity_test_idx"), step_list)
       if info_on_agree:
+        add_unique_step((talk_to_spouse_step, "talk_to_spouse_idx"), step_list)
         domestic_violence_question = "and how domestic violence can affect your agreement"
       else:
         if minor_children:
           domestic_violence_question = "and how domestic violence affects your case"
-      domestic_violence
-      if not info_on_agree and default_info:
-        property_for_default    
+      if domestic_violence:
+        add_unique_step((domestic_violence_step, "domestic_violence_idx"), step_list)
+      if default_info and property_for_default:
+        add_unique_step((default_step, "default_idx"), step_list)
     
     
     
