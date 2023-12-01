@@ -78,7 +78,7 @@ code: |
   # al_intro_screen
   Divorce_dissolution_separation_action_plan_intro
   interview_order_Divorce_dissolution_separation_action_plan
-  signature_date
+  # signature_date
   # Store anonymous data for analytics / statistics
   store_variables_snapshot(
       persistent=True,
@@ -309,7 +309,7 @@ fields:
       #### <i class="fa-regular fa-lightbulb"></i> Learn more ####
       You are required to give your spouse a copy of everything you file in court to start the case so your spouse can participate. You may have to work hard to find your spouse. If you cannot find your spouse, there is a special court process to follow.
 ---
-id: Have property and debt?  Kids
+id: Have property and debt  Kids
 question: |
   Did you or your spouse earn, buy or receive any marital assets or debts, including those listed above, during the marriage?
 subquestion: |
@@ -321,6 +321,7 @@ fields:
       #### <i class="fa-regular fa-lightbulb"></i> Learn more ####
       The portion of a spouse's retirement or pension account earned during a marriage is generally considered part of the marital property to be divided between the spouses.
 ---
+id: paternity
 question: |
   Were any children born during the marriage that are not the husband's?
 subquestion: |
