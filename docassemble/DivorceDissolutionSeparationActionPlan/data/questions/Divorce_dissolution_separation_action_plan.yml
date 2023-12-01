@@ -31,10 +31,10 @@ code: |
   AL_DEFAULT_STATE = ""
 ---
 code: |
-  github_repo_name =  'docassemble-DivorceDissolutionSeparationActionPlan'
+  github_repo_name =  'docassemble-DivorceIssues'
 ---
 code: |
-  interview_short_title = "Get a Divorce dissolution separation action plan"
+  interview_short_title = "Get a Personal Action Plan for asking the court for a divorce, dissolution or legal separation"
 ---
 code: |
   al_form_type = "other" 
@@ -42,8 +42,8 @@ code: |
 objects:
   - users: ALPeopleList
 ---
-sections:
-  - review_Divorce_dissolution_separation_action_plan: Review your answers
+# sections:
+#  - review_Divorce_dissolution_separation_action_plan: Review your answers
 ---
 #################### Interview order #####################
 comment: |
@@ -549,24 +549,25 @@ progress: 100
 ---
 # ALDocument objects specify the metadata for each template
 objects:
-  - Divorce_dissolution_separation_action_plan_Post_interview_instructions: ALDocument.using(title="Instructions", filename="Divorce_dissolution_separation_action_plan_next_steps.docx", enabled=True, has_addendum=False)
-  - Divorce_dissolution_separation_action_plan_attachment: ALDocument.using(title="Divorce dissolution separation action plan", filename="Divorce_dissolution_separation_action_plan", enabled=True, has_addendum=False, )
+#  - Divorce_dissolution_separation_action_plan_Post_interview_instructions: ALDocument.using(title="Instructions", filename="Divorce_dissolution_separation_action_plan_next_steps.docx", enabled=True, has_addendum=False)
+  - Divorce_dissolution_separation_action_plan_attachment: ALDocument.using(title="Divorce dissolution separation action plan", filename="Divorce_dissolution_separation_action_plan", enabled=True, has_addendum=False, suffix_to_append="" )
 ---
 # Bundles group the ALDocuments into separate downloads, such as for court and for the user
 objects:
-  - al_user_bundle: ALDocumentBundle.using(elements=[Divorce_dissolution_separation_action_plan_Post_interview_instructions, Divorce_dissolution_separation_action_plan_attachment], filename="Divorce_dissolution_separation_action_plan", title="All forms to download for your records", enabled=True)
-  - al_court_bundle: ALDocumentBundle.using(elements=[Divorce_dissolution_separation_action_plan_attachment],  filename="Divorce_dissolution_separation_action_plan", title="All forms to deliver to court", enabled=True)
+#  - al_user_bundle: ALDocumentBundle.using(elements=[Divorce_dissolution_separation_action_plan_Post_interview_instructions, Divorce_dissolution_separation_action_plan_attachment], filename="Divorce_dissolution_separation_action_plan", title="All forms to download for your records", enabled=True)
+  - al_user_bundle: ALDocumentBundle.using(elements=[Divorce_dissolution_separation_action_plan_attachment],  filename="Divorce_dissolution_separation_action_plan", title="All forms to download for your records", enabled=True)
+#  - al_court_bundle: ALDocumentBundle.using(elements=[Divorce_dissolution_separation_action_plan_attachment],  filename="Divorce_dissolution_separation_action_plan", title="All forms to deliver to court", enabled=True)
 ---
 # Each attachment defines a key in an ALDocument. We use `i` as the placeholder here so the same template is 
 # used for "preview" and "final" keys, and logic in the template checks the value of 
 # `i` to show or hide the user's signature
-attachment:
-  name: Post-interview-Instructions
-  filename: Divorce_dissolution_separation_action_plan_next_steps
-  docx template file: Divorce_dissolution_separation_action_plan_next_steps.docx
-  variable name: Divorce_dissolution_separation_action_plan_Post_interview_instructions[i]
-  skip undefined: True
-  tagged pdf: True
+#attachment:
+#  name: Post-interview-Instructions
+#  filename: Divorce_dissolution_separation_action_plan_next_steps
+#  docx template file: Divorce_dissolution_separation_action_plan_next_steps.docx
+#  variable name: Divorce_dissolution_separation_action_plan_Post_interview_instructions[i]
+#  skip undefined: True
+#  tagged pdf: True
 ---
 attachment:
   name: Divorce dissolution separation action plan

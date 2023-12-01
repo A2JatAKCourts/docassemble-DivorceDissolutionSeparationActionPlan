@@ -57,6 +57,55 @@ code: |
     or (not other_case \
       and (residency_and_jurisdiction  \
         or (not residency_and_jurisdiction and (military or not military) and continue_despite_no_residency == 'continue'))):
+
+    
+    if not minor_children \
+      and legal_separation_or_divorce == 'divorce' and agree_or_settle == 'no prop debt or pregnancy':
+      # quick dissolution
+      if no_prop_or_debt_agree:
+        add_unique_step((review_common_situations_step, "review_common_situations_idx"), step_list)
+        add_unique_step((do_not_have_common_step, "do_not_have_common_idx"), step_list)
+        add_unique_step((learn_disso_div_step, "learn_disso_div_idx"), step_list)
+        add_unique_step((uncontested_divorce_step, "uncontested_divorce_idx"), step_list)
+        add_unique_step((file_forms_step, "file_forms_idx"), step_list)
+        add_unique_step((read_drpo_step, "read_drpo_idx"), step_list)
+        add_unique_step((learn_more_about_process_step, "file_forms_idx"), step_list)  
+      if no_prop_or_debt_agree == False:
+        if know_spouse_whereabouts:
+          add_unique_step((review_common_situations_step, "review_common_situations_idx"), step_list)
+          add_unique_step((do_not_have_common_step, "do_not_have_common_idx"), step_list)
+          add_unique_step((learn_disso_div_step, "learn_disso_div_idx"), step_list)
+          add_unique_step((uncontested_divorce_step, "uncontested_divorce_idx"), step_list)
+          add_unique_step((file_forms_step, "file_forms_idx"), step_list)
+          add_unique_step((read_drpo_step, "read_drpo_idx"), step_list)
+          add_unique_step((serve_complaint_step, "serve_complaint_idx"), step_list)
+          add_unique_step((learn_more_about_process_step, "file_forms_idx"), step_list)  
+        if know_spouse_whereabouts == False:
+          add_unique_step((alternative_service_step, "alternative_service_idx"), step_list)
+            
+    if legal_separation_or_divorce == 'divorce' \
+      and (minor_children and agree_or_settle_kids in('yes', 'do not know') \
+        or (not minor_children and agree_or_settle in('agree','do not know'))):
+      # dissolution_block
+      if minor_children and agree_or_settle_kids == 'yes':
+        have_property_and_debt
+      if (minor_children and agree_or_settle_kids == 'do not know') \
+        or (not minor_children and agree_or_settle == 'do not know'):
+        talk_to_spouse
+        add_unique_step((talk_to_spouse_step, "talk_to_spouse_idx"), step_list)
+      if minor_children:
+        paternity
+      wife_is_pregnant
+      add_unique_step((learn_disso_div_step, "learn_disso_div_idx"), step_list)
+      add_unique_step((uncontested_divorce_step, "uncontested_divorce_idx"), step_list)
+      add_unique_step((file_forms_step, "file_forms_idx"), step_list)
+      add_unique_step((read_drpo_step, "read_drpo_idx"), step_list)
+      add_unique_step((learn_more_about_process_step, "file_forms_idx"), step_list)
+      if minor_children and paternity == 'do not know':
+        add_unique_step((paternity_testing_step, "paternity_testing_idx"), step_list)
+      if domestic_violence:
+        add_unique_step((domestic_violence_step, "domestic_violence_idx"), step_list)
+        
     
     if legal_separation_or_divorce == 'divorce' \
       and ((minor_children and agree_or_settle_kids == 'no') \
@@ -73,44 +122,9 @@ code: |
           domestic_violence_question = "and how domestic violence affects your case"
       domestic_violence
       if not info_on_agree and default_info:
-        property_for_default
+        property_for_default    
     
-    if legal_separation_or_divorce == 'divorce' \
-      and (minor_children and agree_or_settle_kids in('yes', 'do not know') \
-        or (not minor_children and agree_or_settle in('no prop debt or pregnancy','agree','do not know'))):
-      # dissolution_block
-      if minor_children and agree_or_settle_kids == 'yes':
-        have_property_and_debt       
-      if not minor_children and agree_or_settle == 'no prop debt or pregnancy':
-        if no_prop_or_debt_agree:
-          add_unique_step((review_common_situations_step, "review_common_situations_idx"), step_list)
-          add_unique_step((do_not_have_common_step, "do_not_have_common_idx"), step_list)
-        else:
-          if know_spouse_whereabouts:
-            add_unique_step((review_common_situations_step, "nreview_common_situations_idx"), step_list)
-            add_unique_step((do_not_have_common_step, "do_not_have_common_idx"), step_list)
-          else:
-            add_unique_step((not_know_spouse_whereabouts_step, "not_know_spouse_whereabouts_idx"), step_list)
-      if (minor_children and agree_or_settle_kids == 'do not know') \
-        or (not minor_children and agree_or_settle == 'do not know'):
-        talk_to_spouse
-        add_unique_step((talk_to_spouse_step, "talk_to_spouse_idx"), step_list)
-      if minor_children:
-        have_property_and_debt
-        if paternity == 'do not know':
-          add_unique_step((paternity_testing_step, "paternity_testing_idx"), step_list)
-      wife_is_pregnant
-      # if (minor_children and agree_or_settle_kids in('yes', 'do not know')) \
-      #     or (not minor_children and agree_or_settle in('agree','do not know')):  
-      #  domestic_violence
-      add_unique_step((learn_disso_div_step, "learn_disso_div_idx"), step_list)
-      add_unique_step((uncontested_divorce_step, "uncontested_divorce_idx"), step_list)
-      add_unique_step((file_forms_step, "file_forms_idx"), step_list)
-      add_unique_step((read_drpo_step, "read_drpo_idx"), step_list)
-      add_unique_step((learn_more_about_process_step, "file_forms_idx"), step_list)
-      if domestic_violence:
-        add_unique_step((domestic_violence_step, "domestic_violence_idx"), step_list)
-        
+    
     
     if legal_separation_or_divorce == 'legal separation':
       if agree_or_settle_kids in('yes', 'do not know'):
@@ -454,43 +468,43 @@ template: uncontested_divorce_step
 subject: |
   Step ${ uncontested_divorce_idx }: 
     Fill out the forms 
-    % if (minor_children and have_property_and_debt and paternity == 'no' and wife_is_pregnant == 'not pregnant') or ( not minor_children and (agree_or_settle == 'agree' and wife_is_pregnant in('husband', 'not pregnant'))):
+    % if (minor_children and have_property_and_debt and paternity == 'no' and defined('wife_is_pregnant') and wife_is_pregnant == 'not pregnant') or ( not minor_children and (agree_or_settle == 'agree' and defined('wife_is_pregnant') and wife_is_pregnant in('husband', 'not pregnant'))):
     to start your case
     % else:
     for an uncontested divorce
     % endif
 content: |
-  % if not minor_children and agree_or_settle == 'agree' and wife_is_pregnant in('husband', 'not pregnant'):
+  % if not minor_children and agree_or_settle == 'agree' and defined('wife_is_pregnant') and wife_is_pregnant in('husband', 'not pregnant'):
   * Read "Decide Between Dissolution & Uncontested Divorce," above.  Then pick 1 of the following options.  Note: If you choose dissolution, the link below takes you to the Alaska Court System Website to find the forms and instructions you need.  If you choose uncontested divorce, the forms and instructions you need are listed below.
-  % elif minor_children and have_property_and_debt and paternity == 'no' and wife_is_pregnant == 'not pregnant':
+  % elif minor_children and have_property_and_debt and paternity == 'no' and defined('wife_is_pregnant') and wife_is_pregnant == 'not pregnant':
   % else:
   *	Generally, if spouses agree on all issues they can use either "dissolution" or "uncontested divorce" forms to ask to end the marriage. Uncontested divorce forms are best for your case 
   % if minor_children and have_property_and_debt and paternity in('yes','do not know') :
   because they have a place to tell the court you have a paternity issue.
-  % elif minor_children and have_property_and_debt and paternity == 'no' and wife_is_pregnant == 'husband':
+  % elif minor_children and have_property_and_debt and paternity == 'no' and defined('wife_is_pregnant') and wife_is_pregnant == 'husband':
   because paragraph 5(a) of the complaint has a place to tell the court wife is pregnant.
-  % elif minor_children and have_property_and_debt and paternity == 'no' and wife_is_pregnant in('not husband','not pregnant'):
+  % elif minor_children and have_property_and_debt and paternity == 'no' and defined('wife_is_pregnant') and wife_is_pregnant in('not husband','not pregnant'):
   because paragraph 5(d) of the Complaint has a place to tell the court paternity is an issue for a child conceived during the marriage.
   % elif minor_children and not have_property_and_debt and paternity in('yes','do not know'):
   because they have a place to tell the court (1) you have a paternity issue; and (2) you have no property of debt.
-  % elif minor_children and not have_property_and_debt and paternity == 'no' and wife_is_pregnant == 'husband':
+  % elif minor_children and not have_property_and_debt and paternity == 'no' and defined('wife_is_pregnant') and wife_is_pregnant == 'husband':
   because (1) paragraph 5(a) of the complaint has a place to tell the court wife is pregnant and (2) they have a place to tell the court you have no marital property or debt.
-  % elif minor_children and not have_property_and_debt and paternity == 'no' and wife_is_pregnant in('not husband','not pregnant'):
+  % elif minor_children and not have_property_and_debt and paternity == 'no' and defined('wife_is_pregnant') and wife_is_pregnant in('not husband','not pregnant'):
   because (1) paragraph 5(d) of the complaint has a place to tell the court paternity is an issue for a child conceived during the marriage. and (2) they have a place to tell the court you have no marital property or debt.
-  % elif minor_children and not have_property_and_debt and paternity == 'no' and  wife_is_pregnant =='not pregnant':
+  % elif minor_children and not have_property_and_debt and paternity == 'no' and defined('wife_is_pregnant') and wife_is_pregnant =='not pregnant':
   because they have a place to tell the court you have no marital property or debt.
-  % elif not minor_children and wife_is_pregnant == 'husband':
+  % elif not minor_children and defined('wife_is_pregnant') and wife_is_pregnant == 'husband':
   because paragraph 5(a) of the Complaint has a place to tell the court wife is pregnant.
-  % elif not minor_children and wife_is_pregnant in('not husband','not pregnant'):
+  % elif not minor_children and defined('wife_is_pregnant') and wife_is_pregnant in('not husband','not pregnant'):
   because paragraph 5(d) of the Complaint has a place to tell the court paternity is an issue for a child conceived during the marriage.
   % endif
   % endif
   *	You will not know your case number until you file your documents with the court.  You can write the case number on all your forms then.
 
-  % if minor_children or wife_is_pregnant in('husband','not husband'):
+  % if minor_children or defined('wife_is_pregnant') and wife_is_pregnant in('husband','not husband'):
   **Dissolution Packet #1: [DR-1 ANCH](https://courts.alaska.gov/forms/index.htm#dr-1anc) (Anchorage) | [DR-1](https://courts.alaska.gov/forms/index.htm#dr-1) (Not Anchorage) 
   [Anchorage Dissolution Packet #1](https://public.courts.alaska.gov/web/forms/docs/dr-1total.pdf) | All Other Cities Dissolution Packet #1 
-  % if wife_is_pregnant in('husband','not husband'):
+  % if defined('wife_is_pregnant') and wife_is_pregnant in('husband','not husband'):
   (you must use this packet because wife is pregnant)
   % endif
   or
@@ -499,9 +513,9 @@ content: |
   
   <div class="step-subheading">Required Forms</div>
   1 copy that both spouses sign if signatures are needed.
-  % if minor_children or wife_is_pregnant in('husband','not husband'):
+  % if minor_children or defined('wife_is_pregnant') and wife_is_pregnant in('husband','not husband'):
   * **Uncontested Complaint for Divorce with Children, SHC-110** [Word](https://courts.alaska.gov/shc/family/docs/shc-110.doc) | [PDF](https://courts.alaska.gov/shc/family/docs/shc-110n.pdf)
-  % if wife_is_pregnant in('husband','not husband'):
+  % if defined('wife_is_pregnant') and wife_is_pregnant in('husband','not husband'):
   You must use this form because wife is pregnant.
   % endif
   % else:
@@ -527,7 +541,7 @@ content: |
   
   <div class="step-subheading">Required forms - 2 copies</div>
   Each spouse fills out and signs a separate copy.
-  % if minor_children or wife_is_pregnant in('husband','not husband'):
+  % if minor_children or defined('wife_is_pregnant') and wife_is_pregnant in('husband','not husband'):
   
   *	**Child Custody Jurisdiction Affidavit**, [DR-150](https://public.courts.alaska.gov/web/forms/docs/dr-150.pdf) & **Child Support Guidelines Affidavit**, [DR-305](https://public.courts.alaska.gov/web/forms/docs/dr-305.pdf)
   
@@ -562,9 +576,9 @@ content: |
   *	**Decree and Judgment, SHC-545** [Word](https://www.courts.alaska.gov/shc/family/docs/shc-545.doc) | [PDF](https://www.courts.alaska.gov/shc/family/docs/shc-545n.pdf)
   % endif
   
-  % if wife_is_pregnant in('husband','not husband'):
+  % if defined('wife_is_pregnant') and wife_is_pregnant in('husband','not husband'):
   <div class="step-subheading">Form if wife is pregnant</div>
-  % if wife_is_pregnant == 'husband':
+  % if defined('wife_is_pregnant') and wife_is_pregnant == 'husband':
   Some courts will allow a divorce case to move forward when the wife is pregnant. Other courts require that the child be born before completing the case.  You can ask the court to divorce you before the child is born, and deal with the parenting plan and child support after by filing:
   % else:
   If a wife is pregnant when a marriage ends the law considers the husband to be the father.  If the husband is not the father, the court can remove the husband’s rights and responsibilities for that child.  This is called “disestablishing paternity.”  You can ask the court to divorce you before the child is born, and deal with the paternity after by filing:
@@ -600,8 +614,7 @@ content: |
 ---
 template: divorce_step
 subject: |
-  Step ${ divorce_idx }: 
-    Fill out the forms to start your case
+  Step ${ divorce_idx }: Fill out the forms to start your case
 content: |
   You get your case number when you file your documents with the court.  Write the case number on your forms when you file them.
   <div class="step-subheading">Required Forms</div>Required forms</div>
@@ -678,8 +691,7 @@ content: |
 ---
 template: legal_separation_agree_step
 subject: |
-  Step ${ legal_separation_agree_idx }: 
-    Fill out the forms to start your case
+  Step ${ legal_separation_agree_idx }: Fill out the forms to start your case
 content: |
   <div class="step-subheading">Required Forms - 1 copy that both spouses sign if signatures are needed</div>
   % if minor_children or wife_is_pregnant in('husband', 'not husband'):
@@ -803,8 +815,7 @@ content: |
 ---
 template: legal_separation_do_not_agree_step
 subject: |
-  Step ${ legal_separation_do_not_agree_idx }: 
-    Fill out the forms to start your case
+  Step ${ legal_separation_do_not_agree_idx }: Fill out the forms to start your case
 content: |
   content: |
   You get your case number when you file your documents with the court.  Write the case number on your forms when you file them.
@@ -933,8 +944,7 @@ content: |
 ---
 template: file_forms_step
 subject: |
-  Step ${  file_forms_idx }: 
-    File the original with your local court
+  Step ${  file_forms_idx }: File the original with your local court
 content: |
 
   *	Make 2 copies of your forms: 1 copy for your own records and 1 copy for your spouse.
@@ -950,8 +960,7 @@ content: |
 ---
 template: read_drpo_step
 subject: |
-  Step ${ read_drpo_idx }: 
-    Read the "Domestic Relations Procedural Order" or Standing Order if the clerk gives you one when you file your case
+  Step ${ read_drpo_idx }: Read the "Domestic Relations Procedural Order" or Standing Order if the clerk gives you one when you file your case
 content: |
   This is the first order from your judge that sets out the basic rules for you and your spouse to follow during the case.  Violating this order can affect the outcome of your case.  The Order states, unless your spouse agrees or the court gives permission:
   % if minor_children:
@@ -966,8 +975,7 @@ content: |
 ---
 template: serve_complaint_step
 subject: |
-  Step ${ serve_complaint_idx }: 
-    Serve the complaint and summons 
+  Step ${ serve_complaint_idx }: Serve the complaint and summons 
 content: |
   <div class="step-subheading">Regular Service</div>
   You have to give your spouse copies of everything you file in court plus the Summons. This is called “service.” There are special requirements about how to serve your spouse the forms that start the case.
@@ -999,8 +1007,7 @@ content: |
 ---
 template: learn_more_about_process_step
 subject: |
-  Step ${ learn_more_about_process_idx }: 
-    Learn more about the process
+  Step ${ learn_more_about_process_idx }: Learn more about the process
 content: |
   Read 
   % if legal_separation_or_divorce == 'legal separation':
@@ -1019,8 +1026,7 @@ content: |
 ---
 template: alternative_service_step
 subject: |
-  Step ${ alternative_service_idx }: 
-    File to end your marriage when you don't know where your spouse is, there are no children, and there is no property or debt to divide
+  Step ${ alternative_service_idx }: File to end your marriage when you do not know where your spouse is, there are no children, and there is no property or debt to divide
 content: |
   
   * Usually when you start a case you are required to give your spouse all the forms you file with the court.  This is called "service."  If you don't know where your spouse is you can ask the court to let you serve by "alternate service."  You can only use "alternate service" after you look for your spouse with "diligent inquiry." These steps are described below.
@@ -1196,8 +1202,7 @@ content: |
 ---
 template: default_step
 subject: |
-  Step ${ default_idx }: 
-    File for default if your spouse does not respond within 20 days
+  Step ${ default_idx }: File for default if your spouse does not respond within 20 days
 content: |
   Wait 20 days
   If your spouse does not file an Answer within 20 days of being served your Complaint, you may ask the court to “default” the other side and grant you everything you asked for. To do this, you must have proof that you served the other party according to the rules.
