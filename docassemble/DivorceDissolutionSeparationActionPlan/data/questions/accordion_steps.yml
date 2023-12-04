@@ -67,7 +67,7 @@ code: |
         add_unique_step((uncontested_divorce_step, "uncontested_divorce_idx"), step_list)
         add_unique_step((file_forms_step, "file_forms_idx"), step_list)
         add_unique_step((read_drpo_step, "read_drpo_idx"), step_list)
-        add_unique_step((learn_more_about_process_step, "file_forms_idx"), step_list)  
+        add_unique_step((learn_more_about_process_step, "learn_more_about_process_idx"), step_list)  
       if no_prop_or_debt_agree == False:
         if know_spouse_whereabouts:
           add_unique_step((review_common_situations_step, "review_common_situations_idx"), step_list)
@@ -77,7 +77,7 @@ code: |
           add_unique_step((file_forms_step, "file_forms_idx"), step_list)
           add_unique_step((read_drpo_step, "read_drpo_idx"), step_list)
           add_unique_step((serve_complaint_step, "serve_complaint_idx"), step_list)
-          add_unique_step((learn_more_about_process_step, "file_forms_idx"), step_list)  
+          add_unique_step((learn_more_about_process_step, "learn_more_about_process_idx"), step_list)  
         if know_spouse_whereabouts == False:
           add_unique_step((alternative_service_step, "alternative_service_idx"), step_list)
             
@@ -98,7 +98,7 @@ code: |
       add_unique_step((uncontested_divorce_step, "uncontested_divorce_idx"), step_list)
       add_unique_step((file_forms_step, "file_forms_idx"), step_list)
       add_unique_step((read_drpo_step, "read_drpo_idx"), step_list)
-      add_unique_step((learn_more_about_process_step, "file_forms_idx"), step_list)
+      add_unique_step((learn_more_about_process_step, "learn_more_about_process_idx"), step_list)
       if minor_children and paternity == 'do not know':
         add_unique_step((paternity_testing_step, "paternity_testing_idx"), step_list)
       if domestic_violence:
@@ -117,7 +117,7 @@ code: |
       add_unique_step((file_forms_step, "file_forms_idx"), step_list)
       add_unique_step((read_drpo_step, "read_drpo_idx"), step_list)
       add_unique_step((serve_complaint_step, "serve_complaint_idx"), step_list)
-      add_unique_step((learn_more_about_process_step, "file_forms_idx"), step_list)
+      add_unique_step((learn_more_about_process_step, "learn_more_about_process_idx"), step_list)
       if know_spouse_whereabouts == False:
         add_unique_step((alternative_service_step, "alternative_service_idx"), step_list)
       if minor_children and paternity == 'do not know':
@@ -130,7 +130,8 @@ code: |
           domestic_violence_question = "and how domestic violence affects your case"
       if domestic_violence:
         add_unique_step((domestic_violence_step, "domestic_violence_idx"), step_list)
-      if default_info and property_for_default:
+      if default_info:
+        property_for_default
         add_unique_step((default_step, "default_idx"), step_list)
     
     
@@ -344,7 +345,7 @@ content: |
   *	Return to the Guided Assistant to answer questions for spouses that do not agree to get the specific forms for your case, or
   *	Fill out the [Filing for Dissolution, Divorce, or Custody forms](http://courts.alaska.gov/shc/family/shcforms.htm#start) listed under "Spouses do not agree or do not know if they agree".
   % else:
-  <div class="step-subheading">What to Do if You Reach an Agreement</div>
+  <div class="step-subheading">What to do if you reach an agreement</div>
   
   Before you start a case in court  –You can get the right forms for your case by re-taking this Guided Assistant and answering questions for spouses that agree, or fill out 
   % if legal_separation_or_divorce == 'divorce':
@@ -623,25 +624,27 @@ content: |
 ---
 template: divorce_step
 subject: |
-  Step ${ divorce_idx }: Fill out the forms to start your case
+  Step ${ divorce_idx }: Fill out the forms to start a divorce case
 content: |
   You get your case number when you file your documents with the court.  Write the case number on your forms when you file them.
-  <div class="step-subheading">Required Forms</div>Required forms</div>
+  <div class="step-subheading">Required Forms</div>
   % if minor_children or wife_is_pregnant in('husband', 'not husband'):
     * **Divorce Complaint With Children, SHC-101** [Word](http://courts.alaska.gov/shc/family/docs/shc-101.doc) | [PDF](http://courts.alaska.gov/shc/family/docs/shc-101n.pdf)
   % else:
     * **Divorce Complaint Without Children, SHC-102:** [Word](http://www.courts.alaska.gov/shc/family/docs/shc-102.doc) | [PDF](http://www.courts.alaska.gov/shc/family/docs/shc-102n.pdf)
   % endif
-      * Print your name, address, phone number in the upper left corner of the first page.
-      * Print your name above "Plaintiff" and your spouse's name above "Defendant."
-      * Follow the directions on the form and fill out every section.
+  
+        * Print your name, address, phone number in the upper left corner of the first page.
+        * Print your name above "Plaintiff" and your spouse's name above "Defendant."
+        * Follow the directions on the form and fill out every section.
       
   % if minor_children or wife_is_pregnant in('husband', 'not husband'):
   
-      * **Child Custody Jurisdiction Affidavit**, [DR-150](https://public.courts.alaska.gov/web/forms/docs/dr-150.pdf
-      * ) & **Child Support Guidelines Affidavit**, [DR-305](https://public.courts.alaska.gov/web/forms/docs/dr-305.pdf)
+    * **Child Custody Jurisdiction Affidavit**, [DR-150](https://public.courts.alaska.gov/web/forms/docs/dr-150.pdf) 
+    * & **Child Support Guidelines Affidavit**, [DR-305](https://public.courts.alaska.gov/web/forms/docs/dr-305.pdf)
+      
         * Answer each question completely.
-        * See [**How to Fill out the Child Support Guidelines Affidavit**](http://courts.alaska.gov/shc/family/docs/shc-dr305f-sample.pdf).
+        * See **[How to Fill out the Child Support Guidelines Affidavit](http://courts.alaska.gov/shc/family/docs/shc-dr305f-sample.pdf)**.
     *	Attach your most recent tax return and pay stubs to the **Child Support Guidelines Affidavit**.
     *	Wait to sign these forms them until you are in front of someone who has the power to take oaths, like a notary public. The court clerk can do this for free. Bring a valid photo ID with you.
   % endif
@@ -681,7 +684,7 @@ content: |
   * If 1 parent is asking: **Motion, Affidavit and Order to Bifurcate Divorce for Subsequent Determination of Paternity, SHC-152** [Word](http://courts.alaska.gov/shc/family/docs/shc-152.docx) | [PDF](https://courts.alaska.gov/shc/family/docs/shc-152n.pdf) (one parent files the motion on their own and the other parent will be able to file a response if he/she does not agree the divorce should move ahead before the child is born) (Do **not** sign the order section)
   % endif
   % endif
-  % if paternity in('yes', 'do not know'):
+  % if minor_children and paternity in('yes', 'do not know'):
 
   <div class="step-subheading">Paternity Forms</div>
   If a parent thinks the husband is not the biological or adopted father of a child born during the marriage, that parent can ask the court to remove the husband’s rights and responsibilities for that child. This is called “disestablishing paternity.”  You need clear and convincing evidence. There are different ways to do this depending on the facts of the situation. Every case is different so you need to figure out what will work in your case. Some options are:
@@ -972,14 +975,17 @@ subject: |
   Step ${ read_drpo_idx }: Read the "Domestic Relations Procedural Order" or Standing Order if the clerk gives you one when you file your case
 content: |
   This is the first order from your judge that sets out the basic rules for you and your spouse to follow during the case.  Violating this order can affect the outcome of your case.  The Order states, unless your spouse agrees or the court gives permission:
+  
   % if minor_children:
-  * Do not take your child(ren) out of Alaska.
+    * Do not take your child(ren) out of Alaska.
   % endif
-  * Do not sell or get rid of marital property.
-  * Do not cancel or change any insurance policy.
+    * Do not sell or get rid of marital property.
+    * Do not cancel or change any insurance policy.
+  
   % if minor_children:
   Also, check with your local court for their parent education requirements.
   % endif
+  
   If you want to do something forbidden by the order, and your spouse will not agree, ask the court by filing a motion and wait for the court's answer before doing it.  You can learn about motions by answering more questions.  If you want to save this Action Plan, be sure to download, save, or print it.  Then return to the Guided Assist page and use the Guided Assist search box to find "Asking for an Order in a Divorce Case When the Issue Can’t Wait for the Court’s Final Decision (Filing a Motion) and Responding to a Motion."
 ---
 template: serve_complaint_step
@@ -1116,9 +1122,9 @@ content: |
 template: domestic_violence_step
 subject: |
   Step ${ domestic_violence_idx }: 
-    Learn about abuse or domestic violence
+    Learn about abuse or domestic violence 
     % if not minor_children:
-    % if agree_or_settle == 'no' or (agree_or_settle == 'no prop debt or pregnancy' and not no_prop_or_debt_agree):
+    % if (agree_or_settle == 'no' and not info_on_agree) or (agree_or_settle == 'no prop debt or pregnancy' and not no_prop_or_debt_agree):
     resources
     % else:
     resources & reaching an agreement
@@ -1127,7 +1133,7 @@ subject: |
     % if agree_or_settle_kids in('yes', 'do not know'):
     resources & reaching an agreement
     % else:
-    and Parenting
+    and parenting
     % endif
     % endif
 content: |
@@ -1186,7 +1192,7 @@ content: |
   % endif
   If you think the other parent should not have any contact with your children, you will need to convince the judge that it is in the children’s best interest. Generally, it is unusual for a judge in a divorce or custody case to decide that a parent cannot see his or her children. There is research that shows it is important for children to have a relationship with both parents if it can happen in a safe manner. If the judge finds the domestic violence presumption applies, the judge will usually permit supervised contact between the parent and the children while the parent is completing a batterer’s intervention or substance abuse treatment program. After the parent finishes the program and any other requirements the judge ordered, the judge may lift the supervision restriction and allow a different parenting schedule.
   % if agree_or_settle_kids == 'no':
-  <div class="step-subheading">Tell the Judge Your Concerns</div>
+  <div class="step-subheading">Tell the judge your concerns</div>
   % endif
   The judge will only know about your domestic violence concerns if you state them in the documents you file and when you talk in court.  If you have concerns for the children’s safety when in the care of the other parent, or for yourself when interacting with the other parent, describe them to the judge.  If the judge is going to allow the other parent to have parenting time (visitation) with the children, you can suggest ways to address your concerns.  Some options include:
   
@@ -1205,7 +1211,7 @@ content: |
   
   If you think you or your children's health, safety, or liberty would be harmed by providing the information on the **Child Custody Jurisdiction Affidavit**, [DR-150](https://public.courts.alaska.gov/web/forms/docs/dr-150.pdf) to the other parent:
   
-  *	do not give the other parent a copy of the completed Child Custody Jurisdiction Affidavit after you file it with the court, and
+  *	do not give the other parent a copy of the completed **Child Custody Jurisdiction Affidavit** after you file it with the court, and
   *	file **Direction to Seal Child Custody Jurisdiction Affidavit**, [DR-151](https://public.courts.alaska.gov/web/forms/docs/dr-151.pdf).
   % endif
 ---
@@ -1220,7 +1226,7 @@ content: |
   Fill out a **Proof of Service Form, SHC-405**: [Word](https://www.courts.alaska.gov/shc/family/docs/shc-405.doc) | [PDF](http://www.courts.alaska.gov/shc/family/docs/shc-405n.pdf)
   <div class="step-subheading">Ask for a Default</div>
   Fill out a **Default Application, SHC-400**: [Word](https://www.courts.alaska.gov/shc/family/docs/shc-400.doc) | [PDF](https://www.courts.alaska.gov/shc/family/docs/shc-400n.pdf)
-  % if military:
+  % if defined('military') and military:
   Be aware that if your spouse is on active duty in the military, the court likely will not enter a default judgment right away.  The court may appoint a lawyer to contact your spouse first.
   % endif
   <div class="step-subheading">Include the final forms for your type of case</div>

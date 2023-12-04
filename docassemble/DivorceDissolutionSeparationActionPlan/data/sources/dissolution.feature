@@ -1,8 +1,6 @@
 @dissolution
 Feature: User paths
 
-# 2023-11-30 Dissolution_tests.feature in H:\CRobinson\Docassemble\Divorce\Tests\dissolution_tests.feature Need to finish writing tests for | minor_children | False | |
-
 @row16
 Scenario: Row #16
   Given I start the interview at "Divorce_dissolution_separation_action_plan.yml"
@@ -151,16 +149,6 @@ Scenario: Row #24
     | talk_to_spouse | True | |
     | wife_is_pregnant | not husband | |
     | domestic_violence | False | |
-    #  | minor_children | True | |
-    #  | other_case | False | |
-    #  | residency_and_jurisdiction | True | |
-    #  | legal_separation_or_divorce | divorce | |
-    #  | agree_or_settle_kids | do not know | |
-    #  | talk_to_spouse | True | |
-    #  | have_property_and_debt | True | |
-    #  | paternity | do not know | |
-    #  | wife_is_pregnant | not husband | |
-    #  | domestic_violence | False | |
   And I take a screenshot
     And I should see the phrase "Your Personal Action Plan for asking the court for a divorce, dissolution or legal separation in Alaska in 7 steps"
     And I should see the phrase "Talk to your spouse to see if you agree"
