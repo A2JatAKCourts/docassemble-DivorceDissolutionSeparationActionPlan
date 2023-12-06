@@ -972,7 +972,7 @@ content: |
 ---
 template: read_drpo_step
 subject: |
-  Step ${ read_drpo_idx }: Read the "Domestic Relations Procedural Order" or Standing Order if the clerk gives you one when you file your case
+  Step ${ read_drpo_idx }: Read the &ldquo;Domestic Relations Procedural Order&rdquo; or Standing Order if the clerk gives you one when you file your case
 content: |
   This is the first order from your judge that sets out the basic rules for you and your spouse to follow during the case.  Violating this order can affect the outcome of your case.  The Order states, unless your spouse agrees or the court gives permission:
   
@@ -1125,7 +1125,7 @@ subject: |
     Learn about abuse or domestic violence 
     % if not minor_children:
     % if (agree_or_settle == 'no' and not info_on_agree) or (agree_or_settle == 'no prop debt or pregnancy' and not no_prop_or_debt_agree):
-    resources
+    resources 
     % else:
     resources & reaching an agreement
     % endif

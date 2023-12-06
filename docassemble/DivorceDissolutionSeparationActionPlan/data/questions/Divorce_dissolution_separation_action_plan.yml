@@ -356,7 +356,7 @@ fields:
 ---
 id: domestic violence resources
 question: |
-  Do you want your Action Plan to include information about domestic violence resources${ domestic_violence_question }?
+  Do you want your Action Plan to include information about domestic violence resources ${ domestic_violence_question }?
 subquestion: |
   ${ domestic_violence_subquestion }
 fields:
