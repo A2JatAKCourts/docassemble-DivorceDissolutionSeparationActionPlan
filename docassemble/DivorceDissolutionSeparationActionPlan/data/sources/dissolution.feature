@@ -1,8 +1,6 @@
 @dissolution
 Feature: User paths
 
-# 2023-11-30 Dissolution_tests.feature in H:\CRobinson\Docassemble\Divorce\Tests\dissolution_tests.feature Need to finish writing tests for | minor_children | False | |
-
 @row16
 Scenario: Row #16
   Given I start the interview at "Divorce_dissolution_separation_action_plan.yml"
@@ -151,16 +149,6 @@ Scenario: Row #24
     | talk_to_spouse | True | |
     | wife_is_pregnant | not husband | |
     | domestic_violence | False | |
-    #  | minor_children | True | |
-    #  | other_case | False | |
-    #  | residency_and_jurisdiction | True | |
-    #  | legal_separation_or_divorce | divorce | |
-    #  | agree_or_settle_kids | do not know | |
-    #  | talk_to_spouse | True | |
-    #  | have_property_and_debt | True | |
-    #  | paternity | do not know | |
-    #  | wife_is_pregnant | not husband | |
-    #  | domestic_violence | False | |
   And I take a screenshot
     And I should see the phrase "Your Personal Action Plan for asking the court for a divorce, dissolution or legal separation in Alaska in 7 steps"
     And I should see the phrase "Talk to your spouse to see if you agree"
@@ -337,8 +325,8 @@ Scenario: Row #42
     And I should see the phrase "Get more information or help"
     # And I download "asking_for_divorce_action_plan.pdf"
     
-@row188
-Scenario: Row 188
+@row261
+Scenario: Row 261
   Given I start the interview at "Divorce_dissolution_separation_action_plan.yml"
   And I get to the question id "final screen" with this data:
     | var | value | trigger |
@@ -364,8 +352,8 @@ Scenario: Row 188
     And I should see the phrase "Get more information or help"
     # And I download "asking_for_divorce_action_plan.pdf"
 
-@row189
-Scenario: Row 189
+@row262
+Scenario: Row #262
   Given I start the interview at "Divorce_dissolution_separation_action_plan.yml"
   And I get to the question id "final screen" with this data:
     | var | value | trigger |
@@ -392,8 +380,8 @@ Scenario: Row 189
     # And I download "asking_for_divorce_action_plan.pdf"
 
 
-@row190
-Scenario: Row 190
+@row263
+Scenario: Row #263
   Given I start the interview at "Divorce_dissolution_separation_action_plan.yml"
   And I get to the question id "final screen" with this data:
     | var | value | trigger |
@@ -414,8 +402,8 @@ Scenario: Row 190
     # And I download "asking_for_divorce_action_plan.pdf"
     
 
-@row191
-Scenario: Row #191
+@row264
+Scenario: Row #264
   Given I start the interview at "Divorce_dissolution_separation_action_plan.yml"
   And I get to the question id "final screen" with this data:
     | var | value | trigger |
@@ -441,8 +429,8 @@ Scenario: Row #191
 
 
 
-@row194
-Scenario: Row #194
+@row269
+Scenario: Row #269
   Given I start the interview at "Divorce_dissolution_separation_action_plan.yml"
   And I get to the question id "final screen" with this data:
     | var | value | trigger |
@@ -466,8 +454,8 @@ Scenario: Row #194
     And I should see the phrase "Get more information or help"
     # And I download "asking_for_divorce_action_plan.pdf"
 
-@row195
-Scenario: Row #195
+@row268
+Scenario: Row #268
   Given I start the interview at "Divorce_dissolution_separation_action_plan.yml"
   And I get to the question id "final screen" with this data:
     | var | value | trigger |
@@ -489,8 +477,8 @@ Scenario: Row #195
     And I should see the phrase "Get more information or help"
     # And I download "asking_for_divorce_action_plan.pdf"
 
-@row198
-Scenario: Row #198
+@row271
+Scenario: Row #271
   Given I start the interview at "Divorce_dissolution_separation_action_plan.yml"
   And I get to the question id "final screen" with this data:
     | var | value | trigger |
@@ -512,8 +500,8 @@ Scenario: Row #198
     And I should see the phrase "Get more information or help"
     # And I download "asking_for_divorce_action_plan.pdf"
 
-@row199
-Scenario: Row #199
+@row272
+Scenario: Row #272
   Given I start the interview at "Divorce_dissolution_separation_action_plan.yml"
   And I get to the question id "final screen" with this data:
     | var | value | trigger |
@@ -537,8 +525,8 @@ Scenario: Row #199
     # And I download "asking_for_divorce_action_plan.pdf"
     
     
-@row202
-Scenario: Row #202
+@row275
+Scenario: Row #275
   Given I start the interview at "Divorce_dissolution_separation_action_plan.yml"
   And I get to the question id "final screen" with this data:
     | var | value | trigger |
