@@ -79,7 +79,7 @@ code: |
           add_unique_step((serve_complaint_step, "serve_complaint_idx"), step_list)
           add_unique_step((learn_more_about_process_step, "learn_more_about_process_idx"), step_list)  
         if know_spouse_whereabouts == False:
-          add_unique_step((alternative_service_step, "alternative_service_idx"), step_list)
+          add_unique_step((alternate_service_step, "alternate_service_idx"), step_list)
             
     if legal_separation_or_divorce == 'divorce' \
       and (minor_children and agree_or_settle_kids in('yes', 'do not know') \
@@ -109,30 +109,34 @@ code: |
       and ((minor_children and agree_or_settle_kids == 'no') \
         or (not minor_children and agree_or_settle == 'no')):
       # divorce_block
+      # if know_spouse_whereabouts == False:
       know_spouse_whereabouts
-      if minor_children:
-        paternity
-      wife_is_pregnant
-      add_unique_step((divorce_step, "divorce_idx"), step_list)
-      add_unique_step((file_forms_step, "file_forms_idx"), step_list)
-      add_unique_step((read_drpo_step, "read_drpo_idx"), step_list)
-      add_unique_step((serve_complaint_step, "serve_complaint_idx"), step_list)
-      add_unique_step((learn_more_about_process_step, "learn_more_about_process_idx"), step_list)
-      if know_spouse_whereabouts == False:
-        add_unique_step((alternative_service_step, "alternative_service_idx"), step_list)
-      if minor_children and paternity == 'do not know':
-        add_unique_step((paternity_testing_step, "paternity_test_idx"), step_list)
-      if info_on_agree:
-        add_unique_step((talk_to_spouse_step, "talk_to_spouse_idx"), step_list)
-        domestic_violence_question = "and how domestic violence can affect your agreement"
-      else:
+      if minor_children == False and agree_or_settle == 'no prop debt or pregnancy' and no_prop_or_debt_agree == False and know_spouse_whereabouts == False:
+        add_unique_step((alternate_service_step, "alternate_service_idx"), step_list)
+      else: 
         if minor_children:
-          domestic_violence_question = "and how domestic violence affects your case"
-      if domestic_violence:
-        add_unique_step((domestic_violence_step, "domestic_violence_idx"), step_list)
-      if default_info:
-        property_for_default
-        add_unique_step((default_step, "default_idx"), step_list)
+          paternity
+        wife_is_pregnant
+        add_unique_step((divorce_step, "divorce_idx"), step_list)
+        add_unique_step((file_forms_step, "file_forms_idx"), step_list)
+        add_unique_step((read_drpo_step, "read_drpo_idx"), step_list)
+        add_unique_step((serve_complaint_step, "serve_complaint_idx"), step_list)
+        add_unique_step((learn_more_about_process_step, "learn_more_about_process_idx"), step_list)
+        if know_spouse_whereabouts == False:
+          add_unique_step((alternate_service_step, "alternate_service_idx"), step_list)
+        if minor_children and paternity == 'do not know':
+          add_unique_step((paternity_testing_step, "paternity_testing_idx"), step_list)
+        if info_on_agree:
+          add_unique_step((talk_to_spouse_step, "talk_to_spouse_idx"), step_list)
+          domestic_violence_question = "and how domestic violence can affect your agreement"
+        else:
+          if minor_children:
+            domestic_violence_question = "and how domestic violence affects your case"
+        if domestic_violence:
+          add_unique_step((domestic_violence_step, "domestic_violence_idx"), step_list)
+        if default_info:
+          property_for_default
+          add_unique_step((default_step, "default_idx"), step_list)
     
     
     
@@ -1039,9 +1043,14 @@ content: |
   * Find other Alaska Divorce Videos: [English](https://youtube.com/playlist?list=PLRS0LlEIQsuTsfO0wSTsSTIvVE5RO8sLc) | [Spanish](https://AKlawSelfHelp.org/?page_id=29) | [Tagalog](https://AKlawSelfHelp.org/?page_id=158)
   * Find [Alaska Family Law Hearing & Trial Preparation Videos](https://youtube.com/playlist?list=PL82589B66ED712B4B)
 ---
-template: alternative_service_step
+template: alternate_service_step
 subject: |
-  Step ${ alternative_service_idx }: File to end your marriage when you do not know where your spouse is, there are no children, and there is no property or debt to divide
+  Step ${ alternate_service_idx }: 
+  % if not minor_children and agree_or_settle == 'no prop debt or pregnancy' and not no_prop_or_debt_agree and not know_spouse_whereabouts:
+  File to end your marriage when you do not know where your spouse is, there are no children, and there is no property or debt to divide
+  % else:
+  Learn about starting a case when you do not know where your spouse is 
+  % endif
 content: |
   
   * Usually when you start a case you are required to give your spouse all the forms you file with the court.  This is called "service."  If you don't know where your spouse is you can ask the court to let you serve by "alternate service."  You can only use "alternate service" after you look for your spouse with "diligent inquiry." These steps are described below.
