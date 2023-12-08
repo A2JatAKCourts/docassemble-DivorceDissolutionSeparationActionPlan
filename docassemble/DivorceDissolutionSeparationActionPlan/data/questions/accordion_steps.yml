@@ -181,9 +181,10 @@ code: |
           domestic_violence_question = ""
         
         add_unique_step((learn_legal_sep_step, "learn_legal_sep_idx"), step_list)
-        add_unique_step((legal_separation_agree_not_step, "legal_separation_agree_not_idx"), step_list)
+        add_unique_step((legal_separation_do_not_agree_step, "legal_separation_do_not_agree_idx"), step_list)
         add_unique_step((file_forms_step, "file_forms_idx"), step_list)
         add_unique_step((read_drpo_step, "read_drpo_idx"), step_list)
+        add_unique_step((serve_complaint_step, "serve_complaint_idx"), step_list)
         add_unique_step((learn_more_about_process_step, "learn_more_about_process_idx"), step_list)
         if know_spouse_whereabouts == False:
           add_unique_step((alternate_service_step, "alternate_service_idx"), step_list)
