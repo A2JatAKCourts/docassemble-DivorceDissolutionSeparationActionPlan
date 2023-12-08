@@ -19,7 +19,7 @@ subquestion: |
   % if (minor_children and agree_or_settle_kids in ('yes', 'do not know')) \
     or (minor_children == False and agree_or_settle in ('yes', 'do not know')):
   #### Your Personal Action Plan for asking the court for a dissolution or uncontested divorce in Alaska in ${ len(step_list) } steps
-  else:
+  % else:
   #### Your Personal Action Plan for asking the court for a divorce in Alaska in ${ len(step_list) } steps
   % endif
   % else:
