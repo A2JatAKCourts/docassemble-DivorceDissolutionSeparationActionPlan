@@ -18,12 +18,12 @@ Scenario: Row #16
     | wife_is_pregnant | husband | |
     | domestic_violence | True | |
   And I take a screenshot
-    And I should see the phrase "Your Personal Action Plan for asking the court for a divorce, dissolution or legal separation in Alaska in 7 steps"
+    And I should see the phrase "Your Personal Action Plan for asking the court for a dissolution or uncontested divorce in Alaska in 7 steps"
     And I should see the phrase "Decide which court should hear your case"
     And I should see the phrase "Learn about dissolutions and uncontested divorces"
     And I should see the phrase "Fill out the forms for an uncontested divorce"
     And I should see the phrase "File the original with your local court"
-    And I should see the phrase "Read the “Domestic Relations Procedural Order” or Standing Order if the clerk gives you one when you file your case"
+    And I should see the phrase "Read the â€œDomestic Relations Procedural Orderâ€ or Standing Order if the clerk gives you one when you file your case"
     And I should see the phrase "Learn about abuse or domestic violence resources & reaching an agreement"
     And I should see the phrase "Get more information or help"
     # And I download "asking_for_divorce_action_plan.pdf" 
@@ -44,12 +44,12 @@ Scenario: Row #17
     | wife_is_pregnant | not pregnant | |
     | domestic_violence | False | |
   And I take a screenshot
-    And I should see the phrase "Your Personal Action Plan for asking the court for a divorce, dissolution or legal separation in Alaska in 6 steps"
+    And I should see the phrase "Your Personal Action Plan for asking the court for a dissolution or uncontested divorce in Alaska in 6 steps"
     And I should see the phrase "Talk to your spouse to see if you agree"
     And I should see the phrase "Learn about dissolutions and uncontested divorces"
     And I should see the phrase "Fill out the forms for an uncontested divorce"
     And I should see the phrase "File the original with your local court"
-    And I should see the phrase "Read the “Domestic Relations Procedural Order” or Standing Order if the clerk gives you one when you file your case"
+    And I should see the phrase "Read the â€œDomestic Relations Procedural Orderâ€ or Standing Order if the clerk gives you one when you file your case"
     And I should see the phrase "Get more information or help"
     # And I download "asking_for_divorce_action_plan.pdf"
     
@@ -70,12 +70,12 @@ Scenario: Row #18
     | wife_is_pregnant | not husband | |
     | domestic_violence | False | |
   And I take a screenshot
-    And I should see the phrase "Your Personal Action Plan for asking the court for a divorce, dissolution or legal separation in Alaska in 6 steps"
+    And I should see the phrase "Your Personal Action Plan for asking the court for a dissolution or uncontested divorce in Alaska in 6 steps"
     And I should see the phrase "Decide which court should hear your case"
     And I should see the phrase "Learn about dissolutions and uncontested divorces"
     And I should see the phrase "Fill out the forms for an uncontested divorce"
     And I should see the phrase "File the original with your local court"
-    And I should see the phrase "Read the “Domestic Relations Procedural Order” or Standing Order if the clerk gives you one when you file your case"
+    And I should see the phrase "Read the â€œDomestic Relations Procedural Orderâ€ or Standing Order if the clerk gives you one when you file your case"
     And I should see the phrase "Get more information or help"
     # And I download "asking_for_divorce_action_plan.pdf" 
 
@@ -97,13 +97,13 @@ Scenario: Row #21
     | wife_is_pregnant | not pregnant | |
     | domestic_violence | False | |
   And I take a screenshot
-    And I should see the phrase "Your Personal Action Plan for asking the court for a divorce, dissolution or legal separation in Alaska in 7 steps"
+    And I should see the phrase "Your Personal Action Plan for asking the court for a dissolution or uncontested divorce in Alaska in 7 steps"
     And I should see the phrase "Decide which court should hear your case"
     And I should see the phrase "Talk to your spouse to see if you agree"
     And I should see the phrase "Learn about dissolutions and uncontested divorces"
     And I should see the phrase "Fill out the forms for an uncontested divorce"
     And I should see the phrase "File the original with your local court"
-    And I should see the phrase "Read the “Domestic Relations Procedural Order” or Standing Order if the clerk gives you one when you file your case"
+    And I should see the phrase "Read the â€œDomestic Relations Procedural Orderâ€ or Standing Order if the clerk gives you one when you file your case"
     And I should see the phrase "Get more information or help"
     # And I download "asking_for_divorce_action_plan.pdf"
 
@@ -124,12 +124,12 @@ Scenario: Row #23
     | wife_is_pregnant | not pregnant | |
     | domestic_violence | False | |
   And I take a screenshot
-    And I should see the phrase "Your Personal Action Plan for asking the court for a divorce, dissolution or legal separation in Alaska in 7 steps"
+    And I should see the phrase "Your Personal Action Plan for asking the court for a dissolution or uncontested divorce in Alaska in 7 steps"
     And I should see the phrase "Decide which court should hear your case"
     And I should see the phrase "Learn about dissolutions and uncontested divorces"
     And I should see the phrase "Fill out the forms for an uncontested divorce"
     And I should see the phrase "File the original with your local court"
-    And I should see the phrase "Read the “Domestic Relations Procedural Order” or Standing Order if the clerk gives you one when you file your case"
+    And I should see the phrase "Read the â€œDomestic Relations Procedural Orderâ€ or Standing Order if the clerk gives you one when you file your case"
     And I should see the phrase "Learn about paternity testing"
     And I should see the phrase "Get more information or help"
     # And I download "asking_for_divorce_action_plan.pdf"
@@ -150,12 +150,12 @@ Scenario: Row #24
     | wife_is_pregnant | not husband | |
     | domestic_violence | False | |
   And I take a screenshot
-    And I should see the phrase "Your Personal Action Plan for asking the court for a divorce, dissolution or legal separation in Alaska in 7 steps"
+    And I should see the phrase "Your Personal Action Plan for asking the court for a dissolution or uncontested divorce in Alaska in 7 steps"
     And I should see the phrase "Talk to your spouse to see if you agree"
     And I should see the phrase "Learn about dissolutions and uncontested divorces"
     And I should see the phrase "Fill out the forms for an uncontested divorce"
     And I should see the phrase "File the original with your local court"
-    And I should see the phrase "Read the “Domestic Relations Procedural Order” or Standing Order if the clerk gives you one when you file your case"
+    And I should see the phrase "Read the â€œDomestic Relations Procedural Orderâ€ or Standing Order if the clerk gives you one when you file your case"
     And I should see the phrase "Learn about paternity testing"
     And I should see the phrase "Get more information or help"
     # And I download "asking_for_divorce_action_plan.pdf"
@@ -178,12 +178,12 @@ Scenario: Row #26
     | wife_is_pregnant | not pregnant | |
     | domestic_violence | True | |
   And I take a screenshot
-    And I should see the phrase "Your Personal Action Plan for asking the court for a divorce, dissolution or legal separation in Alaska in 7 steps"
+    And I should see the phrase "Your Personal Action Plan for asking the court for a dissolution or uncontested divorce in Alaska in 7 steps"
     And I should see the phrase "Decide which court should hear your case"
     And I should see the phrase "Learn about dissolutions and uncontested divorces"
     And I should see the phrase "Fill out the forms to start your case"
     And I should see the phrase "File the original with your local court"
-    And I should see the phrase "Read the “Domestic Relations Procedural Order” or Standing Order if the clerk gives you one when you file your case"
+    And I should see the phrase "Read the â€œDomestic Relations Procedural Orderâ€ or Standing Order if the clerk gives you one when you file your case"
     And I should see the phrase "Learn about abuse or domestic violence resources & reaching an agreement"
     And I should see the phrase "Get more information or help"
     # And I download "asking_for_divorce_action_plan.pdf" 
@@ -204,12 +204,12 @@ Scenario: Row #29
     | wife_is_pregnant | husband | |
     | domestic_violence | False | |
   And I take a screenshot
-    And I should see the phrase "Your Personal Action Plan for asking the court for a divorce, dissolution or legal separation in Alaska in 6 steps"
+    And I should see the phrase "Your Personal Action Plan for asking the court for a dissolution or uncontested divorce in Alaska in 6 steps"
     And I should see the phrase "Talk to your spouse to see if you agree"
     And I should see the phrase "Learn about dissolutions and uncontested divorces"
     And I should see the phrase "Fill out the forms for an uncontested divorce"
     And I should see the phrase "File the original with your local court"
-    And I should see the phrase "Read the “Domestic Relations Procedural Order” or Standing Order if the clerk gives you one when you file your case"
+    And I should see the phrase "Read the â€œDomestic Relations Procedural Orderâ€ or Standing Order if the clerk gives you one when you file your case"
     And I should see the phrase "Get more information or help"
     # And I download "asking_for_divorce_action_plan.pdf"
 
@@ -232,12 +232,12 @@ Scenario: Row #33
     | wife_is_pregnant | not pregnant | |
     | domestic_violence | False | |
   And I take a screenshot
-    And I should see the phrase "Your Personal Action Plan for asking the court for a divorce, dissolution or legal separation in Alaska in 6 steps"
+    And I should see the phrase "Your Personal Action Plan for asking the court for a dissolution or uncontested divorce in Alaska in 6 steps"
     And I should see the phrase "Decide if Alaska is the right state for your case"
     And I should see the phrase "Learn about dissolutions and uncontested divorces"
     And I should see the phrase "Fill out the forms for an uncontested divorce"
     And I should see the phrase "File the original with your local court"
-    And I should see the phrase "Read the “Domestic Relations Procedural Order” or Standing Order if the clerk gives you one when you file your case"
+    And I should see the phrase "Read the â€œDomestic Relations Procedural Orderâ€ or Standing Order if the clerk gives you one when you file your case"
     And I should see the phrase "Get more information or help"
     # And I download "asking_for_divorce_action_plan.pdf" 
     
@@ -260,13 +260,13 @@ Scenario: Row #34
     | wife_is_pregnant | husband | |
     | domestic_violence | True | |
   And I take a screenshot
-    And I should see the phrase "Your Personal Action Plan for asking the court for a divorce, dissolution or legal separation in Alaska in 8 steps"
+    And I should see the phrase "Your Personal Action Plan for asking the court for a dissolution or uncontested divorce in Alaska in 8 steps"
     And I should see the phrase "Decide if Alaska is the right state for your case"
     And I should see the phrase "Talk to your spouse to see if you agree"
     And I should see the phrase "Learn about dissolutions and uncontested divorces"
     And I should see the phrase "Fill out the forms for an uncontested divorce"
     And I should see the phrase "File the original with your local court"
-    And I should see the phrase "Read the “Domestic Relations Procedural Order” or Standing Order if the clerk gives you one when you file your case"
+    And I should see the phrase "Read the â€œDomestic Relations Procedural Orderâ€ or Standing Order if the clerk gives you one when you file your case"
     And I should see the phrase "Learn about abuse or domestic violence resources & reaching an agreement"
     And I should see the phrase "Get more information or help"
     # And I download "asking_for_divorce_action_plan.pdf" 
@@ -288,12 +288,12 @@ Scenario: Row #38
     | wife_is_pregnant | not pregnant | |
     | domestic_violence | True | |
   And I take a screenshot
-    And I should see the phrase "Your Personal Action Plan for asking the court for a divorce, dissolution or legal separation in Alaska in 7 steps"
+    And I should see the phrase "Your Personal Action Plan for asking the court for a dissolution or uncontested divorce in Alaska in 7 steps"
     And I should see the phrase "Decide if Alaska is the right state for your case"
     And I should see the phrase "Learn about dissolutions and uncontested divorces"
     And I should see the phrase "Fill out the forms for an uncontested divorce"
     And I should see the phrase "File the original with your local court"
-    And I should see the phrase "Read the “Domestic Relations Procedural Order” or Standing Order if the clerk gives you one when you file your case"
+    And I should see the phrase "Read the â€œDomestic Relations Procedural Orderâ€ or Standing Order if the clerk gives you one when you file your case"
     And I should see the phrase "Learn about abuse or domestic violence resources & reaching an agreement"
     And I should see the phrase "Get more information or help"
     # And I download "asking_for_divorce_action_plan.pdf" 
@@ -315,12 +315,12 @@ Scenario: Row #42
     | wife_is_pregnant | not husband | |
     | domestic_violence | False | |
   And I take a screenshot
-    And I should see the phrase "Your Personal Action Plan for asking the court for a divorce, dissolution or legal separation in Alaska in 7 steps"
+    And I should see the phrase "Your Personal Action Plan for asking the court for a dissolution or uncontested divorce in Alaska in 7 steps"
     And I should see the phrase "Decide if Alaska is the right state for your case"
     And I should see the phrase "Learn about dissolutions and uncontested divorces"
     And I should see the phrase "Fill out the forms for an uncontested divorce"
     And I should see the phrase "File the original with your local court"
-    And I should see the phrase "Read the “Domestic Relations Procedural Order” or Standing Order if the clerk gives you one when you file your case"
+    And I should see the phrase "Read the â€œDomestic Relations Procedural Orderâ€ or Standing Order if the clerk gives you one when you file your case"
     And I should see the phrase "Learn about paternity testing"
     And I should see the phrase "Get more information or help"
     # And I download "asking_for_divorce_action_plan.pdf"
@@ -341,7 +341,7 @@ Scenario: Row 261
     | wife_is_pregnant | not husband | |
     | domestic_violence | False | |
   And I take a screenshot
-    And I should see the phrase "Your Personal Action Plan for asking the court for a divorce, dissolution or legal separation in Alaska in 8 steps"
+    And I should see the phrase "Your Personal Action Plan for asking the court for a dissolution or uncontested divorce in Alaska in 8 steps"
     And I should see the phrase "Decide if Alaska is the right state for your case"
     And I should see the phrase "Review common situations where there are no marital assets and debts to divide"
     And I should see the phrase "Make sure you do not have marital assets and debts to divide"
@@ -367,7 +367,7 @@ Scenario: Row #262
     | no_prop_or_debt_agree | False | |
     | know_spouse_whereabouts | True | |
   And I take a screenshot
-    And I should see the phrase "Your Personal Action Plan for asking the court for a divorce, dissolution or legal separation in Alaska in 9 steps"
+    And I should see the phrase "Your Personal Action Plan for asking the court for a dissolution or uncontested divorce in Alaska in 9 steps"
     And I should see the phrase "Decide which court should hear your case"
     And I should see the phrase "Review common situations where there are no marital assets and debts to divide"
     And I should see the phrase "Make sure you do not have marital assets and debts to divide"
@@ -395,7 +395,7 @@ Scenario: Row #263
     | no_prop_or_debt_agree | False | |
     | know_spouse_whereabouts | False | |
   And I take a screenshot
-    And I should see the phrase "Your Personal Action Plan for asking the court for a divorce, dissolution or legal separation in Alaska in 3 steps"
+    And I should see the phrase "Your Personal Action Plan for asking the court for a dissolution or uncontested divorce in Alaska in 3 steps"
     And I should see the phrase "Decide which court should hear your case"
     And I should see the phrase "File to end your marriage when you do not know where your spouse is, there are no children, and there is no property or debt to divide"
     And I should see the phrase "Get more information or help"
@@ -417,7 +417,7 @@ Scenario: Row #264
     | wife_is_pregnant | husband | |
     | domestic_violence | True | |
   And I take a screenshot
-    And I should see the phrase "Your Personal Action Plan for asking the court for a divorce, dissolution or legal separation in Alaska in 7 steps"
+    And I should see the phrase "Your Personal Action Plan for asking the court for a dissolution or uncontested divorce in Alaska in 7 steps"
     And I should see the phrase "Decide which court should hear your case"
     And I should see the phrase "Learn about dissolutions and uncontested divorces"
     And I should see the phrase "Fill out the forms to start your case"
@@ -445,7 +445,7 @@ Scenario: Row #269
     | wife_is_pregnant | not husband | |
     | domestic_violence | False | |
   And I take a screenshot
-    And I should see the phrase "Your Personal Action Plan for asking the court for a divorce, dissolution or legal separation in Alaska in 6 steps"
+    And I should see the phrase "Your Personal Action Plan for asking the court for a dissolution or uncontested divorce in Alaska in 6 steps"
     And I should see the phrase "Decide if Alaska is the right state for your case"
     And I should see the phrase "Learn about dissolutions and uncontested divorces"
     And I should see the phrase "Fill out the forms for an uncontested divorce"
@@ -468,7 +468,7 @@ Scenario: Row #268
     | wife_is_pregnant | not pregnant | |
     | domestic_violence | True | |
   And I take a screenshot
-    And I should see the phrase "Your Personal Action Plan for asking the court for a divorce, dissolution or legal separation in Alaska in 6 steps"
+    And I should see the phrase "Your Personal Action Plan for asking the court for a dissolution or uncontested divorce in Alaska in 6 steps"
     And I should see the phrase "Learn about dissolutions and uncontested divorces"
     And I should see the phrase "Fill out the forms to start your case"
     And I should see the phrase "File the original with your local court"
@@ -491,7 +491,7 @@ Scenario: Row #271
     | wife_is_pregnant | husband | |
     | domestic_violence | False | |
   And I take a screenshot
-    And I should see the phrase "Your Personal Action Plan for asking the court for a divorce, dissolution or legal separation in Alaska in 6 steps"
+    And I should see the phrase "Your Personal Action Plan for asking the court for a dissolution or uncontested divorce in Alaska in 6 steps"
     And I should see the phrase "Talk to your spouse to see if you agree"
     And I should see the phrase "Learn about dissolutions and uncontested divorces"
     And I should see the phrase "Fill out the forms for an uncontested divorce"
@@ -514,7 +514,7 @@ Scenario: Row #272
     | wife_is_pregnant | not husband | |
     | domestic_violence | True | |
   And I take a screenshot
-    And I should see the phrase "Your Personal Action Plan for asking the court for a divorce, dissolution or legal separation in Alaska in 7 steps"
+    And I should see the phrase "Your Personal Action Plan for asking the court for a dissolution or uncontested divorce in Alaska in 7 steps"
     And I should see the phrase "Talk to your spouse to see if you agree"
     And I should see the phrase "Learn about dissolutions and uncontested divorces"
     And I should see the phrase "Fill out the forms for an uncontested divorce"
@@ -539,7 +539,7 @@ Scenario: Row #275
     | wife_is_pregnant | not pregnant | |
     | domestic_violence | False | |
   And I take a screenshot
-    And I should see the phrase "Your Personal Action Plan for asking the court for a divorce, dissolution or legal separation in Alaska in 6 steps"
+    And I should see the phrase "Your Personal Action Plan for asking the court for a dissolution or uncontested divorce in Alaska in 6 steps"
     And I should see the phrase "Talk to your spouse to see if you agree"
     And I should see the phrase "Learn about dissolutions and uncontested divorces"
     And I should see the phrase "Fill out the forms for an uncontested divorce"
