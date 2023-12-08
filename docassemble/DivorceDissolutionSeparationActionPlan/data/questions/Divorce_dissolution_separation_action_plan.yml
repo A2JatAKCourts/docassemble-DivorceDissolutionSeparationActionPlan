@@ -278,14 +278,27 @@ question: |
 
 fields:
   - no label: agree_or_settle_kids
-    input type: radio
-    choices:
-      - "Yes.": yes
-      - "No.": no
-      - "I do not know if we agree on everything but would like to talk to my spouse to see if we do.": do not know
+    datatype: radio
+    code: |
+      agreeoptions
   - note: |
       #### <i class="fa-regular fa-lightbulb"></i> Learn more ####
       Marital property is anything earned or bought during the marriage.  This commonly includes houses, land, vehicles, money, retirement accounts, pensions, household goods, furniture, snowmachines, four-wheelers and each spouse’s personal property.  Marital debt is any money owed to a business or person from during the marriage. Some common types of marital debt include credit card debt, medical bills, mortgages, car loans, or personal loans. 
+---
+code: |
+   if legal_separation_or_divorce == 'divorce':
+     agreeoptions = [
+                {'yes': "Yes."},
+                {'no': "No."},
+                {'do not know': "I do not know if we agree on everything but would like to talk to my spouse to see if we do."}
+                  ]
+   else: 
+     agreeoptions = [
+                {'yes': "Yes."},
+                {'no': "No."}
+                  ]
+             
+
 ---
 id: Talking to your spouse has been added to your Action Plan
 continue button field: talk_to_spouse
@@ -574,6 +587,6 @@ attachment:
   filename: Divorce_dissolution_separation_action_plan
   variable name: Divorce_dissolution_separation_action_plan_attachment[i]
   skip undefined: True
-  docx template file: dummy_file.docx
-  # docx template file: Divorce_dissolution_separation_action_plan.docx
+  # docx template file: dummy_file.docx
+  docx template file: Divorce_dissolution_separation_action_plan.docx
   tagged pdf: True
