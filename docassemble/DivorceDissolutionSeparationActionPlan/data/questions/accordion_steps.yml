@@ -12,6 +12,9 @@ question: |
   # <i class="fa-thin fa-list"></i>Your Personal Action Plan is ready!
   % endif
 subquestion: |
+  % if not defined('legal_separation_or_divorce'):
+  #### Your Personal Action Plan for asking the court for a divorce, dissolution, or legal separation in Alaska in ${ len(step_list) } steps
+  % else:
   % if legal_separation_or_divorce == 'divorce':
   % if (minor_children and agree_or_settle_kids in ('yes', 'do not know')) \
     or (minor_children == False and agree_or_settle in ('yes', 'do not know')):
@@ -21,6 +24,7 @@ subquestion: |
   % endif
   % else:
   #### Your Personal Action Plan for asking the court for a legal separation in Alaska in ${ len(step_list) } steps
+  % endif  
   % endif 
   
   % for iteration_index, step_tuple in enumerate( step_list ):
