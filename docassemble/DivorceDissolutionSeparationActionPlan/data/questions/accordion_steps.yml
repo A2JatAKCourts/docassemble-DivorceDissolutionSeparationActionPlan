@@ -12,8 +12,20 @@ question: |
   # <i class="fa-thin fa-list"></i>Your Personal Action Plan is ready!
   % endif
 subquestion: |
-  
-  #### Your Personal Action Plan for asking the court for a divorce, dissolution or legal separation in Alaska in ${ len(step_list) } steps
+  % if not defined('legal_separation_or_divorce'):
+  #### Your Personal Action Plan for asking the court for a divorce, dissolution, or legal separation in Alaska in ${ len(step_list) } steps
+  % else:
+  % if legal_separation_or_divorce == 'divorce':
+  % if (minor_children and agree_or_settle_kids in ('yes', 'do not know')) \
+    or (minor_children == False and agree_or_settle in ('yes', 'do not know')):
+  #### Your Personal Action Plan for asking the court for a dissolution or uncontested divorce in Alaska in ${ len(step_list) } steps
+  else:
+  #### Your Personal Action Plan for asking the court for a divorce in Alaska in ${ len(step_list) } steps
+  % endif
+  % else:
+  #### Your Personal Action Plan for asking the court for a legal separation in Alaska in ${ len(step_list) } steps
+  % endif  
+  % endif 
   
   % for iteration_index, step_tuple in enumerate( step_list ):
   ${ collapse_template(step_tuple[0], closed_icon="plus", open_icon="minus") }
@@ -141,15 +153,25 @@ code: |
     
     
     if legal_separation_or_divorce == 'legal separation':
-      if agree_or_settle_kids in('yes', 'do not know'):
+      if agree_or_settle_kids =='yes':
         # legal_separation_agree_block
         domestic_violence_question = "and how domestic violence can affect your agreement"
         if minor_children:
           paternity
         wife_is_pregnant
-        domestic_violence
+        add_unique_step((learn_legal_sep_step, "learn_legal_sep_idx"), step_list)
+        add_unique_step((legal_separation_agree_step, "legal_separation_agree_idx"), step_list)
+        add_unique_step((file_forms_step, "file_forms_idx"), step_list)
+        add_unique_step((read_drpo_step, "read_drpo_idx"), step_list)
+        add_unique_step((learn_more_about_process_step, "learn_more_about_process_idx"), step_list)
+        if know_spouse_whereabouts == False:
+          add_unique_step((alternate_service_step, "alternate_service_idx"), step_list)
+        if minor_children and paternity == 'do not know':
+          add_unique_step((paternity_testing_step, "paternity_testing_idx"), step_list)
+        if domestic_violence:
+          add_unique_step((domestic_violence_step, "domestic_violence_idx"), step_list)
       else:
-        legal_separation_not_agree_block
+        # legal_separation_not_agree_block
         know_spouse_whereabouts
         domestic_violence_question = "and how domestic violence affects your case"
         if minor_children:
@@ -157,8 +179,26 @@ code: |
         wife_is_pregnant
         if not info_on_agree and not minor_children and wife_is_pregnant in ('not husband','not pregnant'):
           domestic_violence_question = ""
-        domestic_violence
-        default_info
+        
+        add_unique_step((learn_legal_sep_step, "learn_legal_sep_idx"), step_list)
+        add_unique_step((legal_separation_agree_not_step, "legal_separation_agree_not_idx"), step_list)
+        add_unique_step((file_forms_step, "file_forms_idx"), step_list)
+        add_unique_step((read_drpo_step, "read_drpo_idx"), step_list)
+        add_unique_step((learn_more_about_process_step, "learn_more_about_process_idx"), step_list)
+        if know_spouse_whereabouts == False:
+          add_unique_step((alternate_service_step, "alternate_service_idx"), step_list)
+        if minor_children and paternity == 'do not know':
+          add_unique_step((paternity_testing_step, "paternity_testing_idx"), step_list)
+        if info_on_agree:
+          add_unique_step((talk_to_spouse_step, "talk_to_spouse_idx"), step_list)
+          domestic_violence_question = "and how domestic violence can affect your agreement"
+        else:
+          if minor_children:
+            domestic_violence_question = "and how domestic violence affects your case"
+        if domestic_violence:
+          add_unique_step((domestic_violence_step, "domestic_violence_idx"), step_list)
+        if default_info:
+          add_unique_step((default_step, "default_idx"), step_list)
     
   add_unique_step((get_help, "get_help_idx"), step_list)
   
@@ -707,7 +747,7 @@ content: |
 ---
 template: legal_separation_agree_step
 subject: |
-  Step ${ legal_separation_agree_idx }: Fill out the forms to start your case
+  Step ${ legal_separation_agree_idx }: Fill out the forms to start a legal separation case
 content: |
   <div class="step-subheading">Required Forms - 1 copy that both spouses sign if signatures are needed</div>
   % if minor_children or wife_is_pregnant in('husband', 'not husband'):
@@ -794,7 +834,7 @@ content: |
   % endif
 
   % if minor_children or wife_is_pregnant in('husband', 'not husband'):
-  % if paternity in('yes', 'do not know'):
+  % if minor_children and paternity in('yes', 'do not know'):
 
   <div class="step-subheading">Paternity form</div>
   If the husband is not the biological or adopted father of a child born during the marriage you can ask the court to remove the husband’s rights and responsibilities for that child. This is called “disestablishing paternity.” Use: 
@@ -831,7 +871,7 @@ content: |
 ---
 template: legal_separation_do_not_agree_step
 subject: |
-  Step ${ legal_separation_do_not_agree_idx }: Fill out the forms to start your case
+  Step ${ legal_separation_do_not_agree_idx }: Fill out the forms to start a legal separation case
 content: |
   content: |
   You get your case number when you file your documents with the court.  Write the case number on your forms when you file them.
@@ -1046,7 +1086,7 @@ content: |
 template: alternate_service_step
 subject: |
   Step ${ alternate_service_idx }: 
-  % if not minor_children and agree_or_settle == 'no prop debt or pregnancy' and not no_prop_or_debt_agree and not know_spouse_whereabouts:
+  % if not minor_children and legal_separation_or_divorce == 'divorce' and agree_or_settle == 'no prop debt or pregnancy' and not no_prop_or_debt_agree and not know_spouse_whereabouts:
   File to end your marriage when you do not know where your spouse is, there are no children, and there is no property or debt to divide
   % else:
   Learn about starting a case when you do not know where your spouse is 
@@ -1133,7 +1173,9 @@ subject: |
   Step ${ domestic_violence_idx }: 
     Learn about abuse or domestic violence 
     % if not minor_children:
-    % if (agree_or_settle == 'no' and not info_on_agree) or (agree_or_settle == 'no prop debt or pregnancy' and not no_prop_or_debt_agree):
+    % if (legal_separation_or_divorce == 'divorce' and agree_or_settle == 'no' and info_on_agree == False) \
+        or ( legal_separation_or_divorce == 'divorce' and agree_or_settle == 'no prop debt or pregnancy' and no_prop_or_debt_agree == False) \
+        or (legal_separation_or_divorce == 'legal separation' and agree_or_settle_kids == 'no'):
     resources 
     % else:
     resources & reaching an agreement
@@ -1155,7 +1197,9 @@ content: |
     *	See if You Qualify For A Free Lawyer Through Your Local Domestic Violence Program.
     *	See if You Qualify For A Free Lawyer Through Alaska Legal Services.
   % if not minor_children:
-  % if ((agree_or_settle == 'no prop debt or pregnancy' and no_prop_or_debt_agree) or agree_or_settle in ('yes','do not know')):
+  % if (legal_separation_or_divorce == 'divorce' and agree_or_settle == 'no prop debt or pregnancy' and no_prop_or_debt_agree) \
+    or (legal_separation_or_divorce == 'divorce' and agree_or_settle in ('yes','do not know')) \
+    or (legal_separation_or_divorce == 'legal separation' and agree_or_settle_kids == 'yes'):
   However, some people in a marriage with domestic violence are comfortable reaching an agreement about dividing marital property and debt for a variety of reasons. Sometimes:
   
       * the domestic violence does not make either spouse uncomfortable or afraid to ask for what they want in the property & debt division;
@@ -1245,14 +1289,14 @@ content: |
   % if legal_separation_or_divorce == 'divorce':
   Fill out the top section, but do not sign where it says “Judge” at the end.
   % if minor_children:
-  % if property_for_default:
+  % if legal_separation_or_divorce == 'divorce' and property_for_default:
    *	**Findings of Fact and Conclusions of Law & Decree of Divorce**, [DR-800-805](https://public.courts.alaska.gov/web/forms/docs/dr-800-805.pdf) (fill out the “Findings of Fact” section)
   % else:
   * **Divorce Findings of Fact & Conclusions of Law, SHC-520**: [Word](https://www.courts.alaska.gov/shc/family/docs/shc-520.doc) | [PDF](https://www.courts.alaska.gov/shc/family/docs/shc-520n.pdf) (fill out the "Findings of Fact" section)
   *  **Divorce Judgment and Decree, SHC-525**: [Word](https://www.courts.alaska.gov/shc/family/docs/shc-525.doc) | [PDF](https://www.courts.alaska.gov/shc/family/docs/shc-525n.pdf)
   % endif
   % else: 
-  % if property_for_default:
+  % if  legal_separation_or_divorce == 'divorce' and property_for_default:
   * **Divorce Findings of Fact & Conclusions  of Law with Property and No Children**, [DR-801-806](https://public.courts.alaska.gov/web/forms/docs/dr-801-806.pdf) (fill out the “Findings of Fact” section)
   % else:
   
