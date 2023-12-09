@@ -26,7 +26,7 @@ Scenario: Row #16
     And I should see the phrase "Read the â€œDomestic Relations Procedural Orderâ€ or Standing Order if the clerk gives you one when you file your case"
     And I should see the phrase "Learn about abuse or domestic violence resources & reaching an agreement"
     And I should see the phrase "Get more information or help"
-    # And I download "asking_for_divorce_action_plan.pdf" 
+    And I download "divorce_dissolution_separation_action_plan.pdf" 
 
 @row17
 Scenario: Row #17

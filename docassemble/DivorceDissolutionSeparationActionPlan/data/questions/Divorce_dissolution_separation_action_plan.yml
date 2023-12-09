@@ -563,12 +563,12 @@ progress: 100
 # ALDocument objects specify the metadata for each template
 objects:
 #  - Divorce_dissolution_separation_action_plan_Post_interview_instructions: ALDocument.using(title="Instructions", filename="Divorce_dissolution_separation_action_plan_next_steps.docx", enabled=True, has_addendum=False)
-  - Divorce_dissolution_separation_action_plan_attachment: ALDocument.using(title="Divorce dissolution separation action plan", filename="Divorce_dissolution_separation_action_plan", enabled=True, has_addendum=False, suffix_to_append="" )
+  - divorce_dissolution_separation_action_plan_attachment: ALDocument.using(title="divorce dissolution separation action plan", filename="divorce_dissolution_separation_action_plan", enabled=True, has_addendum=False, suffix_to_append="" )
 ---
 # Bundles group the ALDocuments into separate downloads, such as for court and for the user
 objects:
 #  - al_user_bundle: ALDocumentBundle.using(elements=[Divorce_dissolution_separation_action_plan_Post_interview_instructions, Divorce_dissolution_separation_action_plan_attachment], filename="Divorce_dissolution_separation_action_plan", title="All forms to download for your records", enabled=True)
-  - al_user_bundle: ALDocumentBundle.using(elements=[Divorce_dissolution_separation_action_plan_attachment],  filename="Divorce_dissolution_separation_action_plan", title="All forms to download for your records", enabled=True)
+  - al_user_bundle: ALDocumentBundle.using(elements=[divorce_dissolution_separation_action_plan_attachment],  filename="divorce_dissolution_separation_action_plan", title="All forms to download for your records", enabled=True, has_addendum=False, suffix_to_append="")
 #  - al_court_bundle: ALDocumentBundle.using(elements=[Divorce_dissolution_separation_action_plan_attachment],  filename="Divorce_dissolution_separation_action_plan", title="All forms to deliver to court", enabled=True)
 ---
 # Each attachment defines a key in an ALDocument. We use `i` as the placeholder here so the same template is 
@@ -583,10 +583,9 @@ objects:
 #  tagged pdf: True
 ---
 attachment:
-  name: Divorce dissolution separation action plan
-  filename: Divorce_dissolution_separation_action_plan
-  variable name: Divorce_dissolution_separation_action_plan_attachment[i]
+  name: divorce dissolution separation action plan
+  filename: divorce_dissolution_separation_action_plan
+  variable name: divorce_dissolution_separation_action_plan_attachment[i]
   skip undefined: True
-  # docx template file: dummy_file.docx
-  docx template file: Divorce_dissolution_separation_action_plan.docx
+  docx template file: divorce_dissolution_separation_action_plan.docx
   tagged pdf: True
