@@ -78,8 +78,7 @@ code: |
         add_unique_step((learn_disso_div_step, "learn_disso_div_idx"), step_list)
         add_unique_step((uncontested_divorce_step, "uncontested_divorce_idx"), step_list)
         add_unique_step((file_forms_step, "file_forms_idx"), step_list)
-        add_unique_step((read_drpo_step, "read_drpo_idx"), step_list)
-        add_unique_step((learn_more_about_process_step, "learn_more_about_process_idx"), step_list)  
+        add_unique_step((read_drpo_step, "read_drpo_idx"), step_list) 
       if no_prop_or_debt_agree == False:
         if know_spouse_whereabouts:
           add_unique_step((review_common_situations_step, "review_common_situations_idx"), step_list)
@@ -88,8 +87,7 @@ code: |
           add_unique_step((uncontested_divorce_step, "uncontested_divorce_idx"), step_list)
           add_unique_step((file_forms_step, "file_forms_idx"), step_list)
           add_unique_step((read_drpo_step, "read_drpo_idx"), step_list)
-          add_unique_step((serve_complaint_step, "serve_complaint_idx"), step_list)
-          add_unique_step((learn_more_about_process_step, "learn_more_about_process_idx"), step_list)  
+          add_unique_step((serve_complaint_step, "serve_complaint_idx"), step_list)  
         if know_spouse_whereabouts == False:
           add_unique_step((alternate_service_step, "alternate_service_idx"), step_list)
             
@@ -110,7 +108,6 @@ code: |
       add_unique_step((uncontested_divorce_step, "uncontested_divorce_idx"), step_list)
       add_unique_step((file_forms_step, "file_forms_idx"), step_list)
       add_unique_step((read_drpo_step, "read_drpo_idx"), step_list)
-      add_unique_step((learn_more_about_process_step, "learn_more_about_process_idx"), step_list)
       if minor_children and paternity == 'do not know':
         add_unique_step((paternity_testing_step, "paternity_testing_idx"), step_list)
       if domestic_violence:
