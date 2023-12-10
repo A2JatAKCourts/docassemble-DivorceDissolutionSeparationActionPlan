@@ -1,549 +1,372 @@
-@dissolution
+@LegalSepAgreeNot
 Feature: User paths
 
-@row16
-Scenario: Row #16
-  Given I start the interview at "Divorce_dissolution_separation_action_plan.yml"
-  And I get to the question id "final screen" with this data:
-    | var | value | trigger |
-    | minor_children | True | |
-    | other_case | True | |
-    | ongoing | yes | |
-    | military | True | |
-    | other_state_case | continue | |
-    | legal_separation_or_divorce | divorce | |
-    | agree_or_settle_kids | yes | |
-    | have_property_and_debt | True | |
-    | paternity | yes | |
-    | wife_is_pregnant | husband | |
-    | domestic_violence | True | |
-  And I take a screenshot
-    And I should see the phrase "Your Personal Action Plan for asking the court for a dissolution or uncontested divorce in Alaska in 7 steps"
-    And I should see the phrase "Decide which court should hear your case"
-    And I should see the phrase "Learn about dissolutions and uncontested divorces"
-    And I should see the phrase "Fill out the forms for an uncontested divorce"
-    And I should see the phrase "File the original with your local court"
-    And I should see the phrase "Read the â€œDomestic Relations Procedural Orderâ€ or Standing Order if the clerk gives you one when you file your case"
-    And I should see the phrase "Learn about abuse or domestic violence resources & reaching an agreement"
-    And I should see the phrase "Get more information or help"
-    # And I download "asking_for_divorce_action_plan.pdf" 
 
-@row17
-Scenario: Row #17
+@row366
+Scenario: Row #366
   Given I start the interview at "Divorce_dissolution_separation_action_plan.yml"
   And I get to the question id "final screen" with this data:
     | var | value | trigger |
     | minor_children | True | |
     | other_case | False | |
     | residency_and_jurisdiction | True | |
-    | legal_separation_or_divorce | divorce | |
-    | agree_or_settle_kids | do not know | |
-    | talk_to_spouse | True | |
-    | have_property_and_debt | True | |
-    | paternity | yes | |
-    | wife_is_pregnant | not pregnant | |
-    | domestic_violence | False | |
-  And I take a screenshot
-    And I should see the phrase "Your Personal Action Plan for asking the court for a dissolution or uncontested divorce in Alaska in 6 steps"
-    And I should see the phrase "Talk to your spouse to see if you agree"
-    And I should see the phrase "Learn about dissolutions and uncontested divorces"
-    And I should see the phrase "Fill out the forms for an uncontested divorce"
-    And I should see the phrase "File the original with your local court"
-    And I should see the phrase "Read the â€œDomestic Relations Procedural Orderâ€ or Standing Order if the clerk gives you one when you file your case"
-    And I should see the phrase "Get more information or help"
-    # And I download "asking_for_divorce_action_plan.pdf"
-    
-@row18
-Scenario: Row #18
-  Given I start the interview at "Divorce_dissolution_separation_action_plan.yml"
-  And I get to the question id "final screen" with this data:
-    | var | value | trigger |
-    | minor_children | True | |
-    | other_case | True | |
-    | ongoing | yes | |
-    | military | False  | |
-    | other_state_case | continue | |
-    | legal_separation_or_divorce | divorce | |
-    | agree_or_settle_kids | yes | |
-    | have_property_and_debt | True | |
-    | paternity | no | |
-    | wife_is_pregnant | not husband | |
-    | domestic_violence | False | |
-  And I take a screenshot
-    And I should see the phrase "Your Personal Action Plan for asking the court for a dissolution or uncontested divorce in Alaska in 6 steps"
-    And I should see the phrase "Decide which court should hear your case"
-    And I should see the phrase "Learn about dissolutions and uncontested divorces"
-    And I should see the phrase "Fill out the forms for an uncontested divorce"
-    And I should see the phrase "File the original with your local court"
-    And I should see the phrase "Read the â€œDomestic Relations Procedural Orderâ€ or Standing Order if the clerk gives you one when you file your case"
-    And I should see the phrase "Get more information or help"
-    # And I download "asking_for_divorce_action_plan.pdf" 
-
-@row21
-Scenario: Row #21
-  Given I start the interview at "Divorce_dissolution_separation_action_plan.yml"
-  And I get to the question id "final screen" with this data:
-    | var | value | trigger |
-    | minor_children | True | |
-    | other_case | True | |
-    | ongoing | yes | |
-    | military | False  | |
-    | other_state_case | continue | |
-    | legal_separation_or_divorce | divorce | |
-    | agree_or_settle_kids | do not know | |
-    | talk_to_spouse | True | |
-    | have_property_and_debt | True | |
-    | paternity | yes | |
-    | wife_is_pregnant | not pregnant | |
-    | domestic_violence | False | |
-  And I take a screenshot
-    And I should see the phrase "Your Personal Action Plan for asking the court for a dissolution or uncontested divorce in Alaska in 7 steps"
-    And I should see the phrase "Decide which court should hear your case"
-    And I should see the phrase "Talk to your spouse to see if you agree"
-    And I should see the phrase "Learn about dissolutions and uncontested divorces"
-    And I should see the phrase "Fill out the forms for an uncontested divorce"
-    And I should see the phrase "File the original with your local court"
-    And I should see the phrase "Read the â€œDomestic Relations Procedural Orderâ€ or Standing Order if the clerk gives you one when you file your case"
-    And I should see the phrase "Get more information or help"
-    # And I download "asking_for_divorce_action_plan.pdf"
-
-@row23
-Scenario: Row #23
-  Given I start the interview at "Divorce_dissolution_separation_action_plan.yml"
-  And I get to the question id "final screen" with this data:
-    | var | value | trigger |
-    | legal_separation_or_divorce | divorce | |
-    | minor_children | True | |
-    | other_case | True | |
-    | ongoing | yes | |
-    | military | False | |
-    | other_state_case | continue | |
-    | agree_or_settle_kids | yes | |
-    | have_property_and_debt | True | |
-    | paternity | do not know | |
-    | wife_is_pregnant | not pregnant | |
-    | domestic_violence | False | |
-  And I take a screenshot
-    And I should see the phrase "Your Personal Action Plan for asking the court for a dissolution or uncontested divorce in Alaska in 7 steps"
-    And I should see the phrase "Decide which court should hear your case"
-    And I should see the phrase "Learn about dissolutions and uncontested divorces"
-    And I should see the phrase "Fill out the forms for an uncontested divorce"
-    And I should see the phrase "File the original with your local court"
-    And I should see the phrase "Read the â€œDomestic Relations Procedural Orderâ€ or Standing Order if the clerk gives you one when you file your case"
-    And I should see the phrase "Learn about paternity testing"
-    And I should see the phrase "Get more information or help"
-    # And I download "asking_for_divorce_action_plan.pdf"
-    
-@row24
-Scenario: Row #24
-  Given I start the interview at "Divorce_dissolution_separation_action_plan.yml"
-  And I get to the question id "final screen" with this data:
-    | var | value | trigger |
-    | minor_children | True | |
-    | other_case | False | |
-    | residency_and_jurisdiction | True | |
-    | legal_separation_or_divorce | divorce | |
-    | agree_or_settle_kids | do not know | |
-    | have_property_and_debt | True | |
-    | paternity | do not know | |
-    | talk_to_spouse | True | |
-    | wife_is_pregnant | not husband | |
-    | domestic_violence | False | |
-  And I take a screenshot
-    And I should see the phrase "Your Personal Action Plan for asking the court for a dissolution or uncontested divorce in Alaska in 7 steps"
-    And I should see the phrase "Talk to your spouse to see if you agree"
-    And I should see the phrase "Learn about dissolutions and uncontested divorces"
-    And I should see the phrase "Fill out the forms for an uncontested divorce"
-    And I should see the phrase "File the original with your local court"
-    And I should see the phrase "Read the â€œDomestic Relations Procedural Orderâ€ or Standing Order if the clerk gives you one when you file your case"
-    And I should see the phrase "Learn about paternity testing"
-    And I should see the phrase "Get more information or help"
-    # And I download "asking_for_divorce_action_plan.pdf"
-
-
-@row26
-Scenario: Row #26
-  Given I start the interview at "Divorce_dissolution_separation_action_plan.yml"
-  And I get to the question id "final screen" with this data:
-    | var | value | trigger |
-    | minor_children | True | |
-    | other_case | True | |
-    | ongoing | yes | |
-    | military | False  | |
-    | other_state_case | continue | |
-    | legal_separation_or_divorce | divorce | |
-    | agree_or_settle_kids | yes | |
-    | have_property_and_debt | True | |
-    | paternity | no | |
-    | wife_is_pregnant | not pregnant | |
-    | domestic_violence | True | |
-  And I take a screenshot
-    And I should see the phrase "Your Personal Action Plan for asking the court for a dissolution or uncontested divorce in Alaska in 7 steps"
-    And I should see the phrase "Decide which court should hear your case"
-    And I should see the phrase "Learn about dissolutions and uncontested divorces"
-    And I should see the phrase "Fill out the forms to start your case"
-    And I should see the phrase "File the original with your local court"
-    And I should see the phrase "Read the â€œDomestic Relations Procedural Orderâ€ or Standing Order if the clerk gives you one when you file your case"
-    And I should see the phrase "Learn about abuse or domestic violence resources & reaching an agreement"
-    And I should see the phrase "Get more information or help"
-    # And I download "asking_for_divorce_action_plan.pdf" 
-
-@row29
-Scenario: Row #29
-  Given I start the interview at "Divorce_dissolution_separation_action_plan.yml"
-  And I get to the question id "final screen" with this data:
-    | var | value | trigger |
-    | minor_children | True | |
-    | other_case | False | |
-    | residency_and_jurisdiction | True | |
-    | legal_separation_or_divorce | divorce | |
-    | agree_or_settle_kids | do not know | |
-    | have_property_and_debt | False | |
-    | talk_to_spouse | True | |
-    | paternity | no | |
-    | wife_is_pregnant | husband | |
-    | domestic_violence | False | |
-  And I take a screenshot
-    And I should see the phrase "Your Personal Action Plan for asking the court for a dissolution or uncontested divorce in Alaska in 6 steps"
-    And I should see the phrase "Talk to your spouse to see if you agree"
-    And I should see the phrase "Learn about dissolutions and uncontested divorces"
-    And I should see the phrase "Fill out the forms for an uncontested divorce"
-    And I should see the phrase "File the original with your local court"
-    And I should see the phrase "Read the â€œDomestic Relations Procedural Orderâ€ or Standing Order if the clerk gives you one when you file your case"
-    And I should see the phrase "Get more information or help"
-    # And I download "asking_for_divorce_action_plan.pdf"
-
-
-@row33
-Scenario: Row #33
-  Given I start the interview at "Divorce_dissolution_separation_action_plan.yml"
-  And I get to the question id "final screen" with this data:
-    | var | value | trigger |
-    | minor_children | True | |
-    | other_case | True | |
-    | ongoing | no | |
-    | residency_and_jurisdiction | False | |
-    | military | True | |
-    | continue_despite_no_residency | continue | |
-    | legal_separation_or_divorce | divorce | |
-    | agree_or_settle_kids | yes | |
-    | have_property_and_debt | False | |
-    | paternity | yes | |
-    | wife_is_pregnant | not pregnant | |
-    | domestic_violence | False | |
-  And I take a screenshot
-    And I should see the phrase "Your Personal Action Plan for asking the court for a dissolution or uncontested divorce in Alaska in 6 steps"
-    And I should see the phrase "Decide if Alaska is the right state for your case"
-    And I should see the phrase "Learn about dissolutions and uncontested divorces"
-    And I should see the phrase "Fill out the forms for an uncontested divorce"
-    And I should see the phrase "File the original with your local court"
-    And I should see the phrase "Read the â€œDomestic Relations Procedural Orderâ€ or Standing Order if the clerk gives you one when you file your case"
-    And I should see the phrase "Get more information or help"
-    # And I download "asking_for_divorce_action_plan.pdf" 
-    
-@row34
-Scenario: Row #34
-  Given I start the interview at "Divorce_dissolution_separation_action_plan.yml"
-  And I get to the question id "final screen" with this data:
-    | var | value | trigger |
-    | minor_children | True | |
-    | other_case | True | |
-    | ongoing | no | |
-    | residency_and_jurisdiction | False | |
-    | military | False | |
-    | continue_despite_no_residency | continue | |
-    | legal_separation_or_divorce | divorce | |
-    | agree_or_settle_kids | do not know | |
-    | talk_to_spouse | True | |
-    | have_property_and_debt | False | |
-    | paternity | no | |
-    | wife_is_pregnant | husband | |
-    | domestic_violence | True | |
-  And I take a screenshot
-    And I should see the phrase "Your Personal Action Plan for asking the court for a dissolution or uncontested divorce in Alaska in 8 steps"
-    And I should see the phrase "Decide if Alaska is the right state for your case"
-    And I should see the phrase "Talk to your spouse to see if you agree"
-    And I should see the phrase "Learn about dissolutions and uncontested divorces"
-    And I should see the phrase "Fill out the forms for an uncontested divorce"
-    And I should see the phrase "File the original with your local court"
-    And I should see the phrase "Read the â€œDomestic Relations Procedural Orderâ€ or Standing Order if the clerk gives you one when you file your case"
-    And I should see the phrase "Learn about abuse or domestic violence resources & reaching an agreement"
-    And I should see the phrase "Get more information or help"
-    # And I download "asking_for_divorce_action_plan.pdf" 
-
-@row38
-Scenario: Row #38
-  Given I start the interview at "Divorce_dissolution_separation_action_plan.yml"
-  And I get to the question id "final screen" with this data:
-    | var | value | trigger |
-    | minor_children | True | |
-    | other_case | False | |
-    | residency_and_jurisdiction | False | |
-    | military | False | |
-    | continue_despite_no_residency | continue | |
-    | legal_separation_or_divorce | divorce | |
-    | agree_or_settle_kids | yes | |
-    | have_property_and_debt | False | |
-    | paternity | no | |
-    | wife_is_pregnant | not pregnant | |
-    | domestic_violence | True | |
-  And I take a screenshot
-    And I should see the phrase "Your Personal Action Plan for asking the court for a dissolution or uncontested divorce in Alaska in 7 steps"
-    And I should see the phrase "Decide if Alaska is the right state for your case"
-    And I should see the phrase "Learn about dissolutions and uncontested divorces"
-    And I should see the phrase "Fill out the forms for an uncontested divorce"
-    And I should see the phrase "File the original with your local court"
-    And I should see the phrase "Read the â€œDomestic Relations Procedural Orderâ€ or Standing Order if the clerk gives you one when you file your case"
-    And I should see the phrase "Learn about abuse or domestic violence resources & reaching an agreement"
-    And I should see the phrase "Get more information or help"
-    # And I download "asking_for_divorce_action_plan.pdf" 
-    
-@row42
-Scenario: Row #42
-  Given I start the interview at "Divorce_dissolution_separation_action_plan.yml"
-  And I get to the question id "final screen" with this data:
-    | var | value | trigger |
-    | minor_children | True | |
-    | other_case | False | |
-    | residency_and_jurisdiction | False | |
-    | military | True | |
-    | continue_despite_no_residency | continue | |
-    | legal_separation_or_divorce | divorce | |
-    | agree_or_settle_kids | yes | |
-    | have_property_and_debt | False | |
-    | paternity | do not know | |
-    | wife_is_pregnant | not husband | |
-    | domestic_violence | False | |
-  And I take a screenshot
-    And I should see the phrase "Your Personal Action Plan for asking the court for a dissolution or uncontested divorce in Alaska in 7 steps"
-    And I should see the phrase "Decide if Alaska is the right state for your case"
-    And I should see the phrase "Learn about dissolutions and uncontested divorces"
-    And I should see the phrase "Fill out the forms for an uncontested divorce"
-    And I should see the phrase "File the original with your local court"
-    And I should see the phrase "Read the â€œDomestic Relations Procedural Orderâ€ or Standing Order if the clerk gives you one when you file your case"
-    And I should see the phrase "Learn about paternity testing"
-    And I should see the phrase "Get more information or help"
-    # And I download "asking_for_divorce_action_plan.pdf"
-    
-@row261
-Scenario: Row 261
-  Given I start the interview at "Divorce_dissolution_separation_action_plan.yml"
-  And I get to the question id "final screen" with this data:
-    | var | value | trigger |
-    | minor_children | False | |
-    | other_case | False | |
-    | residency_and_jurisdiction | False | |
-    | military | False | |
-    | continue_despite_no_residency | continue | |
-    | legal_separation_or_divorce | divorce | |
-    | agree_or_settle | no prop debt or pregnancy | |
-    | no_prop_or_debt_agree | True | |
-    | wife_is_pregnant | not husband | |
-    | domestic_violence | False | |
-  And I take a screenshot
-    And I should see the phrase "Your Personal Action Plan for asking the court for a dissolution or uncontested divorce in Alaska in 8 steps"
-    And I should see the phrase "Decide if Alaska is the right state for your case"
-    And I should see the phrase "Review common situations where there are no marital assets and debts to divide"
-    And I should see the phrase "Make sure you do not have marital assets and debts to divide"
-    And I should see the phrase "Learn about dissolutions and uncontested divorces"
-    And I should see the phrase "Fill out the forms for an uncontested divorce"
-    And I should see the phrase "File the original with your local court"
-    And I should see the phrase "Read the "Domestic Relations Procedural Order" or Standing Order if the clerk gives you one when you file your case"
-    And I should see the phrase "Get more information or help"
-    # And I download "asking_for_divorce_action_plan.pdf"
-
-@row262
-Scenario: Row #262
-  Given I start the interview at "Divorce_dissolution_separation_action_plan.yml"
-  And I get to the question id "final screen" with this data:
-    | var | value | trigger |
-    | minor_children | False | |
-    | other_case | True | |
-    | ongoing | yes | |
-    | military | True | |
-    | other_state_case | continue | |
-    | legal_separation_or_divorce | divorce | |
-    | agree_or_settle | no prop debt or pregnancy | |
-    | no_prop_or_debt_agree | False | |
+    | legal_separation_or_divorce | legal separation | |
+    | agree_or_settle_kids | no | |
     | know_spouse_whereabouts | True | |
+    | paternity | yes | |
+    | wife_is_pregnant | husband | |
+    | info_on_agree | True | |
+    | domestic_violence | True | |
+    | default_info | True | |
   And I take a screenshot
-    And I should see the phrase "Your Personal Action Plan for asking the court for a dissolution or uncontested divorce in Alaska in 9 steps"
-    And I should see the phrase "Decide which court should hear your case"
-    And I should see the phrase "Review common situations where there are no marital assets and debts to divide"
-    And I should see the phrase "Make sure you do not have marital assets and debts to divide"
-    And I should see the phrase "Learn about dissolutions and uncontested divorces"
-    And I should see the phrase "Fill out the forms for an uncontested divorce"
+    And I should see the phrase "Your Personal Action Plan for asking the court for a legal separation in Alaska in 10 steps"
+    And I should see the phrase "Learn about legal separation"
+    And I should see the phrase "Fill out the forms to start a legal separation case"
     And I should see the phrase "File the original with your local court"
-    And I should see the phrase "Read the "Domestic Relations Procedural Order" or Standing Order if the clerk gives you one when you file your case"
+    And I should see the phrase "Read the “Domestic Relations Procedural Order” or Standing Order if the clerk gives you one when you file your case"
     And I should see the phrase "Serve the complaint and summons"
+    And I should see the phrase "Learn more about the process"
+    And I should see the phrase "Learn about options to help you and your spouse reach an agreement"
+    And I should see the phrase "Learn about abuse or domestic violence and parenting"
+    And I should see the phrase "File for default if your spouse does not respond within 20 days"
     And I should see the phrase "Get more information or help"
-    # And I download "asking_for_divorce_action_plan.pdf"
+    # And I download "asking_for_divorce_action_plan.pdf" 
 
-
-@row263
-Scenario: Row #263
+@row377
+Scenario: Row #377
   Given I start the interview at "Divorce_dissolution_separation_action_plan.yml"
   And I get to the question id "final screen" with this data:
     | var | value | trigger |
-    | minor_children | False | |
-    | other_case | True | |
-    | ongoing | yes | |
-    | military | False  | |
-    | other_state_case | continue | |
-    | legal_separation_or_divorce | divorce | |
-    | agree_or_settle | no prop debt or pregnancy | |
-    | no_prop_or_debt_agree | False | |
-    | know_spouse_whereabouts | False | |
-  And I take a screenshot
-    And I should see the phrase "Your Personal Action Plan for asking the court for a dissolution or uncontested divorce in Alaska in 3 steps"
-    And I should see the phrase "Decide which court should hear your case"
-    And I should see the phrase "File to end your marriage when you do not know where your spouse is, there are no children, and there is no property or debt to divide"
-    And I should see the phrase "Get more information or help"
-    # And I download "asking_for_divorce_action_plan.pdf"
-    
-
-@row264
-Scenario: Row #264
-  Given I start the interview at "Divorce_dissolution_separation_action_plan.yml"
-  And I get to the question id "final screen" with this data:
-    | var | value | trigger |
-    | minor_children | False | |
+    | minor_children | True | |
     | other_case | True | |
     | ongoing | yes | |
     | military | True | |
     | other_state_case | continue | |
-    | legal_separation_or_divorce | divorce | |
-    | agree_or_settle | agree | |
-    | wife_is_pregnant | husband | |
-    | domestic_violence | True | |
+    | legal_separation_or_divorce | legal separation | |
+    | agree_or_settle_kids | no | |
+    | know_spouse_whereabouts | True | |
+    | paternity | yes | |
+    | wife_is_pregnant | not husband | |
+    | info_on_agree | True | |
+    | domestic_violence | False | |
+    | default_info | False | |
   And I take a screenshot
-    And I should see the phrase "Your Personal Action Plan for asking the court for a dissolution or uncontested divorce in Alaska in 7 steps"
+    And I should see the phrase "Your Personal Action Plan for asking the court for a legal separation in Alaska in 9 steps"
     And I should see the phrase "Decide which court should hear your case"
-    And I should see the phrase "Learn about dissolutions and uncontested divorces"
-    And I should see the phrase "Fill out the forms to start your case"
+    And I should see the phrase "Learn about legal separation"
+    And I should see the phrase "Fill out the forms to start a legal separation case"
     And I should see the phrase "File the original with your local court"
-    And I should see the phrase "Read the "Domestic Relations Procedural Order" or Standing Order if the clerk gives you one when you file your case"
-    And I should see the phrase "Learn about abuse or domestic violence resources & reaching an agreement"
+    And I should see the phrase "Read the “Domestic Relations Procedural Order” or Standing Order if the clerk gives you one when you file your case"
+    And I should see the phrase "Serve the complaint and summons"
+    And I should see the phrase "Learn more about the process"
+    And I should see the phrase "Learn about options to help you and your spouse reach an agreement"
     And I should see the phrase "Get more information or help"
     # And I download "asking_for_divorce_action_plan.pdf"
 
-
-
-@row269
-Scenario: Row #269
+@row387
+Scenario: Row #387
   Given I start the interview at "Divorce_dissolution_separation_action_plan.yml"
   And I get to the question id "final screen" with this data:
     | var | value | trigger |
-    | minor_children | False | |
+    | minor_children | True | |
+    | other_case | False | |
+    | residency_and_jurisdiction | True | |
+    | legal_separation_or_divorce | legal separation | |
+    | agree_or_settle_kids | no | |
+    | know_spouse_whereabouts | True | |
+    | paternity | no | |
+    | wife_is_pregnant | not pregnant | |
+    | info_on_agree | False | |
+    | domestic_violence | True | |
+    | default_info | False | |
+  And I take a screenshot
+    And I should see the phrase "Your Personal Action Plan for asking the court for a legal separation in Alaska in 8 steps"
+    And I should see the phrase "Learn about legal separation"
+    And I should see the phrase "Fill out the forms to start a legal separation case"
+    And I should see the phrase "File the original with your local court"
+    And I should see the phrase "Read the “Domestic Relations Procedural Order” or Standing Order if the clerk gives you one when you file your case"
+    And I should see the phrase "Serve the complaint and summons"
+    And I should see the phrase "Learn more about the process"
+    And I should see the phrase "Learn about abuse or domestic violence and parenting"
+    And I should see the phrase "Get more information or help"
+    # And I download "asking_for_divorce_action_plan.pdf"
+
+@row395
+Scenario: Row #395
+  Given I start the interview at "Divorce_dissolution_separation_action_plan.yml"
+  And I get to the question id "final screen" with this data:
+    | var | value | trigger |
+    | minor_children | True | |
+    | other_case | True | |
+    | ongoing | yes | |
+    | military | False  | |
+    | other_state_case | continue | |
+    | legal_separation_or_divorce | legal separation | |
+    | agree_or_settle_kids | no | |
+    | know_spouse_whereabouts | False | |
+    | paternity | do not know | |
+    | wife_is_pregnant | husband | |
+    | info_on_agree | False | |
+    | domestic_violence | True | |
+    | default_info | False | |
+  And I take a screenshot
+    And I should see the phrase "Your Personal Action Plan for asking the court for a legal separation in Alaska in 11 steps"
+    And I should see the phrase "Decide which court should hear your case"
+    And I should see the phrase "Learn about legal separation"
+    And I should see the phrase "Fill out the forms to start a legal separation case"
+    And I should see the phrase "File the original with your local court"
+    And I should see the phrase "Read the “Domestic Relations Procedural Order” or Standing Order if the clerk gives you one when you file your case"
+    And I should see the phrase "Serve the complaint and summons"
+    And I should see the phrase "Learn more about the process"
+    And I should see the phrase "Learn about starting a case when you do not know where your spouse is"
+    And I should see the phrase "Learn about paternity testing"
+    And I should see the phrase "Learn about abuse or domestic violence and parenting"
+    And I should see the phrase "Get more information or help"
+    # And I download "asking_for_divorce_action_plan.pdf"
+
+@row400
+Scenario: Row #400
+  Given I start the interview at "Divorce_dissolution_separation_action_plan.yml"
+  And I get to the question id "final screen" with this data:
+    | var | value | trigger |
+    | minor_children | True | |
+    | other_case | False | |
+    | residency_and_jurisdiction | True | |
+    | legal_separation_or_divorce | legal separation | |
+    | agree_or_settle_kids | no | |
+    | know_spouse_whereabouts | False | |
+    | paternity | do not know | |
+    | wife_is_pregnant | not husband | |
+    | info_on_agree | True | |
+    | domestic_violence | False | |
+    | default_info | True | |
+  And I take a screenshot
+    And I should see the phrase "Your Personal Action Plan for asking the court for a legal separation in Alaska in 11 steps"
+    And I should see the phrase "Learn about legal separation"
+    And I should see the phrase "Fill out the forms to start a legal separation case"
+    And I should see the phrase "File the original with your local court"
+    And I should see the phrase "Read the “Domestic Relations Procedural Order” or Standing Order if the clerk gives you one when you file your case"
+    And I should see the phrase "Serve the complaint and summons"
+    And I should see the phrase "Learn more about the process"
+    And I should see the phrase "Learn about starting a case when you do not know where your spouse is"
+    And I should see the phrase "Learn about paternity testing"
+    And I should see the phrase "Learn about options to help you and your spouse reach an agreement"
+    And I should see the phrase "File for default if your spouse does not respond within 20 days"
+    And I should see the phrase "Get more information or help"
+    # And I download "asking_for_divorce_action_plan.pdf"
+
+@row408
+Scenario: Row #408
+  Given I start the interview at "Divorce_dissolution_separation_action_plan.yml"
+  And I get to the question id "final screen" with this data:
+    | var | value | trigger |
+    | minor_children | True | |
     | other_case | True | |
     | ongoing | no | |
     | residency_and_jurisdiction | False | |
     | military | True | |
     | continue_despite_no_residency | continue | |
-    | legal_separation_or_divorce | divorce | |
-    | agree_or_settle | agree | |
-    | wife_is_pregnant | not husband | |
+    | legal_separation_or_divorce | legal separation | |
+    | agree_or_settle_kids | no | |
+    | know_spouse_whereabouts | False | |
+    | paternity | no | |
+    | wife_is_pregnant | not pregnant | |
+    | info_on_agree | True | |
     | domestic_violence | False | |
+    | default_info | True | |
   And I take a screenshot
-    And I should see the phrase "Your Personal Action Plan for asking the court for a dissolution or uncontested divorce in Alaska in 6 steps"
+    And I should see the phrase "Your Personal Action Plan for asking the court for a legal separation in Alaska in 11 steps"
     And I should see the phrase "Decide if Alaska is the right state for your case"
-    And I should see the phrase "Learn about dissolutions and uncontested divorces"
-    And I should see the phrase "Fill out the forms for an uncontested divorce"
+    And I should see the phrase "Learn about legal separation"
+    And I should see the phrase "Fill out the forms to start a legal separation case"
     And I should see the phrase "File the original with your local court"
-    And I should see the phrase "Read the "Domestic Relations Procedural Order" or Standing Order if the clerk gives you one when you file your case"
+    And I should see the phrase "Read the “Domestic Relations Procedural Order” or Standing Order if the clerk gives you one when you file your case"
+    And I should see the phrase "Serve the complaint and summons"
+    And I should see the phrase "Learn more about the process"
+    And I should see the phrase "Learn about starting a case when you do not know where your spouse is"
+    And I should see the phrase "Learn about options to help you and your spouse reach an agreement"
+    And I should see the phrase "File for default if your spouse does not respond within 20 days"
     And I should see the phrase "Get more information or help"
     # And I download "asking_for_divorce_action_plan.pdf"
 
-@row268
-Scenario: Row #268
-  Given I start the interview at "Divorce_dissolution_separation_action_plan.yml"
-  And I get to the question id "final screen" with this data:
-    | var | value | trigger |
-    | minor_children | False | |
-    | other_case | True | |
-    | ongoing | no | |
-    | residency_and_jurisdiction | True | |
-    | legal_separation_or_divorce | divorce | |
-    | agree_or_settle | agree | |
-    | wife_is_pregnant | not pregnant | |
-    | domestic_violence | True | |
-  And I take a screenshot
-    And I should see the phrase "Your Personal Action Plan for asking the court for a dissolution or uncontested divorce in Alaska in 6 steps"
-    And I should see the phrase "Learn about dissolutions and uncontested divorces"
-    And I should see the phrase "Fill out the forms to start your case"
-    And I should see the phrase "File the original with your local court"
-    And I should see the phrase "Read the "Domestic Relations Procedural Order" or Standing Order if the clerk gives you one when you file your case"
-    And I should see the phrase "Learn about abuse or domestic violence resources & reaching an agreement"
-    And I should see the phrase "Get more information or help"
-    # And I download "asking_for_divorce_action_plan.pdf"
-
-@row271
-Scenario: Row #271
+@row420
+Scenario: Row #420
   Given I start the interview at "Divorce_dissolution_separation_action_plan.yml"
   And I get to the question id "final screen" with this data:
     | var | value | trigger |
     | minor_children | False | |
     | other_case | False | |
     | residency_and_jurisdiction | True | |
-    | legal_separation_or_divorce | divorce | |
-    | agree_or_settle | do not know | |
-    | talk_to_spouse | True | |
+    | legal_separation_or_divorce | legal separation | |
+    | agree_or_settle_kids | no | |
+    | know_spouse_whereabouts | True | |
     | wife_is_pregnant | husband | |
-    | domestic_violence | False | |
+    | info_on_agree | True | |
+    | domestic_violence | True | |
+    | default_info | True | |
   And I take a screenshot
-    And I should see the phrase "Your Personal Action Plan for asking the court for a dissolution or uncontested divorce in Alaska in 6 steps"
-    And I should see the phrase "Talk to your spouse to see if you agree"
-    And I should see the phrase "Learn about dissolutions and uncontested divorces"
-    And I should see the phrase "Fill out the forms for an uncontested divorce"
+    And I should see the phrase "Your Personal Action Plan for asking the court for a legal separation in Alaska in 10 steps"
+    And I should see the phrase "Learn about legal separation"
+    And I should see the phrase "Fill out the forms to start a legal separation case"
     And I should see the phrase "File the original with your local court"
-    And I should see the phrase "Read the "Domestic Relations Procedural Order" or Standing Order if the clerk gives you one when you file your case"
+    And I should see the phrase "Read the “Domestic Relations Procedural Order” or Standing Order if the clerk gives you one when you file your case"
+    And I should see the phrase "Serve the complaint and summons"
+    And I should see the phrase "Learn more about the process"
+    And I should see the phrase "Learn about options to help you and your spouse reach an agreement"
+    And I should see the phrase "Learn about abuse or domestic violence"
+    And I should see the phrase "File for default if your spouse does not respond within 20 days"
     And I should see the phrase "Get more information or help"
     # And I download "asking_for_divorce_action_plan.pdf"
 
-@row272
-Scenario: Row #272
+
+
+@row425
+Scenario: Row #425
   Given I start the interview at "Divorce_dissolution_separation_action_plan.yml"
   And I get to the question id "final screen" with this data:
     | var | value | trigger |
     | minor_children | False | |
     | other_case | False | |
-    | residency_and_jurisdiction | True | |
-    | legal_separation_or_divorce | divorce | |
-    | agree_or_settle | do not know | |
-    | talk_to_spouse | True | |
-    | wife_is_pregnant | not husband | |
+    | residency_and_jurisdiction | False | |
+    | military | False | |
+    | continue_despite_no_residency | continue | |
+    | legal_separation_or_divorce | legal separation | |
+    | agree_or_settle_kids | no | |
+    | know_spouse_whereabouts | True | |
+    | wife_is_pregnant | husband | |
+    | info_on_agree | False | |
     | domestic_violence | True | |
+    | default_info | False | |
   And I take a screenshot
-    And I should see the phrase "Your Personal Action Plan for asking the court for a dissolution or uncontested divorce in Alaska in 7 steps"
-    And I should see the phrase "Talk to your spouse to see if you agree"
-    And I should see the phrase "Learn about dissolutions and uncontested divorces"
-    And I should see the phrase "Fill out the forms for an uncontested divorce"
+    And I should see the phrase "Your Personal Action Plan for asking the court for a legal separation in Alaska in 9 steps"
+    And I should see the phrase "Decide if Alaska is the right state for your case"
+    And I should see the phrase "Learn about legal separation"
+    And I should see the phrase "Fill out the forms to start a legal separation case"
     And I should see the phrase "File the original with your local court"
-    And I should see the phrase "Read the "Domestic Relations Procedural Order" or Standing Order if the clerk gives you one when you file your case"
-    And I should see the phrase "Learn about abuse or domestic violence resources & reaching an agreement"
+    And I should see the phrase "Read the “Domestic Relations Procedural Order” or Standing Order if the clerk gives you one when you file your case"
+    And I should see the phrase "Serve the complaint and summons"
+    And I should see the phrase "Learn more about the process"
+    And I should see the phrase "Learn about abuse or domestic violence"
     And I should see the phrase "Get more information or help"
     # And I download "asking_for_divorce_action_plan.pdf"
-    
-    
-@row275
-Scenario: Row #275
+
+@row430
+Scenario: Row #430
   Given I start the interview at "Divorce_dissolution_separation_action_plan.yml"
   And I get to the question id "final screen" with this data:
     | var | value | trigger |
     | minor_children | False | |
     | other_case | False | |
     | residency_and_jurisdiction | True | |
-    | legal_separation_or_divorce | divorce | |
-    | agree_or_settle | do not know | |
-    | talk_to_spouse | True | |
-    | wife_is_pregnant | not pregnant | |
+    | legal_separation_or_divorce | legal separation | |
+    | agree_or_settle_kids | no | |
+    | know_spouse_whereabouts | False | |
+    | wife_is_pregnant | not husband | |
+    | info_on_agree | True | |
     | domestic_violence | False | |
+    | default_info | True | |
   And I take a screenshot
-    And I should see the phrase "Your Personal Action Plan for asking the court for a dissolution or uncontested divorce in Alaska in 6 steps"
-    And I should see the phrase "Talk to your spouse to see if you agree"
-    And I should see the phrase "Learn about dissolutions and uncontested divorces"
-    And I should see the phrase "Fill out the forms for an uncontested divorce"
+    And I should see the phrase "Your Personal Action Plan for asking the court for a legal separation in Alaska in 10 steps"
+    And I should see the phrase "Learn about legal separation"
+    And I should see the phrase "Fill out the forms to start a legal separation case"
     And I should see the phrase "File the original with your local court"
-    And I should see the phrase "Read the "Domestic Relations Procedural Order" or Standing Order if the clerk gives you one when you file your case"
+    And I should see the phrase "Read the “Domestic Relations Procedural Order” or Standing Order if the clerk gives you one when you file your case"
+    And I should see the phrase "Serve the complaint and summons"
+    And I should see the phrase "Learn more about the process"
+    And I should see the phrase "Learn about starting a case when you do not know where your spouse is"
+    And I should see the phrase "Learn about options to help you and your spouse reach an agreement"
+    And I should see the phrase "File for default if your spouse does not respond within 20 days"
     And I should see the phrase "Get more information or help"
     # And I download "asking_for_divorce_action_plan.pdf"
+
+
+@row435
+Scenario: Row #435
+  Given I start the interview at "Divorce_dissolution_separation_action_plan.yml"
+  And I get to the question id "final screen" with this data:
+    | var | value | trigger |
+    | minor_children | False | |
+    | other_case | False | |
+    | residency_and_jurisdiction | False | |
+    | military | True | |
+    | continue_despite_no_residency | continue | |
+    | legal_separation_or_divorce | legal separation | |
+    | agree_or_settle_kids | no | |
+    | know_spouse_whereabouts | False | |
+    | wife_is_pregnant | not husband | |
+    | info_on_agree | False | |
+    | domestic_violence | False | |
+    | default_info | False | |
+  And I take a screenshot
+    And I should see the phrase "Your Personal Action Plan for asking the court for a legal separation in Alaska in 9 steps"
+    And I should see the phrase "Decide if Alaska is the right state for your case"
+    And I should see the phrase "Learn about legal separation"
+    And I should see the phrase "Fill out the forms to start a legal separation case"
+    And I should see the phrase "File the original with your local court"
+    And I should see the phrase "Read the “Domestic Relations Procedural Order” or Standing Order if the clerk gives you one when you file your case"
+    And I should see the phrase "Serve the complaint and summons"
+    And I should see the phrase "Learn more about the process"
+    And I should see the phrase "Learn about starting a case when you do not know where your spouse is"
+    And I should see the phrase "Get more information or help"
+    # And I download "asking_for_divorce_action_plan.pdf"
+
+@row436
+Scenario: Row #436
+  Given I start the interview at "Divorce_dissolution_separation_action_plan.yml"
+  And I get to the question id "final screen" with this data:
+    | var | value | trigger |
+    | minor_children | False | |
+    | other_case | False | |
+    | residency_and_jurisdiction | False | |
+    | military | False | |
+    | continue_despite_no_residency | continue | |
+    | legal_separation_or_divorce | legal separation | |
+    | agree_or_settle_kids | no | |
+    | know_spouse_whereabouts | True | |
+    | wife_is_pregnant | not pregnant | |
+    | info_on_agree | True | |
+    | domestic_violence | True | |
+    | default_info | True | |
+  And I take a screenshot
+    And I should see the phrase "Your Personal Action Plan for asking the court for a legal separation in Alaska in 11 steps"
+    And I should see the phrase "Decide if Alaska is the right state for your case"
+    And I should see the phrase "Learn about legal separation"
+    And I should see the phrase "Fill out the forms to start a legal separation case"
+    And I should see the phrase "File the original with your local court"
+    And I should see the phrase "Read the “Domestic Relations Procedural Order” or Standing Order if the clerk gives you one when you file your case"
+    And I should see the phrase "Serve the complaint and summons"
+    And I should see the phrase "Learn more about the process"
+    And I should see the phrase "Learn about options to help you and your spouse reach an agreement"
+    And I should see the phrase "Learn about abuse or domestic violence resources"
+    And I should see the phrase "File for default if your spouse does not respond within 20 days"
+    And I should see the phrase "Get more information or help"
+    # And I download "asking_for_divorce_action_plan.pdf"
+
+
+@row441
+Scenario: Row #441
+  Given I start the interview at "Divorce_dissolution_separation_action_plan.yml"
+  And I get to the question id "final screen" with this data:
+    | var | value | trigger |
+    | minor_children | False | |
+    | other_case | False | |
+    | residency_and_jurisdiction | True | |
+    | legal_separation_or_divorce | legal separation | |
+    | agree_or_settle_kids | no | |
+    | know_spouse_whereabouts | True | |
+    | wife_is_pregnant | not pregnant | |
+    | info_on_agree | False | |
+    | domestic_violence | True | |
+    | default_info | False | |
+  And I take a screenshot
+    And I should see the phrase "Your Personal Action Plan for asking the court for a legal separation in Alaska in 8 steps"
+    And I should see the phrase "Learn about legal separation"
+    And I should see the phrase "Fill out the forms to start a legal separation case"
+    And I should see the phrase "File the original with your local court"
+    And I should see the phrase "Read the “Domestic Relations Procedural Order” or Standing Order if the clerk gives you one when you file your case"
+    And I should see the phrase "Serve the complaint and summons"
+    And I should see the phrase "Learn more about the process"
+    And I should see the phrase "Learn about abuse or domestic violence resources"
+    And I should see the phrase "Get more information or help"
+    # And I download "asking_for_divorce_action_plan.pdf"
+

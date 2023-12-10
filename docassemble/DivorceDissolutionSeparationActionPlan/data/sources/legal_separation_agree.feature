@@ -26,7 +26,7 @@ Scenario: Row #348
     And I should see the phrase "File the original with your local court"
     And I should see the phrase "Read the “Domestic Relations Procedural Order” or Standing Order if the clerk gives you one when you file your case"
     And I should see the phrase "Learn more about the process"
-    And I should see the phrase "Learn about abuse or domestic violence and parenting"
+    And I should see the phrase "Learn about abuse or domestic violence resources & reaching an agreement"
     And I should see the phrase "Get more information or help"
     # And I download "asking_for_divorce_action_plan.pdf"
 
@@ -79,7 +79,7 @@ Scenario: Row #356
     And I should see the phrase "File the original with your local court"
     And I should see the phrase "Read the “Domestic Relations Procedural Order” or Standing Order if the clerk gives you one when you file your case"
     And I should see the phrase "Learn more about the process"
-    And I should see the phrase "Learn about abuse or domestic violence and parenting"
+    And I should see the phrase "Learn about abuse or domestic violence resources & reaching an agreement"
     And I should see the phrase "Get more information or help"
     # And I download "asking_for_divorce_action_plan.pdf"
 
@@ -134,7 +134,7 @@ Scenario: Row #360
     And I should see the phrase "Read the “Domestic Relations Procedural Order” or Standing Order if the clerk gives you one when you file your case"
     And I should see the phrase "Learn more about the process"
     And I should see the phrase "Learn about paternity testing"
-    And I should see the phrase "Learn about abuse or domestic violence and parenting"
+    And I should see the phrase "Learn about abuse or domestic violence resources & reaching an agreement"
     And I should see the phrase "Get more information or help"
     # And I download "asking_for_divorce_action_plan.pdf"
 
@@ -187,7 +187,7 @@ Scenario: Row #414
     And I should see the phrase "File the original with your local court"
     And I should see the phrase "Read the “Domestic Relations Procedural Order” or Standing Order if the clerk gives you one when you file your case"
     And I should see the phrase "Learn more about the process"
-    And I should see the phrase "Learn about abuse or domestic violence"
+    And I should see the phrase "Learn about abuse or domestic violence resources & reaching an agreement"
     And I should see the phrase "Get more information or help"
     # And I download "asking_for_divorce_action_plan.pdf"
 
