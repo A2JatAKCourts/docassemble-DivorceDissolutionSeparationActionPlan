@@ -17,7 +17,7 @@ subquestion: |
   % else:
   % if legal_separation_or_divorce == 'divorce':
   % if (minor_children and agree_or_settle_kids in ('yes', 'do not know')) \
-    or (minor_children == False and agree_or_settle in ('yes', 'do not know')):
+    or (minor_children == False and agree_or_settle in ('no prop debt or pregnancy', 'agree', 'do not know')):
   #### Your Personal Action Plan for asking the court for a dissolution or uncontested divorce in Alaska in ${ len(step_list) } steps
   % else:
   #### Your Personal Action Plan for asking the court for a divorce in Alaska in ${ len(step_list) } steps
