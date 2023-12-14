@@ -373,7 +373,7 @@ Scenario: Row #262
     And I should see the phrase "Make sure you do not have marital assets and debts to divide"
     And I should see the phrase "Learn about dissolutions and uncontested divorces"
     And I should see the phrase "Fill out the forms for an uncontested divorce"
-    And I tap the "#dW5jb250ZXN0ZWRfZGl2b3JjZV9zdGVw" element and wait 120 seconds
+    And I tap the "dW5jb250ZXN0ZWRfZGl2b3JjZV9zdGVw  .al_toggle" tab
     And I should see the phrase "File the original with your local court"
     And I should see the phrase "Read the "Domestic Relations Procedural Order" or Standing Order if the clerk gives you one when you file your case"
     And I should see the phrase "Serve the complaint and summons"
