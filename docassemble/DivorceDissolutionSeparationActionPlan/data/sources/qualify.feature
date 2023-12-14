@@ -13,7 +13,7 @@ Scenario: Row #1
     And I should see the phrase "Your Personal Action Plan for asking the court for a divorce, dissolution, or legal separation in Alaska in 2 steps"
     And I should see the phrase "Review your options if a court in another state already ended your marriage"
     And I should see the phrase "Get more information or help"
-    # And I download "asking_for_divorce_action_plan.pdf" 
+    And I download "divorce_dissolution_separation_action_plan.pdf" 
       
 @row2  
 Scenario: Row #2
@@ -29,7 +29,7 @@ Scenario: Row #2
     And I should see the phrase "Your Personal Action Plan for asking the court for a divorce, dissolution, or legal separation in Alaska in 2 steps"
     And I should see the phrase "Decide which court should hear your case"
     And I should see the phrase "Get more information or help"
-    # And I download "asking_for_divorce_action_plan.pdf" 
+    And I download "divorce_dissolution_separation_action_plan.pdf" 
 
 @row4  
 Scenario: Row #4
@@ -45,7 +45,7 @@ Scenario: Row #4
     And I should see the phrase "Your Personal Action Plan for asking the court for a divorce, dissolution, or legal separation in Alaska in 2 steps"
     And I should see the phrase "Decide which court should hear your case"
     And I should see the phrase "Get more information or help"
-    # And I download "asking_for_divorce_action_plan.pdf" 
+    And I download "divorce_dissolution_separation_action_plan.pdf" 
     
 @row6  
 Scenario: Row #6
@@ -62,7 +62,7 @@ Scenario: Row #6
     And I should see the phrase "Your Personal Action Plan for asking the court for a divorce, dissolution, or legal separation in Alaska in 2 steps"
     And I should see the phrase "Decide if Alaska is the right state for your case"
     And I should see the phrase "Get more information or help"
-    # And I download "asking_for_divorce_action_plan.pdf"  
+    And I download "divorce_dissolution_separation_action_plan.pdf"  
 
 @row8  
 Scenario: Row #8
@@ -79,7 +79,7 @@ Scenario: Row #8
     And I should see the phrase "Your Personal Action Plan for asking the court for a divorce, dissolution, or legal separation in Alaska in 2 steps"
     And I should see the phrase "Decide if Alaska is the right state for your case"
     And I should see the phrase "Get more information or help"
-    # And I download "asking_for_divorce_action_plan.pdf"  
+    And I download "divorce_dissolution_separation_action_plan.pdf"  
  
 @row10  
 Scenario: Row #10
@@ -95,7 +95,7 @@ Scenario: Row #10
     And I should see the phrase "Your Personal Action Plan for asking the court for a divorce, dissolution, or legal separation in Alaska in 2 steps"
     And I should see the phrase "Decide if Alaska is the right state for your case"
     And I should see the phrase "Get more information or help"
-    # And I download "asking_for_divorce_action_plan.pdf"   
+    And I download "divorce_dissolution_separation_action_plan.pdf"   
     
       
 @row12  
@@ -112,4 +112,4 @@ Scenario: Row #12
     And I should see the phrase "Your Personal Action Plan for asking the court for a divorce, dissolution, or legal separation in Alaska in 2 steps"
     And I should see the phrase "Decide if Alaska is the right state for your case"
     And I should see the phrase "Get more information or help"
-    # And I download "asking_for_divorce_action_plan.pdf"  
+    And I download "divorce_dissolution_separation_action_plan.pdf"  

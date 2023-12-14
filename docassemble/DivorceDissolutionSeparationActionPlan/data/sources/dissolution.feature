@@ -23,10 +23,10 @@ Scenario: Row #16
     And I should see the phrase "Learn about dissolutions and uncontested divorces"
     And I should see the phrase "Fill out the forms for an uncontested divorce"
     And I should see the phrase "File the original with your local court"
-    And I should see the phrase "Read the “Domestic Relations Procedural Order” or Standing Order if the clerk gives you one when you file your case"
+    And I should see the phrase "Read the â€œDomestic Relations Procedural Orderâ€ or Standing Order if the clerk gives you one when you file your case"
     And I should see the phrase "Learn about abuse or domestic violence resources & reaching an agreement"
     And I should see the phrase "Get more information or help"
-    # And I download "asking_for_divorce_action_plan.pdf" 
+    And I download "divorce_dissolution_separation_action_plan.pdf" 
 
 @row17
 Scenario: Row #17
@@ -49,9 +49,9 @@ Scenario: Row #17
     And I should see the phrase "Learn about dissolutions and uncontested divorces"
     And I should see the phrase "Fill out the forms for an uncontested divorce"
     And I should see the phrase "File the original with your local court"
-    And I should see the phrase "Read the “Domestic Relations Procedural Order” or Standing Order if the clerk gives you one when you file your case"
+    And I should see the phrase "Read the â€œDomestic Relations Procedural Orderâ€ or Standing Order if the clerk gives you one when you file your case"
     And I should see the phrase "Get more information or help"
-    # And I download "asking_for_divorce_action_plan.pdf"
+    And I download "divorce_dissolution_separation_action_plan.pdf"
     
 @row18
 Scenario: Row #18
@@ -75,9 +75,9 @@ Scenario: Row #18
     And I should see the phrase "Learn about dissolutions and uncontested divorces"
     And I should see the phrase "Fill out the forms for an uncontested divorce"
     And I should see the phrase "File the original with your local court"
-    And I should see the phrase "Read the “Domestic Relations Procedural Order” or Standing Order if the clerk gives you one when you file your case"
+    And I should see the phrase "Read the â€œDomestic Relations Procedural Orderâ€ or Standing Order if the clerk gives you one when you file your case"
     And I should see the phrase "Get more information or help"
-    # And I download "asking_for_divorce_action_plan.pdf" 
+    And I download "divorce_dissolution_separation_action_plan.pdf" 
 
 @row21
 Scenario: Row #21
@@ -103,9 +103,9 @@ Scenario: Row #21
     And I should see the phrase "Learn about dissolutions and uncontested divorces"
     And I should see the phrase "Fill out the forms for an uncontested divorce"
     And I should see the phrase "File the original with your local court"
-    And I should see the phrase "Read the “Domestic Relations Procedural Order” or Standing Order if the clerk gives you one when you file your case"
+    And I should see the phrase "Read the â€œDomestic Relations Procedural Orderâ€ or Standing Order if the clerk gives you one when you file your case"
     And I should see the phrase "Get more information or help"
-    # And I download "asking_for_divorce_action_plan.pdf"
+    And I download "divorce_dissolution_separation_action_plan.pdf"
 
 @row23
 Scenario: Row #23
@@ -129,10 +129,10 @@ Scenario: Row #23
     And I should see the phrase "Learn about dissolutions and uncontested divorces"
     And I should see the phrase "Fill out the forms for an uncontested divorce"
     And I should see the phrase "File the original with your local court"
-    And I should see the phrase "Read the “Domestic Relations Procedural Order” or Standing Order if the clerk gives you one when you file your case"
+    And I should see the phrase "Read the â€œDomestic Relations Procedural Orderâ€ or Standing Order if the clerk gives you one when you file your case"
     And I should see the phrase "Learn about paternity testing"
     And I should see the phrase "Get more information or help"
-    # And I download "asking_for_divorce_action_plan.pdf"
+    And I download "divorce_dissolution_separation_action_plan.pdf"
     
 @row24
 Scenario: Row #24
@@ -155,10 +155,10 @@ Scenario: Row #24
     And I should see the phrase "Learn about dissolutions and uncontested divorces"
     And I should see the phrase "Fill out the forms for an uncontested divorce"
     And I should see the phrase "File the original with your local court"
-    And I should see the phrase "Read the “Domestic Relations Procedural Order” or Standing Order if the clerk gives you one when you file your case"
+    And I should see the phrase "Read the â€œDomestic Relations Procedural Orderâ€ or Standing Order if the clerk gives you one when you file your case"
     And I should see the phrase "Learn about paternity testing"
     And I should see the phrase "Get more information or help"
-    # And I download "asking_for_divorce_action_plan.pdf"
+    And I download "divorce_dissolution_separation_action_plan.pdf"
 
 
 @row26
@@ -183,10 +183,10 @@ Scenario: Row #26
     And I should see the phrase "Learn about dissolutions and uncontested divorces"
     And I should see the phrase "Fill out the forms to start your case"
     And I should see the phrase "File the original with your local court"
-    And I should see the phrase "Read the “Domestic Relations Procedural Order” or Standing Order if the clerk gives you one when you file your case"
+    And I should see the phrase "Read the â€œDomestic Relations Procedural Orderâ€ or Standing Order if the clerk gives you one when you file your case"
     And I should see the phrase "Learn about abuse or domestic violence resources & reaching an agreement"
     And I should see the phrase "Get more information or help"
-    # And I download "asking_for_divorce_action_plan.pdf" 
+    And I download "divorce_dissolution_separation_action_plan.pdf" 
 
 @row29
 Scenario: Row #29
@@ -209,9 +209,9 @@ Scenario: Row #29
     And I should see the phrase "Learn about dissolutions and uncontested divorces"
     And I should see the phrase "Fill out the forms for an uncontested divorce"
     And I should see the phrase "File the original with your local court"
-    And I should see the phrase "Read the “Domestic Relations Procedural Order” or Standing Order if the clerk gives you one when you file your case"
+    And I should see the phrase "Read the â€œDomestic Relations Procedural Orderâ€ or Standing Order if the clerk gives you one when you file your case"
     And I should see the phrase "Get more information or help"
-    # And I download "asking_for_divorce_action_plan.pdf"
+    And I download "divorce_dissolution_separation_action_plan.pdf"
 
 
 @row33
@@ -237,9 +237,9 @@ Scenario: Row #33
     And I should see the phrase "Learn about dissolutions and uncontested divorces"
     And I should see the phrase "Fill out the forms for an uncontested divorce"
     And I should see the phrase "File the original with your local court"
-    And I should see the phrase "Read the “Domestic Relations Procedural Order” or Standing Order if the clerk gives you one when you file your case"
+    And I should see the phrase "Read the â€œDomestic Relations Procedural Orderâ€ or Standing Order if the clerk gives you one when you file your case"
     And I should see the phrase "Get more information or help"
-    # And I download "asking_for_divorce_action_plan.pdf" 
+    And I download "divorce_dissolution_separation_action_plan.pdf" 
     
 @row34
 Scenario: Row #34
@@ -266,10 +266,10 @@ Scenario: Row #34
     And I should see the phrase "Learn about dissolutions and uncontested divorces"
     And I should see the phrase "Fill out the forms for an uncontested divorce"
     And I should see the phrase "File the original with your local court"
-    And I should see the phrase "Read the “Domestic Relations Procedural Order” or Standing Order if the clerk gives you one when you file your case"
+    And I should see the phrase "Read the â€œDomestic Relations Procedural Orderâ€ or Standing Order if the clerk gives you one when you file your case"
     And I should see the phrase "Learn about abuse or domestic violence resources & reaching an agreement"
     And I should see the phrase "Get more information or help"
-    # And I download "asking_for_divorce_action_plan.pdf" 
+    And I download "divorce_dissolution_separation_action_plan.pdf" 
 
 @row38
 Scenario: Row #38
@@ -293,10 +293,10 @@ Scenario: Row #38
     And I should see the phrase "Learn about dissolutions and uncontested divorces"
     And I should see the phrase "Fill out the forms for an uncontested divorce"
     And I should see the phrase "File the original with your local court"
-    And I should see the phrase "Read the “Domestic Relations Procedural Order” or Standing Order if the clerk gives you one when you file your case"
+    And I should see the phrase "Read the â€œDomestic Relations Procedural Orderâ€ or Standing Order if the clerk gives you one when you file your case"
     And I should see the phrase "Learn about abuse or domestic violence resources & reaching an agreement"
     And I should see the phrase "Get more information or help"
-    # And I download "asking_for_divorce_action_plan.pdf" 
+    And I download "divorce_dissolution_separation_action_plan.pdf" 
     
 @row42
 Scenario: Row #42
@@ -320,10 +320,10 @@ Scenario: Row #42
     And I should see the phrase "Learn about dissolutions and uncontested divorces"
     And I should see the phrase "Fill out the forms for an uncontested divorce"
     And I should see the phrase "File the original with your local court"
-    And I should see the phrase "Read the “Domestic Relations Procedural Order” or Standing Order if the clerk gives you one when you file your case"
+    And I should see the phrase "Read the â€œDomestic Relations Procedural Orderâ€ or Standing Order if the clerk gives you one when you file your case"
     And I should see the phrase "Learn about paternity testing"
     And I should see the phrase "Get more information or help"
-    # And I download "asking_for_divorce_action_plan.pdf"
+    And I download "divorce_dissolution_separation_action_plan.pdf"
     
 @row261
 Scenario: Row 261
@@ -350,7 +350,7 @@ Scenario: Row 261
     And I should see the phrase "File the original with your local court"
     And I should see the phrase "Read the "Domestic Relations Procedural Order" or Standing Order if the clerk gives you one when you file your case"
     And I should see the phrase "Get more information or help"
-    # And I download "asking_for_divorce_action_plan.pdf"
+    And I download "divorce_dissolution_separation_action_plan.pdf"
 
 @row262
 Scenario: Row #262
@@ -373,11 +373,12 @@ Scenario: Row #262
     And I should see the phrase "Make sure you do not have marital assets and debts to divide"
     And I should see the phrase "Learn about dissolutions and uncontested divorces"
     And I should see the phrase "Fill out the forms for an uncontested divorce"
+    And I tap the "#dW5jb250ZXN0ZWRfZGl2b3JjZV9zdGVw" element and wait 120 seconds
     And I should see the phrase "File the original with your local court"
     And I should see the phrase "Read the "Domestic Relations Procedural Order" or Standing Order if the clerk gives you one when you file your case"
     And I should see the phrase "Serve the complaint and summons"
     And I should see the phrase "Get more information or help"
-    # And I download "asking_for_divorce_action_plan.pdf"
+    And I download "divorce_dissolution_separation_action_plan.pdf"
 
 
 @row263
@@ -399,7 +400,7 @@ Scenario: Row #263
     And I should see the phrase "Decide which court should hear your case"
     And I should see the phrase "File to end your marriage when you do not know where your spouse is, there are no children, and there is no property or debt to divide"
     And I should see the phrase "Get more information or help"
-    # And I download "asking_for_divorce_action_plan.pdf"
+    And I download "divorce_dissolution_separation_action_plan.pdf"
     
 
 @row264
@@ -425,7 +426,7 @@ Scenario: Row #264
     And I should see the phrase "Read the "Domestic Relations Procedural Order" or Standing Order if the clerk gives you one when you file your case"
     And I should see the phrase "Learn about abuse or domestic violence resources & reaching an agreement"
     And I should see the phrase "Get more information or help"
-    # And I download "asking_for_divorce_action_plan.pdf"
+    And I download "divorce_dissolution_separation_action_plan.pdf"
 
 
 
@@ -452,7 +453,7 @@ Scenario: Row #269
     And I should see the phrase "File the original with your local court"
     And I should see the phrase "Read the "Domestic Relations Procedural Order" or Standing Order if the clerk gives you one when you file your case"
     And I should see the phrase "Get more information or help"
-    # And I download "asking_for_divorce_action_plan.pdf"
+    And I download "divorce_dissolution_separation_action_plan.pdf"
 
 @row268
 Scenario: Row #268
@@ -475,7 +476,7 @@ Scenario: Row #268
     And I should see the phrase "Read the "Domestic Relations Procedural Order" or Standing Order if the clerk gives you one when you file your case"
     And I should see the phrase "Learn about abuse or domestic violence resources & reaching an agreement"
     And I should see the phrase "Get more information or help"
-    # And I download "asking_for_divorce_action_plan.pdf"
+    And I download "divorce_dissolution_separation_action_plan.pdf"
 
 @row271
 Scenario: Row #271
@@ -498,7 +499,7 @@ Scenario: Row #271
     And I should see the phrase "File the original with your local court"
     And I should see the phrase "Read the "Domestic Relations Procedural Order" or Standing Order if the clerk gives you one when you file your case"
     And I should see the phrase "Get more information or help"
-    # And I download "asking_for_divorce_action_plan.pdf"
+    And I download "divorce_dissolution_separation_action_plan.pdf"
 
 @row272
 Scenario: Row #272
@@ -522,7 +523,7 @@ Scenario: Row #272
     And I should see the phrase "Read the "Domestic Relations Procedural Order" or Standing Order if the clerk gives you one when you file your case"
     And I should see the phrase "Learn about abuse or domestic violence resources & reaching an agreement"
     And I should see the phrase "Get more information or help"
-    # And I download "asking_for_divorce_action_plan.pdf"
+    And I download "divorce_dissolution_separation_action_plan.pdf"
     
     
 @row275
@@ -546,4 +547,4 @@ Scenario: Row #275
     And I should see the phrase "File the original with your local court"
     And I should see the phrase "Read the "Domestic Relations Procedural Order" or Standing Order if the clerk gives you one when you file your case"
     And I should see the phrase "Get more information or help"
-    # And I download "asking_for_divorce_action_plan.pdf"
+    And I download "divorce_dissolution_separation_action_plan.pdf"

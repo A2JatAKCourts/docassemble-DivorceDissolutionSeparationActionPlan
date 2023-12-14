@@ -294,12 +294,15 @@ content: |
   
   % if minor_children:
   To enter a parenting plan, a child support order, or divide marital property and debt, the court also needs authority called “jurisdiction.”
+  
   Children: Generally, only the court in the state where the child has lived for the last 6 months has jurisdiction to make decisions, enter a parenting plan, or order child support.  This is called the child’s "home state."
+  
   Spouses: Generally, the court has jurisdiction if a married couple lived in Alaska for at least 6 months in a row within the 6 years before filing for divorce.
+  
   Jurisdiction and residency can be very complicated.  For example, if a baby is less than 6 months old and has moved between states, there may not be a “home state.”  This is one example of an exception when the Alaska court may be able to decide issues about a child that hasn’t lived here for 6 months.
   Similarly,
   % else:
-  To divide marital property and debt, the court also needs authority called “jurisdiction.” Generally, the court has jurisdiction if a married couple lived in Alaska for at least 6 months in a row within the 6 years before filing for divorce.
+  to divide marital property and debt, the court also needs authority called “jurisdiction.” Generally, the court has jurisdiction if a married couple lived in Alaska for at least 6 months in a row within the 6 years before filing for divorce.
   
   Jurisdiction and residency can be very complicated. For example,
   % endif

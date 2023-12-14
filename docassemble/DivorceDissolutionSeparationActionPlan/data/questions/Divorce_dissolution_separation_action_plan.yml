@@ -588,5 +588,6 @@ attachment:
   variable name: divorce_dissolution_separation_action_plan_attachment[i]
   skip undefined: True
   # docx template file: divorce_dissolution_separation_action_plan.docx
-  docx template file: dummy_file.docx
+  # docx template file: divorce_dissolution_separation_action_plan_do_not_qualify_ps_in_steps2.docx	
+  docx template file: divorce_dissolution_separation_action_plan_do_not_qualify_ps_in_steps2_1_table_pasted_in_rows.docx
   tagged pdf: True
