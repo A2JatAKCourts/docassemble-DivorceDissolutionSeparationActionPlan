@@ -1,3 +1,10 @@
+comment: |
+  # docx template file: divorce_dissolution_separation_action_plan.docx
+  # number of steps works in this one:  docx template file: divorce_dissolution_separation_action_plan_do_not_qualify_ps_in_steps2.docx
+  docx template file: scratch12b1.docx
+  # scratch11b.docx
+  # scratch10c_minus_legal_sep.docx - works
+  # divorce_dissolution_separation_action_plan_w_steps_replaced_and_last_step_not_referenced.docx
 ---
 include:
   - docassemble.AssemblyLine:assembly_line.yml
@@ -413,13 +420,16 @@ fields:
       #### <i class="fa-regular fa-lightbulb"></i> Learn more ####
       The portion of a spouse's retirement or pension account earned during a marriage is generally considered part of the marital property to be divided between the spouses.
 ---
+comment: |
+  is this causing error?
+  ${ al_court_bundle.as_pdf(key='preview') }
 id: preview Divorce_dissolution_separation_action_plan
 question: |
   Preview your form before you sign it
 subquestion: |
   Here is a preview of the form you will sign on the next page.   
   
-  ${ al_court_bundle.as_pdf(key='preview') }
+  
 
   Click the image to open it in a new tab. Click the "Edit answers" button
   to edit your answers.
@@ -568,7 +578,7 @@ objects:
 # Bundles group the ALDocuments into separate downloads, such as for court and for the user
 objects:
 #  - al_user_bundle: ALDocumentBundle.using(elements=[Divorce_dissolution_separation_action_plan_Post_interview_instructions, Divorce_dissolution_separation_action_plan_attachment], filename="Divorce_dissolution_separation_action_plan", title="All forms to download for your records", enabled=True)
-  - al_user_bundle: ALDocumentBundle.using(elements=[divorce_dissolution_separation_action_plan_attachment],  filename="divorce_dissolution_separation_action_plan", title="All forms to download for your records", enabled=True, has_addendum=False, suffix_to_append="")
+  - al_user_bundle: ALDocumentBundle.using(elements=[divorce_dissolution_separation_action_plan_attachment],  filename="divorce_dissolution_separation_action_plan", title="All forms to download for your records", enabled=True)
 #  - al_court_bundle: ALDocumentBundle.using(elements=[Divorce_dissolution_separation_action_plan_attachment],  filename="Divorce_dissolution_separation_action_plan", title="All forms to deliver to court", enabled=True)
 ---
 # Each attachment defines a key in an ALDocument. We use `i` as the placeholder here so the same template is 
@@ -587,7 +597,5 @@ attachment:
   filename: divorce_dissolution_separation_action_plan
   variable name: divorce_dissolution_separation_action_plan_attachment[i]
   skip undefined: True
-  # docx template file: divorce_dissolution_separation_action_plan.docx
-  # docx template file: divorce_dissolution_separation_action_plan_do_not_qualify_ps_in_steps2.docx	
-  docx template file: divorce_dissolution_separation_action_plan_do_not_qualify_ps_in_steps2_1_table_pasted_in_rows.docx
+  docx template file: divorce_dissolution_separation_action_plan.docx
   tagged pdf: True

@@ -1,6 +1,6 @@
 comment: |
-  Friday Dec 1
-  Starting divorce accordion_steps and drafting tests
+  Friday Dec 15
+  Testing and updating accordion_steps for disso and unc div
 ---
 id: final screen
 decoration: pen-to-square
@@ -531,40 +531,42 @@ subject: |
 content: |
   % if not minor_children and agree_or_settle == 'agree' and defined('wife_is_pregnant') and wife_is_pregnant in('husband', 'not pregnant'):
   * Read "Decide Between Dissolution & Uncontested Divorce," above.  Then pick 1 of the following options.  Note: If you choose dissolution, the link below takes you to the Alaska Court System Website to find the forms and instructions you need.  If you choose uncontested divorce, the forms and instructions you need are listed below.
-  % elif minor_children and have_property_and_debt and paternity == 'no' and defined('wife_is_pregnant') and wife_is_pregnant == 'not pregnant':
+  % elif minor_children and have_property_and_debt and paternity in('no','do not know') and defined('wife_is_pregnant') and wife_is_pregnant == 'not pregnant':
+  ''
   % else:
-  *	Generally, if spouses agree on all issues they can use either "dissolution" or "uncontested divorce" forms to ask to end the marriage. Uncontested divorce forms are best for your case 
-  % if minor_children and have_property_and_debt and paternity in('yes','do not know') :
+  *	Generally, if spouses agree on all issues they can use either "dissolution" or "uncontested divorce" forms to ask to end the marriage. Uncontested divorce forms are best for your case because 
+  % if minor_children and have_property_and_debt and paternity == 'yes':
   because they have a place to tell the court you have a paternity issue.
-  % elif minor_children and have_property_and_debt and paternity == 'no' and defined('wife_is_pregnant') and wife_is_pregnant == 'husband':
+  % elif minor_children and have_property_and_debt and paternity in('no', 'do not know') and defined('wife_is_pregnant') and wife_is_pregnant == 'husband':
   because paragraph 5(a) of the complaint has a place to tell the court wife is pregnant.
-  % elif minor_children and have_property_and_debt and paternity == 'no' and defined('wife_is_pregnant') and wife_is_pregnant in('not husband','not pregnant'):
+  % elif (minor_children and have_property_and_debt and paternity in('no', 'do not know') and defined('wife_is_pregnant') and wife_is_pregnant == 'not husband') or (not minor_children and defined('wife_is_pregnant') and wife_is_pregnant == 'not husband'):
   because paragraph 5(d) of the Complaint has a place to tell the court paternity is an issue for a child conceived during the marriage.
-  % elif minor_children and not have_property_and_debt and paternity in('yes','do not know'):
-  because they have a place to tell the court (1) you have a paternity issue; and (2) you have no property of debt.
-  % elif minor_children and not have_property_and_debt and paternity == 'no' and defined('wife_is_pregnant') and wife_is_pregnant == 'husband':
-  because (1) paragraph 5(a) of the complaint has a place to tell the court wife is pregnant and (2) they have a place to tell the court you have no marital property or debt.
-  % elif minor_children and not have_property_and_debt and paternity == 'no' and defined('wife_is_pregnant') and wife_is_pregnant in('not husband','not pregnant'):
-  because (1) paragraph 5(d) of the complaint has a place to tell the court paternity is an issue for a child conceived during the marriage. and (2) they have a place to tell the court you have no marital property or debt.
-  % elif minor_children and not have_property_and_debt and paternity == 'no' and defined('wife_is_pregnant') and wife_is_pregnant =='not pregnant':
+  % elif minor_children and not have_property_and_debt and paternity =='yes':
+  because they have a place to tell the court (1) you have a paternity issue; and (2) you have no marital property or debt.
+  % elif minor_children and not have_property_and_debt and paternity in('no', 'do not know') and defined('wife_is_pregnant') and wife_is_pregnant == 'not husband':
+   (1) they have a place to tell the court you have no marital property or debt and (2) paragraph 5(d) of the complaint has a place to tell the court paternity is an issue for a child conceived during the marriage.
+  % elif minor_children and not have_property_and_debt and paternity in('no', 'do not know') and defined('wife_is_pregnant') and wife_is_pregnant in('husband','not pregnant'):
   because they have a place to tell the court you have no marital property or debt.
-  % elif not minor_children and defined('wife_is_pregnant') and wife_is_pregnant == 'husband':
-  because paragraph 5(a) of the Complaint has a place to tell the court wife is pregnant.
-  % elif not minor_children and defined('wife_is_pregnant') and wife_is_pregnant in('not husband','not pregnant'):
+  % elif (not minor_children and defined('wife_is_pregnant') and wife_is_pregnant =='not husband') or (minor_children and have_property_and_debt and paternity in('no','do not know') and defined('wife_is_pregnant') and wife_is_pregnant =='not husband'):
   because paragraph 5(d) of the Complaint has a place to tell the court paternity is an issue for a child conceived during the marriage.
   % endif
   % endif
   *	You will not know your case number until you file your documents with the court.  You can write the case number on all your forms then.
 
-  % if minor_children or defined('wife_is_pregnant') and wife_is_pregnant in('husband','not husband'):
-  **Dissolution Packet #1: [DR-1 ANCH](https://courts.alaska.gov/forms/index.htm#dr-1anc) (Anchorage) | [DR-1](https://courts.alaska.gov/forms/index.htm#dr-1) (Not Anchorage) 
+  % if (minor_children and have_property_and_debt  and paternity in('no',' do not know') and defined('wife_is_pregnant') and wife_is_pregnant in('husband','not husband')) or (not minor_children and wife_is_pregnant == 'husband'):
+  **Dissolution Packet #1**: [DR-1 ANCH](https://courts.alaska.gov/forms/index.htm#dr-1anc) (Anchorage) | [DR-1](https://courts.alaska.gov/forms/index.htm#dr-1) (Not Anchorage) 
   [Anchorage Dissolution Packet #1](https://public.courts.alaska.gov/web/forms/docs/dr-1total.pdf) | All Other Cities Dissolution Packet #1 
   % if defined('wife_is_pregnant') and wife_is_pregnant in('husband','not husband'):
   (you must use this packet because wife is pregnant)
-  % endif
   or
   **Uncontested Divorce**
   % endif
+  % elif not minor_children and defined('wife_is_pregnant') and wife_is_pregnant == 'not pregnant':
+  **Dissolution Packet #2**: [DR-2](https://courts.alaska.gov/forms/index.htm#dr-2)
+  or
+  ** Uncontested Divorce** 
+  % endif 
+
   
   <div class="step-subheading">Required Forms</div>
   1 copy that both spouses sign if signatures are needed.
@@ -666,6 +668,11 @@ content: |
   
   *	return to the Guided Assistant to answer questions and get the specific forms for your case, or
   *	find the forms you need on-line:  [Filing for Divorce, Dissolution, or Custody Forms](https://courts.alaska.gov/shc/family/shcforms.htm#start)
+comment: |
+  Deleted this condition from step:
+  
+  % elif minor_children and not have_property_and_debt and paternity == 'no' and defined('wife_is_pregnant') and wife_is_pregnant == 'husband':
+  because (1) paragraph 5(a) of the complaint has a place to tell the court wife is pregnant and (2) they have a place to tell the court you have no marital property or debt.
 ---
 template: divorce_step
 subject: |
@@ -835,7 +842,7 @@ content: |
   % endif
 
   % if minor_children or wife_is_pregnant in('husband', 'not husband'):
-  % if minor_children and paternity in('yes', 'do not know'):
+  % if minor_children and paternity == 'yes':
 
   <div class="step-subheading">Paternity form</div>
   If the husband is not the biological or adopted father of a child born during the marriage you can ask the court to remove the husband’s rights and responsibilities for that child. This is called “disestablishing paternity.” Use: 
