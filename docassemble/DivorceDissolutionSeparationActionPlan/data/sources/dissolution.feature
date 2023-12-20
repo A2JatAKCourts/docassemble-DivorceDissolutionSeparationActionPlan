@@ -138,7 +138,7 @@ Scenario: Row #24
     And I should see the phrase "Learn about dissolutions and uncontested divorces"
     And I should see the phrase "Fill out the forms for an uncontested divorce"
     And I tap the "#dW5jb250ZXN0ZWRfZGl2b3JjZV9zdGVw  .al_toggle" element and stay on the same page
-    And I should see the phrase "paragraph 5(a) of the complaint has a place to tell the court wife is pregnant."
+    And I should see the phrase "paragraph 5(d) of the Complaint has a place to tell the court paternity is an issue for a child conceived during the marriage."
     And I should see the phrase "File the original with your local court"
     And I should see the phrase "Read the "Domestic Relations Procedural Order" or Standing Order if the clerk gives you one when you file your case"
     And I should see the phrase "Learn about paternity testing"
@@ -320,7 +320,7 @@ Scenario: Row #42
     And I should see the phrase "Learn about dissolutions and uncontested divorces"
     And I should see the phrase "Fill out the forms for an uncontested divorce"
     And I tap the "#dW5jb250ZXN0ZWRfZGl2b3JjZV9zdGVw  .al_toggle" element and stay on the same page
-    And I should see the phrase "(1) they have a place to tell the court you have no marital property or debt, and (2) paragraph 5(d) of the Complaint has a place to tell the court paternity is an issue for a child conceived during the marriage."
+    And I should see the phrase "(1) they have a place to tell the court you have no marital property or debt and (2) paragraph 5(d) of the complaint has a place to tell the court paternity is an issue for a child conceived during the marriage."
     And I should see the phrase "File the original with your local court"
     And I should see the phrase "Read the "Domestic Relations Procedural Order" or Standing Order if the clerk gives you one when you file your case"
     And I should see the phrase "Learn about paternity testing"
@@ -352,7 +352,38 @@ Scenario: Row 261
     And I should see the phrase "Get more information or help"
     And I take a screenshot
     And I download "divorce_dissolution_separation_action_plan.pdf"
-    
+
+@row262
+Scenario: Row #262b
+  Given I start the interview at "Divorce_dissolution_separation_action_plan.yml"
+  And I get to the question id "final screen" with this data:
+    | var | value | trigger |
+    | minor_children | False | |
+    | other_case | True | |
+    | ongoing | yes | |
+    | military | True | |
+    | other_state_case | continue | |
+    | legal_separation_or_divorce | divorce | |
+    | agree_or_settle | no prop debt or pregnancy | |
+    | no_prop_or_debt_agree | False | |
+    | know_spouse_whereabouts | True | |
+  And I take a screenshot
+    And I should see the phrase "Your Personal Action Plan for asking the court for a dissolution or uncontested divorce in Alaska in 9 steps"
+    And I should see the phrase "Decide which court should hear your case"
+    And I should see the phrase "Review common situations where there are no marital assets and debts to divide"
+    And I should see the phrase "Make sure you do not have marital assets and debts to divide"
+    And I should see the phrase "Learn about dissolutions and uncontested divorces"
+    And I should see the phrase "Fill out the forms for an uncontested divorce"
+    And I tap the "dW5jb250ZXN0ZWRfZGl2b3JjZV9zdGVw  .al_toggle" element and stay on the same page
+    And I should see the phrase "Edit when Stacey’s new form finished!"
+    And I should see the phrase "File the original with your local court"
+    And I should see the phrase "Read the "Domestic Relations Procedural Order" or Standing Order if the clerk gives you one when you file your case"
+    And I should see the phrase "Serve the complaint and summons"
+    And I should see the phrase "Get more information or help"
+    And I download "divorce_dissolution_separation_action_plan.pdf"
+
+
+
     
 
 @row264

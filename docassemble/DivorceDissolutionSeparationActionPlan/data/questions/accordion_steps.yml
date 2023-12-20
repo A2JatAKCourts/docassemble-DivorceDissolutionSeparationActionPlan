@@ -1,6 +1,5 @@
 comment: |
-  Friday Dec 15
-  Testing and updating accordion_steps for disso and unc div
+  Wednesday Dec 20
 ---
 id: final screen
 decoration: pen-to-square
@@ -87,7 +86,8 @@ code: |
           add_unique_step((uncontested_divorce_step, "uncontested_divorce_idx"), step_list)
           add_unique_step((file_forms_step, "file_forms_idx"), step_list)
           add_unique_step((read_drpo_step, "read_drpo_idx"), step_list)
-          add_unique_step((serve_complaint_step, "serve_complaint_idx"), step_list)  
+          add_unique_step((serve_complaint_step, "serve_complaint_idx"), step_list)
+          add_unique_step((learn_more_about_process_step, "learn_more_about_process_idx"), step_list)
         if know_spouse_whereabouts == False:
           add_unique_step((alternate_service_step, "alternate_service_idx"), step_list)
             
@@ -529,7 +529,9 @@ subject: |
     for an uncontested divorce
     % endif
 content: |
-  % if not minor_children and agree_or_settle == 'agree' and defined('wife_is_pregnant') and wife_is_pregnant in('husband', 'not pregnant'):
+  % if not minor_children and agree_or_settle == 'no prop debt or pregnancy' and not no_prop_or_debt_agree and know_spouse_whereabouts:
+  <span style="background-color:#00ff00">Edit when Stacey's new form finished!</span>
+  % elif not minor_children and agree_or_settle == 'agree' and defined('wife_is_pregnant') and wife_is_pregnant in('husband', 'not pregnant'):
   * Read "Decide Between Dissolution & Uncontested Divorce," above.  Then pick 1 of the following options.  Note: If you choose dissolution, the link below takes you to the Alaska Court System Website to find the forms and instructions you need.  If you choose uncontested divorce, the forms and instructions you need are listed below.
   % elif minor_children and have_property_and_debt and paternity in('no','do not know') and defined('wife_is_pregnant') and wife_is_pregnant == 'not pregnant':
   ''
@@ -545,15 +547,16 @@ content: |
   because they have a place to tell the court (1) you have a paternity issue; and (2) you have no marital property or debt.
   % elif minor_children and not have_property_and_debt and paternity in('no', 'do not know') and defined('wife_is_pregnant') and wife_is_pregnant == 'not husband':
    (1) they have a place to tell the court you have no marital property or debt and (2) paragraph 5(d) of the complaint has a place to tell the court paternity is an issue for a child conceived during the marriage.
-  % elif minor_children and not have_property_and_debt and paternity in('no', 'do not know') and defined('wife_is_pregnant') and wife_is_pregnant in('husband','not pregnant'):
+  % elif (minor_children and not have_property_and_debt and paternity in('no', 'do not know') and defined('wife_is_pregnant') and wife_is_pregnant in('husband','not pregnant')) or (not minor_children and agree_or_settle == 'no prop debt or pregnancy' and no_prop_or_debt_agree):
   because they have a place to tell the court you have no marital property or debt.
   % elif (not minor_children and defined('wife_is_pregnant') and wife_is_pregnant =='not husband') or (minor_children and have_property_and_debt and paternity in('no','do not know') and defined('wife_is_pregnant') and wife_is_pregnant =='not husband'):
   because paragraph 5(d) of the Complaint has a place to tell the court paternity is an issue for a child conceived during the marriage.
   % endif
   % endif
+  
   *	You will not know your case number until you file your documents with the court.  You can write the case number on all your forms then.
 
-  % if (minor_children and have_property_and_debt  and paternity in('no',' do not know') and defined('wife_is_pregnant') and wife_is_pregnant in('husband','not husband')) or (not minor_children and wife_is_pregnant == 'husband'):
+  % if (minor_children and have_property_and_debt  and paternity in('no',' do not know') and defined('wife_is_pregnant') and wife_is_pregnant in('husband','not husband')) or (not minor_children and defined('wife_is_pregnant') and wife_is_pregnant == 'husband'):
   **Dissolution Packet #1**: [DR-1 ANCH](https://courts.alaska.gov/forms/index.htm#dr-1anc) (Anchorage) | [DR-1](https://courts.alaska.gov/forms/index.htm#dr-1) (Not Anchorage) 
   [Anchorage Dissolution Packet #1](https://public.courts.alaska.gov/web/forms/docs/dr-1total.pdf) | All Other Cities Dissolution Packet #1 
   % if defined('wife_is_pregnant') and wife_is_pregnant in('husband','not husband'):
