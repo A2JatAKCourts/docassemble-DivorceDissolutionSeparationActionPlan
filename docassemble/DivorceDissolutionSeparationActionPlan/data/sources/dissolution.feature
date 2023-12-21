@@ -375,7 +375,7 @@ Scenario: Row #262
     And I should see the phrase "Make sure you do not have marital assets and debts to divide"
     And I should see the phrase "Learn about dissolutions and uncontested divorces"
     And I should see the phrase "Fill out the forms for an uncontested divorce"
-    And I tap the "dW5jb250ZXN0ZWRfZGl2b3JjZV9zdGVw  .al_toggle" element and stay on the same page
+    And I tap the "#dW5jb250ZXN0ZWRfZGl2b3JjZV9zdGVw  .al_toggle" element and stay on the same page
     And I should see the phrase "Edit when Stacey’s new form finished!"
     And I should see the phrase "File the original with your local court"
     And I should see the phrase "Read the "Domestic Relations Procedural Order" or Standing Order if the clerk gives you one when you file your case"
