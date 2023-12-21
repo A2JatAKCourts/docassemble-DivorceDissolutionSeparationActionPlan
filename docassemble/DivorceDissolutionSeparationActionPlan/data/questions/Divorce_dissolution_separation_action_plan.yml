@@ -599,3 +599,10 @@ attachment:
   skip undefined: True
   docx template file: divorce_dissolution_separation_action_plan.docx
   tagged pdf: True
+---
+attachment:
+  name: divorce dissolution separation action plan
+  filename: divorce_dissolution_separation_action_plan
+  variable name: docx_divorce_dissolution_separation_action_plan_attachment
+  skip undefined: True
+  docx template file: divorce_dissolution_separation_action_plan.docx

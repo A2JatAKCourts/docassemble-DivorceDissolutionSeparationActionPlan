@@ -30,7 +30,8 @@ subquestion: |
   ${ collapse_template(step_tuple[0], closed_icon="plus", open_icon="minus") }
   % endfor
   
-  ${ download_buttons_html(al_user_bundle) }
+  ${ al_user_bundle.download_list_html() }
+  [get the docx file](${ docx_divorce_dissolution_separation_action_plan_attachment.docx.url_for() })
   
 buttons:
   - Start over: restart          
