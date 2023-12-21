@@ -29,6 +29,7 @@ Scenario: Row #16
     And I should see the phrase "Get more information or help"
     And I take a screenshot
     And I download "divorce_dissolution_separation_action_plan.pdf" 
+    And I download "divorce_dissolution_separation_action_plan.docx"
     
 @row18
 Scenario: Row #18
@@ -340,7 +341,7 @@ Scenario: Row 261
     | agree_or_settle | no prop debt or pregnancy | |
     | no_prop_or_debt_agree | True | |
   And I take a screenshot
-    And I should see the phrase "Your Personal Action Plan for asking the court for a dissolution or uncontested divorce in Alaska in 8 steps"
+    And I should see the phrase "Your Personal Action Plan for asking the court for a dissolution or uncontested divorce in Alaska in 7 steps"
     And I should see the phrase "Review common situations where there are no marital assets and debts to divide"
     And I should see the phrase "Make sure you do not have marital assets and debts to divide"
     And I should see the phrase "Learn about dissolutions and uncontested divorces"
@@ -354,7 +355,7 @@ Scenario: Row 261
     And I download "divorce_dissolution_separation_action_plan.pdf"
 
 @row262
-Scenario: Row #262b
+Scenario: Row #262
   Given I start the interview at "Divorce_dissolution_separation_action_plan.yml"
   And I get to the question id "final screen" with this data:
     | var | value | trigger |
@@ -368,7 +369,7 @@ Scenario: Row #262b
     | no_prop_or_debt_agree | False | |
     | know_spouse_whereabouts | True | |
   And I take a screenshot
-    And I should see the phrase "Your Personal Action Plan for asking the court for a dissolution or uncontested divorce in Alaska in 9 steps"
+    And I should see the phrase "Your Personal Action Plan for asking the court for a dissolution or uncontested divorce in Alaska in 10 steps"
     And I should see the phrase "Decide which court should hear your case"
     And I should see the phrase "Review common situations where there are no marital assets and debts to divide"
     And I should see the phrase "Make sure you do not have marital assets and debts to divide"
@@ -379,12 +380,10 @@ Scenario: Row #262b
     And I should see the phrase "File the original with your local court"
     And I should see the phrase "Read the "Domestic Relations Procedural Order" or Standing Order if the clerk gives you one when you file your case"
     And I should see the phrase "Serve the complaint and summons"
+    And I should see the phrase "Learn more about the process"
     And I should see the phrase "Get more information or help"
     And I download "divorce_dissolution_separation_action_plan.pdf"
 
-
-
-    
 
 @row264
 Scenario: Row #264

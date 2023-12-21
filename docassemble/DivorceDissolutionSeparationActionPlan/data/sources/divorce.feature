@@ -193,7 +193,7 @@ Scenario: Row #263
     | agree_or_settle | no prop debt or pregnancy | |
     | no_prop_or_debt_agree | False | |
     | know_spouse_whereabouts | False | |
-  And I take a screenshot
+  # And I take a screenshot
     And I should see the phrase "Your Personal Action Plan for asking the court for a dissolution or uncontested divorce in Alaska in 2 steps"
     And I should see the phrase "File to end your marriage when you do not know where your spouse is, there are no children, and there is no property or debt to divide"
     And I tap the "#YWx0ZXJuYXRlX3NlcnZpY2Vfc3RlcA .al_toggle" element and stay on the same page
@@ -201,6 +201,7 @@ Scenario: Row #263
     And I tap the "#Z2V0X2hlbHA .al_toggle" element and stay on the same page
     And I take a screenshot
     And I download "divorce_dissolution_separation_action_plan.pdf"
+    And I download "divorce_dissolution_separation_action_plan.docx"
 
 
 
