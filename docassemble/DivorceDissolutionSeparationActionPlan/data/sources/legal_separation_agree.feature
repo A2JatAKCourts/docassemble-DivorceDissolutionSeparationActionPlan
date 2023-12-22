@@ -159,12 +159,12 @@ Scenario: Row #360
     | residency_and_jurisdiction | False | |
     | military | True | |
     | continue_despite_no_residency | continue | |
-| legal_separation_or_divorce | legal separation | |
-| agree_or_settle_kids | yes | |
-| know_spouse_whereabouts | True | |
-| paternity | do not know | |
-| wife_is_pregnant | husband | |
-| domestic_violence | True | |
+    | legal_separation_or_divorce | legal separation | |
+    | agree_or_settle_kids | yes | |
+    | know_spouse_whereabouts | True | |
+    | paternity | do not know | |
+    | wife_is_pregnant | husband | |
+    | domestic_violence | True | |
   And I take a screenshot
     And I should see the phrase "Your Personal Action Plan for asking the court for a legal separation in Alaska in 9 steps"
     And I should see the phrase "Decide if Alaska is the right state for your case"
@@ -180,7 +180,7 @@ Scenario: Row #360
     And I should see the phrase "Learn more about the process"
     And I tap the "#bGVhcm5fbW9yZV9hYm91dF9wcm9jZXNzX3N0ZXA .al_toggle" element and stay on the same page
     And I should see the phrase "Learn about paternity testing"
-    And I tap the "cGF0ZXJuaXR5X3Rlc3Rpbmdfc3RlcA .al_toggle" element and stay on the same page
+    And I tap the "#cGF0ZXJuaXR5X3Rlc3Rpbmdfc3RlcA .al_toggle" element and stay on the same page
     And I should see the phrase "Learn about abuse or domestic violence resources & reaching an agreement"
     And I tap the "#ZG9tZXN0aWNfdmlvbGVuY2Vfc3RlcA .al_toggle" element and stay on the same page
     And I should see the phrase "Get more information or help"
@@ -218,7 +218,7 @@ Scenario: Row #365
     And I should see the phrase "Learn about starting a case when you do not know where your spouse is"
     And I tap the "#YWx0ZXJuYXRlX3NlcnZpY2Vfc3RlcA .al_toggle" element and stay on the same page
     And I should see the phrase "Learn about paternity testing"
-    And I tap the "cGF0ZXJuaXR5X3Rlc3Rpbmdfc3RlcA .al_toggle" element and stay on the same page
+    And I tap the "#cGF0ZXJuaXR5X3Rlc3Rpbmdfc3RlcA .al_toggle" element and stay on the same page
     And I should see the phrase "Get more information or help"
     And I tap the "#Z2V0X2hlbHA .al_toggle" element and stay on the same page
     And I take a screenshot

@@ -252,8 +252,6 @@ Scenario: Row #408
     And I tap the "#bGVhcm5fbW9yZV9hYm91dF9wcm9jZXNzX3N0ZXA .al_toggle" element and stay on the same page    
     And I should see the phrase "Learn about starting a case when you do not know where your spouse is"
     And I tap the "#YWx0ZXJuYXRlX3NlcnZpY2Vfc3RlcA .al_toggle" element and stay on the same page
-    And I should see the phrase "Learn about paternity testing"
-    And I tap the "#cGF0ZXJuaXR5X3Rlc3Rpbmdfc3RlcA .al_toggle" element and stay on the same page
     And I should see the phrase "Learn about options to help you and your spouse reach an agreement"
     And I tap the "#dGFsa190b19zcG91c2Vfc3RlcA .al_toggle" element and stay on the same page
     And I should see the phrase "File for default if your spouse does not respond within 20 days"
@@ -293,11 +291,7 @@ Scenario: Row #420
     And I should see the phrase "Serve the complaint and summons"
     And I tap the "#c2VydmVfY29tcGxhaW50X3N0ZXA .al_toggle" element and stay on the same page
     And I should see the phrase "Learn more about the process"
-    And I tap the "#bGVhcm5fbW9yZV9hYm91dF9wcm9jZXNzX3N0ZXA .al_toggle" element and stay on the same page    
-    And I should see the phrase "Learn about starting a case when you do not know where your spouse is"
-    And I tap the "#YWx0ZXJuYXRlX3NlcnZpY2Vfc3RlcA .al_toggle" element and stay on the same page
-    And I should see the phrase "Learn about paternity testing"
-    And I tap the "#cGF0ZXJuaXR5X3Rlc3Rpbmdfc3RlcA .al_toggle" element and stay on the same page
+    And I tap the "#bGVhcm5fbW9yZV9hYm91dF9wcm9jZXNzX3N0ZXA .al_toggle" element and stay on the same page
     And I should see the phrase "Learn about options to help you and your spouse reach an agreement"
     And I tap the "#dGFsa190b19zcG91c2Vfc3RlcA .al_toggle" element and stay on the same page
     And I should see the phrase "Learn about abuse or domestic violence"

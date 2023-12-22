@@ -820,7 +820,7 @@ content: |
 
   % if wife_is_pregnant in('husband', 'not husband'):
 
-  <div class="step-subheading">Form if wife is pregnant
+  <div class="step-subheading">Form if wife is pregnant</div>
 
   % if wife_is_pregnant == 'husband':
 
