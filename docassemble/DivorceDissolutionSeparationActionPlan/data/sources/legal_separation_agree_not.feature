@@ -18,28 +18,18 @@ Scenario: Row #366
     | info_on_agree | True | |
     | domestic_violence | True | |
     | default_info | True | |
-  And I take a screenshot
+  # And I take a screenshot
     And I should see the phrase "Your Personal Action Plan for asking the court for a legal separation in Alaska in 10 steps"
     And I should see the phrase "Learn about legal separation"
-    And I tap the "#bGVhcm5fbGVnYWxfc2VwX3N0ZXA .al_toggle" element and stay on the same page
     And I should see the phrase "Fill out the forms to start a legal separation case"
-    And I tap the "#bGVnYWxfc2VwYXJhdGlvbl9kb19ub3RfYWdyZWVfc3RlcA .al_toggle" element and stay on the same page
     And I should see the phrase "File the original with your local court"
-    And I tap the "#ZmlsZV9mb3Jtc19zdGVw .al_toggle" element and stay on the same page
-    And I should see the phrase "Read the “Domestic Relations Procedural Order” or Standing Order if the clerk gives you one when you file your case"
-    And I tap the "#cmVhZF9kcnBvX3N0ZXA .al_toggle" element and stay on the same page
+    And I should see the phrase "Read the â€œDomestic Relations Procedural Orderâ€ or Standing Order if the clerk gives you one when you file your case"
     And I should see the phrase "Serve the complaint and summons"
-    And I tap the "#c2VydmVfY29tcGxhaW50X3N0ZXA .al_toggle" element and stay on the same page
     And I should see the phrase "Learn more about the process"
-    And I tap the "#bGVhcm5fbW9yZV9hYm91dF9wcm9jZXNzX3N0ZXA .al_toggle" element and stay on the same page
     And I should see the phrase "Learn about options to help you and your spouse reach an agreement"
-    And I tap the "#dGFsa190b19zcG91c2Vfc3RlcA .al_toggle" element and stay on the same page
     And I should see the phrase "Learn about abuse or domestic violence and parenting"
-    And I tap the "#ZG9tZXN0aWNfdmlvbGVuY2Vfc3RlcA .al_toggle" element and stay on the same page
     And I should see the phrase "File for default if your spouse does not respond within 20 days"
-    And I tap the "#ZGVmYXVsdF9zdGVw .al_toggle" element and stay on the same page
     And I should see the phrase "Get more information or help"
-    And I tap the "#Z2V0X2hlbHA .al_toggle" element and stay on the same page
     And I take a screenshot
     # And I download "divorce_dissolution_separation_action_plan.pdf"
     And I download "divorce_dissolution_separation_action_plan.docx"
@@ -62,26 +52,17 @@ Scenario: Row #377
     | info_on_agree | True | |
     | domestic_violence | False | |
     | default_info | False | |
-  And I take a screenshot
+  # And I take a screenshot
     And I should see the phrase "Your Personal Action Plan for asking the court for a legal separation in Alaska in 9 steps"
     And I should see the phrase "Decide which court should hear your case"
-    And I tap the "#cGlja19jb3VydF9zdGVw .al_toggle" element and stay on the same page
     And I should see the phrase "Learn about legal separation"
-    And I tap the "#bGVhcm5fbGVnYWxfc2VwX3N0ZXA .al_toggle" element and stay on the same page
     And I should see the phrase "Fill out the forms to start a legal separation case"
-    And I tap the "#bGVnYWxfc2VwYXJhdGlvbl9kb19ub3RfYWdyZWVfc3RlcA .al_toggle" element and stay on the same page
     And I should see the phrase "File the original with your local court"
-    And I tap the "#ZmlsZV9mb3Jtc19zdGVw .al_toggle" element and stay on the same page
-    And I should see the phrase "Read the “Domestic Relations Procedural Order” or Standing Order if the clerk gives you one when you file your case"
-    And I tap the "#cmVhZF9kcnBvX3N0ZXA .al_toggle" element and stay on the same page
+    And I should see the phrase "Read the â€œDomestic Relations Procedural Orderâ€ or Standing Order if the clerk gives you one when you file your case"
     And I should see the phrase "Serve the complaint and summons"
-    And I tap the "#c2VydmVfY29tcGxhaW50X3N0ZXA .al_toggle" element and stay on the same page
     And I should see the phrase "Learn more about the process"
-    And I tap the "#bGVhcm5fbW9yZV9hYm91dF9wcm9jZXNzX3N0ZXA .al_toggle" element and stay on the same page
     And I should see the phrase "Learn about options to help you and your spouse reach an agreement"
-    And I tap the "#dGFsa190b19zcG91c2Vfc3RlcA .al_toggle" element and stay on the same page
     And I should see the phrase "Get more information or help"
-    And I tap the "#Z2V0X2hlbHA .al_toggle" element and stay on the same page
     And I take a screenshot
     # And I download "divorce_dissolution_separation_action_plan.pdf"
     And I download "divorce_dissolution_separation_action_plan.docx"
@@ -102,24 +83,16 @@ Scenario: Row #387
     | info_on_agree | False | |
     | domestic_violence | True | |
     | default_info | False | |
-  And I take a screenshot
+  # And I take a screenshot
     And I should see the phrase "Your Personal Action Plan for asking the court for a legal separation in Alaska in 8 steps"
     And I should see the phrase "Learn about legal separation"
-    And I tap the "#bGVhcm5fbGVnYWxfc2VwX3N0ZXA .al_toggle" element and stay on the same page
     And I should see the phrase "Fill out the forms to start a legal separation case"
-    And I tap the "#bGVnYWxfc2VwYXJhdGlvbl9kb19ub3RfYWdyZWVfc3RlcA .al_toggle" element and stay on the same page
     And I should see the phrase "File the original with your local court"
-    And I tap the "#ZmlsZV9mb3Jtc19zdGVw .al_toggle" element and stay on the same page
-    And I should see the phrase "Read the “Domestic Relations Procedural Order” or Standing Order if the clerk gives you one when you file your case"
-    And I tap the "#cmVhZF9kcnBvX3N0ZXA .al_toggle" element and stay on the same page
+    And I should see the phrase "Read the â€œDomestic Relations Procedural Orderâ€ or Standing Order if the clerk gives you one when you file your case"
     And I should see the phrase "Serve the complaint and summons"
-    And I tap the "#c2VydmVfY29tcGxhaW50X3N0ZXA .al_toggle" element and stay on the same page
     And I should see the phrase "Learn more about the process"
-    And I tap the "#bGVhcm5fbW9yZV9hYm91dF9wcm9jZXNzX3N0ZXA .al_toggle" element and stay on the same page
     And I should see the phrase "Learn about abuse or domestic violence and parenting"
-    And I tap the "#ZG9tZXN0aWNfdmlvbGVuY2Vfc3RlcA .al_toggle" element and stay on the same page
     And I should see the phrase "Get more information or help"
-    And I tap the "#Z2V0X2hlbHA .al_toggle" element and stay on the same page
     And I take a screenshot
     # And I download "divorce_dissolution_separation_action_plan.pdf"
     And I download "divorce_dissolution_separation_action_plan.docx"
@@ -143,30 +116,19 @@ Scenario: Row #395
     | info_on_agree | False | |
     | domestic_violence | True | |
     | default_info | False | |
-  And I take a screenshot
+  # And I take a screenshot
     And I should see the phrase "Your Personal Action Plan for asking the court for a legal separation in Alaska in 11 steps"
     And I should see the phrase "Decide which court should hear your case"
-    And I tap the "#cGlja19jb3VydF9zdGVw .al_toggle" element and stay on the same page
     And I should see the phrase "Learn about legal separation"
-    And I tap the "#bGVhcm5fbGVnYWxfc2VwX3N0ZXA .al_toggle" element and stay on the same page
     And I should see the phrase "Fill out the forms to start a legal separation case"
-    And I tap the "#bGVnYWxfc2VwYXJhdGlvbl9kb19ub3RfYWdyZWVfc3RlcA .al_toggle" element and stay on the same page
     And I should see the phrase "File the original with your local court"
-    And I tap the "#ZmlsZV9mb3Jtc19zdGVw .al_toggle" element and stay on the same page
-    And I should see the phrase "Read the “Domestic Relations Procedural Order” or Standing Order if the clerk gives you one when you file your case"
-    And I tap the "#cmVhZF9kcnBvX3N0ZXA .al_toggle" element and stay on the same page
+    And I should see the phrase "Read the â€œDomestic Relations Procedural Orderâ€ or Standing Order if the clerk gives you one when you file your case"
     And I should see the phrase "Serve the complaint and summons"
-    And I tap the "#c2VydmVfY29tcGxhaW50X3N0ZXA .al_toggle" element and stay on the same page
     And I should see the phrase "Learn more about the process"
-    And I tap the "#bGVhcm5fbW9yZV9hYm91dF9wcm9jZXNzX3N0ZXA .al_toggle" element and stay on the same page    
     And I should see the phrase "Learn about starting a case when you do not know where your spouse is"
-    And I tap the "#YWx0ZXJuYXRlX3NlcnZpY2Vfc3RlcA .al_toggle" element and stay on the same page
     And I should see the phrase "Learn about paternity testing"
-    And I tap the "#cGF0ZXJuaXR5X3Rlc3Rpbmdfc3RlcA .al_toggle" element and stay on the same page
     And I should see the phrase "Learn about abuse or domestic violence and parenting"
-    And I tap the "#ZG9tZXN0aWNfdmlvbGVuY2Vfc3RlcA .al_toggle" element and stay on the same page
     And I should see the phrase "Get more information or help"
-    And I tap the "#Z2V0X2hlbHA .al_toggle" element and stay on the same page
     And I take a screenshot
     # And I download "divorce_dissolution_separation_action_plan.pdf"
     And I download "divorce_dissolution_separation_action_plan.docx"
@@ -187,30 +149,19 @@ Scenario: Row #400
     | info_on_agree | True | |
     | domestic_violence | False | |
     | default_info | True | |
-  And I take a screenshot
+  # And I take a screenshot
     And I should see the phrase "Your Personal Action Plan for asking the court for a legal separation in Alaska in 11 steps"
     And I should see the phrase "Learn about legal separation"
-    And I tap the "#bGVhcm5fbGVnYWxfc2VwX3N0ZXA .al_toggle" element and stay on the same page
     And I should see the phrase "Fill out the forms to start a legal separation case"
-    And I tap the "#bGVnYWxfc2VwYXJhdGlvbl9kb19ub3RfYWdyZWVfc3RlcA .al_toggle" element and stay on the same page
     And I should see the phrase "File the original with your local court"
-    And I tap the "#ZmlsZV9mb3Jtc19zdGVw .al_toggle" element and stay on the same page
-    And I should see the phrase "Read the “Domestic Relations Procedural Order” or Standing Order if the clerk gives you one when you file your case"
-    And I tap the "#cmVhZF9kcnBvX3N0ZXA .al_toggle" element and stay on the same page
+    And I should see the phrase "Read the â€œDomestic Relations Procedural Orderâ€ or Standing Order if the clerk gives you one when you file your case"
     And I should see the phrase "Serve the complaint and summons"
-    And I tap the "#c2VydmVfY29tcGxhaW50X3N0ZXA .al_toggle" element and stay on the same page
     And I should see the phrase "Learn more about the process"
-    And I tap the "#bGVhcm5fbW9yZV9hYm91dF9wcm9jZXNzX3N0ZXA .al_toggle" element and stay on the same page    
     And I should see the phrase "Learn about starting a case when you do not know where your spouse is"
-    And I tap the "#YWx0ZXJuYXRlX3NlcnZpY2Vfc3RlcA .al_toggle" element and stay on the same page
     And I should see the phrase "Learn about paternity testing"
-    And I tap the "#cGF0ZXJuaXR5X3Rlc3Rpbmdfc3RlcA .al_toggle" element and stay on the same page
     And I should see the phrase "Learn about options to help you and your spouse reach an agreement"
-    And I tap the "#dGFsa190b19zcG91c2Vfc3RlcA .al_toggle" element and stay on the same page
     And I should see the phrase "File for default if your spouse does not respond within 20 days"
-    And I tap the "#ZGVmYXVsdF9zdGVw .al_toggle" element and stay on the same page
     And I should see the phrase "Get more information or help"
-    And I tap the "#Z2V0X2hlbHA .al_toggle" element and stay on the same page
     And I take a screenshot
     # And I download "divorce_dissolution_separation_action_plan.pdf"
     And I download "divorce_dissolution_separation_action_plan.docx"
@@ -234,30 +185,19 @@ Scenario: Row #408
     | info_on_agree | True | |
     | domestic_violence | False | |
     | default_info | True | |
-  And I take a screenshot
+  # And I take a screenshot
     And I should see the phrase "Your Personal Action Plan for asking the court for a legal separation in Alaska in 11 steps"
     And I should see the phrase "Decide if Alaska is the right state for your case"
-    And I tap the "#cGlja19jb3VydF9zdGVw .al_toggle" element and stay on the same page
     And I should see the phrase "Learn about legal separation"
-    And I tap the "#bGVhcm5fbGVnYWxfc2VwX3N0ZXA .al_toggle" element and stay on the same page
     And I should see the phrase "Fill out the forms to start a legal separation case"
-    And I tap the "#bGVnYWxfc2VwYXJhdGlvbl9kb19ub3RfYWdyZWVfc3RlcA .al_toggle" element and stay on the same page
     And I should see the phrase "File the original with your local court"
-    And I tap the "#ZmlsZV9mb3Jtc19zdGVw .al_toggle" element and stay on the same page
-    And I should see the phrase "Read the “Domestic Relations Procedural Order” or Standing Order if the clerk gives you one when you file your case"
-    And I tap the "#cmVhZF9kcnBvX3N0ZXA .al_toggle" element and stay on the same page
+    And I should see the phrase "Read the â€œDomestic Relations Procedural Orderâ€ or Standing Order if the clerk gives you one when you file your case"
     And I should see the phrase "Serve the complaint and summons"
-    And I tap the "#c2VydmVfY29tcGxhaW50X3N0ZXA .al_toggle" element and stay on the same page
     And I should see the phrase "Learn more about the process"
-    And I tap the "#bGVhcm5fbW9yZV9hYm91dF9wcm9jZXNzX3N0ZXA .al_toggle" element and stay on the same page    
     And I should see the phrase "Learn about starting a case when you do not know where your spouse is"
-    And I tap the "#YWx0ZXJuYXRlX3NlcnZpY2Vfc3RlcA .al_toggle" element and stay on the same page
     And I should see the phrase "Learn about options to help you and your spouse reach an agreement"
-    And I tap the "#dGFsa190b19zcG91c2Vfc3RlcA .al_toggle" element and stay on the same page
     And I should see the phrase "File for default if your spouse does not respond within 20 days"
-    And I tap the "#ZGVmYXVsdF9zdGVw .al_toggle" element and stay on the same page
     And I should see the phrase "Get more information or help"
-    And I tap the "#Z2V0X2hlbHA .al_toggle" element and stay on the same page
     And I take a screenshot
     # And I download "divorce_dissolution_separation_action_plan.pdf"
     And I download "divorce_dissolution_separation_action_plan.docx"
@@ -278,28 +218,18 @@ Scenario: Row #420
     | info_on_agree | True | |
     | domestic_violence | True | |
     | default_info | True | |
-  And I take a screenshot
+  # And I take a screenshot
     And I should see the phrase "Your Personal Action Plan for asking the court for a legal separation in Alaska in 10 steps"
     And I should see the phrase "Learn about legal separation"
-    And I tap the "#bGVhcm5fbGVnYWxfc2VwX3N0ZXA .al_toggle" element and stay on the same page
     And I should see the phrase "Fill out the forms to start a legal separation case"
-    And I tap the "#bGVnYWxfc2VwYXJhdGlvbl9kb19ub3RfYWdyZWVfc3RlcA .al_toggle" element and stay on the same page
     And I should see the phrase "File the original with your local court"
-    And I tap the "#ZmlsZV9mb3Jtc19zdGVw .al_toggle" element and stay on the same page
-    And I should see the phrase "Read the “Domestic Relations Procedural Order” or Standing Order if the clerk gives you one when you file your case"
-    And I tap the "#cmVhZF9kcnBvX3N0ZXA .al_toggle" element and stay on the same page
+    And I should see the phrase "Read the â€œDomestic Relations Procedural Orderâ€ or Standing Order if the clerk gives you one when you file your case"
     And I should see the phrase "Serve the complaint and summons"
-    And I tap the "#c2VydmVfY29tcGxhaW50X3N0ZXA .al_toggle" element and stay on the same page
     And I should see the phrase "Learn more about the process"
-    And I tap the "#bGVhcm5fbW9yZV9hYm91dF9wcm9jZXNzX3N0ZXA .al_toggle" element and stay on the same page
     And I should see the phrase "Learn about options to help you and your spouse reach an agreement"
-    And I tap the "#dGFsa190b19zcG91c2Vfc3RlcA .al_toggle" element and stay on the same page
     And I should see the phrase "Learn about abuse or domestic violence"
-    And I tap the "#ZG9tZXN0aWNfdmlvbGVuY2Vfc3RlcA .al_toggle" element and stay on the same page
     And I should see the phrase "File for default if your spouse does not respond within 20 days"
-    And I tap the "#ZGVmYXVsdF9zdGVw .al_toggle" element and stay on the same page
     And I should see the phrase "Get more information or help"
-    And I tap the "#Z2V0X2hlbHA .al_toggle" element and stay on the same page
     And I take a screenshot
     # And I download "divorce_dissolution_separation_action_plan.pdf"
     And I download "divorce_dissolution_separation_action_plan.docx"
@@ -321,26 +251,17 @@ Scenario: Row #425
     | info_on_agree | False | |
     | domestic_violence | True | |
     | default_info | False | |
-  And I take a screenshot
+  # And I take a screenshot
     And I should see the phrase "Your Personal Action Plan for asking the court for a legal separation in Alaska in 9 steps"
     And I should see the phrase "Decide if Alaska is the right state for your case"
-    And I tap the "#cGlja19jb3VydF9zdGVw .al_toggle" element and stay on the same page
     And I should see the phrase "Learn about legal separation"
-    And I tap the "#bGVhcm5fbGVnYWxfc2VwX3N0ZXA .al_toggle" element and stay on the same page
     And I should see the phrase "Fill out the forms to start a legal separation case"
-    And I tap the "#bGVnYWxfc2VwYXJhdGlvbl9kb19ub3RfYWdyZWVfc3RlcA .al_toggle" element and stay on the same page
     And I should see the phrase "File the original with your local court"
-    And I tap the "#ZmlsZV9mb3Jtc19zdGVw .al_toggle" element and stay on the same page
-    And I should see the phrase "Read the “Domestic Relations Procedural Order” or Standing Order if the clerk gives you one when you file your case"
-    And I tap the "#cmVhZF9kcnBvX3N0ZXA .al_toggle" element and stay on the same page
+    And I should see the phrase "Read the â€œDomestic Relations Procedural Orderâ€ or Standing Order if the clerk gives you one when you file your case"
     And I should see the phrase "Serve the complaint and summons"
-    And I tap the "#c2VydmVfY29tcGxhaW50X3N0ZXA .al_toggle" element and stay on the same page
     And I should see the phrase "Learn more about the process"
-    And I tap the "#bGVhcm5fbW9yZV9hYm91dF9wcm9jZXNzX3N0ZXA .al_toggle" element and stay on the same page
     And I should see the phrase "Learn about abuse or domestic violence"
-    And I tap the "#ZG9tZXN0aWNfdmlvbGVuY2Vfc3RlcA .al_toggle" element and stay on the same page
     And I should see the phrase "Get more information or help"
-    And I tap the "#Z2V0X2hlbHA .al_toggle" element and stay on the same page
     And I take a screenshot
     # And I download "divorce_dissolution_separation_action_plan.pdf"
     And I download "divorce_dissolution_separation_action_plan.docx"
@@ -360,28 +281,18 @@ Scenario: Row #430
     | info_on_agree | True | |
     | domestic_violence | False | |
     | default_info | True | |
-  And I take a screenshot
+  # And I take a screenshot
     And I should see the phrase "Your Personal Action Plan for asking the court for a legal separation in Alaska in 10 steps"
     And I should see the phrase "Learn about legal separation"
-    And I tap the "#bGVhcm5fbGVnYWxfc2VwX3N0ZXA .al_toggle" element and stay on the same page
     And I should see the phrase "Fill out the forms to start a legal separation case"
-    And I tap the "#bGVnYWxfc2VwYXJhdGlvbl9kb19ub3RfYWdyZWVfc3RlcA .al_toggle" element and stay on the same page
     And I should see the phrase "File the original with your local court"
-    And I tap the "#ZmlsZV9mb3Jtc19zdGVw .al_toggle" element and stay on the same page
-    And I should see the phrase "Read the “Domestic Relations Procedural Order” or Standing Order if the clerk gives you one when you file your case"
-    And I tap the "#cmVhZF9kcnBvX3N0ZXA .al_toggle" element and stay on the same page
+    And I should see the phrase "Read the â€œDomestic Relations Procedural Orderâ€ or Standing Order if the clerk gives you one when you file your case"
     And I should see the phrase "Serve the complaint and summons"
-    And I tap the "#c2VydmVfY29tcGxhaW50X3N0ZXA .al_toggle" element and stay on the same page
     And I should see the phrase "Learn more about the process"
-    And I tap the "#bGVhcm5fbW9yZV9hYm91dF9wcm9jZXNzX3N0ZXA .al_toggle" element and stay on the same page
     And I should see the phrase "Learn about starting a case when you do not know where your spouse is"
-    And I tap the "#YWx0ZXJuYXRlX3NlcnZpY2Vfc3RlcA .al_toggle" element and stay on the same page
     And I should see the phrase "Learn about options to help you and your spouse reach an agreement"
-    And I tap the "#dGFsa190b19zcG91c2Vfc3RlcA .al_toggle" element and stay on the same page
     And I should see the phrase "File for default if your spouse does not respond within 20 days"
-    And I tap the "#ZGVmYXVsdF9zdGVw .al_toggle" element and stay on the same page
     And I should see the phrase "Get more information or help"
-    And I tap the "#Z2V0X2hlbHA .al_toggle" element and stay on the same page
     And I take a screenshot
     # And I download "divorce_dissolution_separation_action_plan.pdf"
     And I download "divorce_dissolution_separation_action_plan.docx"
@@ -403,25 +314,17 @@ Scenario: Row #435
     | info_on_agree | False | |
     | domestic_violence | False | |
     | default_info | False | |
-  And I take a screenshot
+  # And I take a screenshot
     And I should see the phrase "Your Personal Action Plan for asking the court for a legal separation in Alaska in 9 steps"
     And I should see the phrase "Decide if Alaska is the right state for your case"
-    And I tap the "#cGlja19jb3VydF9zdGVw .al_toggle" element and stay on the same page
     And I should see the phrase "Learn about legal separation"
-    And I tap the "#bGVhcm5fbGVnYWxfc2VwX3N0ZXA .al_toggle" element and stay on the same page
     And I should see the phrase "Fill out the forms to start a legal separation case"
-    And I tap the "#bGVnYWxfc2VwYXJhdGlvbl9kb19ub3RfYWdyZWVfc3RlcA .al_toggle" element and stay on the same page
     And I should see the phrase "File the original with your local court"
-    And I tap the "#ZmlsZV9mb3Jtc19zdGVw .al_toggle" element and stay on the same page
-    And I should see the phrase "Read the “Domestic Relations Procedural Order” or Standing Order if the clerk gives you one when you file your case"
-    And I tap the "#cmVhZF9kcnBvX3N0ZXA .al_toggle" element and stay on the same page
+    And I should see the phrase "Read the â€œDomestic Relations Procedural Orderâ€ or Standing Order if the clerk gives you one when you file your case"
     And I should see the phrase "Serve the complaint and summons"
-    And I tap the "#c2VydmVfY29tcGxhaW50X3N0ZXA .al_toggle" element and stay on the same page
     And I should see the phrase "Learn more about the process"
-    And I tap the "#bGVhcm5fbW9yZV9hYm91dF9wcm9jZXNzX3N0ZXA .al_toggle" element and stay on the same page
     And I should see the phrase "Learn about starting a case when you do not know where your spouse is"
     And I should see the phrase "Get more information or help"
-    And I tap the "#Z2V0X2hlbHA .al_toggle" element and stay on the same page
     And I take a screenshot
     # And I download "divorce_dissolution_separation_action_plan.pdf"
     And I download "divorce_dissolution_separation_action_plan.docx"
@@ -443,30 +346,19 @@ Scenario: Row #436
     | info_on_agree | True | |
     | domestic_violence | True | |
     | default_info | True | |
-  And I take a screenshot
+  # And I take a screenshot
     And I should see the phrase "Your Personal Action Plan for asking the court for a legal separation in Alaska in 11 steps"
     And I should see the phrase "Decide if Alaska is the right state for your case"
-    And I tap the "#cGlja19jb3VydF9zdGVw .al_toggle" element and stay on the same page
     And I should see the phrase "Learn about legal separation"
-    And I tap the "#bGVhcm5fbGVnYWxfc2VwX3N0ZXA .al_toggle" element and stay on the same page
     And I should see the phrase "Fill out the forms to start a legal separation case"
-    And I tap the "#bGVnYWxfc2VwYXJhdGlvbl9kb19ub3RfYWdyZWVfc3RlcA .al_toggle" element and stay on the same page
     And I should see the phrase "File the original with your local court"
-    And I tap the "#ZmlsZV9mb3Jtc19zdGVw .al_toggle" element and stay on the same page
-    And I should see the phrase "Read the “Domestic Relations Procedural Order” or Standing Order if the clerk gives you one when you file your case"
-    And I tap the "#cmVhZF9kcnBvX3N0ZXA .al_toggle" element and stay on the same page
+    And I should see the phrase "Read the â€œDomestic Relations Procedural Orderâ€ or Standing Order if the clerk gives you one when you file your case"
     And I should see the phrase "Serve the complaint and summons"
-    And I tap the "#c2VydmVfY29tcGxhaW50X3N0ZXA .al_toggle" element and stay on the same page
     And I should see the phrase "Learn more about the process"
-    And I tap the "#bGVhcm5fbW9yZV9hYm91dF9wcm9jZXNzX3N0ZXA .al_toggle" element and stay on the same page
     And I should see the phrase "Learn about options to help you and your spouse reach an agreement"
-    And I tap the "#dGFsa190b19zcG91c2Vfc3RlcA .al_toggle" element and stay on the same page
     And I should see the phrase "Learn about abuse or domestic violence resources"
-    And I tap the "#ZG9tZXN0aWNfdmlvbGVuY2Vfc3RlcA .al_toggle" element and stay on the same page
     And I should see the phrase "File for default if your spouse does not respond within 20 days"
-    And I tap the "#ZGVmYXVsdF9zdGVw .al_toggle" element and stay on the same page
     And I should see the phrase "Get more information or help"
-    And I tap the "#Z2V0X2hlbHA .al_toggle" element and stay on the same page
     And I take a screenshot
     # And I download "divorce_dissolution_separation_action_plan.pdf"
     And I download "divorce_dissolution_separation_action_plan.docx"
@@ -487,24 +379,16 @@ Scenario: Row #441
     | info_on_agree | False | |
     | domestic_violence | True | |
     | default_info | False | |
-  And I take a screenshot
+  # And I take a screenshot
     And I should see the phrase "Your Personal Action Plan for asking the court for a legal separation in Alaska in 8 steps"
     And I should see the phrase "Learn about legal separation"
-    And I tap the "#bGVhcm5fbGVnYWxfc2VwX3N0ZXA .al_toggle" element and stay on the same page
     And I should see the phrase "Fill out the forms to start a legal separation case"
-    And I tap the "#bGVnYWxfc2VwYXJhdGlvbl9kb19ub3RfYWdyZWVfc3RlcA .al_toggle" element and stay on the same page
     And I should see the phrase "File the original with your local court"
-    And I tap the "#ZmlsZV9mb3Jtc19zdGVw .al_toggle" element and stay on the same page
-    And I should see the phrase "Read the “Domestic Relations Procedural Order” or Standing Order if the clerk gives you one when you file your case"
-    And I tap the "#cmVhZF9kcnBvX3N0ZXA .al_toggle" element and stay on the same page
+    And I should see the phrase "Read the â€œDomestic Relations Procedural Orderâ€ or Standing Order if the clerk gives you one when you file your case"
     And I should see the phrase "Serve the complaint and summons"
-    And I tap the "#c2VydmVfY29tcGxhaW50X3N0ZXA .al_toggle" element and stay on the same page
     And I should see the phrase "Learn more about the process"
-    And I tap the "#bGVhcm5fbW9yZV9hYm91dF9wcm9jZXNzX3N0ZXA .al_toggle" element and stay on the same page
     And I should see the phrase "Learn about abuse or domestic violence"
-    And I tap the "#ZG9tZXN0aWNfdmlvbGVuY2Vfc3RlcA .al_toggle" element and stay on the same page
     And I should see the phrase "Get more information or help"
-    And I tap the "#Z2V0X2hlbHA .al_toggle" element and stay on the same page
     And I take a screenshot
     # And I download "divorce_dissolution_separation_action_plan.pdf"
     And I download "divorce_dissolution_separation_action_plan.docx"

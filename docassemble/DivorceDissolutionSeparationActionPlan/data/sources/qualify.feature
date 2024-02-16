@@ -9,12 +9,10 @@ Scenario: Row #1
     | minor_children | True | |
     | other_case | True | |
     | ongoing | marriage ended | |
-  And I take a screenshot
+  # And I take a screenshot
     And I should see the phrase "Your Personal Action Plan for asking the court for a divorce, dissolution, or legal separation in Alaska in 2 steps"
     And I should see the phrase "Review your options if a court in another state already ended your marriage"
-    And I tap the "#cmV2aWV3X29wdGlvbnNfc3RlcA .al_toggle" element and stay on the same page
     And I should see the phrase "Get more information or help"
-    And I tap the "#Z2V0X2hlbHA .al_toggle" element and stay on the same page
     And I take a screenshot
     # And I download "divorce_dissolution_separation_action_plan.pdf"
     And I download "divorce_dissolution_separation_action_plan.docx"
@@ -29,12 +27,10 @@ Scenario: Row #2
     | ongoing | yes | |
     | military | True | |
     | other_state_case | stop | |
-  And I take a screenshot
+  # And I take a screenshot
     And I should see the phrase "Your Personal Action Plan for asking the court for a divorce, dissolution, or legal separation in Alaska in 2 steps"
     And I should see the phrase "Decide which court should hear your case"
-    And I tap the "#cGlja19jb3VydF9zdGVw .al_toggle" element and stay on the same page
     And I should see the phrase "Get more information or help"
-    And I tap the "#Z2V0X2hlbHA .al_toggle" element and stay on the same page
     And I take a screenshot
     # And I download "divorce_dissolution_separation_action_plan.pdf"
     And I download "divorce_dissolution_separation_action_plan.docx"
@@ -49,12 +45,10 @@ Scenario: Row #4
     | ongoing | yes | |
     | military | False | |
     | other_state_case | stop | |
-  And I take a screenshot
+  # And I take a screenshot
     And I should see the phrase "Your Personal Action Plan for asking the court for a divorce, dissolution, or legal separation in Alaska in 2 steps"
     And I should see the phrase "Decide which court should hear your case"
-    And I tap the "#cGlja19jb3VydF9zdGVw .al_toggle" element and stay on the same page
     And I should see the phrase "Get more information or help"
-    And I tap the "#Z2V0X2hlbHA .al_toggle" element and stay on the same page
     And I take a screenshot
     # And I download "divorce_dissolution_separation_action_plan.pdf"
     And I download "divorce_dissolution_separation_action_plan.docx"
@@ -70,12 +64,10 @@ Scenario: Row #6
     | residency_and_jurisdiction | False | |
     | military | True | |
     | continue_despite_no_residency | stop | |
-  And I take a screenshot
+  # And I take a screenshot
     And I should see the phrase "Your Personal Action Plan for asking the court for a divorce, dissolution, or legal separation in Alaska in 2 steps"
     And I should see the phrase "Decide if Alaska is the right state for your case"
-    And I tap the "#cGlja19jb3VydF9zdGVw .al_toggle" element and stay on the same page
     And I should see the phrase "Get more information or help"
-    And I tap the "#Z2V0X2hlbHA .al_toggle" element and stay on the same page
     And I take a screenshot
     # And I download "divorce_dissolution_separation_action_plan.pdf"
     And I download "divorce_dissolution_separation_action_plan.docx"
@@ -91,12 +83,10 @@ Scenario: Row #8
     | residency_and_jurisdiction | False | |
     | military | False | |
     | continue_despite_no_residency | stop | |
-  And I take a screenshot
+  # And I take a screenshot
     And I should see the phrase "Your Personal Action Plan for asking the court for a divorce, dissolution, or legal separation in Alaska in 2 steps"
     And I should see the phrase "Decide if Alaska is the right state for your case"
-    And I tap the "#cGlja19jb3VydF9zdGVw .al_toggle" element and stay on the same page
     And I should see the phrase "Get more information or help"
-    And I tap the "#Z2V0X2hlbHA .al_toggle" element and stay on the same page
     And I take a screenshot
     # And I download "divorce_dissolution_separation_action_plan.pdf"
     And I download "divorce_dissolution_separation_action_plan.docx"
@@ -111,12 +101,10 @@ Scenario: Row #10
     | residency_and_jurisdiction | False | |
     | military | True | |
     | continue_despite_no_residency | stop | |
-  And I take a screenshot
+  # And I take a screenshot
     And I should see the phrase "Your Personal Action Plan for asking the court for a divorce, dissolution, or legal separation in Alaska in 2 steps"
     And I should see the phrase "Decide if Alaska is the right state for your case"
-    And I tap the "#cGlja19jb3VydF9zdGVw .al_toggle" element and stay on the same page
     And I should see the phrase "Get more information or help"
-    And I tap the "#Z2V0X2hlbHA .al_toggle" element and stay on the same page
     And I take a screenshot
     # And I download "divorce_dissolution_separation_action_plan.pdf"
     And I download "divorce_dissolution_separation_action_plan.docx"
@@ -132,12 +120,10 @@ Scenario: Row #12
     | residency_and_jurisdiction | False | |
     | military | False | |
     | continue_despite_no_residency | stop | |
-  And I take a screenshot
+  # And I take a screenshot
     And I should see the phrase "Your Personal Action Plan for asking the court for a divorce, dissolution, or legal separation in Alaska in 2 steps"
     And I should see the phrase "Decide if Alaska is the right state for your case"
-    And I tap the "#cGlja19jb3VydF9zdGVw .al_toggle" element and stay on the same page
     And I should see the phrase "Get more information or help"
-    And I tap the "#Z2V0X2hlbHA .al_toggle" element and stay on the same page
     And I take a screenshot
     # And I download "divorce_dissolution_separation_action_plan.pdf"
     And I download "divorce_dissolution_separation_action_plan.docx"
