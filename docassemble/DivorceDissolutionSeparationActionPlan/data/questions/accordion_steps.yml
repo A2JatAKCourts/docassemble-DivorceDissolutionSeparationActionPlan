@@ -1,13 +1,16 @@
 comment: |
-  Wednesday Dec 20
+  After testing:
+  1. Replace:
+      ${ al_user_bundle.download_list_html() }
+      [get the docx file](${ docx_changing_divorce_order_attachment.docx.url_for() })
+    with:
+      ${ download_buttons_html(al_user_bundle) }
+  2. comment out:
+       script: |
+         <script>
+           Array.from(document.querySelectorAll('.al_collapse_template .collapse')).forEach((elem) => { elem.className += " show" })
+         </script>
 ---
-comment: |
-  2024-01-02 after testing, replace  
-  ${ al_user_bundle.download_list_html() }
-  [get the docx file](${ docx_divorce_dissolution_separation_action_plan_attachment.docx.url_for() }) 
-  with
-  ${ download_buttons_html(al_user_bundle) }
-  
 id: final screen
 decoration: pen-to-square
 event: confirmation_and_download
@@ -41,7 +44,11 @@ subquestion: |
   [get the docx file](${ docx_divorce_dissolution_separation_action_plan_attachment.docx.url_for() })
   
 buttons:
-  - Start over: restart          
+  - Start over: restart
+script: |
+  <script>
+    Array.from(document.querySelectorAll('.al_collapse_template .collapse')).forEach((elem) => { elem.className += " show" })
+  </script>         
 ---
 code: |
   step_list = []
@@ -80,6 +87,7 @@ code: |
       and legal_separation_or_divorce == 'divorce' and agree_or_settle == 'no prop debt or pregnancy':
       # quick dissolution
       if no_prop_or_debt_agree:
+        know_spouse_whereabouts = True
         add_unique_step((review_common_situations_step, "review_common_situations_idx"), step_list)
         add_unique_step((do_not_have_common_step, "do_not_have_common_idx"), step_list)
         add_unique_step((learn_disso_div_step, "learn_disso_div_idx"), step_list)
@@ -90,8 +98,8 @@ code: |
         if know_spouse_whereabouts:
           add_unique_step((review_common_situations_step, "review_common_situations_idx"), step_list)
           add_unique_step((do_not_have_common_step, "do_not_have_common_idx"), step_list)
-          add_unique_step((learn_disso_div_step, "learn_disso_div_idx"), step_list)
-          add_unique_step((uncontested_divorce_step, "uncontested_divorce_idx"), step_list)
+          # add_unique_step((learn_disso_div_step, "learn_disso_div_idx"), step_list)
+          add_unique_step((divorce_step, "divorce_idx"), step_list)
           add_unique_step((file_forms_step, "file_forms_idx"), step_list)
           add_unique_step((read_drpo_step, "read_drpo_idx"), step_list)
           add_unique_step((serve_complaint_step, "serve_complaint_idx"), step_list)
@@ -533,6 +541,8 @@ subject: |
     Fill out the forms 
     % if (minor_children and have_property_and_debt and paternity == 'no' and defined('wife_is_pregnant') and wife_is_pregnant == 'not pregnant') or ( not minor_children and (agree_or_settle == 'agree' and defined('wife_is_pregnant') and wife_is_pregnant in('husband', 'not pregnant'))):
     to start your case
+    % elif not minor_children and agree_or_settle == 'no prop debt or pregnancy' and no_prop_or_debt_agree and know_spouse_whereabouts:
+    to start a divorce case when there are no children & no assets or debts to divide 
     % else:
     for an uncontested divorce
     % endif
@@ -581,13 +591,18 @@ content: |
   
   <div class="step-subheading">Required Forms</div>
   1 copy that both spouses sign if signatures are needed.
+  
   % if minor_children or defined('wife_is_pregnant') and wife_is_pregnant in('husband','not husband'):
   * **Uncontested Complaint for Divorce with Children, SHC-110** [Word](https://courts.alaska.gov/shc/family/docs/shc-110.doc) | [PDF](https://courts.alaska.gov/shc/family/docs/shc-110n.pdf)
   % if defined('wife_is_pregnant') and wife_is_pregnant in('husband','not husband'):
   You must use this form because wife is pregnant.
   % endif
   % else:
-  * **Uncontested Complaint for Divorce without Children, SHC-111** [Word](https://courts.alaska.gov/shc/family/docs/shc-111.doc) | [PDF](https://courts.alaska.gov/shc/family/docs/shc-111n.pdf)
+  % if not minor_children and agree_or_settle == 'no prop debt or pregnancy' and no_prop_or_debt_agree and know_spouse_whereabouts:
+  **Uncontested Divorce Complaint with No Property, No Children, and Short Marriage, DR-820** [[Fill-in PDF](https://public.courts.alaska.gov/web/forms/docs/dr-820.pdf)]
+  % else:
+  **Uncontested Complaint for Divorce without Children, SHC-111** [Word](https://courts.alaska.gov/shc/family/docs/shc-111.doc) | [PDF](https://courts.alaska.gov/shc/family/docs/shc-111n.pdf)
+  % endif
   % endif
     
     *	Print your name, address, and phone number in the upper left-hand corner of the first page.

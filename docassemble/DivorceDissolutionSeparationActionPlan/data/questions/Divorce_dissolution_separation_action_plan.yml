@@ -268,11 +268,11 @@ fields:
       #### <i class="fa-regular fa-lightbulb"></i> Learn more ####
       Marital property is anything earned or bought during the marriage.  This commonly includes houses, land, vehicles, money, retirement accounts, pensions, household goods, furniture, snowmachines, four-wheelers and each spouse’s personal property.  Marital debt is any money owed to a business or person from during the marriage. Some common types of marital debt include credit card debt, medical bills, mortgages, car loans, or personal loans. 
 ---
-id: Childless couple sure you agree on no property or debt?
+id: Childless couple sure you agree on no marital property or debt?
 question: |
   Are you and your spouse both:
 subquestion: |
-  (1) in agreement about ending the marriage and that there is no property or debt to divide, and 
+  (1) in agreement about ending the marriage and that there is no marital property or debt to divide, and 
   
   (2) able to sign the forms together?
 fields:
@@ -331,7 +331,7 @@ fields:
 ---
 id: Have property and debt  Kids
 question: |
-  Did you or your spouse earn, buy or receive any marital assets or debts, including those listed above, during the marriage?
+  Did you or your spouse earn, buy or receive any marital assets or debts, including those listed below, during the marriage?
 subquestion: |
   Marital property is anything earned or bought during the marriage.  This commonly includes houses, land, vehicles, money, retirement accounts, pensions, household goods, furniture, snowmachines, four-wheelers and each spouse’s personal property.  Marital debt is any money owed to a business or person from during the marriage. Some common types of marital debt include credit card debt, medical bills, mortgages, car loans, or personal loans.
 fields:
