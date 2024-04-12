@@ -56,10 +56,11 @@ code: |
     #  pdf_pap_multistep_subtitle = True
     # images_list = []
   
+  user_need = 'divorce'
+  other_party_in_case = 'your spouse'
   domestic_violence_question = ''
   domestic_violence_subquestion = ''
-  
-  
+    
   if other_case and ongoing == 'marriage ended':
     already_divorced
     add_unique_step((review_options_step, "review_options_idx"), step_list)
@@ -85,12 +86,12 @@ code: |
     
     if not minor_children \
       and legal_separation_or_divorce == 'divorce' and agree_or_settle == 'no prop debt or pregnancy':
-      # quick dissolution
+      wife_is_pregnant = 'not pregnant'
       if no_prop_or_debt_agree:
         know_spouse_whereabouts = True
+      # quick dissolution
         add_unique_step((review_common_situations_step, "review_common_situations_idx"), step_list)
         add_unique_step((do_not_have_common_step, "do_not_have_common_idx"), step_list)
-        add_unique_step((learn_disso_div_step, "learn_disso_div_idx"), step_list)
         add_unique_step((uncontested_divorce_step, "uncontested_divorce_idx"), step_list)
         add_unique_step((file_forms_step, "file_forms_idx"), step_list)
         add_unique_step((read_drpo_step, "read_drpo_idx"), step_list) 
@@ -98,14 +99,13 @@ code: |
         if know_spouse_whereabouts:
           add_unique_step((review_common_situations_step, "review_common_situations_idx"), step_list)
           add_unique_step((do_not_have_common_step, "do_not_have_common_idx"), step_list)
-          # add_unique_step((learn_disso_div_step, "learn_disso_div_idx"), step_list)
           add_unique_step((divorce_step, "divorce_idx"), step_list)
           add_unique_step((file_forms_step, "file_forms_idx"), step_list)
           add_unique_step((read_drpo_step, "read_drpo_idx"), step_list)
           add_unique_step((serve_complaint_step, "serve_complaint_idx"), step_list)
           add_unique_step((learn_more_about_process_step, "learn_more_about_process_idx"), step_list)
         if know_spouse_whereabouts == False:
-          add_unique_step((alternate_service_step, "alternate_service_idx"), step_list)
+          add_unique_step((missing_spouse_no_kids_no_property_step, "missing_spouse_no_kids_no_property_idx"), step_list)
             
     if legal_separation_or_divorce == 'divorce' \
       and (minor_children and agree_or_settle_kids in('yes', 'do not know') \
@@ -135,33 +135,29 @@ code: |
         or (not minor_children and agree_or_settle == 'no')):
       # divorce_block
       # if know_spouse_whereabouts == False:
+      if minor_children:
+        paternity
+      wife_is_pregnant
       know_spouse_whereabouts
-      if minor_children == False and agree_or_settle == 'no prop debt or pregnancy' and no_prop_or_debt_agree == False and know_spouse_whereabouts == False:
+      add_unique_step((divorce_step, "divorce_idx"), step_list)
+      add_unique_step((file_forms_step, "file_forms_idx"), step_list)
+      add_unique_step((read_drpo_step, "read_drpo_idx"), step_list)
+      add_unique_step((serve_complaint_step, "serve_complaint_idx"), step_list)
+      add_unique_step((learn_more_about_process_step, "learn_more_about_process_idx"), step_list)
+      if know_spouse_whereabouts == False:
         add_unique_step((alternate_service_step, "alternate_service_idx"), step_list)
-      else: 
-        if minor_children:
-          paternity
-        wife_is_pregnant
-        add_unique_step((divorce_step, "divorce_idx"), step_list)
-        add_unique_step((file_forms_step, "file_forms_idx"), step_list)
-        add_unique_step((read_drpo_step, "read_drpo_idx"), step_list)
-        add_unique_step((serve_complaint_step, "serve_complaint_idx"), step_list)
-        add_unique_step((learn_more_about_process_step, "learn_more_about_process_idx"), step_list)
-        if know_spouse_whereabouts == False:
-          add_unique_step((alternate_service_step, "alternate_service_idx"), step_list)
-        if minor_children and paternity == 'do not know':
-          add_unique_step((paternity_testing_step, "paternity_testing_idx"), step_list)
-        if info_on_agree:
-          add_unique_step((talk_to_spouse_step, "talk_to_spouse_idx"), step_list)
-          domestic_violence_question = "and how domestic violence can affect your agreement"
-        else:
-          if minor_children:
-            domestic_violence_question = "and how domestic violence affects your case"
-        if domestic_violence:
-          add_unique_step((domestic_violence_step, "domestic_violence_idx"), step_list)
-        if default_info:
-          property_for_default
-          add_unique_step((default_step, "default_idx"), step_list)
+      if minor_children and paternity == 'do not know':
+        add_unique_step((paternity_testing_step, "paternity_testing_idx"), step_list)
+      if know_spouse_whereabouts and info_on_agree:
+        add_unique_step((talk_to_spouse_step, "talk_to_spouse_idx"), step_list)
+        domestic_violence_question = "and how domestic violence can affect your agreement"
+      if not info_on_agree and minor_children:
+          domestic_violence_question = "and how domestic violence affects your case"
+      if domestic_violence:
+        add_unique_step((domestic_violence_step, "domestic_violence_idx"), step_list)
+      if default_info:
+        property_for_default
+        add_unique_step((default_step, "default_idx"), step_list)
     
     
     
@@ -318,7 +314,7 @@ content: |
   Jurisdiction and residency can be very complicated.  For example, if a baby is less than 6 months old and has moved between states, there may not be a “home state.”  This is one example of an exception when the Alaska court may be able to decide issues about a child that hasn’t lived here for 6 months.
   Similarly,
   % else:
-  to divide marital property and debt, the court also needs authority called “jurisdiction.” Generally, the court has jurisdiction if a married couple lived in Alaska for at least 6 months in a row within the 6 years before filing for divorce.
+  To divide marital property and debt, the court also needs authority called “jurisdiction.” Generally, the court has jurisdiction if a married couple lived in Alaska for at least 6 months in a row within the 6 years before filing for divorce.
   
   Jurisdiction and residency can be very complicated. For example,
   % endif
@@ -445,28 +441,38 @@ content: |
 
   % endif
 ---
-template: not_know_spouse_whereabouts_step
+template: alternate_service_step
 subject: |
-  Step ${ not_know_spouse_whereabouts_idx }: Learn about starting a case when you do not know where your spouse is
+  Step ${ alternate_service_idx }: 
+  % if user_need == 'divorce':
+  Learn about starting a case when you do not know where ${other_party_in_case} is
+  % elif user_need == 'custody':
+  Starting a case when you do not know where ${other_party_in_case} is
+  % endif
 content: |
-  Usually when you start a case you must give your spouse every form you file with the court.  This is called “service.” If you do not know where your spouse is, you can ask the court to let you use “alternate service,” which is described below.
+  Usually when you start a case you must give ${other_party_in_case} every form you file with the court.  This is called “service.” If you do not know where ${other_party_in_case} is, you can ask the court to let you use “alternate service.” 
   
-  <div class="step-subheading">After you start your case by filing a complaint  and other documents, and cannot serve your spouse, ask the court to let you use alternate service</div>
+  <div class="step-subheading">After you start your case by filing a complaint and other documents, and cannot serve ${other_party_in_case}, ask the court to let you use alternate service</div>
   
   * Read: [Tips on Locating People](https://courts.alaska.gov/shc/family/shctips.htm).
-  *	Review and fill out the **Request to Serve Defendant by Posting or Alternative Service, and Affidavit of Diligent Inquiry**, [CIV-145](https://public.courts.alaska.gov/web/forms/docs/civ-145.pdf) (this form tells you the things you must do to try to find your spouse before asking for alternate service).
+  *	Review and fill out the **Request to Serve Defendant by Posting or Alternative Service, and Affidavit of Diligent Inquiry**, [CIV-145](https://public.courts.alaska.gov/web/forms/docs/civ-145.pdf)</br>
+  This form tells you the things you must do to try to find ${other_party_in_case} before asking for alternate service.
   * Make 1 copy of the form and any attachments.
   *	File the original documents at your local court. Keep one copy for your records.
   
   <div class="step-subheading">Final Steps</div>
-  
-  * Now you wait. The clerk will sign the Notice to Absent Spouse if the court finds you did enough to try to serve your spouse. The court will then post the notice on the Alaska Court System's legal notice website for 4 weeks in a row.
-  * Before the last week of posting, you must send a copy of the Notice and the Complaint by regular first class mail and registered or certified mail to your spouse at your spouse's last known residence or workplace. However, if you have already tried to serve your spouse by certified mail, then before the last week of posting, just send by regular first class mail.  File:
+  % if user_need == 'divorce':
+  * Now you wait. The clerk will sign the **Notice to Absent Spouse** if the court finds you did enough to try to serve ${other_party_in_case}.
+  % elif user_need == 'custody':
+  * Now you wait. The clerk will sign the **Notice to Absent Defendant** if the court finds you did enough to try to serve ${other_party_in_case}.
+  % endif
+   The court will then post the notice on the Alaska Court System's legal notice website for 4 weeks in a row.
+  * Before the last week of posting, you must send a copy of the Notice and the Complaint by regular first class mail and registered or certified mail to ${other_party_in_case} at ${other_party_in_case}'s last known residence or workplace. However, if you have already tried to serve ${other_party_in_case} by certified mail, then before the last week of posting, just send by regular first class mail.  File:
     
     * Affidavit, SHC-1625 Word | PDF (1 week before posting ends that states you):
     
-      * tried to serve your spouse by regular first class mail and registered or certified mail **or**
-      *	could **not** serve by mail because you cannot find your spouse's last known mailing address
+      * tried to serve ${other_party_in_case} by regular first class mail and registered or certified mail **or**
+      *	could **not** serve by mail because you cannot find ${other_party_in_case}'s last known mailing address
       
     *	After the Notice has been posted on the legal notice website for 4 weeks, the clerk will complete a certificate of service of posting to the Alaska Court System’s legal notice website. The court will put the certificate of service of posting in your case file and send you a copy in the mail.
 ---
@@ -547,34 +553,36 @@ subject: |
     for an uncontested divorce
     % endif
 content: |
-  % if not minor_children and agree_or_settle == 'no prop debt or pregnancy' and not no_prop_or_debt_agree and know_spouse_whereabouts:
-  <span style="background-color:#00ff00">Edit when Stacey's new form finished!</span>
-  % elif not minor_children and agree_or_settle == 'agree' and defined('wife_is_pregnant') and wife_is_pregnant in('husband', 'not pregnant'):
+  % if not minor_children and agree_or_settle == 'agree' and defined('wife_is_pregnant') and wife_is_pregnant in('husband', 'not pregnant'):
   * Read "Decide Between Dissolution & Uncontested Divorce," above.  Then pick 1 of the following options.  Note: If you choose dissolution, the link below takes you to the Alaska Court System Website to find the forms and instructions you need.  If you choose uncontested divorce, the forms and instructions you need are listed below.
   % elif minor_children and have_property_and_debt and paternity in('no','do not know') and defined('wife_is_pregnant') and wife_is_pregnant == 'not pregnant':
   ''
   % else:
-  *	Generally, if spouses agree on all issues they can use either "dissolution" or "uncontested divorce" forms to ask to end the marriage. Uncontested divorce forms are best for your case because 
+  *	Generally, if spouses agree on all issues, they can use either "dissolution" or "uncontested divorce" forms to ask to end the marriage. Uncontested divorce forms are best for your case because 
   % if minor_children and have_property_and_debt and paternity == 'yes':
-  because they have a place to tell the court you have a paternity issue.
+  they have a place to tell the court you have a paternity issue.
   % elif minor_children and have_property_and_debt and paternity in('no', 'do not know') and defined('wife_is_pregnant') and wife_is_pregnant == 'husband':
-  because paragraph 5(a) of the complaint has a place to tell the court wife is pregnant.
+  paragraph 5(a) of the complaint has a place to tell the court wife is pregnant.
   % elif (minor_children and have_property_and_debt and paternity in('no', 'do not know') and defined('wife_is_pregnant') and wife_is_pregnant == 'not husband') or (not minor_children and defined('wife_is_pregnant') and wife_is_pregnant == 'not husband'):
-  because paragraph 5(d) of the Complaint has a place to tell the court paternity is an issue for a child conceived during the marriage.
+  paragraph 5(d) of the Complaint has a place to tell the court paternity is an issue for a child conceived during the marriage.
   % elif minor_children and not have_property_and_debt and paternity =='yes':
-  because they have a place to tell the court (1) you have a paternity issue; and (2) you have no marital property or debt.
+  they have a place to tell the court (1) you have a paternity issue; and (2) you have no marital property or debt.
   % elif minor_children and not have_property_and_debt and paternity in('no', 'do not know') and defined('wife_is_pregnant') and wife_is_pregnant == 'not husband':
-   (1) they have a place to tell the court you have no marital property or debt and (2) paragraph 5(d) of the complaint has a place to tell the court paternity is an issue for a child conceived during the marriage.
-  % elif (minor_children and not have_property_and_debt and paternity in('no', 'do not know') and defined('wife_is_pregnant') and wife_is_pregnant in('husband','not pregnant')) or (not minor_children and agree_or_settle == 'no prop debt or pregnancy' and no_prop_or_debt_agree):
-  because they have a place to tell the court you have no marital property or debt.
+   </br>
+  (1) they have a place to tell the court you have no marital property or debt and</br>
+  (2) paragraph 5(d) of the complaint has a place to tell the court paternity is an issue for a child conceived during the marriage.
+  % elif (minor_children and not have_property_and_debt and paternity in('no', 'do not know') and defined('wife_is_pregnant') and wife_is_pregnant in('husband','not pregnant')):
+  they have a place to tell the court you have no marital property or debt.
   % elif (not minor_children and defined('wife_is_pregnant') and wife_is_pregnant =='not husband') or (minor_children and have_property_and_debt and paternity in('no','do not know') and defined('wife_is_pregnant') and wife_is_pregnant =='not husband'):
-  because paragraph 5(d) of the Complaint has a place to tell the court paternity is an issue for a child conceived during the marriage.
+  paragraph 5(d) of the Complaint has a place to tell the court paternity is an issue for a child conceived during the marriage.
+  % elif not minor_children and agree_or_settle == 'no prop debt or pregnancy' and no_prop_or_debt_agree and know_spouse_whereabouts:
+  the form is short and section &#8544; has places to tell the court you were together as a married couple 2 years or less, you have no minor children, and you do not need the court to divide any marital property or debt.  
   % endif
   % endif
   
   *	You will not know your case number until you file your documents with the court.  You can write the case number on all your forms then.
 
-  % if (minor_children and have_property_and_debt  and paternity in('no',' do not know') and defined('wife_is_pregnant') and wife_is_pregnant in('husband','not husband')) or (not minor_children and defined('wife_is_pregnant') and wife_is_pregnant == 'husband'):
+  % if (minor_children and have_property_and_debt and paternity in('no',' do not know') and defined('wife_is_pregnant') and wife_is_pregnant in('husband','not husband')) or (not minor_children and defined('wife_is_pregnant') and wife_is_pregnant == 'husband'):
   **Dissolution Packet #1**: [DR-1 ANCH](https://courts.alaska.gov/forms/index.htm#dr-1anc) (Anchorage) | [DR-1](https://courts.alaska.gov/forms/index.htm#dr-1) (Not Anchorage) 
   [Anchorage Dissolution Packet #1](https://public.courts.alaska.gov/web/forms/docs/dr-1total.pdf) | All Other Cities Dissolution Packet #1 
   % if defined('wife_is_pregnant') and wife_is_pregnant in('husband','not husband'):
@@ -582,10 +590,10 @@ content: |
   or
   **Uncontested Divorce**
   % endif
-  % elif not minor_children and defined('wife_is_pregnant') and wife_is_pregnant == 'not pregnant':
+  % elif not minor_children and agree_or_settle != 'no prop debt or pregnancy' and defined('wife_is_pregnant') and wife_is_pregnant == 'not pregnant':
   **Dissolution Packet #2**: [DR-2](https://courts.alaska.gov/forms/index.htm#dr-2)
   or
-  ** Uncontested Divorce** 
+  **Uncontested Divorce** 
   % endif 
 
   
@@ -611,15 +619,14 @@ content: |
     
   *	**Joint Motion to put a Settlement on Record, SHC-1063** [Word](https://courts.alaska.gov/shc/family/docs/shc-1063.doc) | [PDF](https://www.courts.alaska.gov/shc/family/docs/shc-1063n.pdf)
     Do **not** sign the Order section.
-    *	**Case Description Form**, [CIV-125S](https://public.courts.alaska.gov/web/forms/docs/civ-125s.pdf) 
-
+    *	**Case Description Form**, [CIV-125S](https://public.courts.alaska.gov/web/forms/docs/civ-125s.pdf)</br>
   % if minor_children:
   Check "Uncontested Divorce with Children (or pregnant)".
   % else:
   Check "Uncontested Divorce Without Children".
   % endif
   
-  *	**Certificate of Divorce**, VS-401 - Get this form at the court or at Health Analytics & Vital Records. You must use an original form - they are printed on archival-quality, acid-free paper. You may not use a photocopy.  Fill in boxes 9-32 in black ink without cross-outs or corrections; if you don't know an answer about your spouse, leave it blank.
+  *	**Certificate of Divorce, VS-401** - Get this form at the court or at Health Analytics & Vital Records. You must use an original form - they are printed on archival-quality, acid-free paper. You may not use a photocopy.  Fill in boxes 9-32 in black ink without cross-outs or corrections; if you don't know an answer about your spouse, leave it blank.
   
   
   <div class="step-subheading">Required forms - 2 copies</div>
@@ -1117,9 +1124,9 @@ content: |
   * Find other Alaska Divorce Videos: [English](https://youtube.com/playlist?list=PLRS0LlEIQsuTsfO0wSTsSTIvVE5RO8sLc) | [Spanish](https://AKlawSelfHelp.org/?page_id=29) | [Tagalog](https://AKlawSelfHelp.org/?page_id=158)
   * Find [Alaska Family Law Hearing & Trial Preparation Videos](https://youtube.com/playlist?list=PL82589B66ED712B4B)
 ---
-template: alternate_service_step
+template: missing_spouse_no_kids_no_property_step
 subject: |
-  Step ${ alternate_service_idx }: 
+  Step ${ missing_spouse_no_kids_no_property_idx }: 
   % if not minor_children and legal_separation_or_divorce == 'divorce' and agree_or_settle == 'no prop debt or pregnancy' and not no_prop_or_debt_agree and not know_spouse_whereabouts:
   File to end your marriage when you do not know where your spouse is, there are no children, and there is no property or debt to divide
   % else:
@@ -1127,33 +1134,57 @@ subject: |
   % endif
 content: |
   
-  * Usually when you start a case you are required to give your spouse all the forms you file with the court.  This is called "service."  If you don't know where your spouse is you can ask the court to let you serve by "alternate service."  You can only use "alternate service" after you look for your spouse with "diligent inquiry." These steps are described below.
+  Usually when you start a case you are required to give your spouse all the forms you file with the court.  This is called "service." 
+  
+  If you do not know where your spouse is, you can ask the court to let you serve by "alternate service."  
+  
+  You can only use "alternate service" after you look for your spouse with "diligent inquiry." 
 
   <div class="step-subheading">Fill out the forms to start your dissolution case and ask the court to let you use alternate service</div>
 
-  * You will not know your case number until you file your documents with the court. You can write the case number on all your forms then.
+  You will not know your case number until you file your documents with the court. You can write the case number on all your forms then.
 
   **Petition for Dissolution of Marriage: One Spouse**, [DR-200](https://public.courts.alaska.gov/web/forms/docs/dr-200.pdf)
 
-  **Affidavit of Diligent Inquiry**, [DR-210](https://public.courts.alaska.gov/web/forms/docs/dr-210.pdf) (this form lists all the ways you should look for your spouse  * if the court thinks you did not do enough to find your spouse, you may have to do more)
+  **Affidavit of Diligent Inquiry**, [DR-210](https://public.courts.alaska.gov/web/forms/docs/dr-210.pdf)</br>
+  This form lists all the ways you should look for your spouse. If the court thinks you did not do enough to find your spouse, you may have to do more.
 
-  **Information Sheet**, [DR-314](https://public.courts.alaska.gov/web/forms/docs/dr-314.pdf) (fill in 1-3 with complete information for yourself, your spouse if you know it, and then sign and date)
+  **Information Sheet**, [DR-314](https://public.courts.alaska.gov/web/forms/docs/dr-314.pdf)</br>
+  Fill in 1-3 with complete information for yourself, your spouse if you know it, and then sign and date.
 
-  **Certificate of Divorce, Dissolution or Annulment, VS-401** - Get this form at the court or at Health Analytics & Vital Records. You must use an original form (printed on archival-quality, acid-free paper). **You may not use a photocopy**. Fill in boxes 9-32 in black ink without cross-outs or corrections; if you don't know an answer about your spouse, leave it blank.
+  **Certificate of Divorce, Dissolution or Annulment, VS-401** 
+  
+  * Get this form at the court or at Health Analytics & Vital Records. 
+  * You must use an original form (printed on archival-quality, acid-free paper). **You may not use a photocopy**. 
+  * Fill in boxes 9-32 in black ink without cross-outs or corrections. If you do not know an answer about your spouse, leave it blank.
 
-  <div class="step-subheading">Make 2 Copies of Your Forms: 1 copy for your own record and 1 copy for your spouse</div>
-
-  * **File the Original with Your Local Court** (Find the closest Alaska Trial Courthouse to file your petition: [Court Directory](http://courts.alaska.gov/courtdir/index.htm#trial).)
-
-  * There is a fee to file a case.  If you cannot afford it and want to file the case for free, you can file **Exemption From the Payment of Fees**, [TF-920](https://public.courts.alaska.gov/web/forms/docs/tf-920.pdf).  Usually, you file the TF-920 form with your complaint and other papers when you file your case. The judge decides whether you have to pay the filing fee or get to file for free before the case starts. After you pay the filing fee or the court says you can file for free, the court will give you a summons.  At some courts, you must return to the court to get your summons, other courts will issue it automatically after they decide you don't have to pay the filing fee.  Check with your local court to make sure you understand the procedure in using the TF-920 form and getting the summons.
+  <div class="step-subheading">File the forms at court</div>
+  <ul>
+  <li>Make 2 copies of your forms: </br>
+  1 copy for your own record and </br>
+  1 copy for your spouse.</li>
+  
+  <li>File the original with your local court</br>
+  Find the closest Alaska Trial Courthouse to file your petition: <a href="http://courts.alaska.gov/courtdir/index.htm#trial">Court Directory</a>.</li>
+  <li>There is a fee to file a case.</br>
+  If you cannot afford it and want to file the case for free, you can file <strong>Exemption From the Payment of Fees</strong>, <a href="https://public.courts.alaska.gov/web/forms/docs/tf-920.pdf">TF-920</a>.
+  <ul>
+  <li>Usually, you file the <strong>TF-920</strong> form with your complaint and other papers when you file your case.</li>
+  <li>The judge decides whether you have to pay the filing fee or get to file for free before the case starts.</li>
+  <li> After you pay the filing fee or the court says you can file for free, the court will give you a summons.</br>At some courts, you must return to the court to get your summons, other courts will issue it automatically after they decide you don't have to pay the filing fee.</li>
+  <li>Check with your local court to make sure you understand the procedure in using the <strong>TF-920</strong> form and getting the summons.</li>
+  </ul></li>
+  </ul>
 
   <div class="step-subheading">Final Steps of Alternate Service</div>
 
   The clerk will sign a **Notice to Absent Spouse** if the court finds your attempts to notify your spouse to be sufficient. The court will then post the Notice on the Alaska Court System's legal notice website for 4 weeks in a row.
 
-  After the notice has been posted 4 weeks, fill out and file the **Proof of Notice**, [DR-225](https://public.courts.alaska.gov/web/forms/docs/dr-225.pdf). When you file your Proof of Notice, ask the clerk's office for instructions on setting a hearing date. The hearing must be at least 30 days after the end of the 4 weeks the notice was posted on the court's website.
+  After the notice has been posted 4 weeks, fill out and file the **Proof of Notice**, [DR-225](https://public.courts.alaska.gov/web/forms/docs/dr-225.pdf). When you file your **Proof of Notice**, ask the clerk's office for instructions on setting a hearing date. The hearing must be at least 30 days after the end of the 4 weeks the notice was posted on the court's website.
 
   Attend the hearing.  The court will ask you questions about trying to find your spouse and about ending the marriage.
+comment: |
+  See Google sheet, Divorce conditions, tab 'Alternate Service' to see differences in this step for divorce
 ---
 template: paternity_testing_step
 subject: |

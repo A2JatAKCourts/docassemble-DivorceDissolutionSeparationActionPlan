@@ -341,12 +341,11 @@ Scenario: Row 261
     | agree_or_settle | no prop debt or pregnancy | |
     | no_prop_or_debt_agree | True | |
   # And I take a screenshot
-    And I should see the phrase "Your Personal Action Plan for asking the court for a dissolution or uncontested divorce in Alaska in 7 steps"
+    And I should see the phrase "Your Personal Action Plan for asking the court for a dissolution or uncontested divorce in Alaska in 6 steps"
     And I should see the phrase "Review common situations where there are no marital assets and debts to divide"
     And I should see the phrase "Make sure you do not have marital assets and debts to divide"
-    And I should see the phrase "Learn about dissolutions and uncontested divorces"
-    And I should see the phrase "Fill out the forms for an uncontested divorce"
-    And I should see the phrase "they have a place to tell the court you have no marital property or debt."
+    And I should see the phrase "Fill out the forms to start a divorce case when there are no children & no assets or debts to divide"
+    And I should see the phrase "the form is short and section Ⅰ has places to tell the court you were together as a married couple 2 years or less, you have no minor children, and you do not need the court to divide any marital property or debt."
     And I should see the phrase "File the original with your local court"
     And I should see the phrase "Read the "Domestic Relations Procedural Order" or Standing Order if the clerk gives you one when you file your case"
     And I should see the phrase "Get more information or help"
@@ -369,13 +368,11 @@ Scenario: Row #262
     | no_prop_or_debt_agree | False | |
     | know_spouse_whereabouts | True | |
   # And I take a screenshot
-    And I should see the phrase "Your Personal Action Plan for asking the court for a dissolution or uncontested divorce in Alaska in 10 steps"
+    And I should see the phrase "Your Personal Action Plan for asking the court for a dissolution or uncontested divorce in Alaska in 9 steps"
     And I should see the phrase "Decide which court should hear your case"
     And I should see the phrase "Review common situations where there are no marital assets and debts to divide"
     And I should see the phrase "Make sure you do not have marital assets and debts to divide"
-    And I should see the phrase "Learn about dissolutions and uncontested divorces"
-    And I should see the phrase "Fill out the forms for an uncontested divorce"
-    And I should see the phrase "Edit when Staceyâ€™s new form finished!"
+    And I should see the phrase "Fill out the forms to start a divorce case"
     And I should see the phrase "File the original with your local court"
     And I should see the phrase "Read the "Domestic Relations Procedural Order" or Standing Order if the clerk gives you one when you file your case"
     And I should see the phrase "Serve the complaint and summons"
@@ -384,7 +381,29 @@ Scenario: Row #262
     And I take a screenshot
     # And I download "divorce_dissolution_separation_action_plan.pdf"
     And I download "divorce_dissolution_separation_action_plan.docx"
-    
+
+@row263
+Scenario: Row #263
+  Given I start the interview at "Divorce_dissolution_separation_action_plan.yml"
+  And I get to the question id "final screen" with this data:
+    | var | value | trigger |
+    | minor_children | False | |
+    | other_case | True | |
+    | ongoing | yes | |
+    | military | False  | |
+    | other_state_case | continue | |
+    | legal_separation_or_divorce | divorce | |
+    | agree_or_settle | no prop debt or pregnancy | |
+    | no_prop_or_debt_agree | False | |
+    | know_spouse_whereabouts | False | |
+  # And I take a screenshot
+    And I should see the phrase "Your Personal Action Plan for asking the court for a dissolution or uncontested divorce in Alaska in 3 steps"
+    And I should see the phrase "Decide which court should hear your case"
+    And I should see the phrase "File to end your marriage when you do not know where your spouse is, there are no children, and there is no property or debt to divide"
+    And I should see the phrase "Get more information or help"
+    # And I download "divorce_dissolution_separation_action_plan.pdf"
+    And I download "divorce_dissolution_separation_action_plan.docx"
+
 
 @row264
 Scenario: Row #264
