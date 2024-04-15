@@ -148,10 +148,11 @@ code: |
         add_unique_step((alternate_service_step, "alternate_service_idx"), step_list)
       if minor_children and paternity == 'do not know':
         add_unique_step((paternity_testing_step, "paternity_testing_idx"), step_list)
-      if know_spouse_whereabouts and info_on_agree:
-        add_unique_step((talk_to_spouse_step, "talk_to_spouse_idx"), step_list)
-        domestic_violence_question = "and how domestic violence can affect your agreement"
-      if not info_on_agree and minor_children:
+      if know_spouse_whereabouts:
+        if info_on_agree:
+          add_unique_step((talk_to_spouse_step, "talk_to_spouse_idx"), step_list)
+          domestic_violence_question = "and how domestic violence can affect your agreement"
+        else:
           domestic_violence_question = "and how domestic violence affects your case"
       if domestic_violence:
         add_unique_step((domestic_violence_step, "domestic_violence_idx"), step_list)
@@ -186,7 +187,7 @@ code: |
         if minor_children:
           paternity
         wife_is_pregnant
-        if not info_on_agree and not minor_children and wife_is_pregnant in ('not husband','not pregnant'):
+        if not know_spouse_whereabouts and not info_on_agree and not minor_children and wife_is_pregnant in ('not husband','not pregnant'):
           domestic_violence_question = ""
         
         add_unique_step((learn_legal_sep_step, "learn_legal_sep_idx"), step_list)
@@ -558,25 +559,27 @@ content: |
   % elif minor_children and have_property_and_debt and paternity in('no','do not know') and defined('wife_is_pregnant') and wife_is_pregnant == 'not pregnant':
   ''
   % else:
-  *	Generally, if spouses agree on all issues, they can use either "dissolution" or "uncontested divorce" forms to ask to end the marriage. Uncontested divorce forms are best for your case because 
+  *	Generally, if spouses agree on all issues, they can use either "dissolution" or "uncontested divorce" forms to ask to end the marriage. Uncontested divorce forms are best for your case  
   % if minor_children and have_property_and_debt and paternity == 'yes':
-  they have a place to tell the court you have a paternity issue.
+  because they have a place to tell the court you have a paternity issue.
   % elif minor_children and have_property_and_debt and paternity in('no', 'do not know') and defined('wife_is_pregnant') and wife_is_pregnant == 'husband':
-  paragraph 5(a) of the complaint has a place to tell the court wife is pregnant.
+  because paragraph 5(a) of the complaint has a place to tell the court wife is pregnant.
   % elif (minor_children and have_property_and_debt and paternity in('no', 'do not know') and defined('wife_is_pregnant') and wife_is_pregnant == 'not husband') or (not minor_children and defined('wife_is_pregnant') and wife_is_pregnant == 'not husband'):
-  paragraph 5(d) of the Complaint has a place to tell the court paternity is an issue for a child conceived during the marriage.
+  because paragraph 5(d) of the Complaint has a place to tell the court paternity is an issue for a child conceived during the marriage.
   % elif minor_children and not have_property_and_debt and paternity =='yes':
-  they have a place to tell the court (1) you have a paternity issue; and (2) you have no marital property or debt.
+  because they have a place to tell the court:</br>
+  (1) you have a paternity issue; and</br>
+  (2) you have no marital property or debt.
   % elif minor_children and not have_property_and_debt and paternity in('no', 'do not know') and defined('wife_is_pregnant') and wife_is_pregnant == 'not husband':
-   </br>
+   because:</br>
   (1) they have a place to tell the court you have no marital property or debt and</br>
   (2) paragraph 5(d) of the complaint has a place to tell the court paternity is an issue for a child conceived during the marriage.
   % elif (minor_children and not have_property_and_debt and paternity in('no', 'do not know') and defined('wife_is_pregnant') and wife_is_pregnant in('husband','not pregnant')):
-  they have a place to tell the court you have no marital property or debt.
+  because they have a place to tell the court you have no marital property or debt.
   % elif (not minor_children and defined('wife_is_pregnant') and wife_is_pregnant =='not husband') or (minor_children and have_property_and_debt and paternity in('no','do not know') and defined('wife_is_pregnant') and wife_is_pregnant =='not husband'):
-  paragraph 5(d) of the Complaint has a place to tell the court paternity is an issue for a child conceived during the marriage.
+  because paragraph 5(d) of the complaint has a place to tell the court paternity is an issue for a child conceived during the marriage.
   % elif not minor_children and agree_or_settle == 'no prop debt or pregnancy' and no_prop_or_debt_agree and know_spouse_whereabouts:
-  the form is short and section &#8544; has places to tell the court you were together as a married couple 2 years or less, you have no minor children, and you do not need the court to divide any marital property or debt.  
+  because the form is short and section &#8544; has places to tell the court you were together as a married couple 2 years or less, you have no minor children, and you do not need the court to divide any marital property or debt.  
   % endif
   % endif
   
