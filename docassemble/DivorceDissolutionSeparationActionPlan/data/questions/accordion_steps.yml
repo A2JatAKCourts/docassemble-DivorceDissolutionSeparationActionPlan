@@ -555,11 +555,11 @@ subject: |
     % endif
 content: |
   % if not minor_children and agree_or_settle == 'agree' and defined('wife_is_pregnant') and wife_is_pregnant in('husband', 'not pregnant'):
-  * Read "Decide Between Dissolution & Uncontested Divorce," above.  Then pick 1 of the following options.  Note: If you choose dissolution, the link below takes you to the Alaska Court System Website to find the forms and instructions you need.  If you choose uncontested divorce, the forms and instructions you need are listed below.
+  * Read Step ${ learn_disso_div_idx }: "Learn about dissolutions and uncontested divorces," above.  Then pick 1 of the following options.  Note: If you choose dissolution, the link below takes you to the Alaska Court System Website to find the forms and instructions you need.  If you choose uncontested divorce, the forms and instructions you need are listed below.
   % elif minor_children and have_property_and_debt and paternity in('no','do not know') and defined('wife_is_pregnant') and wife_is_pregnant == 'not pregnant':
   ''
   % else:
-  *	Generally, if spouses agree on all issues, they can use either "dissolution" or "uncontested divorce" forms to ask to end the marriage. Uncontested divorce forms are best for your case  
+  *	Generally, if spouses agree on all issues, they can use either "dissolution" or "uncontested divorce" forms to ask to end the marriage. Uncontested divorce forms are best for your case
   % if minor_children and have_property_and_debt and paternity == 'yes':
   because they have a place to tell the court you have a paternity issue.
   % elif minor_children and have_property_and_debt and paternity in('no', 'do not know') and defined('wife_is_pregnant') and wife_is_pregnant == 'husband':
