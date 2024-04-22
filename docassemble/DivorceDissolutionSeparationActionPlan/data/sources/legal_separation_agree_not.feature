@@ -18,7 +18,7 @@ Scenario: Row #366
     | info_on_agree | True | |
     | domestic_violence | True | |
     | default_info | True | |
-  And I take a screenshot
+  # And I take a screenshot
     And I should see the phrase "Your Personal Action Plan for asking the court for a legal separation in Alaska in 10 steps"
     And I should see the phrase "Learn about legal separation"
     And I should see the phrase "Fill out the forms to start a legal separation case"
@@ -30,7 +30,9 @@ Scenario: Row #366
     And I should see the phrase "Learn about abuse or domestic violence and parenting"
     And I should see the phrase "File for default if your spouse does not respond within 20 days"
     And I should see the phrase "Get more information or help"
-    # And I download "asking_for_divorce_action_plan.pdf" 
+    And I take a screenshot
+    # And I download "divorce_dissolution_separation_action_plan.pdf"
+    And I download "divorce_dissolution_separation_action_plan.docx"
 
 @row377
 Scenario: Row #377
@@ -50,7 +52,7 @@ Scenario: Row #377
     | info_on_agree | True | |
     | domestic_violence | False | |
     | default_info | False | |
-  And I take a screenshot
+  # And I take a screenshot
     And I should see the phrase "Your Personal Action Plan for asking the court for a legal separation in Alaska in 9 steps"
     And I should see the phrase "Decide which court should hear your case"
     And I should see the phrase "Learn about legal separation"
@@ -61,7 +63,9 @@ Scenario: Row #377
     And I should see the phrase "Learn more about the process"
     And I should see the phrase "Learn about options to help you and your spouse reach an agreement"
     And I should see the phrase "Get more information or help"
-    # And I download "asking_for_divorce_action_plan.pdf"
+    And I take a screenshot
+    # And I download "divorce_dissolution_separation_action_plan.pdf"
+    And I download "divorce_dissolution_separation_action_plan.docx"
 
 @row387
 Scenario: Row #387
@@ -79,7 +83,7 @@ Scenario: Row #387
     | info_on_agree | False | |
     | domestic_violence | True | |
     | default_info | False | |
-  And I take a screenshot
+  # And I take a screenshot
     And I should see the phrase "Your Personal Action Plan for asking the court for a legal separation in Alaska in 8 steps"
     And I should see the phrase "Learn about legal separation"
     And I should see the phrase "Fill out the forms to start a legal separation case"
@@ -89,7 +93,10 @@ Scenario: Row #387
     And I should see the phrase "Learn more about the process"
     And I should see the phrase "Learn about abuse or domestic violence and parenting"
     And I should see the phrase "Get more information or help"
-    # And I download "asking_for_divorce_action_plan.pdf"
+    And I take a screenshot
+    # And I download "divorce_dissolution_separation_action_plan.pdf"
+    And I download "divorce_dissolution_separation_action_plan.docx"
+
 
 @row395
 Scenario: Row #395
@@ -109,7 +116,7 @@ Scenario: Row #395
     | info_on_agree | False | |
     | domestic_violence | True | |
     | default_info | False | |
-  And I take a screenshot
+  # And I take a screenshot
     And I should see the phrase "Your Personal Action Plan for asking the court for a legal separation in Alaska in 11 steps"
     And I should see the phrase "Decide which court should hear your case"
     And I should see the phrase "Learn about legal separation"
@@ -122,7 +129,9 @@ Scenario: Row #395
     And I should see the phrase "Learn about paternity testing"
     And I should see the phrase "Learn about abuse or domestic violence and parenting"
     And I should see the phrase "Get more information or help"
-    # And I download "asking_for_divorce_action_plan.pdf"
+    And I take a screenshot
+    # And I download "divorce_dissolution_separation_action_plan.pdf"
+    And I download "divorce_dissolution_separation_action_plan.docx"
 
 @row400
 Scenario: Row #400
@@ -140,7 +149,7 @@ Scenario: Row #400
     | info_on_agree | True | |
     | domestic_violence | False | |
     | default_info | True | |
-  And I take a screenshot
+  # And I take a screenshot
     And I should see the phrase "Your Personal Action Plan for asking the court for a legal separation in Alaska in 11 steps"
     And I should see the phrase "Learn about legal separation"
     And I should see the phrase "Fill out the forms to start a legal separation case"
@@ -153,7 +162,9 @@ Scenario: Row #400
     And I should see the phrase "Learn about options to help you and your spouse reach an agreement"
     And I should see the phrase "File for default if your spouse does not respond within 20 days"
     And I should see the phrase "Get more information or help"
-    # And I download "asking_for_divorce_action_plan.pdf"
+    And I take a screenshot
+    # And I download "divorce_dissolution_separation_action_plan.pdf"
+    And I download "divorce_dissolution_separation_action_plan.docx"
 
 @row408
 Scenario: Row #408
@@ -174,7 +185,7 @@ Scenario: Row #408
     | info_on_agree | True | |
     | domestic_violence | False | |
     | default_info | True | |
-  And I take a screenshot
+  # And I take a screenshot
     And I should see the phrase "Your Personal Action Plan for asking the court for a legal separation in Alaska in 11 steps"
     And I should see the phrase "Decide if Alaska is the right state for your case"
     And I should see the phrase "Learn about legal separation"
@@ -187,7 +198,10 @@ Scenario: Row #408
     And I should see the phrase "Learn about options to help you and your spouse reach an agreement"
     And I should see the phrase "File for default if your spouse does not respond within 20 days"
     And I should see the phrase "Get more information or help"
-    # And I download "asking_for_divorce_action_plan.pdf"
+    And I take a screenshot
+    # And I download "divorce_dissolution_separation_action_plan.pdf"
+    And I download "divorce_dissolution_separation_action_plan.docx"
+
 
 @row420
 Scenario: Row #420
@@ -204,7 +218,7 @@ Scenario: Row #420
     | info_on_agree | True | |
     | domestic_violence | True | |
     | default_info | True | |
-  And I take a screenshot
+  # And I take a screenshot
     And I should see the phrase "Your Personal Action Plan for asking the court for a legal separation in Alaska in 10 steps"
     And I should see the phrase "Learn about legal separation"
     And I should see the phrase "Fill out the forms to start a legal separation case"
@@ -216,9 +230,9 @@ Scenario: Row #420
     And I should see the phrase "Learn about abuse or domestic violence"
     And I should see the phrase "File for default if your spouse does not respond within 20 days"
     And I should see the phrase "Get more information or help"
-    # And I download "asking_for_divorce_action_plan.pdf"
-
-
+    And I take a screenshot
+    # And I download "divorce_dissolution_separation_action_plan.pdf"
+    And I download "divorce_dissolution_separation_action_plan.docx"
 
 @row425
 Scenario: Row #425
@@ -237,7 +251,7 @@ Scenario: Row #425
     | info_on_agree | False | |
     | domestic_violence | True | |
     | default_info | False | |
-  And I take a screenshot
+  # And I take a screenshot
     And I should see the phrase "Your Personal Action Plan for asking the court for a legal separation in Alaska in 9 steps"
     And I should see the phrase "Decide if Alaska is the right state for your case"
     And I should see the phrase "Learn about legal separation"
@@ -248,7 +262,9 @@ Scenario: Row #425
     And I should see the phrase "Learn more about the process"
     And I should see the phrase "Learn about abuse or domestic violence"
     And I should see the phrase "Get more information or help"
-    # And I download "asking_for_divorce_action_plan.pdf"
+    And I take a screenshot
+    # And I download "divorce_dissolution_separation_action_plan.pdf"
+    And I download "divorce_dissolution_separation_action_plan.docx"
 
 @row430
 Scenario: Row #430
@@ -265,7 +281,7 @@ Scenario: Row #430
     | info_on_agree | True | |
     | domestic_violence | False | |
     | default_info | True | |
-  And I take a screenshot
+  # And I take a screenshot
     And I should see the phrase "Your Personal Action Plan for asking the court for a legal separation in Alaska in 10 steps"
     And I should see the phrase "Learn about legal separation"
     And I should see the phrase "Fill out the forms to start a legal separation case"
@@ -277,8 +293,9 @@ Scenario: Row #430
     And I should see the phrase "Learn about options to help you and your spouse reach an agreement"
     And I should see the phrase "File for default if your spouse does not respond within 20 days"
     And I should see the phrase "Get more information or help"
-    # And I download "asking_for_divorce_action_plan.pdf"
-
+    And I take a screenshot
+    # And I download "divorce_dissolution_separation_action_plan.pdf"
+    And I download "divorce_dissolution_separation_action_plan.docx"
 
 @row435
 Scenario: Row #435
@@ -297,7 +314,7 @@ Scenario: Row #435
     | info_on_agree | False | |
     | domestic_violence | False | |
     | default_info | False | |
-  And I take a screenshot
+  # And I take a screenshot
     And I should see the phrase "Your Personal Action Plan for asking the court for a legal separation in Alaska in 9 steps"
     And I should see the phrase "Decide if Alaska is the right state for your case"
     And I should see the phrase "Learn about legal separation"
@@ -308,7 +325,9 @@ Scenario: Row #435
     And I should see the phrase "Learn more about the process"
     And I should see the phrase "Learn about starting a case when you do not know where your spouse is"
     And I should see the phrase "Get more information or help"
-    # And I download "asking_for_divorce_action_plan.pdf"
+    And I take a screenshot
+    # And I download "divorce_dissolution_separation_action_plan.pdf"
+    And I download "divorce_dissolution_separation_action_plan.docx"
 
 @row436
 Scenario: Row #436
@@ -327,7 +346,7 @@ Scenario: Row #436
     | info_on_agree | True | |
     | domestic_violence | True | |
     | default_info | True | |
-  And I take a screenshot
+  # And I take a screenshot
     And I should see the phrase "Your Personal Action Plan for asking the court for a legal separation in Alaska in 11 steps"
     And I should see the phrase "Decide if Alaska is the right state for your case"
     And I should see the phrase "Learn about legal separation"
@@ -340,7 +359,9 @@ Scenario: Row #436
     And I should see the phrase "Learn about abuse or domestic violence resources"
     And I should see the phrase "File for default if your spouse does not respond within 20 days"
     And I should see the phrase "Get more information or help"
-    # And I download "asking_for_divorce_action_plan.pdf"
+    And I take a screenshot
+    # And I download "divorce_dissolution_separation_action_plan.pdf"
+    And I download "divorce_dissolution_separation_action_plan.docx"
 
 
 @row441
@@ -358,7 +379,7 @@ Scenario: Row #441
     | info_on_agree | False | |
     | domestic_violence | True | |
     | default_info | False | |
-  And I take a screenshot
+  # And I take a screenshot
     And I should see the phrase "Your Personal Action Plan for asking the court for a legal separation in Alaska in 8 steps"
     And I should see the phrase "Learn about legal separation"
     And I should see the phrase "Fill out the forms to start a legal separation case"
@@ -366,7 +387,8 @@ Scenario: Row #441
     And I should see the phrase "Read the “Domestic Relations Procedural Order” or Standing Order if the clerk gives you one when you file your case"
     And I should see the phrase "Serve the complaint and summons"
     And I should see the phrase "Learn more about the process"
-    And I should see the phrase "Learn about abuse or domestic violence resources"
+    And I should see the phrase "Learn about abuse or domestic violence"
     And I should see the phrase "Get more information or help"
-    # And I download "asking_for_divorce_action_plan.pdf"
-
+    And I take a screenshot
+    # And I download "divorce_dissolution_separation_action_plan.pdf"
+    And I download "divorce_dissolution_separation_action_plan.docx"

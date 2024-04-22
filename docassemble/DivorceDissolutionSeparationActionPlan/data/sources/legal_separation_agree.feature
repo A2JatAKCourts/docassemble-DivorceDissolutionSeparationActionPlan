@@ -18,7 +18,7 @@ Scenario: Row #348
     | paternity | yes | |
     | wife_is_pregnant | husband | |
     | domestic_violence | True | |
-  And I take a screenshot
+  # And I take a screenshot
     And I should see the phrase "Your Personal Action Plan for asking the court for a legal separation in Alaska in 8 steps"
     And I should see the phrase "Decide which court should hear your case"
     And I should see the phrase "Learn about legal separation"
@@ -28,7 +28,9 @@ Scenario: Row #348
     And I should see the phrase "Learn more about the process"
     And I should see the phrase "Learn about abuse or domestic violence resources & reaching an agreement"
     And I should see the phrase "Get more information or help"
-    # And I download "asking_for_divorce_action_plan.pdf"
+    And I take a screenshot
+    # And I download "divorce_dissolution_separation_action_plan.pdf"
+    And I download "divorce_dissolution_separation_action_plan.docx"
 
 @row351
 Scenario: Row #351
@@ -44,7 +46,7 @@ Scenario: Row #351
     | paternity | yes | |
     | wife_is_pregnant | not husband | |
     | domestic_violence | False | |
-  And I take a screenshot
+  # And I take a screenshot
     And I should see the phrase "Your Personal Action Plan for asking the court for a legal separation in Alaska in 7 steps"
     And I should see the phrase "Learn about legal separation"
     And I should see the phrase "Fill out the forms to start a legal separation case"
@@ -53,7 +55,10 @@ Scenario: Row #351
     And I should see the phrase "Learn more about the process"
     And I should see the phrase "Learn about starting a case when you do not know where your spouse is"
     And I should see the phrase "Get more information or help"
-    # And I download "asking_for_divorce_action_plan.pdf"
+    And I take a screenshot
+    # And I download "divorce_dissolution_separation_action_plan.pdf"
+    And I download "divorce_dissolution_separation_action_plan.docx"
+
 
 @row356
 Scenario: Row #356
@@ -71,7 +76,7 @@ Scenario: Row #356
     | paternity | no | |
     | wife_is_pregnant | not husband | |
     | domestic_violence | True | |
-  And I take a screenshot
+  # And I take a screenshot
     And I should see the phrase "Your Personal Action Plan for asking the court for a legal separation in Alaska in 8 steps"
     And I should see the phrase "Decide which court should hear your case"
     And I should see the phrase "Learn about legal separation"
@@ -81,7 +86,10 @@ Scenario: Row #356
     And I should see the phrase "Learn more about the process"
     And I should see the phrase "Learn about abuse or domestic violence resources & reaching an agreement"
     And I should see the phrase "Get more information or help"
-    # And I download "asking_for_divorce_action_plan.pdf"
+    And I take a screenshot
+    # And I download "divorce_dissolution_separation_action_plan.pdf"
+    And I download "divorce_dissolution_separation_action_plan.docx"
+
 
 @row359
 Scenario: Row #359
@@ -97,7 +105,7 @@ Scenario: Row #359
     | paternity | no | |
     | wife_is_pregnant | not pregnant | |
     | domestic_violence | False | |
-  And I take a screenshot
+  # And I take a screenshot
     And I should see the phrase "Your Personal Action Plan for asking the court for a legal separation in Alaska in 7 steps"
     And I should see the phrase "Learn about legal separation"
     And I should see the phrase "Fill out the forms to start a legal separation case"
@@ -106,7 +114,9 @@ Scenario: Row #359
     And I should see the phrase "Learn more about the process"
     And I should see the phrase "Learn about starting a case when you do not know where your spouse is"
     And I should see the phrase "Get more information or help"
-    # And I download "asking_for_divorce_action_plan.pdf"
+    And I take a screenshot
+    # And I download "divorce_dissolution_separation_action_plan.pdf"
+    And I download "divorce_dissolution_separation_action_plan.docx"
 
 @row360
 Scenario: Row #360
@@ -119,13 +129,13 @@ Scenario: Row #360
     | residency_and_jurisdiction | False | |
     | military | True | |
     | continue_despite_no_residency | continue | |
-| legal_separation_or_divorce | legal separation | |
-| agree_or_settle_kids | yes | |
-| know_spouse_whereabouts | True | |
-| paternity | do not know | |
-| wife_is_pregnant | husband | |
-| domestic_violence | True | |
-  And I take a screenshot
+    | legal_separation_or_divorce | legal separation | |
+    | agree_or_settle_kids | yes | |
+    | know_spouse_whereabouts | True | |
+    | paternity | do not know | |
+    | wife_is_pregnant | husband | |
+    | domestic_violence | True | |
+  # And I take a screenshot
     And I should see the phrase "Your Personal Action Plan for asking the court for a legal separation in Alaska in 9 steps"
     And I should see the phrase "Decide if Alaska is the right state for your case"
     And I should see the phrase "Learn about legal separation"
@@ -136,7 +146,9 @@ Scenario: Row #360
     And I should see the phrase "Learn about paternity testing"
     And I should see the phrase "Learn about abuse or domestic violence resources & reaching an agreement"
     And I should see the phrase "Get more information or help"
-    # And I download "asking_for_divorce_action_plan.pdf"
+    And I take a screenshot
+    # And I download "divorce_dissolution_separation_action_plan.pdf"
+    And I download "divorce_dissolution_separation_action_plan.docx"
 
 @row365
 Scenario: Row #365
@@ -152,7 +164,7 @@ Scenario: Row #365
 | paternity | do not know | |
 | wife_is_pregnant | not pregnant | |
 | domestic_violence | False | |
-  And I take a screenshot
+  # And I take a screenshot
     And I should see the phrase "Your Personal Action Plan for asking the court for a legal separation in Alaska in 8 steps"
     And I should see the phrase "Learn about legal separation"
     And I should see the phrase "Fill out the forms to start a legal separation case"
@@ -162,7 +174,10 @@ Scenario: Row #365
     And I should see the phrase "Learn about starting a case when you do not know where your spouse is"
     And I should see the phrase "Learn about paternity testing"
     And I should see the phrase "Get more information or help"
-    # And I download "asking_for_divorce_action_plan.pdf"
+    And I take a screenshot
+    # And I download "divorce_dissolution_separation_action_plan.pdf"
+    And I download "divorce_dissolution_separation_action_plan.docx"
+
 
 @row414
 Scenario: Row #414
@@ -179,7 +194,7 @@ Scenario: Row #414
     | know_spouse_whereabouts | True | |
     | wife_is_pregnant | husband | |
     | domestic_violence | True | |
-  And I take a screenshot
+  # And I take a screenshot
     And I should see the phrase "Your Personal Action Plan for asking the court for a legal separation in Alaska in 8 steps"
     And I should see the phrase "Decide if Alaska is the right state for your case"
     And I should see the phrase "Learn about legal separation"
@@ -189,7 +204,9 @@ Scenario: Row #414
     And I should see the phrase "Learn more about the process"
     And I should see the phrase "Learn about abuse or domestic violence resources & reaching an agreement"
     And I should see the phrase "Get more information or help"
-    # And I download "asking_for_divorce_action_plan.pdf"
+    And I take a screenshot
+    # And I download "divorce_dissolution_separation_action_plan.pdf"
+    And I download "divorce_dissolution_separation_action_plan.docx"
 
 @row415
 Scenario: Row #415
@@ -204,7 +221,7 @@ Scenario: Row #415
     | know_spouse_whereabouts | False | |
     | wife_is_pregnant | husband | |
     | domestic_violence | False | |
-  And I take a screenshot
+  # And I take a screenshot
     And I should see the phrase "Your Personal Action Plan for asking the court for a legal separation in Alaska in 7 steps"
     And I should see the phrase "Learn about legal separation"
     And I should see the phrase "Fill out the forms to start a legal separation case"
@@ -213,7 +230,9 @@ Scenario: Row #415
     And I should see the phrase "Learn more about the process"
     And I should see the phrase "Learn about starting a case when you do not know where your spouse is"
     And I should see the phrase "Get more information or help"
-    # And I download "asking_for_divorce_action_plan.pdf"
+    And I take a screenshot
+    # And I download "divorce_dissolution_separation_action_plan.pdf"
+    And I download "divorce_dissolution_separation_action_plan.docx"
 
 @row416
 Scenario: Row #416
@@ -230,7 +249,7 @@ Scenario: Row #416
     | know_spouse_whereabouts | True | |
     | wife_is_pregnant | not husband | |
     | domestic_violence | True | |
-  And I take a screenshot
+  # And I take a screenshot
     And I should see the phrase "Your Personal Action Plan for asking the court for a legal separation in Alaska in 8 steps"
     And I should see the phrase "Decide if Alaska is the right state for your case"
     And I should see the phrase "Learn about legal separation"
@@ -240,7 +259,9 @@ Scenario: Row #416
     And I should see the phrase "Learn more about the process"
     And I should see the phrase "Learn about abuse or domestic violence resources & reaching an agreement"
     And I should see the phrase "Get more information or help"
-    # And I download "asking_for_divorce_action_plan.pdf"
+    And I take a screenshot
+    # And I download "divorce_dissolution_separation_action_plan.pdf"
+    And I download "divorce_dissolution_separation_action_plan.docx"
 
 @row417
 Scenario: Row #417
@@ -257,7 +278,7 @@ Scenario: Row #417
     | know_spouse_whereabouts | False | |
     | wife_is_pregnant | not husband | |
     | domestic_violence | False | |
-  And I take a screenshot
+  # And I take a screenshot
     And I should see the phrase "Your Personal Action Plan for asking the court for a legal separation in Alaska in 8 steps"
     And I should see the phrase "Decide if Alaska is the right state for your case"
     And I should see the phrase "Learn about legal separation"
@@ -267,7 +288,9 @@ Scenario: Row #417
     And I should see the phrase "Learn more about the process"
     And I should see the phrase "Learn about starting a case when you do not know where your spouse is"
     And I should see the phrase "Get more information or help"
-    # And I download "asking_for_divorce_action_plan.pdf"
+    And I take a screenshot
+    # And I download "divorce_dissolution_separation_action_plan.pdf"
+    And I download "divorce_dissolution_separation_action_plan.docx"
 
 @row418
 Scenario: Row #418
@@ -282,7 +305,7 @@ Scenario: Row #418
     | know_spouse_whereabouts | True | |
     | wife_is_pregnant | not pregnant | |
     | domestic_violence | True | |
-  And I take a screenshot
+  # And I take a screenshot
     And I should see the phrase "Your Personal Action Plan for asking the court for a legal separation in Alaska in 7 steps"
     And I should see the phrase "Learn about legal separation"
     And I should see the phrase "Fill out the forms to start a legal separation case"
@@ -291,7 +314,9 @@ Scenario: Row #418
     And I should see the phrase "Learn more about the process"
     And I should see the phrase "Learn about abuse or domestic violence resources & reaching an agreement"
     And I should see the phrase "Get more information or help"
-    # And I download "asking_for_divorce_action_plan.pdf"
+    And I take a screenshot
+    # And I download "divorce_dissolution_separation_action_plan.pdf"
+    And I download "divorce_dissolution_separation_action_plan.docx"
 
 
 @row419
@@ -307,7 +332,7 @@ Scenario: Row #419
     | know_spouse_whereabouts | False | |
     | wife_is_pregnant | not pregnant | |
     | domestic_violence | False | |
-  And I take a screenshot
+  # And I take a screenshot
     And I should see the phrase "Your Personal Action Plan for asking the court for a legal separation in Alaska in 7 steps"
     And I should see the phrase "Learn about legal separation"
     And I should see the phrase "Fill out the forms to start a legal separation case"
@@ -316,4 +341,6 @@ Scenario: Row #419
     And I should see the phrase "Learn more about the process"
     And I should see the phrase "Learn about starting a case when you do not know where your spouse is"
     And I should see the phrase "Get more information or help"
-    # And I download "asking_for_divorce_action_plan.pdf"
+    And I take a screenshot
+    # And I download "divorce_dissolution_separation_action_plan.pdf"
+    And I download "divorce_dissolution_separation_action_plan.docx"
