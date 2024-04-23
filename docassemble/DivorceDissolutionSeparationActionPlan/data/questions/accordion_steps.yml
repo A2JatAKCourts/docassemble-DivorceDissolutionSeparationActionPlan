@@ -1015,15 +1015,15 @@ content: |
 ---
 template: file_forms_step
 subject: |
-  Step ${  file_forms_idx }: File the original with your local court
+  Step ${ file_forms_idx }: File the original with your local court
 content: |
-
-  *	Make 2 copies of your forms: 1 copy for your own records and 1 copy for your spouse.
   % if legal_separation_or_divorce == 'divorce' \
       and (minor_children and agree_or_settle_kids in('yes', 'do not know') \
         or (not minor_children and agree_or_settle in('no prop debt or pregnancy','agree','do not know'))):
   Because you both signed the forms and both have a copy, you do not have to mail the documents to your spouse or send them by a process server (which is called "service" or "serving the other side").
   * Make 2 copies of your forms: 1 copy for your own records and 1 copy for your spouse.  Because you both signed the forms and both have a copy, you do not have to formally "serve" your spouse by mailing documents or using a process server.
+  % else:
+  *	Make 2 copies of your forms: 1 copy for your own records and 1 copy for your spouse.
   % endif
   * Find the closest Alaska Trial Courthouse to file your petition: [Court Directory](http://courts.alaska.gov/courtdir/index.htm#trial)
   * The clerk of court will open your case, give you 2 copies of a “Summons” and usually a “Standing Order” that contains important information about your case. 1 copy is for you; 1 copy is for your spouse. (Note: if you file an uncontested divorce, you may not get a Summons.)
