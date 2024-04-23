@@ -86,6 +86,7 @@ code: |
     
     if not minor_children \
       and legal_separation_or_divorce == 'divorce' and agree_or_settle == 'no prop debt or pregnancy':
+      # marriage_date
       wife_is_pregnant = 'not pregnant'
       if no_prop_or_debt_agree:
         know_spouse_whereabouts = True

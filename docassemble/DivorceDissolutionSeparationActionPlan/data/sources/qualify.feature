@@ -10,7 +10,7 @@ Scenario: Row #1
     | other_case | True | |
     | ongoing | marriage ended | |
   # And I take a screenshot
-    And I should see the phrase "Your Personal Action Plan for asking the court for a divorce, dissolution, or legal separation in Alaska in 2 steps"
+    And I should see the phrase "Your Personal Action Plan for asking the court for a divorce or legal separation in Alaska in 2 steps"
     And I should see the phrase "Review your options if a court in another state already ended your marriage"
     And I should see the phrase "Get more information or help"
     And I take a screenshot
@@ -28,7 +28,7 @@ Scenario: Row #2
     | military | True | |
     | other_state_case | stop | |
   # And I take a screenshot
-    And I should see the phrase "Your Personal Action Plan for asking the court for a divorce, dissolution, or legal separation in Alaska in 2 steps"
+    And I should see the phrase "Your Personal Action Plan for asking the court for a divorce or legal separation in Alaska in 2 steps"
     And I should see the phrase "Decide which court should hear your case"
     And I should see the phrase "Get more information or help"
     And I take a screenshot
@@ -46,7 +46,7 @@ Scenario: Row #4
     | military | False | |
     | other_state_case | stop | |
   # And I take a screenshot
-    And I should see the phrase "Your Personal Action Plan for asking the court for a divorce, dissolution, or legal separation in Alaska in 2 steps"
+    And I should see the phrase "Your Personal Action Plan for asking the court for a divorce or legal separation in Alaska in 2 steps"
     And I should see the phrase "Decide which court should hear your case"
     And I should see the phrase "Get more information or help"
     And I take a screenshot
@@ -65,7 +65,7 @@ Scenario: Row #6
     | military | True | |
     | continue_despite_no_residency | stop | |
   # And I take a screenshot
-    And I should see the phrase "Your Personal Action Plan for asking the court for a divorce, dissolution, or legal separation in Alaska in 2 steps"
+    And I should see the phrase "Your Personal Action Plan for asking the court for a divorce or legal separation in Alaska in 2 steps"
     And I should see the phrase "Decide if Alaska is the right state for your case"
     And I should see the phrase "Get more information or help"
     And I take a screenshot
@@ -84,7 +84,7 @@ Scenario: Row #8
     | military | False | |
     | continue_despite_no_residency | stop | |
   # And I take a screenshot
-    And I should see the phrase "Your Personal Action Plan for asking the court for a divorce, dissolution, or legal separation in Alaska in 2 steps"
+    And I should see the phrase "Your Personal Action Plan for asking the court for a divorce or legal separation in Alaska in 2 steps"
     And I should see the phrase "Decide if Alaska is the right state for your case"
     And I should see the phrase "Get more information or help"
     And I take a screenshot
@@ -102,7 +102,7 @@ Scenario: Row #10
     | military | True | |
     | continue_despite_no_residency | stop | |
   # And I take a screenshot
-    And I should see the phrase "Your Personal Action Plan for asking the court for a divorce, dissolution, or legal separation in Alaska in 2 steps"
+    And I should see the phrase "Your Personal Action Plan for asking the court for a divorce or legal separation in Alaska in 2 steps"
     And I should see the phrase "Decide if Alaska is the right state for your case"
     And I should see the phrase "Get more information or help"
     And I take a screenshot
@@ -121,7 +121,7 @@ Scenario: Row #12
     | military | False | |
     | continue_despite_no_residency | stop | |
   # And I take a screenshot
-    And I should see the phrase "Your Personal Action Plan for asking the court for a divorce, dissolution, or legal separation in Alaska in 2 steps"
+    And I should see the phrase "Your Personal Action Plan for asking the court for a divorce or legal separation in Alaska in 2 steps"
     And I should see the phrase "Decide if Alaska is the right state for your case"
     And I should see the phrase "Get more information or help"
     And I take a screenshot

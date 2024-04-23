@@ -278,8 +278,12 @@ subquestion: |
   
 fields:
   - When did you get married?: marriage_date
+    datatype: date
+    max: ${ today() }   
   - Did you live together as a married couple 2 years or less?: less_than_2_years
-    datatype: yesnoradio   
+    datatype: yesnoradio
+    show if: short_term_marriage
+    
   - Check everything that is true: property_division
     datatype: checkboxes
     choices:
@@ -288,7 +292,10 @@ fields:
       - "We did not purchase any real estate or land during or before our marriage that we consider to be marital property.": joint property
       - "There are no retirement accounts for the court to divide. Neither spouse contributed to or earned any retirement assets during the marriage.": retirement
       - "We will each be responsible for all debts in our own names, including credit cards, car loans, medical bills, etc.": responsibility
-
+---
+code: |
+  if date_difference(starting=marriage_date, ending=today()).years > 2:
+    short_term_marriage = True
 ---
 id: Childless couple sure you agree on no marital property or debt?
 question: |
