@@ -19,12 +19,13 @@ Scenario: Row #366
     | domestic_violence | True | |
     | default_info | True | |
   # And I take a screenshot
-    And I should see the phrase "Your Personal Action Plan for asking the court for a legal separation in Alaska in 10 steps"
+    And I should see the phrase "Your Personal Action Plan for asking the court for a legal separation in Alaska in 11 steps"
     And I should see the phrase "Learn about legal separation"
     And I should see the phrase "Fill out the forms to start a legal separation case"
     And I should see the phrase "File the original with your local court"
     And I should see the phrase "Read the “Domestic Relations Procedural Order” or Standing Order if the clerk gives you one when you file your case"
     And I should see the phrase "Serve the complaint and summons"
+    And I should see the phrase "What to expect after you file your Complaint"
     And I should see the phrase "Learn more about the process"
     And I should see the phrase "Learn about options to help you and your spouse reach an agreement"
     And I should see the phrase "Learn about abuse or domestic violence and parenting"
@@ -53,13 +54,14 @@ Scenario: Row #377
     | domestic_violence | False | |
     | default_info | False | |
   # And I take a screenshot
-    And I should see the phrase "Your Personal Action Plan for asking the court for a legal separation in Alaska in 9 steps"
+    And I should see the phrase "Your Personal Action Plan for asking the court for a legal separation in Alaska in 10 steps"
     And I should see the phrase "Decide which court should hear your case"
     And I should see the phrase "Learn about legal separation"
     And I should see the phrase "Fill out the forms to start a legal separation case"
     And I should see the phrase "File the original with your local court"
     And I should see the phrase "Read the “Domestic Relations Procedural Order” or Standing Order if the clerk gives you one when you file your case"
     And I should see the phrase "Serve the complaint and summons"
+    And I should see the phrase "What to expect after you file your Complaint"
     And I should see the phrase "Learn more about the process"
     And I should see the phrase "Learn about options to help you and your spouse reach an agreement"
     And I should see the phrase "Get more information or help"
@@ -84,12 +86,13 @@ Scenario: Row #387
     | domestic_violence | True | |
     | default_info | False | |
   # And I take a screenshot
-    And I should see the phrase "Your Personal Action Plan for asking the court for a legal separation in Alaska in 8 steps"
+    And I should see the phrase "Your Personal Action Plan for asking the court for a legal separation in Alaska in 9 steps"
     And I should see the phrase "Learn about legal separation"
     And I should see the phrase "Fill out the forms to start a legal separation case"
     And I should see the phrase "File the original with your local court"
     And I should see the phrase "Read the “Domestic Relations Procedural Order” or Standing Order if the clerk gives you one when you file your case"
     And I should see the phrase "Serve the complaint and summons"
+    And I should see the phrase "What to expect after you file your Complaint"
     And I should see the phrase "Learn more about the process"
     And I should see the phrase "Learn about abuse or domestic violence and parenting"
     And I should see the phrase "Get more information or help"
@@ -117,13 +120,14 @@ Scenario: Row #395
     | domestic_violence | True | |
     | default_info | False | |
   # And I take a screenshot
-    And I should see the phrase "Your Personal Action Plan for asking the court for a legal separation in Alaska in 11 steps"
+    And I should see the phrase "Your Personal Action Plan for asking the court for a legal separation in Alaska in 12 steps"
     And I should see the phrase "Decide which court should hear your case"
     And I should see the phrase "Learn about legal separation"
     And I should see the phrase "Fill out the forms to start a legal separation case"
     And I should see the phrase "File the original with your local court"
     And I should see the phrase "Read the “Domestic Relations Procedural Order” or Standing Order if the clerk gives you one when you file your case"
     And I should see the phrase "Serve the complaint and summons"
+    And I should see the phrase "What to expect after you file your Complaint"
     And I should see the phrase "Learn more about the process"
     And I should see the phrase "Learn about starting a case when you do not know where your spouse is"
     And I should see the phrase "Learn about paternity testing"
@@ -150,12 +154,13 @@ Scenario: Row #400
     | domestic_violence | False | |
     | default_info | True | |
   # And I take a screenshot
-    And I should see the phrase "Your Personal Action Plan for asking the court for a legal separation in Alaska in 11 steps"
+    And I should see the phrase "Your Personal Action Plan for asking the court for a legal separation in Alaska in 12 steps"
     And I should see the phrase "Learn about legal separation"
     And I should see the phrase "Fill out the forms to start a legal separation case"
     And I should see the phrase "File the original with your local court"
     And I should see the phrase "Read the “Domestic Relations Procedural Order” or Standing Order if the clerk gives you one when you file your case"
     And I should see the phrase "Serve the complaint and summons"
+    And I should see the phrase "What to expect after you file your Complaint"
     And I should see the phrase "Learn more about the process"
     And I should see the phrase "Learn about starting a case when you do not know where your spouse is"
     And I should see the phrase "Learn about paternity testing"
@@ -186,13 +191,14 @@ Scenario: Row #408
     | domestic_violence | False | |
     | default_info | True | |
   # And I take a screenshot
-    And I should see the phrase "Your Personal Action Plan for asking the court for a legal separation in Alaska in 11 steps"
+    And I should see the phrase "Your Personal Action Plan for asking the court for a legal separation in Alaska in 12 steps"
     And I should see the phrase "Decide if Alaska is the right state for your case"
     And I should see the phrase "Learn about legal separation"
     And I should see the phrase "Fill out the forms to start a legal separation case"
     And I should see the phrase "File the original with your local court"
     And I should see the phrase "Read the “Domestic Relations Procedural Order” or Standing Order if the clerk gives you one when you file your case"
     And I should see the phrase "Serve the complaint and summons"
+    And I should see the phrase "What to expect after you file your Complaint"
     And I should see the phrase "Learn more about the process"
     And I should see the phrase "Learn about starting a case when you do not know where your spouse is"
     And I should see the phrase "Learn about options to help you and your spouse reach an agreement"
@@ -219,12 +225,13 @@ Scenario: Row #420
     | domestic_violence | True | |
     | default_info | True | |
   # And I take a screenshot
-    And I should see the phrase "Your Personal Action Plan for asking the court for a legal separation in Alaska in 10 steps"
+    And I should see the phrase "Your Personal Action Plan for asking the court for a legal separation in Alaska in 11 steps"
     And I should see the phrase "Learn about legal separation"
     And I should see the phrase "Fill out the forms to start a legal separation case"
     And I should see the phrase "File the original with your local court"
     And I should see the phrase "Read the “Domestic Relations Procedural Order” or Standing Order if the clerk gives you one when you file your case"
     And I should see the phrase "Serve the complaint and summons"
+    And I should see the phrase "What to expect after you file your Complaint"
     And I should see the phrase "Learn more about the process"
     And I should see the phrase "Learn about options to help you and your spouse reach an agreement"
     And I should see the phrase "Learn about abuse or domestic violence"
@@ -252,13 +259,14 @@ Scenario: Row #425
     | domestic_violence | True | |
     | default_info | False | |
   # And I take a screenshot
-    And I should see the phrase "Your Personal Action Plan for asking the court for a legal separation in Alaska in 9 steps"
+    And I should see the phrase "Your Personal Action Plan for asking the court for a legal separation in Alaska in 10 steps"
     And I should see the phrase "Decide if Alaska is the right state for your case"
     And I should see the phrase "Learn about legal separation"
     And I should see the phrase "Fill out the forms to start a legal separation case"
     And I should see the phrase "File the original with your local court"
     And I should see the phrase "Read the “Domestic Relations Procedural Order” or Standing Order if the clerk gives you one when you file your case"
     And I should see the phrase "Serve the complaint and summons"
+    And I should see the phrase "What to expect after you file your Complaint"
     And I should see the phrase "Learn more about the process"
     And I should see the phrase "Learn about abuse or domestic violence"
     And I should see the phrase "Get more information or help"
@@ -282,12 +290,13 @@ Scenario: Row #430
     | domestic_violence | False | |
     | default_info | True | |
   # And I take a screenshot
-    And I should see the phrase "Your Personal Action Plan for asking the court for a legal separation in Alaska in 10 steps"
+    And I should see the phrase "Your Personal Action Plan for asking the court for a legal separation in Alaska in 11 steps"
     And I should see the phrase "Learn about legal separation"
     And I should see the phrase "Fill out the forms to start a legal separation case"
     And I should see the phrase "File the original with your local court"
     And I should see the phrase "Read the “Domestic Relations Procedural Order” or Standing Order if the clerk gives you one when you file your case"
     And I should see the phrase "Serve the complaint and summons"
+    And I should see the phrase "What to expect after you file your Complaint"
     And I should see the phrase "Learn more about the process"
     And I should see the phrase "Learn about starting a case when you do not know where your spouse is"
     And I should see the phrase "Learn about options to help you and your spouse reach an agreement"
@@ -315,13 +324,14 @@ Scenario: Row #435
     | domestic_violence | False | |
     | default_info | False | |
   # And I take a screenshot
-    And I should see the phrase "Your Personal Action Plan for asking the court for a legal separation in Alaska in 9 steps"
+    And I should see the phrase "Your Personal Action Plan for asking the court for a legal separation in Alaska in 10 steps"
     And I should see the phrase "Decide if Alaska is the right state for your case"
     And I should see the phrase "Learn about legal separation"
     And I should see the phrase "Fill out the forms to start a legal separation case"
     And I should see the phrase "File the original with your local court"
     And I should see the phrase "Read the “Domestic Relations Procedural Order” or Standing Order if the clerk gives you one when you file your case"
     And I should see the phrase "Serve the complaint and summons"
+    And I should see the phrase "What to expect after you file your Complaint"
     And I should see the phrase "Learn more about the process"
     And I should see the phrase "Learn about starting a case when you do not know where your spouse is"
     And I should see the phrase "Get more information or help"
@@ -347,13 +357,14 @@ Scenario: Row #436
     | domestic_violence | True | |
     | default_info | True | |
   # And I take a screenshot
-    And I should see the phrase "Your Personal Action Plan for asking the court for a legal separation in Alaska in 11 steps"
+    And I should see the phrase "Your Personal Action Plan for asking the court for a legal separation in Alaska in 12 steps"
     And I should see the phrase "Decide if Alaska is the right state for your case"
     And I should see the phrase "Learn about legal separation"
     And I should see the phrase "Fill out the forms to start a legal separation case"
     And I should see the phrase "File the original with your local court"
     And I should see the phrase "Read the “Domestic Relations Procedural Order” or Standing Order if the clerk gives you one when you file your case"
     And I should see the phrase "Serve the complaint and summons"
+    And I should see the phrase "What to expect after you file your Complaint"
     And I should see the phrase "Learn more about the process"
     And I should see the phrase "Learn about options to help you and your spouse reach an agreement"
     And I should see the phrase "Learn about abuse or domestic violence resources"
@@ -380,12 +391,13 @@ Scenario: Row #441
     | domestic_violence | True | |
     | default_info | False | |
   # And I take a screenshot
-    And I should see the phrase "Your Personal Action Plan for asking the court for a legal separation in Alaska in 8 steps"
+    And I should see the phrase "Your Personal Action Plan for asking the court for a legal separation in Alaska in 9 steps"
     And I should see the phrase "Learn about legal separation"
     And I should see the phrase "Fill out the forms to start a legal separation case"
     And I should see the phrase "File the original with your local court"
     And I should see the phrase "Read the “Domestic Relations Procedural Order” or Standing Order if the clerk gives you one when you file your case"
     And I should see the phrase "Serve the complaint and summons"
+    And I should see the phrase "What to expect after you file your Complaint"
     And I should see the phrase "Learn more about the process"
     And I should see the phrase "Learn about abuse or domestic violence"
     And I should see the phrase "Get more information or help"

@@ -132,7 +132,7 @@ question: |
   Is the case in the other state still going on?
 fields:   
   - no label: ongoing
-    input type: radio
+    datatype: radio
     choices:
       - Yes: yes
       - "No, it is over and the court in that case ended our marriage.": marriage ended
@@ -176,7 +176,7 @@ subquestion: |
   Do you want to continue answering questions for more information about starting a case in Alaska, or stop and get your Action plan now to learn more about whether or not the Alaska court is likely to keep your Alaska case open?
 fields:
   - no label: other_state_case
-    input type: radio
+    datatype: radio
     choices:
       - Continue answering questions: continue
       - Stop and get my Action Plan: stop
@@ -218,7 +218,7 @@ subquestion: |
   Information about jurisdiction has been added to your Action Plan.
 fields:
   - I want to: continue_despite_no_residency
-    input type: radio
+    datatype: radio
     choices:
       - "continue answering questions for more information about starting a case in Alaska.": continue
       - "stop now and get my Action Plan to learn more about jurisdiction.": stop
@@ -248,43 +248,26 @@ subquestion: |
   Which of these are you interested in?
 fields:
   - no label: legal_separation_or_divorce
-    input type: radio
+    datatype: radio
     choices:
       - a divorce or dissolution: divorce
       - legal separation: legal separation
 ---
-id: No children does couple agree on everything
-question: |
-  Do any of these situations apply?
-fields:
-  - no label: agree_or_settle
-    input type: radio
-    choices:
-      - "There is no marital property or debt to divide and the wife is not pregnant (common examples are if you were married a very short time, or you have been separated a very long time and divided everything)": no prop debt or pregnancy
-      - "We agree on all major issues, such as ending the marriage and dividing marital property and debt": agree
-      - "I do not know if we agree on everything but would like to talk to my spouse to see if we do.": do not know
-      - "No, none of these situations apply": no
-  - note: |
-      #### <i class="fa-regular fa-lightbulb"></i> Learn more ####
-      Marital property is anything earned or bought during the marriage.  This commonly includes houses, land, vehicles, money, retirement accounts, pensions, household goods, furniture, snowmachines, four-wheelers and each spouse’s personal property.  Marital debt is any money owed to a business or person from during the marriage. Some common types of marital debt include credit card debt, medical bills, mortgages, car loans, or personal loans. 
----
 id: Couple agrees no children, property, debt for court to divide
 question: |
-  Do you have any property or debt the court needs to divide?
+  Can you use the shorter divorce form?
 subquestion: |
-  If you have been married 2 years or less, or you only ever lived together as a married couple you may have nothing for the court to split or you may have already split up everything between you. 
+  If you lived together as a married couple 2 years or less,  you may have nothing for the court to split or you may have already split up everything between you. 
   
-  You can use a shorter form to ask the court for a divorce.
-  
+  If you both agree to the divorce and neither of you is pregnant now, you may be able to use a shorter, easier form to ask the court for a divorce.
 fields:
-  - When did you get married?: marriage_date
-    datatype: date
-    max: ${ today() }   
-  - Did you live together as a married couple 2 years or less?: less_than_2_years
+  - After you got married, did you live together as a married couple for more than 2 years?: married_more_than_2
     datatype: yesnoradio
-    show if: short_term_marriage
-    
-  - Check everything that is true: property_division
+  - Are you, or is your spouse pregnant now?: pregnant
+    datatype: yesnoradio
+    js show if: |
+      val('married_more_than_2') == false
+  - Marital property and debt check everything that's true: property_division
     datatype: checkboxes
     choices:
       - "We have divided all personal property, bank accounts, and vehicles, so no further division by the court is needed.": divided
@@ -292,6 +275,43 @@ fields:
       - "We did not purchase any real estate or land during or before our marriage that we consider to be marital property.": joint property
       - "There are no retirement accounts for the court to divide. Neither spouse contributed to or earned any retirement assets during the marriage.": retirement
       - "We will each be responsible for all debts in our own names, including credit cards, car loans, medical bills, etc.": responsibility
+    none of the above: false
+    js show if: |
+      val('pregnant') == false
+---
+
+#fields:
+#  - Did you live together after you got married?: lived_together
+#    datatype: yesnoradio
+#  - Was it more than 2 years?: lived_together_more_than_2
+#    datatype: yesnoradio
+#    show if married_lived_together
+#  - Are you or is your spouse pregnant now?
+#    show if:
+#    variable: lived_together_more_than_2
+#    is: false
+#  - Do you have any marital property or debt to divide?
+#    datatype: yesnoradio
+#  - Did you already divide any marital property or debt you have?
+#    datatype: yesnoradio
+#    show if:
+#  
+#
+---
+id: No children does couple agree on everything
+question: |
+  Do any of these situations apply?
+fields:
+  - no label: agree_or_settle
+    datatype: radio
+    choices:
+    #  - "There is no marital property or debt to divide and the wife is not pregnant (common examples are if you were married a very short time, or you have been separated a very long time and divided everything)": no prop debt or pregnancy
+      - "We agree on all major issues, such as ending the marriage and dividing marital property and debt.": agree
+      - "I do not know if we agree on everything but would like to talk to my spouse to see if we do.": do not know
+      - "No, neither situation applies.": no
+  - note: |
+      #### <i class="fa-regular fa-lightbulb"></i> Learn more ####
+      Marital property is anything earned or bought during the marriage.  This commonly includes houses, land, vehicles, money, retirement accounts, pensions, household goods, furniture, snowmachines, four-wheelers and each spouse’s personal property.  Marital debt is any money owed to a business or person from during the marriage. Some common types of marital debt include credit card debt, medical bills, mortgages, car loans, or personal loans. 
 ---
 code: |
   if date_difference(starting=marriage_date, ending=today()).years > 2:
@@ -310,8 +330,19 @@ fields:
 ---
 id: Does couple with children agree on everything?
 question: |
-  Do you agree on all major issues (ending the marriage, dividing marital property and debt, parenting plan including decision-making and schedule, paternity, and child support)?
-
+  Do you agree on all major issues?
+subquestion: |
+  Issues like: 
+  % if not minor_children:
+  
+    * ending the marriage and
+    * dividing marital property and debt.
+  % else:
+  
+    * ending the marriage, 
+    * dividing marital property and debt, and
+    * parenting plan including decision-making and schedule, paternity, and child support?
+  % endif
 fields:
   - no label: agree_or_settle_kids
     datatype: radio
@@ -377,7 +408,7 @@ subquestion: |
   The law considers a husband to be the father of any children born during a marriage. If the husband is not the father, the court can remove the husband's rights and responsibilities for that child.  This is called disestablishing paternity.
 fields:
   - no label: paternity
-    input type: radio
+    datatype: radio
     choices:
     - Yes: yes
     - I am not sure: do not know
@@ -390,11 +421,22 @@ subquestion: |
   If a wife is pregnant when a marriage ends, the law considers the husband to be the father. If the husband is the father, the court will decide a parenting plan and child support. If the husband is not the father, the court can remove the husband’s rights and responsibilities for that child.
 fields:
   - no label: wife_is_pregnant
-    input type: radio
-    choices:
-      - "Wife is pregnant and husband is the father": husband
-      - "Wife is pregnant and husband is not the father or spouses are unsure": not husband
-      - "No, the wife is not pregnant": not pregnant
+    datatype: radio
+    code: |
+      wife_is_pregnant_options
+---
+code: |        
+  if not minor_children and legal_separation_or_divorce == 'divorce'and married_more_than_2 and pregnant: 
+     wife_is_pregnant_options = [
+      {'husband': "Wife is pregnant and husband is the father."},
+      {'not husband': "Wife is pregnant and husband is not the father or spouses are unsure."}
+        ]
+  else: 
+     wife_is_pregnant_options = [
+      {'husband': "Wife is pregnant and husband is the father."},
+      {'not husband': "Wife is pregnant and husband is not the father or spouses are unsure."},
+      {'not pregnant': "No, the wife is not pregnant."}
+        ]             
 ---
 id: Want resources to help couple reach agreement
 question: |
@@ -627,8 +669,8 @@ attachment:
   update references: True
   variable name: divorce_dissolution_separation_action_plan_attachment[i]
   skip undefined: True
-  docx template file: divorce_dissolution_separation_action_plan.docx
-  # docx template file: divorce_steps_test_Asus3LO.docx
+  # docx template file: divorce_dissolution_separation_action_plan.docx
+  docx template file: File_and_Serve_in_Starting_a_case_-_convention.docx
   tagged pdf: True
 ---
 attachment:
@@ -637,5 +679,5 @@ attachment:
   update references: True
   variable name: docx_divorce_dissolution_separation_action_plan_attachment
   skip undefined: True
-  docx template file: divorce_dissolution_separation_action_plan.docx
-  # docx template file: divorce_steps_test_Asus3LO.docx
+  # docx template file: divorce_dissolution_separation_action_plan.docx
+  docx template file: File_and_Serve_in_Starting_a_case_-_convention.docx

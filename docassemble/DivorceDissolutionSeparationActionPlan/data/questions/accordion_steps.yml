@@ -84,33 +84,52 @@ code: |
         or (not residency_and_jurisdiction and (military or not military) and continue_despite_no_residency == 'continue'))):
 
     
+    # if not minor_children \
+    #   and legal_separation_or_divorce == 'divorce' and agree_or_settle == 'no prop debt or pregnancy':
+    #   # marriage_date
+    #   wife_is_pregnant = 'not pregnant'
+    #   if no_prop_or_debt_agree:
+    #     know_spouse_whereabouts = True
+    
+    
     if not minor_children \
-      and legal_separation_or_divorce == 'divorce' and agree_or_settle == 'no prop debt or pregnancy':
+      and legal_separation_or_divorce == 'divorce' and not married_more_than_2 and not pregnant and property_division.all_true():
+      
       # marriage_date
       wife_is_pregnant = 'not pregnant'
+      agree_or_settle = 'no prop debt or pregnancy'
       if no_prop_or_debt_agree:
         know_spouse_whereabouts = True
       # quick dissolution
-        add_unique_step((review_common_situations_step, "review_common_situations_idx"), step_list)
+        # add_unique_step((review_common_situations_step, "review_common_situations_idx"), step_list)
         add_unique_step((do_not_have_common_step, "do_not_have_common_idx"), step_list)
-        add_unique_step((uncontested_divorce_step, "uncontested_divorce_idx"), step_list)
-        add_unique_step((file_forms_step, "file_forms_idx"), step_list)
-        add_unique_step((read_drpo_step, "read_drpo_idx"), step_list) 
-      if no_prop_or_debt_agree == False:
+        add_unique_step((uncontested_divorce_step, "uncontested_divorce_idx"), step_list)        
+        add_unique_step((file_complaint_step, "file_complaint_idx"), step_list)
+        # add_unique_step((file_forms_step, "file_forms_idx"), step_list)
+        add_unique_step((read_drpo_step, "read_drpo_idx"), step_list)
+      elif no_prop_or_debt_agree == False:
         if know_spouse_whereabouts:
-          add_unique_step((review_common_situations_step, "review_common_situations_idx"), step_list)
+          # add_unique_step((review_common_situations_step, "review_common_situations_idx"), step_list)
           add_unique_step((do_not_have_common_step, "do_not_have_common_idx"), step_list)
-          add_unique_step((divorce_step, "divorce_idx"), step_list)
-          add_unique_step((file_forms_step, "file_forms_idx"), step_list)
+          add_unique_step((divorce_step, "divorce_idx"), step_list)        
+          add_unique_step((file_complaint_step, "file_complaint_idx"), step_list)
+          # add_unique_step((file_forms_step, "file_forms_idx"), step_list)
           add_unique_step((read_drpo_step, "read_drpo_idx"), step_list)
           add_unique_step((serve_complaint_step, "serve_complaint_idx"), step_list)
+          add_unique_step((expect_after_complaint_step, "expect_after_complaint_idx"), step_list)
           add_unique_step((learn_more_about_process_step, "learn_more_about_process_idx"), step_list)
         if know_spouse_whereabouts == False:
           add_unique_step((missing_spouse_no_kids_no_property_step, "missing_spouse_no_kids_no_property_idx"), step_list)
-            
+
+    if legal_separation_or_divorce == 'divorce' \
+      and not minor_children and not married_more_than_2 and not pregnant:
+        wife_is_pregnant = 'not pregnant'
+    
     if legal_separation_or_divorce == 'divorce' \
       and (minor_children and agree_or_settle_kids in('yes', 'do not know') \
-        or (not minor_children and agree_or_settle in('agree','do not know'))):
+        or (not minor_children and not married_more_than_2 and not pregnant and  property_division.any_false() and agree_or_settle in('agree','do not know')) \
+        or (not minor_children and not married_more_than_2 and not pregnant and agree_or_settle in('agree','do not know')) \
+        or (not minor_children and married_more_than_2 and agree_or_settle in('agree','do not know'))):
       # dissolution_block
       if minor_children and agree_or_settle_kids == 'yes':
         have_property_and_debt
@@ -123,7 +142,9 @@ code: |
       wife_is_pregnant
       add_unique_step((learn_disso_div_step, "learn_disso_div_idx"), step_list)
       add_unique_step((uncontested_divorce_step, "uncontested_divorce_idx"), step_list)
-      add_unique_step((file_forms_step, "file_forms_idx"), step_list)
+              
+      add_unique_step((file_complaint_step, "file_complaint_idx"), step_list)
+      # add_unique_step((file_forms_step, "file_forms_idx"), step_list)
       add_unique_step((read_drpo_step, "read_drpo_idx"), step_list)
       if minor_children and paternity == 'do not know':
         add_unique_step((paternity_testing_step, "paternity_testing_idx"), step_list)
@@ -133,17 +154,21 @@ code: |
     
     if legal_separation_or_divorce == 'divorce' \
       and ((minor_children and agree_or_settle_kids == 'no') \
-        or (not minor_children and agree_or_settle == 'no')):
+        or (not minor_children and not married_more_than_2 and not pregnant and property_division.any_false() and agree_or_settle == 'no') \
+        or (not minor_children and not married_more_than_2 and not pregnant and agree_or_settle == 'no') \
+        or (not minor_children and married_more_than_2 and agree_or_settle == 'no')):
       # divorce_block
       # if know_spouse_whereabouts == False:
       if minor_children:
         paternity
       wife_is_pregnant
       know_spouse_whereabouts
-      add_unique_step((divorce_step, "divorce_idx"), step_list)
-      add_unique_step((file_forms_step, "file_forms_idx"), step_list)
+      add_unique_step((divorce_step, "divorce_idx"), step_list)        
+      add_unique_step((file_complaint_step, "file_complaint_idx"), step_list)
+      # add_unique_step((file_forms_step, "file_forms_idx"), step_list)
       add_unique_step((read_drpo_step, "read_drpo_idx"), step_list)
       add_unique_step((serve_complaint_step, "serve_complaint_idx"), step_list)
+      add_unique_step((expect_after_complaint_step, "expect_after_complaint_idx"), step_list)
       add_unique_step((learn_more_about_process_step, "learn_more_about_process_idx"), step_list)
       if know_spouse_whereabouts == False:
         add_unique_step((alternate_service_step, "alternate_service_idx"), step_list)
@@ -171,8 +196,9 @@ code: |
           paternity
         wife_is_pregnant
         add_unique_step((learn_legal_sep_step, "learn_legal_sep_idx"), step_list)
-        add_unique_step((legal_separation_agree_step, "legal_separation_agree_idx"), step_list)
-        add_unique_step((file_forms_step, "file_forms_idx"), step_list)
+        add_unique_step((legal_separation_agree_step, "legal_separation_agree_idx"), step_list)       
+        add_unique_step((file_complaint_step, "file_complaint_idx"), step_list)
+        # add_unique_step((file_forms_step, "file_forms_idx"), step_list)
         add_unique_step((read_drpo_step, "read_drpo_idx"), step_list)
         add_unique_step((learn_more_about_process_step, "learn_more_about_process_idx"), step_list)
         if know_spouse_whereabouts == False:
@@ -192,10 +218,12 @@ code: |
           domestic_violence_question = ""
         
         add_unique_step((learn_legal_sep_step, "learn_legal_sep_idx"), step_list)
-        add_unique_step((legal_separation_do_not_agree_step, "legal_separation_do_not_agree_idx"), step_list)
-        add_unique_step((file_forms_step, "file_forms_idx"), step_list)
+        add_unique_step((legal_separation_do_not_agree_step, "legal_separation_do_not_agree_idx"), step_list)        
+        add_unique_step((file_complaint_step, "file_complaint_idx"), step_list)
+        # add_unique_step((file_forms_step, "file_forms_idx"), step_list)
         add_unique_step((read_drpo_step, "read_drpo_idx"), step_list)
         add_unique_step((serve_complaint_step, "serve_complaint_idx"), step_list)
+        add_unique_step((expect_after_complaint_step, "expect_after_complaint_idx"), step_list)
         add_unique_step((learn_more_about_process_step, "learn_more_about_process_idx"), step_list)
         if know_spouse_whereabouts == False:
           add_unique_step((alternate_service_step, "alternate_service_idx"), step_list)
@@ -329,7 +357,7 @@ content: |
   Fill out and file a Complaint form and tell the court what you want to happen in the divorce.
   If you need information about filling out and filing a Complaint, return to the Guided Assist page and start over.  If you want to save this Action Plan, be sure to download, save, or print it.  
   **Ask the other state to close its case**
-  You will have to ask the court in the other stateto close its case.  Talk to a lawyer in the other state or search the Internet to learn about that state's self-help resources and forms.
+  You will have to ask the court in the other state to close its case.  Talk to a lawyer in the other state or search the Internet to learn about that state's self-help resources and forms.
   **What to expect if you start a case in Alaska**
   Every case is different, but sometimes it is clear only one of the courts has jurisdiction over the case.  When this happens, one state court may close its case.
   If it is not clear, the Alaska court will often hold a hearing and call the other court to talk about which case will move forward. 
@@ -479,9 +507,11 @@ content: |
       
     *	After the Notice has been posted on the legal notice website for 4 weeks, the clerk will complete a certificate of service of posting to the Alaska Court System’s legal notice website. The court will put the certificate of service of posting in your case file and send you a copy in the mail.
 ---
+comment: |
+  Take this step out - 2024-05-02 
 template: review_common_situations_step
 subject: |
-  Step ${ review_common_situations_idx }: Review common situations where there are no marital assets and debts to divide
+  Step ${ review_common_situations_idx }: Take this step out - 2024-05-02 Review common situations where there are no marital assets and debts to divide
 content: |
   <div class="step-subheading">Very short marriage</div>
   Short marriages often result in each spouse keeping their own possessions and debts as if they had never gotten married.  This is common with marriages of 2 years or less if the couple did not buy a house together or save any significant money.  However, sometimes even in short marriages the spouses have bought expensive items like a home or taken on a lot of debt that needs to be divided.
@@ -525,7 +555,7 @@ content: |
   that the property and debt division is fair. 
 
   Note:  If you and your spouse agree about the issues you need to decide, you can choose to file a "dissolution" instead of an uncontested divorce. Some courts in Alaska treat dissolutions differently from uncontested divorces. Call your local court? Or FLSHC to find out the difference between their processes for dissolutions and uncontested divorces at your local court. But the main difference is in the forms you use and the way they are organized. You can see the dissolution forms on the court website and then choose the forms you like 
-  comment: |
+comment: |
   JS deleted 2024-04-21
     * A dissolution and an uncontested divorce have the same result.  Both end the marriage based on your agreement without a trial.  You start a dissolution with a form called a "Petition" and pick one spouse to be "Party A" and the other to be "Party B."  You start an uncontested divorce with a "Complaint" and pick one spouse to be "Plaintiff" and the other to be "Defendant."  There is no difference in the case if you are Party A, Party B, Plaintiff, or Defendant.
   * The uncontested divorce forms have choices not in the dissolution forms, such as a box to check if there is no marital property or debt to divide.  If you need one of these choices, you will only get the uncontested divorce forms below.  If not, you will be given information on both sets of forms and can choose which to use. 
@@ -536,8 +566,6 @@ content: |
   •	Note: If you and your spouse agreed there is a second way to ask the judge to end your marriage.  It is called a dissolution.  Some courts have a different process for dissolutions and uncontested divorces.  The main difference is the uncontested divorce forms are organized differently than the dissolution forms.  You can look at the dissolution forms to see if you like them better.  
   •	[Link: https://courts.alaska.gov/forms/index.htm#dissolution]
   But CR suggesting subquestion text, last item above
-
-
 ---
 template: learn_legal_sep_step
 subject: |
@@ -1013,6 +1041,47 @@ content: |
   Do **not** sign the Order section.
   * If you think your spouse might not respond to your case, which is called “default,” file: **Property & Debt Worksheet, SHC-1000** [Word](http://courts.alaska.gov/shc/family/docs/shc-1000.doc) | [PDF](http://courts.alaska.gov/shc/family/docs/shc-1000n.pdf)
 ---
+template: file_complaint_step
+subject: |
+  Step ${ file_complaint_idx }: File the original with your local court
+content: |
+  placeholder
+#  <ul>
+#    <li>Make 2 copies of your  forms: 1 copy for your own records and 1 copy for ${other_party_in_case }.
+#  % if (user_need == 'divorce' and (legal_separation_or_divorce == 'divorce' and ((minor_children and agree_or_settle_kids == 'yes') or (not minor_children and agree_or_settle in('no prop debt or pregnancy','agree','do not know')))) or (legal_separation_or_divorce == 'legal separation' and agree_or_settle == 'yes')) or (user_need == 'custody' and which_forms in('agree','both')):
+#  % if (user_need == 'divorce' and legal_separation_or_divorce == 'divorce' and ((minor_children and agree_or_settle_kids == 'do not know') or (not minor_children and agree_or_settle == 'do not know'))) or (user_need == 'custody' and which_forms == 'both'):
+#  If
+#  % else:
+#  Because
+#  % endif
+#   both of you sign the forms and you each have a copy, you do not have to "serve" ${ other_party_in_case }.
+#   % endif
+#   </li>
+#   <li>Find the closest Alaska Trial Courthouse to file your complaint: See  the court's <a href="http://courts.alaska.gov/courtdir/index.htm#trial">Court Directory</a> web page.
+#   </li>
+#   <li>Give the original version of your documents to the court. This is called “filing” your documents. You can:
+#   <ul>
+#   <li>Deliver the documents to the court yourself. Or</li>
+#   <li>Mail the documents by first-class mail.</li>
+#   </ul></li>
+#   <li>4.	Pay the $250 filing fee.</br>
+#  If you cannot afford the filing fee, you can ask the court to waive it:</br>
+#  a.	Call the Family Law Self-Help Center</br>
+#  (907)264-0851, or</br>
+#  (866)279-0851,</br>
+#  or</br>
+#  b.	Use <strong>Exemption From the Payment of Fees, TF-920</strong> [<a href="https://public.courts.alaska.gov/web/forms/docs/tf-920.pdf">Fill-In PDF</a>].</br>
+#  The clerk will give you 2 copies of each document - 1 copy is for you, the other is for ${ other_party_in_case }.
+#  % if (user_need == 'divorce' and legal_separation_or_divorce == 'divorce' and ((minor_children and agree_or_settle_kids in('yes', 'do not know')) or (not minor_children and agree_or_settle in('no prop debt or pregnancy','agree','do not know')))) or (user_need == 'custody' and which_forms in('agree','both')):
+#  <div class = "example">
+#      <p class = "heading">Note</p>
+#  If you file an uncontested complaint you may not get a <strong>Summons</strong>.
+#  </div>
+#  % endif
+#  </li>
+#  <li>At some courts, you must return to the court to get your <strong>Summons</strong>. Other courts will issue it automatically if they decide you do not have to pay the filing fee. Check with your local court to make sure you understand the procedure in using the <strong>TF-920</strong> form and getting the <strong>Summons</strong>.</li>
+#  </ol>
+---
 template: file_forms_step
 subject: |
   Step ${ file_forms_idx }: File the original with your local court
@@ -1036,49 +1105,74 @@ subject: |
 content: |
   This is the first order from your judge that sets out the basic rules for you and your spouse to follow during the case.  Violating this order can affect the outcome of your case.  The Order states, unless your spouse agrees or the court gives permission:
   
-  % if minor_children:
-    * Do not take your child(ren) out of Alaska.
-  % endif
-    * Do not sell or get rid of marital property.
-    * Do not cancel or change any insurance policy.
-  
-  % if minor_children:
-  Also, check with your local court for their parent education requirements.
-  % endif
-  
-  If you want to do something forbidden by the order, and your spouse will not agree, ask the court by filing a motion and wait for the court's answer before doing it.  You can learn about motions by answering more questions.  If you want to save this Action Plan, be sure to download, save, or print it.  Then return to the Guided Assist page and use the Guided Assist search box to find "Asking for an Order in a Divorce Case When the Issue Can’t Wait for the Court’s Final Decision (Filing a Motion) and Responding to a Motion."
+#  % if user_need == 'custody' or (user_need == 'divorce' and minor_children):
+#    * Do not take your children out of Alaska.
+#  % endif
+#  % if user_need == 'divorce':
+#    * Do not sell or get rid of marital property.
+#  % endif
+#    * Do not cancel or change any insurance policy.
+#  % if user_need == 'custody' or (user_need == 'divorce' and minor_children):
+#    * Also, check with your local court for their [parent education requirements](http://courts.alaska.gov/shc/family/shcparent-ed.htm).
+#  % endif
+#  
+#  If you want to do something the order forbids, and ${ other_party_in_case } will not agree, file a motion to ask the court for permission.
+#
+#  **Wait** for the court's answer before you act. You can learn about motions on the court's web page [Motions: Requesting an Order from the Court; Opposing a Motion](https://courts.alaska.gov/shc/family/motions.htm). 
 ---
 template: serve_complaint_step
 subject: |
   Step ${ serve_complaint_idx }: Serve the complaint and summons 
 content: |
   <div class="step-subheading">Regular Service</div>
-  You have to give your spouse copies of everything you file in court plus the Summons. This is called “service.” There are special requirements about how to serve your spouse the forms that start the case.
-  Choose how you want to serve the forms that start the case (you cannot serve these forms by hand delivery or 1st class mail, but you can serve later documents by these methods):
+#  You have to give your spouse copies of everything you file in court plus the Summons. This is called “service.” There are special requirements about how to serve your spouse the forms that start the case.
+#  Choose how you want to serve the forms that start the case (you cannot serve these forms by hand delivery or 1st class mail, but you can serve later documents by these methods):
+#  
+#  * Certified Mail/Restricted Delivery/Return Receipt, **or**
+#  * Hiring a Process Server.
+#  
+#  <div class="step-subheading">Certified Mail (less expensive – less than $10)</div>
+#  
+#  * Make sure you pay for certified mail, restricted delivery, and return receipt so that only your spouse can sign for the mail and sends the green card back to you after signing it.
+#  * Save the green card in case you need to show you served your spouse.
+#  
+#  Read how to prepare the envelope and the certified mail postal forms in: **How to Serve a Summons**, [CIV-106](https://public.courts.alaska.gov/web/forms/docs/civ-106.pdf).
+#  
+#  <div class="step-subheading">Process Server: (more expensive – up to $65 in Alaska – but may be best if your spouse refused to sign for certified mail)</div>
+#  
+#  * Choose a process server and pay for their services. Find a [statewide list of authorized process servers](https://public.courts.alaska.gov/web/trialcourts/docs/process-servers.pdf).  For process servers outside of Alaska, contact the local court where the opposing party lives, or do internet research.
+#  * Fill out the form **Service Instructions**, [CIV-615](https://public.courts.alaska.gov/web/forms/docs/civ-106.pdf).  Give this form to the process server so that when he or she completes service, you will receive a Proof of Service form.
+#  * If you are hiring a process service outside of Alaska, give them the **Return of Service, SHC-194** [Word](http://www.courts.alaska.gov/shc/family/docs/shc-193.doc) | [PDF](http://www.courts.alaska.gov/shc/family/docs/shc-193n.pdf).  They will send it back to you after serving the Summons and Complaint.
+#  * Save the **Proof of Service** or **Return of Service** form in case you need to show you served your spouse.
+#  * You can read more about serving with a process server in: **How to Serve a Summons**, [CIV-106](https://public.courts.alaska.gov/web/forms/docs/civ-106.pdf).
+#  
+#  <div class="step-subheading">Options if Regular Service Doesn’t Work</div>
+#  **Alternate Service**
+#  If you cannot find your spouse, you may ask the court for permission to serve your spouse in a different way. For example, you can ask to post on the court’s legal notice website, post to someone’s social media account, email, publish in a newspaper that your spouse reads or post at a shelter or some other location your spouse is known to frequent.  Read more on the court's web page,  [Instructions for Alternate Service](http://courts.alaska.gov/shc/family/shc-184.htm).
+#  <div class="step-subheading">Special Situations</div>
+#  Read the court's web page that has information about [special situations](http://www.courts.alaska.gov/shc/family/serve.htm#11) like serving someone in a foreign country, the military or jail.
+---
+template: expect_after_complaint_step
+subject: |
+  Step ${ expect_after_complaint_idx }: What to expect after you file your Complaint
+content: |
+  % if (user_need == 'divorce' and (legal_separation_or_divorce == 'divorce' and ((minor_children and agree_or_settle_kids == 'yes') or (not minor_children and agree_or_settle in('no prop debt or pregnancy','agree')))) or (legal_separation_or_divorce == 'legal separation' and agree_or_settle_kids == 'yes')) or (user_need == 'custody' and which_forms == 'agree'):
+  <div class="step-subheading">The court will set a hearing</div>
+  They will send you a notice with the date and time of the hearing.
+  % endif
+  ####parents don't know if they agree
   
-  * Certified Mail/Restricted Delivery/Return Receipt, **or**
-  * Hiring a Process Server.
   
-  <div class="step-subheading">Certified Mail (less expensive – less than $10)</div>
   
-  * Make sure you pay for certified mail, restricted delivery, and return receipt so that only your spouse can sign for the mail and sends the green card back to you after signing it.
-  * Save the green card in case you need to show you served your spouse.
+  They have 20 days to file an Answer.
   
-  Read how to prepare the envelope and the certified mail postal forms in: **How to Serve a Summons**, [CIV-106](https://public.courts.alaska.gov/web/forms/docs/civ-106.pdf).
+  Their Answer is their response to what you put in your Complaint.
+  <div class="step-subheading">If they do not file an Answer in 20 days, you can ask for a default judgment</div>
+  A default judgment is when the court decides your case without hearing from ${ other_party_in_case }.
   
-  <div class="step-subheading">Process Server: (more expensive – up to $65 in Alaska – but may be best if your spouse refused to sign for certified mail)</div>
   
-  * Choose a process server and pay for their services. Find a [statewide list of authorized process servers](https://public.courts.alaska.gov/web/trialcourts/docs/process-servers.pdf).  For process servers outside of Alaska, contact the local court where the opposing party lives, or do internet research.
-  * Fill out the form **Service Instructions**, [CIV-615](https://public.courts.alaska.gov/web/forms/docs/civ-106.pdf).  Give this form to the process server so that when he or she completes service, you will receive a Proof of Service form.
-  * If you are hiring a process service outside of Alaska, give them the **Return of Service, SHC-194** [Word](http://www.courts.alaska.gov/shc/family/docs/shc-193.doc) | [PDF](http://www.courts.alaska.gov/shc/family/docs/shc-193n.pdf).  They will send it back to you after serving the Summons and Complaint.
-  * Save the **Proof of Service** or **Return of Service** form in case you need to show you served your spouse.
-  * You can read more about serving with a process server in: **How to Serve a Summons**, [CIV-106](https://public.courts.alaska.gov/web/forms/docs/civ-106.pdf).
   
-  <div class="step-subheading">Options if Regular Service Doesn’t Work</div>
-  **Alternate Service**
-  If you cannot find your spouse, you may ask the court for permission to serve your spouse in a different way. For example, you can ask to post on the court’s legal notice website, post to someone’s social media account, email, publish in a newspaper that your spouse reads or post at a shelter or some other location your spouse is known to frequent.  Read more about alternate service.
-  <div class="step-subheading">Special Situations</div>
-  Read more about special situations like serving someone in a foreign country, the military or jail.
+ 
 ---
 template: learn_more_about_process_step
 subject: |
@@ -1310,38 +1404,44 @@ template: default_step
 subject: |
   Step ${ default_idx }: File for default if your spouse does not respond within 20 days
 content: |
-  Wait 20 days
-  If your spouse does not file an Answer within 20 days of being served your Complaint, you may ask the court to “default” the other side and grant you everything you asked for. To do this, you must have proof that you served the other party according to the rules.
+  <div class='step-subheading'>Wait for 20 days</div>
+  If ${ other_party_in_case } does not file an Answer within 20 days of being served your Complaint, you may ask the court to “default” ${ other_party_in_case } and grant you everything you asked for. To do this, you must have proof that you served ${ other_party_in_case } according to the rules.
   
   <div class="step-subheading">Tell the court how you served your spouse</div>
   Fill out a **Proof of Service Form, SHC-405**: [Word](https://www.courts.alaska.gov/shc/family/docs/shc-405.doc) | [PDF](http://www.courts.alaska.gov/shc/family/docs/shc-405n.pdf)
   <div class="step-subheading">Ask for a Default</div>
   Fill out a **Default Application, SHC-400**: [Word](https://www.courts.alaska.gov/shc/family/docs/shc-400.doc) | [PDF](https://www.courts.alaska.gov/shc/family/docs/shc-400n.pdf)
   % if defined('military') and military:
-  Be aware that if your spouse is on active duty in the military, the court likely will not enter a default judgment right away.  The court may appoint a lawyer to contact your spouse first.
+  Be aware that if your spouse${ other_party_in_case } is on active duty in the military, the court likely will not enter a default judgment right away.  The court may appoint a lawyer to contact ${ other_party_in_case } first.
   % endif
-  <div class="step-subheading">Include the final forms for your type of case</div>
-  
-  <div class="step-subheading">Serve your spouse</div>
-  Send your spouse a copy of your default application by first class U.S. mail or hand delivery.
+  % if user_need == 'custody':
+  div class='step-subheading'>Include</div>
+  The forms **Findings of Fact and Conclusions of Law (Custody)** and ** Decree of Custody and Judgment**, ([DR-460  &amp; DR-465](https://public.courts.alaska.gov/web/forms/docs/dr-460-465.pdf))
+  <ul>
+    <li>Fill out the top of the first page with the case information.</li>
+    <li>You can leave the "Background" section blank.</li>
+    <li>Fill out the "Child Custody and Visitation" and  "Financial Issues" sections.</li>
+    <li>On the Decree of Custody and Judgment, fill in  the top of the page with the case information, the children's names and dates  of birth, and leave the rest blank.</li>
+  </ul>
+  % endif
+  % if user_need == "divorce":
   % if legal_separation_or_divorce == 'divorce':
   Fill out the top section, but do not sign where it says “Judge” at the end.
   % if minor_children:
-  % if legal_separation_or_divorce == 'divorce' and property_for_default:
+  % if property_for_default:
    *	**Findings of Fact and Conclusions of Law & Decree of Divorce**, [DR-800-805](https://public.courts.alaska.gov/web/forms/docs/dr-800-805.pdf) (fill out the “Findings of Fact” section)
   % else:
   * **Divorce Findings of Fact & Conclusions of Law, SHC-520**: [Word](https://www.courts.alaska.gov/shc/family/docs/shc-520.doc) | [PDF](https://www.courts.alaska.gov/shc/family/docs/shc-520n.pdf) (fill out the "Findings of Fact" section)
   *  **Divorce Judgment and Decree, SHC-525**: [Word](https://www.courts.alaska.gov/shc/family/docs/shc-525.doc) | [PDF](https://www.courts.alaska.gov/shc/family/docs/shc-525n.pdf)
   % endif
-  % else: 
-  % if  legal_separation_or_divorce == 'divorce' and property_for_default:
+  % else: # no children
+  % if property_for_default:
   * **Divorce Findings of Fact & Conclusions  of Law with Property and No Children**, [DR-801-806](https://public.courts.alaska.gov/web/forms/docs/dr-801-806.pdf) (fill out the “Findings of Fact” section)
   % else:
-  
   *	**Divorce Findings of Fact & Conclusions of Law, SHC-540**: [Word](https://www.courts.alaska.gov/shc/family/docs/shc-540.doc) | [PDF](https://www.courts.alaska.gov/shc/family/docs/shc-540n.pdf) (fill out the “Findings of Fact” section)
   * **Divorce Judgment and Decree, SHC-545**: [Word](https://www.courts.alaska.gov/shc/family/docs/shc-545.doc) | [PDF](https://www.courts.alaska.gov/shc/family/docs/shc-545n.pdf).
-  % endif
-  % endif
+  % endif # not property_for_default
+  % endif # with and without minor children and property
   % else: #legal_separation_or_divorce == 'legal separation'
   % if minor_children:
  
@@ -1364,10 +1464,12 @@ content: |
       *	Fill out the top section with your contact information and the case name and number just like it appears on the Complaint.
       *	Fill out paragraph 3 on page 1 if the wife wants to return to her maiden name. 
       *	Do not sign where it says “Judge” at the end.
-  % endif
-  % endif
-  
-  File with the court and find out about a default hearing.
-  
-  File your forms and ask your local court if they will contact you or you need to contact them to schedule a default hearing.
+  % endif # children and property
+  % endif # legal separation
+  % endif # divorce
+  <div class='step-subheading'>Serve ${ other_party_in_case }</div>
+  Mail or hand deliver a copy of your **Default Application** and all the other forms you are filing to ${ other_party_in_case }. If you mail the forms, use U.S. first class mail.
+  <div class='step-subheading'>File your application and ask about a hearing</div>
+  File your forms and ask your local court if they will contact you, or you need to contact them to schedule a default hearing.
+
 ---
