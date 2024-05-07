@@ -329,11 +329,18 @@ Scenario: Row #261
     | other_case | False | |
     | residency_and_jurisdiction | True | |
     | legal_separation_or_divorce | divorce | |
-    | agree_or_settle | no prop debt or pregnancy | |
+    | married_more_than_2 | False | |
+    | pregnant | False | |
+    | property_division['divided'] | True | |
+    | property_division['joint debts'] | True | |
+    | property_division['joint property'] | True | |
+    | property_division['retirement'] | True | |
+    | property_division['responsibility'] | True | |
+  #  | agree_or_settle | no prop debt or pregnancy | |
     | no_prop_or_debt_agree | True | |
   # And I take a screenshot
-    And I should see the phrase "Your Personal Action Plan for asking the court for an uncontested divorce in Alaska in 6 steps"
-    And I should see the phrase "Review common situations where there are no marital assets and debts to divide"
+    And I should see the phrase "Your Personal Action Plan for asking the court for an uncontested divorce in Alaska in 5 steps"
+  #  And I should see the phrase "Review common situations where there are no marital assets and debts to divide"
     And I should see the phrase "Make sure you do not have marital assets and debts to divide"
     And I should see the phrase "Fill out the forms to start a divorce case when there are no children & no assets or debts to divide"
     And I should see the phrase "File the original with your local court"
@@ -354,7 +361,14 @@ Scenario: Row #262
     | military | True | |
     | other_state_case | continue | |
     | legal_separation_or_divorce | divorce | |
-    | agree_or_settle | no prop debt or pregnancy | |
+    | married_more_than_2 | False | |
+    | pregnant | False | |
+    | property_division['divided'] | True | |
+    | property_division['joint debts'] | True | |
+    | property_division['joint property'] | True | |
+    | property_division['retirement'] | True | |
+    | property_division['responsibility'] | True | |
+  #  | agree_or_settle | no prop debt or pregnancy | |
     | no_prop_or_debt_agree | False | |
     | know_spouse_whereabouts | True | |
   # And I take a screenshot
@@ -383,7 +397,14 @@ Scenario: Row #263Dissolution
     | military | False  | |
     | other_state_case | continue | |
     | legal_separation_or_divorce | divorce | |
-    | agree_or_settle | no prop debt or pregnancy | |
+    | married_more_than_2 | False | |
+    | pregnant | False | |
+    | property_division['divided'] | True | |
+    | property_division['joint debts'] | True | |
+    | property_division['joint property'] | True | |
+    | property_division['retirement'] | True | |
+    | property_division['responsibility'] | True | |
+  #  | agree_or_settle | no prop debt or pregnancy | |
     | no_prop_or_debt_agree | False | |
     | know_spouse_whereabouts | False | |
   # And I take a screenshot
@@ -406,6 +427,8 @@ Scenario: Row #264
     | military | True | |
     | other_state_case | continue | |
     | legal_separation_or_divorce | divorce | |
+    | married_more_than_2 | False | |
+    | pregnant | True | |
     | agree_or_settle | agree | |
     | wife_is_pregnant | husband | |
     | domestic_violence | True | |
@@ -433,6 +456,7 @@ Scenario: Row #268
     | ongoing | no | |
     | residency_and_jurisdiction | True | |
     | legal_separation_or_divorce | divorce | |
+    | married_more_than_2 | True | |
     | agree_or_settle | agree | |
     | wife_is_pregnant | not pregnant | |
     | domestic_violence | True | |
@@ -461,6 +485,7 @@ Scenario: Row #269
     | military | True | |
     | continue_despite_no_residency | continue | |
     | legal_separation_or_divorce | divorce | |
+    | married_more_than_2 | True | |
     | agree_or_settle | agree | |
     | wife_is_pregnant | not husband | |
     | domestic_violence | False | |
@@ -485,6 +510,8 @@ Scenario: Row #271
     | other_case | False | |
     | residency_and_jurisdiction | True | |
     | legal_separation_or_divorce | divorce | |
+    | married_more_than_2 | False | |
+    | pregnant | True | |
     | agree_or_settle | do not know | |
     | talk_to_spouse | True | |
     | wife_is_pregnant | husband | |
@@ -510,6 +537,8 @@ Scenario: Row #272
     | other_case | False | |
     | residency_and_jurisdiction | True | |
     | legal_separation_or_divorce | divorce | |
+    | married_more_than_2 | False | |
+    | pregnant | True | |
     | agree_or_settle | do not know | |
     | talk_to_spouse | True | |
     | wife_is_pregnant | not husband | |
@@ -537,6 +566,7 @@ Scenario: Row #275
     | other_case | False | |
     | residency_and_jurisdiction | True | |
     | legal_separation_or_divorce | divorce | |
+    | married_more_than_2 | True | |
     | agree_or_settle | do not know | |
     | talk_to_spouse | True | |
     | wife_is_pregnant | not pregnant | |
