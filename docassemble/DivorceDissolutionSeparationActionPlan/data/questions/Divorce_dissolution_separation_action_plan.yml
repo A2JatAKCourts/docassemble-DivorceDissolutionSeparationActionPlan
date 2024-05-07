@@ -426,7 +426,7 @@ fields:
       wife_is_pregnant_options
 ---
 code: |        
-  if not minor_children and legal_separation_or_divorce == 'divorce'and married_more_than_2 and pregnant: 
+  if not minor_children and legal_separation_or_divorce == 'divorce'and not married_more_than_2 and pregnant: 
      wife_is_pregnant_options = [
       {'husband': "Wife is pregnant and husband is the father."},
       {'not husband': "Wife is pregnant and husband is not the father or spouses are unsure."}
@@ -669,8 +669,8 @@ attachment:
   update references: True
   variable name: divorce_dissolution_separation_action_plan_attachment[i]
   skip undefined: True
-  # docx template file: divorce_dissolution_separation_action_plan.docx
-  docx template file: File_and_Serve_in_Starting_a_case_-_convention.docx
+  docx template file: divorce_dissolution_separation_action_plan.docx
+  # docx template file: dummy_file.docx
   tagged pdf: True
 ---
 attachment:
@@ -679,5 +679,6 @@ attachment:
   update references: True
   variable name: docx_divorce_dissolution_separation_action_plan_attachment
   skip undefined: True
-  # docx template file: divorce_dissolution_separation_action_plan.docx
-  docx template file: File_and_Serve_in_Starting_a_case_-_convention.docx
+  docx template file: divorce_dissolution_separation_action_plan.docx
+  # docx template file: dummy_file.docx
+  # docx template file: File_and_Serve_in_Starting_a_case_-_convention.docx
