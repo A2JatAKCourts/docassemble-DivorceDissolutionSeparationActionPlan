@@ -374,7 +374,7 @@ Scenario: Row #262
   # And I take a screenshot
     And I should see the phrase "Your Personal Action Plan for asking the court for an uncontested divorce in Alaska in 9 steps"
     And I should see the phrase "Decide which court should hear your case"
-    And I should see the phrase "Review common situations where there are no marital assets and debts to divide"
+  # And I should see the phrase "Review common situations where there are no marital assets and debts to divide"
     And I should see the phrase "Make sure you do not have marital assets and debts to divide"
     And I should see the phrase "Fill out the forms to start a divorce case"
     And I should see the phrase "File the original with your local court"

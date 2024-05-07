@@ -1047,7 +1047,7 @@ subject: |
 content: |
   <ul>
     <li>Make 2 copies of your  forms: 1 copy for your own records and 1 copy for ${other_party_in_case }.
-  % if (user_need == 'divorce' and (legal_separation_or_divorce == 'divorce' and ((minor_children and agree_or_settle_kids == 'yes') or (not minor_children and agree_or_settle in('no prop debt or pregnancy','agree','do not know')))) or (legal_separation_or_divorce == 'legal separation' and agree_or_settle == 'yes')) or (user_need == 'custody' and which_forms in('agree','both')):
+  % if (user_need == 'divorce' and (legal_separation_or_divorce == 'divorce' and ((minor_children and agree_or_settle_kids == 'yes') or (not minor_children and agree_or_settle in('no prop debt or pregnancy','agree','do not know')))) or (legal_separation_or_divorce == 'legal separation' and agree_or_settle_kids == 'yes')) or (user_need == 'custody' and which_forms in('agree','both')):
   % if (user_need == 'divorce' and legal_separation_or_divorce == 'divorce' and ((minor_children and agree_or_settle_kids == 'do not know') or (not minor_children and agree_or_settle == 'do not know'))) or (user_need == 'custody' and which_forms == 'both'):
   If
   % else:
