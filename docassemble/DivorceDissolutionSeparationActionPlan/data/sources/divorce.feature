@@ -400,8 +400,7 @@ Scenario: Row #335
     | pregnant                    | True        |         | 
     | agree_or_settle             | no          |         | 
     | know_spouse_whereabouts     | False       |         | 
-    | wife_is_pregnant            | not husband |         | 
-    | info_on_agree               | False       |         | 
+    | wife_is_pregnant            | not husband |         |
     | domestic_violence           | False       |         | 
     | default_info                | False       |         | 
 # And I take a screenshot

@@ -155,7 +155,7 @@ code: |
     if legal_separation_or_divorce == 'divorce' \
       and ((minor_children and agree_or_settle_kids == 'no') \
         or (not minor_children and not married_more_than_2 and not pregnant and property_division.any_false() and agree_or_settle == 'no') \
-        or (not minor_children and not married_more_than_2 and not pregnant and agree_or_settle == 'no') \
+        or (not minor_children and not married_more_than_2 and pregnant and agree_or_settle == 'no') \
         or (not minor_children and married_more_than_2 and agree_or_settle == 'no')):
       # divorce_block
       # if know_spouse_whereabouts == False:
