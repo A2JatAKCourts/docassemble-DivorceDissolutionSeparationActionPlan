@@ -466,6 +466,7 @@ fields:
       code: |
         minor_children and agree_or_settle_kids in('yes','do not know')
 ---
+id: include default information
 question: |
   Do you want your Action Plan to include information about asking the court for a default judgment against your spouse?
 subquestion: |
@@ -474,6 +475,7 @@ fields:
   - no label: default_info
     datatype: yesnoradio
 ---
+id: default form options
 question: |
   Did you or your spouse earn, buy or receive any marital property or debts, including those listed above, during the marriage?
 subquestion: |

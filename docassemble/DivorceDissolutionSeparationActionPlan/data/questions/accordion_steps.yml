@@ -123,6 +123,8 @@ code: |
         add_unique_step((file_complaint_step, "file_complaint_idx"), step_list)
         # add_unique_step((file_forms_step, "file_forms_idx"), step_list)
         add_unique_step((read_drpo_step, "read_drpo_idx"), step_list)
+        default_info = False
+        add_unique_step((expect_after_complaint_step, "expect_after_complaint_idx"), step_list)
       elif no_prop_or_debt_agree == False:
         if know_spouse_whereabouts:
           # add_unique_step((review_common_situations_step, "review_common_situations_idx"), step_list)
@@ -134,9 +136,13 @@ code: |
           add_unique_step((serve_complaint_step, "serve_complaint_idx"), step_list)
           add_unique_step((expect_after_complaint_step, "expect_after_complaint_idx"), step_list)
           add_unique_step((learn_more_about_process_step, "learn_more_about_process_idx"), step_list)
+          if default_info:
+            add_unique_step((default_step, "default_idx"), step_list)
         if know_spouse_whereabouts == False:
           add_unique_step((missing_spouse_no_kids_no_property_step, "missing_spouse_no_kids_no_property_idx"), step_list)
-
+          # add_unique_step((serve_complaint_step, "serve_complaint_idx"), step_list)
+          # add_unique_step((expect_after_complaint_step, "expect_after_complaint_idx"), step_list)
+    
     if legal_separation_or_divorce == 'divorce' \
       and not minor_children and not married_more_than_2 and not pregnant:
         wife_is_pregnant = 'not pregnant'
@@ -148,9 +154,11 @@ code: |
         or (not minor_children and married_more_than_2 and agree_or_settle in('agree','do not know'))):
       # dissolution_block
       if minor_children and agree_or_settle_kids == 'yes':
+        know_spouse_whereabouts == True
         have_property_and_debt
       if (minor_children and agree_or_settle_kids == 'do not know') \
         or (not minor_children and agree_or_settle == 'do not know'):
+        know_spouse_whereabouts == True
         talk_to_spouse
         add_unique_step((talk_to_spouse_step, "talk_to_spouse_idx"), step_list)
       if minor_children:
@@ -158,10 +166,11 @@ code: |
       wife_is_pregnant
       add_unique_step((learn_disso_div_step, "learn_disso_div_idx"), step_list)
       add_unique_step((uncontested_divorce_step, "uncontested_divorce_idx"), step_list)
-              
+      default_info = False
       add_unique_step((file_complaint_step, "file_complaint_idx"), step_list)
       # add_unique_step((file_forms_step, "file_forms_idx"), step_list)
       add_unique_step((read_drpo_step, "read_drpo_idx"), step_list)
+      add_unique_step((expect_after_complaint_step, "expect_after_complaint_idx"), step_list)
       if minor_children and paternity == 'do not know':
         add_unique_step((paternity_testing_step, "paternity_testing_idx"), step_list)
       if domestic_violence:
@@ -212,10 +221,12 @@ code: |
           paternity
         wife_is_pregnant
         add_unique_step((learn_legal_sep_step, "learn_legal_sep_idx"), step_list)
-        add_unique_step((legal_separation_agree_step, "legal_separation_agree_idx"), step_list)       
+        add_unique_step((legal_separation_agree_step, "legal_separation_agree_idx"), step_list)
+        default_info = False
         add_unique_step((file_complaint_step, "file_complaint_idx"), step_list)
         # add_unique_step((file_forms_step, "file_forms_idx"), step_list)
         add_unique_step((read_drpo_step, "read_drpo_idx"), step_list)
+        add_unique_step((expect_after_complaint_step, "expect_after_complaint_idx"), step_list)
         add_unique_step((learn_more_about_process_step, "learn_more_about_process_idx"), step_list)
         if know_spouse_whereabouts == False:
           add_unique_step((alternate_service_step, "alternate_service_idx"), step_list)
@@ -1182,7 +1193,7 @@ content: |
   If ${ other_party_in_case } does not file an Answer and you do nothing, the court will close your case after 120 days.
   <div class="step-subheading">The court will set a hearing</div>
   They will send you a notice with the date and time of the hearing.
-  % endif
+  
   % if user_need == 'divorce':
   Within 45 days of your spouse filing their answer, both of you are supposed to tell each other about all your property and debt. Fill out and give your spouse:
 
@@ -1191,6 +1202,7 @@ content: |
   **Property & Debt Worksheet, SHC-1000** [Word](https://courts.alaska.gov/shc/family/docs/shc-1000.doc) | [PDF](https://courts.alaska.gov/shc/family/docs/shc-1000n.pdf)
   
   Read the court's web page, [Dividing Property & Debt](https://courts.alaska.gov/shc/family/property.htm)
+  % endif
   % endif
 ---
 template: learn_more_about_process_step
@@ -1291,21 +1303,21 @@ content: |
 
   **Order for Genetic (DNA) Testing, SHC-1375** [Word](http://www.courts.alaska.gov/shc/family/docs/shc-1375.doc) | [PDF](http://www.courts.alaska.gov/shc/family/docs/shc-1375n.pdf)
 
-  The court will decide where the test is done (usually CSSD) and who will pay.
+  The court will decide where the test is done (usually CSED) and who will pay.
 
-  * **Child Support Services Division (CSSD)**: Before you open a case, you can ask CSSD to establish or disestablish paternity.
+  * **Child Support Enforcement Division (CSED)**: Before you open a case, you can ask CSED to establish or disestablish paternity.
 
-  Either the mother or the father may complete an application for CSSD services (if there isn't already an open CSSD case) and a paternity affidavit.
+  Either the mother or the father may complete an application for CSED services (if there isn't already an open CSED case) and a paternity affidavit.
 
-  If the father isn't willing to sign a voluntary affidavit, CSSD may order DNA testing to prove fatherhood.  If CSSD orders the test, the State will pay the costs for the mother, the child and the man named as the father. If the father is identified by the tests, he will be asked to reimburse the State for the costs. If the man is not the father, he will not have to pay for the tests. If either the mother or the father challenges the original test results, he or she may pay for a second test.
+  If the father isn't willing to sign a voluntary affidavit, CSED may order DNA testing to prove fatherhood.  If CSED orders the test, the State will pay the costs for the mother, the child and the man named as the father. If the father is identified by the tests, he will be asked to reimburse the State for the costs. If the man is not the father, he will not have to pay for the tests. If either the mother or the father challenges the original test results, he or she may pay for a second test.
 
-  If the father lives outside Alaska, CSSD can ask the other state to help establish paternity.
+  If the father lives outside Alaska, CSED can ask the other state to help establish paternity.
 
-  Sometimes CSSD may decide it cannot do a DNA test based on the specific situation and tell you to file a paternity case in court.
+  Sometimes CSED may decide it cannot do a DNA test based on the specific situation and tell you to file a paternity case in court.
 
-  CSSD charges about $51 per person taking the test.
+  CSED charges about $51 per person taking the test.
 
-  See [CSSD's FAQs about paternity](http://www.childsupport.alaska.gov/FAQ/FAQ_Paternity.aspx) and [contact CSSD](http://www.childsupport.alaska.gov/contacts.aspx) for the appropriate forms.
+  See [CSED's FAQs about paternity](http://www.childsupport.alaska.gov/FAQ/FAQ_Paternity.aspx) and [contact CSED](http://www.childsupport.alaska.gov/contacts.aspx) for the appropriate forms.
 
   <div class="step-subheading">Private Labs</div>
 
