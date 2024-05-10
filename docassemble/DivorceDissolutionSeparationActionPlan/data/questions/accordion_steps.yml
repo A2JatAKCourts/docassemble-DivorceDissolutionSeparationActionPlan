@@ -139,7 +139,9 @@ code: |
           if default_info:
             add_unique_step((default_step, "default_idx"), step_list)
         if know_spouse_whereabouts == False:
+          default_info = False
           add_unique_step((missing_spouse_no_kids_no_property_step, "missing_spouse_no_kids_no_property_idx"), step_list)
+          add_unique_step((expect_after_complaint_step, "expect_after_complaint_idx"), step_list)
           # add_unique_step((serve_complaint_step, "serve_complaint_idx"), step_list)
           # add_unique_step((expect_after_complaint_step, "expect_after_complaint_idx"), step_list)
     
