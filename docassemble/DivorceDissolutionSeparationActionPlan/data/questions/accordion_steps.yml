@@ -154,11 +154,11 @@ code: |
         or (not minor_children and married_more_than_2 and agree_or_settle in('agree','do not know'))):
       # dissolution_block
       if minor_children and agree_or_settle_kids == 'yes':
-        know_spouse_whereabouts == True
+        know_spouse_whereabouts = True
         have_property_and_debt
       if (minor_children and agree_or_settle_kids == 'do not know') \
         or (not minor_children and agree_or_settle == 'do not know'):
-        know_spouse_whereabouts == True
+        know_spouse_whereabouts = True
         talk_to_spouse
         add_unique_step((talk_to_spouse_step, "talk_to_spouse_idx"), step_list)
       if minor_children:
