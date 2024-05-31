@@ -319,14 +319,26 @@ code: |
 ---
 id: Childless couple sure you agree on no marital property or debt?
 question: |
-  Are you and your spouse both:
+  Do you and your spouse both agree?
 subquestion: |
-  (1) in agreement about ending the marriage and that there is no marital property or debt to divide, and 
-  
-  (2) able to sign the forms together?
-fields:
-  - no label: no_prop_or_debt_agree
-    datatype: yesnoradio 
+  Check all the boxes your spouse agrees with.
+fields: 
+  - "My spouse agrees": spouse_agrees
+    datatype: checkboxes
+    choices:
+      - "to end our marriage.": end marriage
+      - "we have no marital **property** to divide.": no property
+      - "we have no marital **debt** to divide.": no debt 
+    none of the above: |
+      with none of these.
+  - "Can you both sign the forms?": can_sign_together
+    datatype: yesnoradio
+    js show if: |
+      val('spouse_agrees').length == 3
+  - note: |
+      #### <i class="fa-regular fa-lightbulb"></i> Learn more ####
+      Marital **property** is anything earned or bought during the marriage.  This commonly includes houses, land, vehicles, money, retirement accounts, pensions, household goods, furniture, snowmachines, four-wheelers and each spouse’s personal property.  
+      Marital **debt** is any money owed to a business or person from during the marriage. Some common types of marital debt include credit card debt, medical bills, mortgages, car loans, or personal loans. 
 ---
 id: Does couple with children agree on everything?
 question: |
@@ -379,15 +391,15 @@ subquestion: |
   % endif 
   The following questions will help find the right forms for you and your spouse to fill out together if you reach an agreement.
 ---
-id: Do you know where your spouse is
+id: Do you know where your spouse is?
 question: |
   Do you know where your spouse is?
+subquestion: |
+  You must give your spouse a copy of everything you file in court so your spouse can participate. You may have to work hard to find your spouse. If you cannot find your spouse, there is a special court process to follow.
+  See [Tips on Locating People](http://courts.alaska.gov/shc/family/shctips.htm).
 fields:
-  - no label: know_spouse_whereabouts
+  - "Do you know how to find your spouse so you can 'serve' them?": know_spouse_whereabouts
     datatype: yesnoradio
-  - note: |
-      #### <i class="fa-regular fa-lightbulb"></i> Learn more ####
-      You are required to give your spouse a copy of everything you file in court to start the case so your spouse can participate. You may have to work hard to find your spouse. If you cannot find your spouse, there is a special court process to follow.
 ---
 id: Have property and debt  Kids
 question: |

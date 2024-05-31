@@ -28,7 +28,7 @@ Scenario: Row #53
     And I should see the phrase "Learn about abuse or domestic violence and parenting"
     And I should see the phrase "Get more information or help"
     And I take a screenshot
-# And I download "divorce_dissolution_separation_action_plan.pdf"
+    And I download "divorce_dissolution_separation_action_plan.pdf"
     And I download "divorce_dissolution_separation_action_plan.docx"
 
 @row89
@@ -58,7 +58,7 @@ Scenario: Row #89
     And I should see the phrase "Learn about abuse or domestic violence and parenting"
     And I should see the phrase "Get more information or help"
     And I take a screenshot
-# And I download "divorce_dissolution_separation_action_plan.pdf"
+    And I download "divorce_dissolution_separation_action_plan.pdf"
     And I download "divorce_dissolution_separation_action_plan.docx"
 
 @row148
@@ -91,7 +91,7 @@ Scenario: Row #148
     And I should see the phrase "File for default if your spouse does not respond within 20 days"
     And I should see the phrase "Get more information or help"
     And I take a screenshot
-# And I download "divorce_dissolution_separation_action_plan.pdf"
+    And I download "divorce_dissolution_separation_action_plan.pdf"
     And I download "divorce_dissolution_separation_action_plan.docx"
 
 @row181
@@ -122,7 +122,7 @@ Scenario: Row #181
     And I should see the phrase "File for default if your spouse does not respond within 20 days"
     And I should see the phrase "Get more information or help"
     And I take a screenshot
-# And I download "divorce_dissolution_separation_action_plan.pdf"
+    And I download "divorce_dissolution_separation_action_plan.pdf"
     And I download "divorce_dissolution_separation_action_plan.docx"
 
 @row205
@@ -153,7 +153,7 @@ Scenario: Row #205
     And I should see the phrase "File for default if your spouse does not respond within 20 days"
     And I should see the phrase "Get more information or help"
     And I take a screenshot
-# And I download "divorce_dissolution_separation_action_plan.pdf"
+    And I download "divorce_dissolution_separation_action_plan.pdf"
     And I download "divorce_dissolution_separation_action_plan.docx"
 
 @row240
@@ -185,7 +185,7 @@ Scenario: Row #240
     And I should see the phrase "File for default if your spouse does not respond within 20 days"
     And I should see the phrase "Get more information or help"
     And I take a screenshot
-# And I download "divorce_dissolution_separation_action_plan.pdf"
+    And I download "divorce_dissolution_separation_action_plan.pdf"
     And I download "divorce_dissolution_separation_action_plan.docx"
     
 @row262
@@ -223,7 +223,7 @@ Scenario: Row #262
     And I should see the phrase "Learn more about the process"
     And I should see the phrase "Get more information or help"
     And I take a screenshot
-    # And I download "divorce_dissolution_separation_action_plan.pdf"
+        And I download "divorce_dissolution_separation_action_plan.pdf"
     And I download "divorce_dissolution_separation_action_plan.docx"
 
 @row263Dissolution
@@ -253,7 +253,7 @@ Scenario: Row #263Dissolution
     And I should see the phrase "File to end your marriage when you do not know where your spouse is, there are no children, and there is no property or debt to divide"
     And I should see the phrase "What to expect after you file your Complaint"
     And I should see the phrase "Get more information or help"
-    # And I download "divorce_dissolution_separation_action_plan.pdf"
+        And I download "divorce_dissolution_separation_action_plan.pdf"
     And I download "divorce_dissolution_separation_action_plan.docx"    
     
     
@@ -283,7 +283,7 @@ Scenario: Row #263Divorce
     And I should see the phrase "What to expect after you file your Complaint"
     And I should see the phrase "Get more information or help"
     And I take a screenshot
-# And I download "divorce_dissolution_separation_action_plan.pdf"
+    And I download "divorce_dissolution_separation_action_plan.pdf"
     And I download "divorce_dissolution_separation_action_plan.docx"
 
 @row277
@@ -322,7 +322,7 @@ Scenario: Row #277
     And I should see the phrase "File for default if your spouse does not respond within 20 days"
     And I should see the phrase "Get more information or help"
     And I take a screenshot
-# And I download "divorce_dissolution_separation_action_plan.pdf"
+    And I download "divorce_dissolution_separation_action_plan.pdf"
     And I download "divorce_dissolution_separation_action_plan.docx"
 
 @row284
@@ -353,7 +353,7 @@ Scenario: Row #284
     And I should see the phrase "Learn about abuse or domestic violence resources"
     And I should see the phrase "Get more information or help"
     And I take a screenshot
-# And I download "divorce_dissolution_separation_action_plan.pdf"
+    And I download "divorce_dissolution_separation_action_plan.pdf"
     And I download "divorce_dissolution_separation_action_plan.docx"
 
 @row300
@@ -392,7 +392,7 @@ Scenario: Row #300
     And I should see the phrase "File for default if your spouse does not respond within 20 days"
     And I should see the phrase "Get more information or help"
     And I take a screenshot
-# And I download "divorce_dissolution_separation_action_plan.pdf"
+    And I download "divorce_dissolution_separation_action_plan.pdf"
     And I download "divorce_dissolution_separation_action_plan.docx"
 
 @row308
@@ -422,7 +422,7 @@ Scenario: Row #308
     And I should see the phrase "Learn about abuse or domestic violence resources"
     And I should see the phrase "Get more information or help"
     And I take a screenshot
-# And I download "divorce_dissolution_separation_action_plan.pdf"
+    And I download "divorce_dissolution_separation_action_plan.pdf"
     And I download "divorce_dissolution_separation_action_plan.docx"
 
 @row327
@@ -455,7 +455,7 @@ Scenario: Row #327
     And I should see the phrase "File for default if your spouse does not respond within 20 days"
     And I should see the phrase "Get more information or help"
     And I take a screenshot
-# And I download "divorce_dissolution_separation_action_plan.pdf"
+    And I download "divorce_dissolution_separation_action_plan.pdf"
     And I download "divorce_dissolution_separation_action_plan.docx"
 
 @row335
@@ -485,5 +485,5 @@ Scenario: Row #335
     And I should see the phrase "Learn about starting a case when you do not know where your spouse is"
     And I should see the phrase "Get more information or help"
     And I take a screenshot
-# And I download "divorce_dissolution_separation_action_plan.pdf"
+    And I download "divorce_dissolution_separation_action_plan.pdf"
     And I download "divorce_dissolution_separation_action_plan.docx"
