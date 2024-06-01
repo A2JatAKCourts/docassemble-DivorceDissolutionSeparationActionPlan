@@ -207,9 +207,12 @@ Scenario: Row #262
     | property_division['retirement'] | True | |
     | property_division['responsibility'] | True | |
   #  | agree_or_settle | no prop debt or pregnancy | |
-    | no_prop_or_debt_agree | False | |
+    | spouse_agrees['end marriage'] | False | |
+    | spouse_agrees['no property'] | True | |
+    | spouse_agrees['no debt'] | True | |
+  #  | no_prop_or_debt_agree | False | |
     | know_spouse_whereabouts | True | |
-    | default_info                | False   |         | 
+    | default_info | False | | 
   # And I take a screenshot
     And I should see the phrase "Your Personal Action Plan for asking the court for an uncontested divorce in Alaska in 9 steps"
     And I should see the phrase "Decide which court should hear your case"
@@ -245,7 +248,10 @@ Scenario: Row #263Dissolution
     | property_division['retirement'] | True | |
     | property_division['responsibility'] | True | |
   #  | agree_or_settle | no prop debt or pregnancy | |
-    | no_prop_or_debt_agree | False | |
+    | spouse_agrees['end marriage'] | False | |
+    | spouse_agrees['no property'] | False | |
+    | spouse_agrees['no debt'] | True | |
+  #  | no_prop_or_debt_agree | False | |
     | know_spouse_whereabouts | False | |
   # And I take a screenshot
     And I should see the phrase "Your Personal Action Plan for asking the court for an uncontested divorce in Alaska in 4 steps"
@@ -275,8 +281,12 @@ Scenario: Row #263Divorce
     | property_division['retirement']     | True    |         | 
     | property_division['responsibility'] | True    |         | 
 #| agree_or_settle | no prop debt or pregnancy | |
-    | no_prop_or_debt_agree   | False |  | 
-    | know_spouse_whereabouts | False |  | 
+    | spouse_agrees['end marriage'] | True | |
+    | spouse_agrees['no property'] | True | |
+    | spouse_agrees['no debt'] | True | |
+  #  | no_prop_or_debt_agree | False | |
+    | can_sign_together                      | False   |         | 
+  
 # And I take a screenshot
     And I should see the phrase "Your Personal Action Plan for asking the court for an uncontested divorce in Alaska in 3 steps"
     And I should see the phrase "File to end your marriage when you do not know where your spouse is, there are no children, and there is no property or debt to divide"

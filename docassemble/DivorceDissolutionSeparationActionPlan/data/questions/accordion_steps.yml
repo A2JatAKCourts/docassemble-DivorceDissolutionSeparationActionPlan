@@ -114,20 +114,23 @@ code: |
       # marriage_date
       wife_is_pregnant = 'not pregnant'
       agree_or_settle = 'no prop debt or pregnancy'
-      if spouse_agrees.all_true() and can_sign_together:
-        no_prop_or_debt_agree = True
-        know_spouse_whereabouts = True
-      # quick dissolution
-        # add_unique_step((review_common_situations_step, "review_common_situations_idx"), step_list)
-        add_unique_step((do_not_have_common_step, "do_not_have_common_idx"), step_list)
-        add_unique_step((uncontested_divorce_step, "uncontested_divorce_idx"), step_list)        
-        add_unique_step((file_complaint_step, "file_complaint_idx"), step_list)
-        # add_unique_step((file_forms_step, "file_forms_idx"), step_list)
-        add_unique_step((read_drpo_step, "read_drpo_idx"), step_list)
-        default_info = False
-        add_unique_step((expect_after_complaint_step, "expect_after_complaint_idx"), step_list)
-      if not (spouse_agrees.all_true() and can_sign_together):
-        no_prop_or_debt_agree == False
+      if spouse_agrees.all_true():
+        if can_sign_together:
+          no_prop_or_debt_agree = True
+          know_spouse_whereabouts = True
+          # quick dissolution
+          # add_unique_step((review_common_situations_step, "review_common_situations_idx"), step_list)
+          add_unique_step((do_not_have_common_step, "do_not_have_common_idx"), step_list)
+          add_unique_step((uncontested_divorce_step, "uncontested_divorce_idx"), step_list)        
+          add_unique_step((file_complaint_step, "file_complaint_idx"), step_list)
+          # add_unique_step((file_forms_step, "file_forms_idx"), step_list)
+          add_unique_step((read_drpo_step, "read_drpo_idx"), step_list)
+          default_info = False
+          add_unique_step((expect_after_complaint_step, "expect_after_complaint_idx"), step_list)
+        else:
+          know_spouse_whereabouts = False
+      else:
+        no_prop_or_debt_agree = False
         if know_spouse_whereabouts:
           # add_unique_step((review_common_situations_step, "review_common_situations_idx"), step_list)
           add_unique_step((do_not_have_common_step, "do_not_have_common_idx"), step_list)
@@ -737,7 +740,7 @@ content: |
   You get your case number when you file your documents with the court. The clerk will put the case number on your forms when you file them.
   <div class="step-subheading">Required Forms</div>
     *	Print your name above "Plaintiff" and your spouse's name above "Defendant."
-  % if agree_or_settle == 'no prop debt or pregnancy':
+  % if not minor_children and agree_or_settle == 'no prop debt or pregnancy':
     * Follow the directions on the forms and fill out every section except the signature on the petition and affidavits.
   % else:
     * Follow the directions on the forms and fill out every section except the signature on the complaint and affidavits.
@@ -759,7 +762,7 @@ content: |
         * See **[How to Fill out the Child Support Guidelines Affidavit](http://courts.alaska.gov/shc/family/docs/shc-dr305f-sample.pdf)**.
     *	Attach your most recent tax return and 3 pay stubs to the **Child Support Guidelines Affidavit**.
   % endif
-  % if minor_children and agree_or_settle == 'no prop debt or pregnancy':
+  % if not minor_children and agree_or_settle == 'no prop debt or pregnancy':
    * **Affidavit of Diligent Inquiry**, [DR-210](https://public.courts.alaska.gov/web/forms/docs/dr-210.pdf)</br>
   This form lists all the ways you should look for your spouse.
     
@@ -795,7 +798,7 @@ content: |
     * You must use an original form. They are printed on archival-quality, acid-free paper. **You may not use a photocopy**. 
     * Fill in boxes 9-32 in black ink without cross-outs or corrections. If you do not know an answer about your spouse, leave it blank.
 
-  % if defined(agree_or_settle_kids) or (not minor_children and agree_or_settle != 'no prop debt or pregnancy'):
+  % if defined('agree_or_settle_kids') or (not minor_children and agree_or_settle != 'no prop debt or pregnancy'):
   <div class="step-subheading">Optional forms depending on your circumstances</div>
 
   % if not know_spouse_whereabouts:
