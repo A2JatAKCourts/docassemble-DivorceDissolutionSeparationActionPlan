@@ -1,6 +1,9 @@
 @uncontested
 Feature: User paths
 
+Background:
+  Given the maximum seconds for each Step is 45
+
 @row16
 Scenario: Row #16
   Given I start the interview at "Divorce_dissolution_separation_action_plan.yml"
@@ -348,7 +351,11 @@ Scenario: Row #261
     | property_division['retirement'] | True | |
     | property_division['responsibility'] | True | |
   #  | agree_or_settle | no prop debt or pregnancy | |
-    | no_prop_or_debt_agree | True | |
+    | spouse_agrees['end marriage'] | True | |
+    | spouse_agrees['no property'] | True | |
+    | spouse_agrees['no debt'] | True | |
+    | can_sign_together                      | True   |         |  
+  #  | no_prop_or_debt_agree | True | |
   # And I take a screenshot
     And I should see the phrase "Your Personal Action Plan for asking the court for an uncontested divorce in Alaska in 6 steps"
   #  And I should see the phrase "Review common situations where there are no marital assets and debts to divide"

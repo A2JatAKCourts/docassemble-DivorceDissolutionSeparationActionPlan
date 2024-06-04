@@ -1,6 +1,8 @@
 @LegalSepAgreeNot
 Feature: User paths
 
+Background:
+  Given the maximum seconds for each Step is 45
 
 @row366
 Scenario: Row #366

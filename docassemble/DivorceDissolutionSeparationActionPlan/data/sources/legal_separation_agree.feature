@@ -1,6 +1,9 @@
 @LegalSepAgree
 Feature: User paths
 
+Background:
+  Given the maximum seconds for each Step is 45
+  
 @row348
 Scenario: Row #348
   Given I start the interview at "Divorce_dissolution_separation_action_plan.yml"
