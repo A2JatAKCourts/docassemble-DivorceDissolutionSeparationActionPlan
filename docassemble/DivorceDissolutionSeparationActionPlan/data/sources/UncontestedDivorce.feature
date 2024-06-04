@@ -1,6 +1,9 @@
 @uncontested
 Feature: User paths
 
+Background:
+  Given the maximum seconds for each Step is 45
+
 @row16
 Scenario: Row #16
   Given I start the interview at "Divorce_dissolution_separation_action_plan.yml"

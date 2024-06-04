@@ -44,7 +44,7 @@ def find_package_data(where='.', package='', exclude=standard_exclude, exclude_d
     return out
 
 setup(name='docassemble.DivorceDissolutionSeparationActionPlan',
-      version='23.05.31',
+      version='23.06.04',
       description=('Divorce dissolution separation action plan'),
       long_description='# docassemble.DivorceDissolutionSeparationActionPlan\r\n\r\nDivorce dissolution separation action plan\r\n\r\n## Author\r\n\r\nCaroline Robinson\r\n\r\n',
       long_description_content_type='text/markdown',

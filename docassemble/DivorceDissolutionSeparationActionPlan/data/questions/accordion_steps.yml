@@ -110,45 +110,44 @@ code: |
     
     if not minor_children \
       and legal_separation_or_divorce == 'divorce' and not married_more_than_2 and not pregnant and property_division.all_true():
-      
-      # marriage_date
       wife_is_pregnant = 'not pregnant'
       agree_or_settle = 'no prop debt or pregnancy'
       if spouse_agrees.all_true():
         if can_sign_together:
           no_prop_or_debt_agree = True
           know_spouse_whereabouts = True
-          # quick dissolution
-          # add_unique_step((review_common_situations_step, "review_common_situations_idx"), step_list)
+          default_info = False
           add_unique_step((do_not_have_common_step, "do_not_have_common_idx"), step_list)
           add_unique_step((uncontested_divorce_step, "uncontested_divorce_idx"), step_list)        
           add_unique_step((file_complaint_step, "file_complaint_idx"), step_list)
           # add_unique_step((file_forms_step, "file_forms_idx"), step_list)
           add_unique_step((read_drpo_step, "read_drpo_idx"), step_list)
-          default_info = False
           add_unique_step((expect_after_complaint_step, "expect_after_complaint_idx"), step_list)
         else:
-          know_spouse_whereabouts = False
-      else:
+          no_prop_or_debt_agree = False
+      if spouse_agrees.any_false():
         no_prop_or_debt_agree = False
-        if know_spouse_whereabouts:
+      # quick dissolution
           # add_unique_step((review_common_situations_step, "review_common_situations_idx"), step_list)
-          add_unique_step((do_not_have_common_step, "do_not_have_common_idx"), step_list)
-          add_unique_step((divorce_step, "divorce_idx"), step_list)        
-          add_unique_step((file_complaint_step, "file_complaint_idx"), step_list)
-          # add_unique_step((file_forms_step, "file_forms_idx"), step_list)
-          add_unique_step((read_drpo_step, "read_drpo_idx"), step_list)
-          add_unique_step((serve_complaint_step, "serve_complaint_idx"), step_list)
-          add_unique_step((expect_after_complaint_step, "expect_after_complaint_idx"), step_list)
-          add_unique_step((learn_more_about_process_step, "learn_more_about_process_idx"), step_list)
-          if default_info:
-            add_unique_step((default_step, "default_idx"), step_list)
-        if know_spouse_whereabouts == False:
-          default_info = False
-          add_unique_step((missing_spouse_no_kids_no_property_step, "missing_spouse_no_kids_no_property_idx"), step_list)
-          add_unique_step((expect_after_complaint_step, "expect_after_complaint_idx"), step_list)
-          # add_unique_step((serve_complaint_step, "serve_complaint_idx"), step_list)
-          # add_unique_step((expect_after_complaint_step, "expect_after_complaint_idx"), step_list)
+          
+      if know_spouse_whereabouts:
+        # add_unique_step((review_common_situations_step, "review_common_situations_idx"), step_list)
+        add_unique_step((do_not_have_common_step, "do_not_have_common_idx"), step_list)
+        add_unique_step((divorce_step, "divorce_idx"), step_list)        
+        add_unique_step((file_complaint_step, "file_complaint_idx"), step_list)
+        # add_unique_step((file_forms_step, "file_forms_idx"), step_list)
+        add_unique_step((read_drpo_step, "read_drpo_idx"), step_list)
+        add_unique_step((serve_complaint_step, "serve_complaint_idx"), step_list)
+        add_unique_step((expect_after_complaint_step, "expect_after_complaint_idx"), step_list)
+        add_unique_step((learn_more_about_process_step, "learn_more_about_process_idx"), step_list)
+        if default_info:
+          add_unique_step((default_step, "default_idx"), step_list)
+      if know_spouse_whereabouts == False:
+        default_info = False
+        add_unique_step((missing_spouse_no_kids_no_property_step, "missing_spouse_no_kids_no_property_idx"), step_list)
+        add_unique_step((expect_after_complaint_step, "expect_after_complaint_idx"), step_list)
+        # add_unique_step((serve_complaint_step, "serve_complaint_idx"), step_list)
+        # add_unique_step((expect_after_complaint_step, "expect_after_complaint_idx"), step_list)
     
     if legal_separation_or_divorce == 'divorce' \
       and not minor_children and not married_more_than_2 and not pregnant:
