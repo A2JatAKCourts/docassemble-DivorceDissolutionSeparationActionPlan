@@ -411,8 +411,9 @@ id: Do you know where your spouse is?
 question: |
   Do you know where your spouse is?
 subquestion: |
-  You must give your spouse a copy of everything you file in court so your spouse can participate. You may have to work hard to find your spouse. If you cannot find your spouse, there is a special court process to follow.
-  See [Tips on Locating People](http://courts.alaska.gov/shc/family/shctips.htm).
+  You must give your spouse a copy of everything you file in court so your spouse can participate. You may have to work hard to find your spouse. See [Tips on Locating People](http://courts.alaska.gov/shc/family/shctips.htm).
+  
+  If you cannot find your spouse, there is a special court process to follow.
 fields:
   - "Do you know how to find your spouse so you can 'serve' them?": know_spouse_whereabouts
     datatype: yesnoradio

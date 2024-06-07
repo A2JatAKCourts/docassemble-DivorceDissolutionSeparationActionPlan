@@ -350,12 +350,12 @@ Scenario: Row #261
     | property_division['joint property'] | True | |
     | property_division['retirement'] | True | |
     | property_division['responsibility'] | True | |
-  #  | agree_or_settle | no prop debt or pregnancy | |
-    | spouse_agrees['end marriage'] | True | |
-    | spouse_agrees['no property'] | True | |
-    | spouse_agrees['no debt'] | True | |
-    | can_sign_together                      | True   |         |  
-  #  | no_prop_or_debt_agree | True | |
+  # | agree_or_settle | no prop debt or pregnancy | |
+  # | spouse_agrees['end marriage'] | True | |
+  # | spouse_agrees['no property'] | True | |
+  # | spouse_agrees['no debt'] | True | |
+  # | can_sign_together | True | |  
+    | no_prop_or_debt_agree | True | |
   # And I take a screenshot
     And I should see the phrase "Your Personal Action Plan for asking the court for an uncontested divorce in Alaska in 6 steps"
   #  And I should see the phrase "Review common situations where there are no marital assets and debts to divide"
