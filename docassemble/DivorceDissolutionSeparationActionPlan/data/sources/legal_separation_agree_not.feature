@@ -292,7 +292,7 @@ Scenario: Row #430
     | domestic_violence | False | |
     | default_info | True | |
   # And I take a screenshot
-    And I should see the phrase "Your Personal Action Plan for asking the court for a legal separation in Alaska in 10 steps"
+    And I should see the phrase "Your Personal Action Plan for asking the court for a legal separation in Alaska in 11 steps"
     And I should see the phrase "Learn about legal separation"
     And I should see the phrase "Fill out the forms to start a legal separation case"
     And I should see the phrase "File the original with your local court"
@@ -301,6 +301,7 @@ Scenario: Row #430
     And I should see the phrase "What to expect after you file your Complaint"
     And I should see the phrase "Learn more about the process"
     And I should see the phrase "Learn about starting a case when you do not know where your spouse is"
+    And I should see the phrase "Learn about options to help you and your spouse reach an agreement"
     And I should see the phrase "File for default if your spouse does not respond within 20 days"
     And I should see the phrase "Get more information or help"
     And I take a screenshot

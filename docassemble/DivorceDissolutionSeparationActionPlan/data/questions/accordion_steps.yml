@@ -235,14 +235,12 @@ code: |
       else:
         # legal_separation_not_agree_block
         if not know_spouse_whereabouts:
-          info_on_agree = False
-        domestic_violence_question = "and how domestic violence affects your case"
+          add_unique_step((alternate_service_step, "alternate_service_idx"), step_list)
+        # info_on_agree = False
+          domestic_violence_question = "and how domestic violence affects your case"
         if minor_children:
           paternity
         wife_is_pregnant
-        if not know_spouse_whereabouts and not minor_children and wife_is_pregnant in ('not husband','not pregnant'):
-          domestic_violence_question = ""
-        
         add_unique_step((learn_legal_sep_step, "learn_legal_sep_idx"), step_list)
         add_unique_step((legal_separation_do_not_agree_step, "legal_separation_do_not_agree_idx"), step_list)        
         add_unique_step((file_complaint_step, "file_complaint_idx"), step_list)
@@ -259,6 +257,8 @@ code: |
         else:
           if minor_children:
             domestic_violence_question = "and how domestic violence affects your case"
+        if not know_spouse_whereabouts and not minor_children and wife_is_pregnant in ('not husband','not pregnant'):
+          domestic_violence_question = ""
         if domestic_violence:
           add_unique_step((domestic_violence_step, "domestic_violence_idx"), step_list)
         if default_info:
