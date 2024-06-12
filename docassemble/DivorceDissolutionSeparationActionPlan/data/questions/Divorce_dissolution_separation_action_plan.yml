@@ -702,6 +702,7 @@ attachment:
   skip undefined: True
   docx template file: divorce_dissolution_separation_action_plan.docx
   # docx template file: dummy_file.docx
+  # docx template file: learn_about_uncontested_divorce.docx
   tagged pdf: True
 ---
 attachment:
@@ -712,4 +713,4 @@ attachment:
   skip undefined: True
   docx template file: divorce_dissolution_separation_action_plan.docx
   # docx template file: dummy_file.docx
-  # docx template file: File_and_Serve_in_Starting_a_case_-_convention.docx
+  # docx template file: learn_about_uncontested_divorce.docx

@@ -151,7 +151,8 @@ code: |
         or (not minor_children and not married_more_than_2 and pregnant and agree_or_settle in('agree','do not know')) \
         or (not minor_children and married_more_than_2 and agree_or_settle in('agree','do not know'))):
       # dissolution_block
-      if minor_children and agree_or_settle_kids == 'yes':
+      if (minor_children and agree_or_settle_kids == 'yes')\
+        or (not minor_children and agree_or_settle == 'agree'):
         know_spouse_whereabouts = True
         have_property_and_debt
       if (minor_children and agree_or_settle_kids == 'do not know') \
