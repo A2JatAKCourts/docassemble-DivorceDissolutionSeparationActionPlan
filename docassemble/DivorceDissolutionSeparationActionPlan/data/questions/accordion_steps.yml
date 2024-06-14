@@ -1128,7 +1128,7 @@ subject: |
 content: |
   <ol>
   <li>Make  2 copies of your forms: 1 copy for your own records and 1 copy for ${ other_party_in_case }.
-  % if (user_need == 'divorce' and (legal_separation_or_divorce == 'divorce' and ((minor_children and agree_or_settle_kids == 'yes') or (not minor_children  and agree_or_settle in('no prop debt or pregnancy','agree','do not know')))) or (legal_separation_or_divorce  == 'legal separation' and agree_or_settle == 'yes')) or (user_need == 'custody' and which_forms in('agree','both')):
+  % if (user_need == 'divorce' and (legal_separation_or_divorce == 'divorce' and ((minor_children and agree_or_settle_kids == 'yes') or (not minor_children  and agree_or_settle in('no prop debt or pregnancy','agree','do not know')))) or (legal_separation_or_divorce  == 'legal separation' and agree_or_settle_kids == 'yes')) or (user_need == 'custody' and which_forms in('agree','both')):
   % if (user_need == 'divorce' and  legal_separation_or_divorce == 'divorce' and ((minor_children and agree_or_settle_kids == 'do not know') or (not  minor_children and agree_or_settle == 'do not know'))) or (user_need == 'custody' and which_forms == 'both'):
   If
   % else:
@@ -1279,7 +1279,7 @@ subject: |
 content: |
   % if not know_spouse_whereabouts:
     * Now you wait. The clerk will sign the Notice to Absent Spouse if the court finds you did enough to try to serve ${ other_party_in_case }. The court will then post the notice on the Alaska Court System's legal notice website for 4 weeks in a row.
-  % if agree_or_settle == 'no prop debt or pregnancy':
+  % if not minor_children and legal_separation_or_divorce == 'divorce' and agree_or_settle == 'no prop debt or pregnancy':
     * After the notice has been posted 4 weeks, fill out and file the **Proof of Notice**, [DR-225](https://public.courts.alaska.gov/web/forms/docs/dr-225.pdf). When you file your **Proof of Notice**, ask the clerk's office for instructions on setting a hearing date. The hearing must be at least 30 days after the end of the 4 weeks the notice was posted on the court’s website.
     * Attend the hearing. The court will ask you questions about trying to find ${ other_party_in_case } and about ending the marriage.
   % else:
