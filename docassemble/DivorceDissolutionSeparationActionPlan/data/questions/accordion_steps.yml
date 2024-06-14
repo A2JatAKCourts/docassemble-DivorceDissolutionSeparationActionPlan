@@ -1582,9 +1582,9 @@ subject: |
   Step ${ default_idx }: File for default if your spouse does not respond within 20 days
 content: |
   <div class='step-subheading'>Wait for 20 days</div>
-  If ${ other_party_in_case } does not file an Answer within 20 days of being served your Complaint, you may ask the court to “default” ${ other_party_in_case } and grant you everything you asked for. To do this, you must have proof that you served ${ other_party_in_case } according to the rules.
+  If ${ other_party_in_case } does not file an Answer within 20 days of being served your complaint, you may ask the court to “default” ${ other_party_in_case } and grant you everything you asked for. To do this, you must have proof that you served ${ other_party_in_case } according to the rules.
   
-  <div class="step-subheading">Tell the court how you served your spouse</div>
+  <div class="step-subheading">Tell the court how you served ${ other_party_in_case }</div>
   Fill out a **Proof of Service Form, SHC-405**: [Word](https://www.courts.alaska.gov/shc/family/docs/shc-405.doc) | [PDF](http://www.courts.alaska.gov/shc/family/docs/shc-405n.pdf)
   <div class="step-subheading">Ask for a Default</div>
   Fill out a **Default Application, SHC-400**: [Word](https://www.courts.alaska.gov/shc/family/docs/shc-400.doc) | [PDF](https://www.courts.alaska.gov/shc/family/docs/shc-400n.pdf)
@@ -1592,7 +1592,7 @@ content: |
   Be aware that if your spouse${ other_party_in_case } is on active duty in the military, the court likely will not enter a default judgment right away.  The court may appoint a lawyer to contact ${ other_party_in_case } first.
   % endif
   % if user_need == 'custody':
-  div class='step-subheading'>Include</div>
+  <div class='step-subheading'>Include</div>
   The forms **Findings of Fact and Conclusions of Law (Custody)** and ** Decree of Custody and Judgment**, ([DR-460  &amp; DR-465](https://public.courts.alaska.gov/web/forms/docs/dr-460-465.pdf))
   <ul>
     <li>Fill out the top of the first page with the case information.</li>
@@ -1602,42 +1602,48 @@ content: |
   </ul>
   % endif
   % if user_need == "divorce":
+  <div class='step-subheading'>Include the final forms for your type of case</div>
   % if legal_separation_or_divorce == 'divorce':
-  Fill out the top section, but do not sign where it says “Judge” at the end.
+  Fill out the top section, but **do not sign** where it says “Judge” at the end.
   % if minor_children:
   % if property_for_default:
-   *	**Findings of Fact and Conclusions of Law & Decree of Divorce**, [DR-800-805](https://public.courts.alaska.gov/web/forms/docs/dr-800-805.pdf) (fill out the “Findings of Fact” section)
+   *	**Findings of Fact and Conclusions of Law & Decree of Divorce**, [DR-800-805](https://public.courts.alaska.gov/web/forms/docs/dr-800-805.pdf)
+  Fill out the “Findings of Fact” section.
   % else:
-  * **Divorce Findings of Fact & Conclusions of Law, SHC-520**: [Word](https://www.courts.alaska.gov/shc/family/docs/shc-520.doc) | [PDF](https://www.courts.alaska.gov/shc/family/docs/shc-520n.pdf) (fill out the "Findings of Fact" section)
+  * **Divorce Findings of Fact & Conclusions of Law, SHC-520**: [Word](https://www.courts.alaska.gov/shc/family/docs/shc-520.doc) | [PDF](https://www.courts.alaska.gov/shc/family/docs/shc-520n.pdf)
+  Fill out the “Findings of Fact” section.
   *  **Divorce Judgment and Decree, SHC-525**: [Word](https://www.courts.alaska.gov/shc/family/docs/shc-525.doc) | [PDF](https://www.courts.alaska.gov/shc/family/docs/shc-525n.pdf)
   % endif
   % else: # no children
   % if property_for_default:
-  * **Divorce Findings of Fact & Conclusions  of Law with Property and No Children**, [DR-801-806](https://public.courts.alaska.gov/web/forms/docs/dr-801-806.pdf) (fill out the “Findings of Fact” section)
+  * **Divorce Findings of Fact & Conclusions of Law with Property and No Children**, [DR-801-806](https://public.courts.alaska.gov/web/forms/docs/dr-801-806.pdf)
+  Fill out the “Findings of Fact” section.
   % else:
-  *	**Divorce Findings of Fact & Conclusions of Law, SHC-540**: [Word](https://www.courts.alaska.gov/shc/family/docs/shc-540.doc) | [PDF](https://www.courts.alaska.gov/shc/family/docs/shc-540n.pdf) (fill out the “Findings of Fact” section)
+  *	**Divorce Findings of Fact & Conclusions of Law, SHC-540**: [Word](https://www.courts.alaska.gov/shc/family/docs/shc-540.doc) | [PDF](https://www.courts.alaska.gov/shc/family/docs/shc-540n.pdf)
+  Fill out the “Findings of Fact” section.
   * **Divorce Judgment and Decree, SHC-545**: [Word](https://www.courts.alaska.gov/shc/family/docs/shc-545.doc) | [PDF](https://www.courts.alaska.gov/shc/family/docs/shc-545n.pdf).
-  % endif # not property_for_default
+  % endif # property_for_default
   % endif # with and without minor children and property
   % else: #legal_separation_or_divorce == 'legal separation'
   % if minor_children:
  
-    * Legal Separation with Children and Property Findings of Fact and Conclusions of Law, SHC-590
+    * **Legal Separation with Children and Property Findings of Fact and Conclusions of Law**, [SHC-590](https://courts.alaska.gov/shc/family/docs/shc-590.doc)
       *	Fill out the top section of page 1 with your contact information and the case name and number just like it appears on the Complaint.
       *	Fill out the Findings of Fact section (paragraphs 1 through 13 on pages 2 to 5).
       *	Fill out paragraph 7 on page 6 if the wife wants to return to her maiden name.
       *	Do not sign where it says “Judge” at the end.
-    *	Judgment and Decree for Legal Separation with Children and Property, SHC-595
+    *	**Judgment and Decree for Legal Separation with Children and Property**, [SHC-595](https://courts.alaska.gov/shc/family/docs/shc-595.doc)
       *	Fill out the top section with your contact information and the case name and number just like it appears on the Complaint.
       *	Fill out paragraph 6 on page 1 if the wife wants to return to her maiden name.
       *	Do not sign where it says “Judge” at the end.
   % else:
-    *	Legal Separation with Property and No Children Findings of Fact and Conclusions of Law, SHC-591
+  
+    *	**Legal Separation with Property and No Children Findings of Fact and Conclusions of Law**, [SHC-591](https://www.courts.alaska.gov/shc/family/docs/shc-591.doc)
       *	Fill out the top section of page 1 with your contact information and the case name and number just like it appears on the Complaint.
       *	Fill out the Findings of Fact section (paragraphs 1 through 8 on pages 2 to 4).
       *	Fill out paragraph 7 on page 4 if the wife wants to return to her maiden name. 
       *	Do not sign where it says “Judge” at the end.
-    *	Judgment and Decree for Legal Separation with Property and No Children, SHC-596
+    *	**Judgment and Decree for Legal Separation with Property and No Children**, [SHC-596](https://www.courts.alaska.gov/shc/family/docs/shc-596.doc)
       *	Fill out the top section with your contact information and the case name and number just like it appears on the Complaint.
       *	Fill out paragraph 3 on page 1 if the wife wants to return to her maiden name. 
       *	Do not sign where it says “Judge” at the end.
@@ -1645,7 +1651,7 @@ content: |
   % endif # legal separation
   % endif # divorce
   <div class='step-subheading'>Serve ${ other_party_in_case }</div>
-  Mail or hand deliver a copy of your **Default Application** and all the other forms you are filing to ${ other_party_in_case }. If you mail the forms, use U.S. first class mail.
+  Mail or hand deliver a copy of your **Default Application** and copies of all the other forms you are filing to ${ other_party_in_case }. If you mail the forms, use U.S. first class mail.
   <div class='step-subheading'>File your application and ask about a hearing</div>
   File your forms and ask your local court if they will contact you, or you need to contact them to schedule a default hearing.
 ---
