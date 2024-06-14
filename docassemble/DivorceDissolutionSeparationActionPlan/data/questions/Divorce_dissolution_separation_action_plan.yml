@@ -317,6 +317,22 @@ code: |
   if date_difference(starting=marriage_date, ending=today()).years > 2:
     short_term_marriage = True
 ---
+id: Does spouse agree on no marital property or debt?
+question: |
+  Will your spouse agree to sign the court forms that say they agree?
+subquestion: |
+  Will your spouse sign the forms that say they agree:
+  
+    * to end the marriage, and
+    * you have no property or debt to divide?
+fields: 
+  - "My spouse will sign the forms": no_prop_or_debt_agree
+    datatype: yesnoradio
+  - note: |
+      #### <i class="fa-regular fa-lightbulb"></i> Learn more ####
+      Marital **property** is anything earned or bought during the marriage.  This commonly includes houses, land, vehicles, money, retirement accounts, pensions, household goods, furniture, snowmachines, four-wheelers and each spouse’s personal property.  
+      Marital **debt** is any money owed to a business or person from during the marriage. Some common types of marital debt include credit card debt, medical bills, mortgages, car loans, or personal loans. 
+---
 id: Childless couple sure you agree on no marital property or debt?
 question: |
   Do you and your spouse both agree?
@@ -395,8 +411,9 @@ id: Do you know where your spouse is?
 question: |
   Do you know where your spouse is?
 subquestion: |
-  You must give your spouse a copy of everything you file in court so your spouse can participate. You may have to work hard to find your spouse. If you cannot find your spouse, there is a special court process to follow.
-  See [Tips on Locating People](http://courts.alaska.gov/shc/family/shctips.htm).
+  You must give your spouse a copy of everything you file in court so your spouse can participate. You may have to work hard to find your spouse. See [Tips on Locating People](http://courts.alaska.gov/shc/family/shctips.htm).
+  
+  If you cannot find your spouse, there is a special court process to follow.
 fields:
   - "Do you know how to find your spouse so you can 'serve' them?": know_spouse_whereabouts
     datatype: yesnoradio
@@ -685,6 +702,7 @@ attachment:
   skip undefined: True
   docx template file: divorce_dissolution_separation_action_plan.docx
   # docx template file: dummy_file.docx
+  # docx template file: learn_about_uncontested_divorce.docx
   tagged pdf: True
 ---
 attachment:
@@ -695,4 +713,4 @@ attachment:
   skip undefined: True
   docx template file: divorce_dissolution_separation_action_plan.docx
   # docx template file: dummy_file.docx
-  # docx template file: File_and_Serve_in_Starting_a_case_-_convention.docx
+  # docx template file: learn_about_uncontested_divorce.docx

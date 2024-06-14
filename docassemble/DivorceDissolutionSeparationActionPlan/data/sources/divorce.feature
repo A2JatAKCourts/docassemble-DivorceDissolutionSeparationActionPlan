@@ -209,11 +209,11 @@ Scenario: Row #262
     | property_division['joint property'] | True     |         | 
     | property_division['retirement']     | True     |         | 
     | property_division['responsibility'] | True     |         | 
-#  | agree_or_settle | no prop debt or pregnancy | |
-    | spouse_agrees['end marriage'] | False |  | 
-    | spouse_agrees['no property']  | True  |  | 
-    | spouse_agrees['no debt']      | True  |  | 
-#  | no_prop_or_debt_agree | False | |
+#   | agree_or_settle | no prop debt or pregnancy | | 
+#   | spouse_agrees['end marriage'] | False |  | 
+#   | spouse_agrees['no property']  | True  |  | 
+#   | spouse_agrees['no debt']      | True  |  | 
+    | no_prop_or_debt_agree | False | |
     | know_spouse_whereabouts | True  |  | 
     | default_info            | False |  | 
 # And I take a screenshot
@@ -250,16 +250,19 @@ Scenario: Row #263Dissolution
     | property_division['joint property'] | True     |         | 
     | property_division['retirement']     | True     |         | 
     | property_division['responsibility'] | True     |         | 
-#  | agree_or_settle | no prop debt or pregnancy | |
-    | spouse_agrees['end marriage'] | False |  | 
-    | spouse_agrees['no property']  | False |  | 
-    | spouse_agrees['no debt']      | True  |  | 
-#  | no_prop_or_debt_agree | False | |
+#   | agree_or_settle | no prop debt or pregnancy | | 
+#   | spouse_agrees['end marriage'] | False |  | 
+#   | spouse_agrees['no property']  | True  |  | 
+#   | spouse_agrees['no debt']      | True  |  | 
+    | no_prop_or_debt_agree | False | |
     | know_spouse_whereabouts | False |  | 
 # And I take a screenshot
-    And I should see the phrase "Your Personal Action Plan for asking the court for an uncontested divorce in Alaska in 4 steps"
+    And I should see the phrase "Your Personal Action Plan for asking the court for an uncontested divorce in Alaska in 7 steps"
     And I should see the phrase "Decide which court should hear your case"
+    And I should see the phrase "Make sure you do not have marital assets and debts to divide"
     And I should see the phrase "File to end your marriage when you do not know where your spouse is, there are no children, and there is no property or debt to divide"
+    And I should see the phrase "File the original with your local court"
+    And I should see the phrase "Read the “Domestic Relations Procedural Order” or Standing Order if the clerk gives you one when you file your case"
     And I should see the phrase "What to expect after you file your Complaint"
     And I should see the phrase "Get more information or help"
     And I download "divorce_dissolution_separation_action_plan.pdf"
@@ -282,16 +285,20 @@ Scenario: Row #263Divorce
     | property_division['retirement']     | True    |         | 
     | property_division['responsibility'] | True    |         | 
 #| agree_or_settle | no prop debt or pregnancy | |
-    | spouse_agrees['end marriage'] | True |  | 
-    | spouse_agrees['no property']  | True |  | 
-    | spouse_agrees['no debt']      | True |  | 
-#  | no_prop_or_debt_agree | False | |
-    | can_sign_together       | False |  | 
+#   | agree_or_settle | no prop debt or pregnancy | | 
+#   | spouse_agrees['end marriage'] | False |  | 
+#   | spouse_agrees['no property']  | True  |  | 
+#   | spouse_agrees['no debt']      | True  |  | 
+    | no_prop_or_debt_agree | False | |
+#   | can_sign_together       | False |  | 
     | know_spouse_whereabouts | False |  | 
 
 # And I take a screenshot
-    And I should see the phrase "Your Personal Action Plan for asking the court for an uncontested divorce in Alaska in 3 steps"
+    And I should see the phrase "Your Personal Action Plan for asking the court for an uncontested divorce in Alaska in 6 steps"
+    And I should see the phrase "Make sure you do not have marital assets and debts to divide"
     And I should see the phrase "File to end your marriage when you do not know where your spouse is, there are no children, and there is no property or debt to divide"
+    And I should see the phrase "File the original with your local court"
+    And I should see the phrase "Read the “Domestic Relations Procedural Order” or Standing Order if the clerk gives you one when you file your case"
     And I should see the phrase "What to expect after you file your Complaint"
     And I should see the phrase "Get more information or help"
     And I take a screenshot

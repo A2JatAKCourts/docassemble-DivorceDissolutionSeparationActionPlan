@@ -30,7 +30,7 @@ Scenario: Row #16
     And I should see the phrase "Learn about abuse or domestic violence resources & reaching an agreement"
     And I should see the phrase "Get more information or help"
     And I take a screenshot
-    # And I download "divorce_dissolution_separation_action_plan.pdf"
+    And I download "divorce_dissolution_separation_action_plan.pdf"
     And I download "divorce_dissolution_separation_action_plan.docx"
     
 @row18
@@ -59,7 +59,7 @@ Scenario: Row #18
     And I should see the phrase "What to expect after you file your Complaint"
     And I should see the phrase "Get more information or help"
     And I take a screenshot
-    # And I download "divorce_dissolution_separation_action_plan.pdf"
+    And I download "divorce_dissolution_separation_action_plan.pdf"
     And I download "divorce_dissolution_separation_action_plan.docx"
 
 @row21
@@ -90,7 +90,7 @@ Scenario: Row #21
     And I should see the phrase "What to expect after you file your Complaint"
     And I should see the phrase "Get more information or help"
     And I take a screenshot
-    # And I download "divorce_dissolution_separation_action_plan.pdf"
+    And I download "divorce_dissolution_separation_action_plan.pdf"
     And I download "divorce_dissolution_separation_action_plan.docx"
 
 @row23
@@ -120,7 +120,7 @@ Scenario: Row #23
     And I should see the phrase "Learn about paternity testing"
     And I should see the phrase "Get more information or help"
     And I take a screenshot
-    # And I download "divorce_dissolution_separation_action_plan.pdf"
+    And I download "divorce_dissolution_separation_action_plan.pdf"
     And I download "divorce_dissolution_separation_action_plan.docx"
     
 @row24
@@ -149,7 +149,7 @@ Scenario: Row #24
     And I should see the phrase "Learn about paternity testing"
     And I should see the phrase "Get more information or help"
     And I take a screenshot
-    # And I download "divorce_dissolution_separation_action_plan.pdf"
+    And I download "divorce_dissolution_separation_action_plan.pdf"
     And I download "divorce_dissolution_separation_action_plan.docx"
 
 
@@ -180,7 +180,7 @@ Scenario: Row #26
     And I should see the phrase "Learn about abuse or domestic violence resources & reaching an agreement"
     And I should see the phrase "Get more information or help"
     And I take a screenshot
-    # And I download "divorce_dissolution_separation_action_plan.pdf"
+    And I download "divorce_dissolution_separation_action_plan.pdf"
     And I download "divorce_dissolution_separation_action_plan.docx"
 
 @row29
@@ -208,7 +208,7 @@ Scenario: Row #29
     And I should see the phrase "What to expect after you file your Complaint"
     And I should see the phrase "Get more information or help"
     And I take a screenshot
-    # And I download "divorce_dissolution_separation_action_plan.pdf"
+    And I download "divorce_dissolution_separation_action_plan.pdf"
     And I download "divorce_dissolution_separation_action_plan.docx"
 
 @row33
@@ -238,7 +238,7 @@ Scenario: Row #33
     And I should see the phrase "What to expect after you file your Complaint"
     And I should see the phrase "Get more information or help"
     And I take a screenshot
-    # And I download "divorce_dissolution_separation_action_plan.pdf"
+    And I download "divorce_dissolution_separation_action_plan.pdf"
     And I download "divorce_dissolution_separation_action_plan.docx"
     
 @row34
@@ -271,7 +271,7 @@ Scenario: Row #34
     And I should see the phrase "Learn about abuse or domestic violence resources & reaching an agreement"
     And I should see the phrase "Get more information or help"
     And I take a screenshot
-    # And I download "divorce_dissolution_separation_action_plan.pdf"
+    And I download "divorce_dissolution_separation_action_plan.pdf"
     And I download "divorce_dissolution_separation_action_plan.docx"
 
 @row38
@@ -301,7 +301,7 @@ Scenario: Row #38
     And I should see the phrase "Learn about abuse or domestic violence resources & reaching an agreement"
     And I should see the phrase "Get more information or help"
     And I take a screenshot
-    # And I download "divorce_dissolution_separation_action_plan.pdf"
+    And I download "divorce_dissolution_separation_action_plan.pdf"
     And I download "divorce_dissolution_separation_action_plan.docx"
     
 @row42
@@ -331,7 +331,7 @@ Scenario: Row #42
     And I should see the phrase "Learn about paternity testing"
     And I should see the phrase "Get more information or help"
     And I take a screenshot
-    # And I download "divorce_dissolution_separation_action_plan.pdf"
+    And I download "divorce_dissolution_separation_action_plan.pdf"
     And I download "divorce_dissolution_separation_action_plan.docx"
     
 @row261
@@ -350,12 +350,12 @@ Scenario: Row #261
     | property_division['joint property'] | True | |
     | property_division['retirement'] | True | |
     | property_division['responsibility'] | True | |
-  #  | agree_or_settle | no prop debt or pregnancy | |
-    | spouse_agrees['end marriage'] | True | |
-    | spouse_agrees['no property'] | True | |
-    | spouse_agrees['no debt'] | True | |
-    | can_sign_together                      | True   |         |  
-  #  | no_prop_or_debt_agree | True | |
+  # | agree_or_settle | no prop debt or pregnancy | |
+  # | spouse_agrees['end marriage'] | True | |
+  # | spouse_agrees['no property'] | True | |
+  # | spouse_agrees['no debt'] | True | |
+  # | can_sign_together | True | |  
+    | no_prop_or_debt_agree | True | |
   # And I take a screenshot
     And I should see the phrase "Your Personal Action Plan for asking the court for an uncontested divorce in Alaska in 6 steps"
   #  And I should see the phrase "Review common situations where there are no marital assets and debts to divide"
@@ -366,7 +366,7 @@ Scenario: Row #261
     And I should see the phrase "What to expect after you file your Complaint"
     And I should see the phrase "Get more information or help"
     And I take a screenshot
-    # And I download "divorce_dissolution_separation_action_plan.pdf"
+    And I download "divorce_dissolution_separation_action_plan.pdf"
     And I download "divorce_dissolution_separation_action_plan.docx"
 
 
@@ -384,6 +384,7 @@ Scenario: Row #264
     | married_more_than_2 | False | |
     | pregnant | True | |
     | agree_or_settle | agree | |
+    | have_property_and_debt | False | |
     | wife_is_pregnant | husband | |
     | domestic_violence | True | |
   # And I take a screenshot
@@ -391,14 +392,13 @@ Scenario: Row #264
     And I should see the phrase "Decide which court should hear your case"
     And I should see the phrase "Learn about uncontested divorces"
     And I should see the phrase "Fill out the forms to start your case"
-    And I should see the phrase "Read "
     And I should see the phrase "File the original with your local court"
     And I should see the phrase "Read the "Domestic Relations Procedural Order" or Standing Order if the clerk gives you one when you file your case"
     And I should see the phrase "What to expect after you file your Complaint"
     And I should see the phrase "Learn about abuse or domestic violence resources & reaching an agreement"
     And I should see the phrase "Get more information or help"
     And I take a screenshot
-    # And I download "divorce_dissolution_separation_action_plan.pdf"
+    And I download "divorce_dissolution_separation_action_plan.pdf"
     And I download "divorce_dissolution_separation_action_plan.docx"
 
 @row268
@@ -413,20 +413,20 @@ Scenario: Row #268
     | legal_separation_or_divorce | divorce | |
     | married_more_than_2 | True | |
     | agree_or_settle | agree | |
+    | have_property_and_debt | False | |
     | wife_is_pregnant | not pregnant | |
     | domestic_violence | True | |
   # And I take a screenshot
     And I should see the phrase "Your Personal Action Plan for asking the court for an uncontested divorce in Alaska in 7 steps"
     And I should see the phrase "Learn about uncontested divorces"
     And I should see the phrase "Fill out the forms to start your case"
-    And I should see the phrase "Read "
     And I should see the phrase "File the original with your local court"
     And I should see the phrase "Read the "Domestic Relations Procedural Order" or Standing Order if the clerk gives you one when you file your case"
     And I should see the phrase "What to expect after you file your Complaint"
     And I should see the phrase "Learn about abuse or domestic violence resources & reaching an agreement"
     And I should see the phrase "Get more information or help"
     And I take a screenshot
-    # And I download "divorce_dissolution_separation_action_plan.pdf"
+    And I download "divorce_dissolution_separation_action_plan.pdf"
     And I download "divorce_dissolution_separation_action_plan.docx"
 
 @row269
@@ -443,6 +443,7 @@ Scenario: Row #269
     | legal_separation_or_divorce | divorce | |
     | married_more_than_2 | True | |
     | agree_or_settle | agree | |
+    | have_property_and_debt | True | |
     | wife_is_pregnant | not husband | |
     | domestic_violence | False | |
   # And I take a screenshot
@@ -455,7 +456,7 @@ Scenario: Row #269
     And I should see the phrase "What to expect after you file your Complaint"
     And I should see the phrase "Get more information or help"
     And I take a screenshot
-    # And I download "divorce_dissolution_separation_action_plan.pdf"
+    And I download "divorce_dissolution_separation_action_plan.pdf"
     And I download "divorce_dissolution_separation_action_plan.docx"
 
 @row271
@@ -483,7 +484,7 @@ Scenario: Row #271
     And I should see the phrase "What to expect after you file your Complaint"
     And I should see the phrase "Get more information or help"
     And I take a screenshot
-    # And I download "divorce_dissolution_separation_action_plan.pdf"
+    And I download "divorce_dissolution_separation_action_plan.pdf"
     And I download "divorce_dissolution_separation_action_plan.docx"
 
 @row272
@@ -512,7 +513,7 @@ Scenario: Row #272
     And I should see the phrase "Learn about abuse or domestic violence resources & reaching an agreement"
     And I should see the phrase "Get more information or help"
     And I take a screenshot
-    # And I download "divorce_dissolution_separation_action_plan.pdf"
+    And I download "divorce_dissolution_separation_action_plan.pdf"
     And I download "divorce_dissolution_separation_action_plan.docx"
     
     
@@ -540,5 +541,5 @@ Scenario: Row #275
     And I should see the phrase "What to expect after you file your Complaint"
     And I should see the phrase "Get more information or help"
     And I take a screenshot
-    # And I download "divorce_dissolution_separation_action_plan.pdf"
+    And I download "divorce_dissolution_separation_action_plan.pdf"
     And I download "divorce_dissolution_separation_action_plan.docx"
