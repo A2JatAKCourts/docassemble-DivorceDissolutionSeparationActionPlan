@@ -91,7 +91,7 @@ Scenario: Row #148
     And I should see the phrase "Learn more about the process"
     And I should see the phrase "Learn about paternity testing"
     And I should see the phrase "Learn about abuse or domestic violence and parenting"
-    And I should see the phrase "File for default if your spouse does not respond within 20 days"
+    And I should see the phrase "File for Default if your spouse does not respond within 20 days"
     And I should see the phrase "Get more information or help"
     And I take a screenshot
     And I download "divorce_dissolution_separation_action_plan.pdf"
@@ -122,7 +122,7 @@ Scenario: Row #181
     And I should see the phrase "What to expect after you file your Complaint"
     And I should see the phrase "Learn more about the process"
     And I should see the phrase "Learn about starting a case when you do not know where your spouse is"
-    And I should see the phrase "File for default if your spouse does not respond within 20 days"
+    And I should see the phrase "File for Default if your spouse does not respond within 20 days"
     And I should see the phrase "Get more information or help"
     And I take a screenshot
     And I download "divorce_dissolution_separation_action_plan.pdf"
@@ -153,7 +153,7 @@ Scenario: Row #205
     And I should see the phrase "What to expect after you file your Complaint"
     And I should see the phrase "Learn more about the process"
     And I should see the phrase "Learn about starting a case when you do not know where your spouse is"
-    And I should see the phrase "File for default if your spouse does not respond within 20 days"
+    And I should see the phrase "File for Default if your spouse does not respond within 20 days"
     And I should see the phrase "Get more information or help"
     And I take a screenshot
     And I download "divorce_dissolution_separation_action_plan.pdf"
@@ -185,7 +185,7 @@ Scenario: Row #240
     And I should see the phrase "Learn more about the process"
     And I should see the phrase "Learn about starting a case when you do not know where your spouse is"
     And I should see the phrase "Learn about paternity testing"
-    And I should see the phrase "File for default if your spouse does not respond within 20 days"
+    And I should see the phrase "File for Default if your spouse does not respond within 20 days"
     And I should see the phrase "Get more information or help"
     And I take a screenshot
     And I download "divorce_dissolution_separation_action_plan.pdf"
@@ -333,7 +333,7 @@ Scenario: Row #277
     And I should see the phrase "Learn more about the process"
     And I should see the phrase "Learn about options to help you and your spouse reach an agreement"
     And I should see the phrase "Learn about abuse or domestic violence resources & reaching an agreement"
-    And I should see the phrase "File for default if your spouse does not respond within 20 days"
+    And I should see the phrase "File for Default if your spouse does not respond within 20 days"
     And I should see the phrase "Get more information or help"
     And I take a screenshot
     And I download "divorce_dissolution_separation_action_plan.pdf"
@@ -403,7 +403,7 @@ Scenario: Row #300
     And I should see the phrase "Learn more about the process"
     And I should see the phrase "Learn about options to help you and your spouse reach an agreement"
     And I should see the phrase "Learn about abuse or domestic violence resources & reaching an agreement"
-    And I should see the phrase "File for default if your spouse does not respond within 20 days"
+    And I should see the phrase "File for Default if your spouse does not respond within 20 days"
     And I should see the phrase "Get more information or help"
     And I take a screenshot
     And I download "divorce_dissolution_separation_action_plan.pdf"
@@ -466,7 +466,7 @@ Scenario: Row #327
     And I should see the phrase "What to expect after you file your Complaint"
     And I should see the phrase "Learn more about the process"
     And I should see the phrase "Learn about starting a case when you do not know where your spouse is"
-    And I should see the phrase "File for default if your spouse does not respond within 20 days"
+    And I should see the phrase "File for Default if your spouse does not respond within 20 days"
     And I should see the phrase "Get more information or help"
     And I take a screenshot
     And I download "divorce_dissolution_separation_action_plan.pdf"
