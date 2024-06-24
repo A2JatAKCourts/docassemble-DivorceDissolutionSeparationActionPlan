@@ -125,7 +125,7 @@ code: |
         if not know_spouse_whereabouts:
           default_info = False
           add_unique_step((do_not_have_common_step, "do_not_have_common_idx"), step_list)
-          add_unique_step((missing_spouse_no_kids_no_property_step, "missing_spouse_no_kids_no_property_idx"), step_list)        
+          add_unique_step((divorce_step, "divorce_idx"), step_list)        
           add_unique_step((file_complaint_step, "file_complaint_idx"), step_list)
           add_unique_step((read_drpo_step, "read_drpo_idx"), step_list)
           add_unique_step((expect_after_complaint_step, "expect_after_complaint_idx"), step_list)
