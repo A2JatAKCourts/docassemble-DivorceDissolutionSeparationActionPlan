@@ -884,6 +884,8 @@ content: |
 
     * **Legal Separation with Children and Property Findings of Fact and Conclusions of Law,** [SHC-590](http://courts.alaska.gov/shc/family/docs/shc-590.doc)
 
+    * **Judgment and Decree for Legal Separation with Children and Property,** [SHC-595](https://courts.alaska.gov/shc/family/docs/shc-595.doc)
+
   % else:
     *	**Case Description Form**, [CIV-125S](https://public.courts.alaska.gov/web/forms/docs/civ-125s.pdf)
   % if minor_children or wife_is_pregnant in('husband', 'not husband'):
@@ -901,6 +903,8 @@ content: |
   <div class="step-subheading">Required form * fill out but do NOT sign because the judge will sign it</div>
   
     * **Legal Separation with Property and No Children Findings of Fact and Conclusions of Law**, [SHC-591](http://courts.alaska.gov/shc/family/docs/shc-591.doc)
+  
+    * **Judgment and Decree for Legal Separation with Property and No Children**, [SHC-596](https://courts.alaska.gov/shc/family/docs/shc-596.doc)
   % endif
 
   % if wife_is_pregnant in('husband', 'not husband'):
