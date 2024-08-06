@@ -327,11 +327,8 @@ subject: |
 content: |
   If a court in a different state already ended your marriage, the Alaska court will not hear a case to end your marriage.
   
-  If you are trying to enforce a court order from another state or change something about the order, see one of these Alaska divorce topics: 
-  
-  [Enforcing a Divorce Court Order](https://docassemble.akcourts.gov/start/EnforcingDivorce)
-  
-  [Changing a Divorce Court Order](https://docassemble.akcourts.gov/start/ChangingDivorce/)
+  If you are trying to enforce a court order from another state or change something about the order, try the Guided Assistant Interview,
+  [Changing a Divorce Court Order](https://docassemble.akcourts.gov/start/ChangingDivorce/).
 ---
 template: pick_court_step
 subject: |
