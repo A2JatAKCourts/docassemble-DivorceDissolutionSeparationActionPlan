@@ -76,7 +76,7 @@ code: |
         add_unique_step((pick_court_step, "pick_court_idx"), step_list)
         legal_separation_or_divorce
       else:
-        residency_and_jurisdiction == false
+        residency_and_jurisdiction = False
         military
         add_unique_step((pick_court_step, "pick_court_idx"), step_list)
         if other_state_case == 'continue':
@@ -98,7 +98,7 @@ code: |
         if other_state_case == 'continue':
           legal_separation_or_divorce
     if residency == 'none':
-      residency_and_jurisdiction == false
+      residency_and_jurisdiction = False
       military
       add_unique_step((pick_court_step, "pick_court_idx"), step_list)
       if continue_despite_no_residency == 'continue':
