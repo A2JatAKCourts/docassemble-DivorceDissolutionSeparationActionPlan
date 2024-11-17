@@ -33,7 +33,7 @@ Scenario: Row #2
   # And I take a screenshot
     And I should see the phrase "Your Personal Action Plan for asking the court for a divorce or legal separation in Alaska in 2 steps"
     And I should see the phrase "Decide which court should hear your case"
-    # And I tap the "#cGlja19jb3VydF9zdGVw_contents .al_toggle" element and stay on the same page
+    And I tap the "#cGlja19jb3VydF9zdGVw .al_toggle" element and stay on the same page
     And I should see the phrase "All 1 (yellow)"
     And I should see the phrase "Red not military"
     And I should see the phrase "All 2 (yellow)"
