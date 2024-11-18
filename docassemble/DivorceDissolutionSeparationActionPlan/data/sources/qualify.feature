@@ -33,11 +33,16 @@ Scenario: Row #2
   # And I take a screenshot
     And I should see the phrase "Your Personal Action Plan for asking the court for a divorce or legal separation in Alaska in 2 steps"
     And I should see the phrase "Decide which court should hear your case"
-    # And I tap the "#cGlja19jb3VydF9zdGVw_contents .al_toggle" element and stay on the same page
+    And I tap the "#cGlja19jb3VydF9zdGVw .al_toggle" element and stay on the same page
+    And I should see the phrase "Blue 1"
+    And I should see the phrase "Blue 2"
     And I should see the phrase "All 1 (yellow)"
-    And I should see the phrase "Red not military"
+    And I should see the phrase "Red military"
+    And I should see the phrase "Blue 3"
     And I should see the phrase "All 2 (yellow)"
+    And I should see the phrase "Blue 4"
     And I should see the phrase "All 3 (yellow)"
+    And I should see the phrase "Blue 5"
     And I should see the phrase "Get more information or help"
     And I take a screenshot
     And I download "divorce_dissolution_separation_action_plan.pdf"
@@ -59,6 +64,16 @@ Scenario: Row #4
   # And I take a screenshot
     And I should see the phrase "Your Personal Action Plan for asking the court for a divorce or legal separation in Alaska in 2 steps"
     And I should see the phrase "Decide which court should hear your case"
+    And I tap the "#cGlja19jb3VydF9zdGVw .al_toggle" element and stay on the same page
+    And I should see the phrase "Blue 1"
+    And I should see the phrase "Blue 2"
+    And I should see the phrase "All 1 (yellow)"
+    And I should see the phrase "Red not military"
+    And I should see the phrase "Blue 3"
+    And I should see the phrase "All 2 (yellow)"
+    And I should see the phrase "Blue 4"
+    And I should see the phrase "All 3 (yellow)"
+    And I should see the phrase "Blue 5"
     And I should see the phrase "Get more information or help"
     And I take a screenshot
     # And I download "divorce_dissolution_separation_action_plan.pdf"
@@ -73,12 +88,21 @@ Scenario: Row #6
     | other_case | True | |
     | ongoing | no | |
     | residency | none | |
-    | residency_and_jurisdiction | False | |
     | military | True | |
     | continue_despite_no_residency | stop | |
   # And I take a screenshot
     And I should see the phrase "Your Personal Action Plan for asking the court for a divorce or legal separation in Alaska in 2 steps"
     And I should see the phrase "Decide if Alaska is the right state for your case"
+    And I tap the "#cGlja19jb3VydF9zdGVw .al_toggle" element and stay on the same page
+    And I should see the phrase "Pink"
+    And I should see the phrase "Green 1"
+    And I should see the phrase "All 1 (yellow)"
+    And I should see the phrase "Red military"
+    And I should see the phrase "Green 2"
+    And I should see the phrase "All 2 (yellow)"
+    And I should see the phrase "Green 3"
+    And I should see the phrase "All 3 (yellow)"
+    And I should see the phrase "Green 4"
     And I should see the phrase "Get more information or help"
     And I take a screenshot
     # And I download "divorce_dissolution_separation_action_plan.pdf"
@@ -93,12 +117,21 @@ Scenario: Row #8
     | other_case | True | |
     | ongoing | no | |
     | residency | none | |
-    | residency_and_jurisdiction | False | |
     | military | False | |
     | continue_despite_no_residency | stop | |
   # And I take a screenshot
     And I should see the phrase "Your Personal Action Plan for asking the court for a divorce or legal separation in Alaska in 2 steps"
     And I should see the phrase "Decide if Alaska is the right state for your case"
+    And I tap the "#cGlja19jb3VydF9zdGVw .al_toggle" element and stay on the same page
+    And I should see the phrase "Pink"
+    And I should see the phrase "Green 1"
+    And I should see the phrase "All 1 (yellow)"
+    And I should see the phrase "Red not military"
+    And I should see the phrase "Green 2"
+    And I should see the phrase "All 2 (yellow)"
+    And I should see the phrase "Green 3"
+    And I should see the phrase "All 3 (yellow)"
+    And I should see the phrase "Green 4"
     And I should see the phrase "Get more information or help"
     And I take a screenshot
     # And I download "divorce_dissolution_separation_action_plan.pdf"
@@ -118,6 +151,15 @@ Scenario: Row #10
   # And I take a screenshot
     And I should see the phrase "Your Personal Action Plan for asking the court for a divorce or legal separation in Alaska in 2 steps"
     And I should see the phrase "Decide if Alaska is the right state for your case"
+    And I tap the "#cGlja19jb3VydF9zdGVw .al_toggle" element and stay on the same page
+    And I should see the phrase "Green 1"
+    And I should see the phrase "All 1 (yellow)"
+    And I should see the phrase "Red military"
+    And I should see the phrase "Green 2"
+    And I should see the phrase "All 2 (yellow)"
+    And I should see the phrase "Green 3"
+    And I should see the phrase "All 3 (yellow)"
+    And I should see the phrase "Green 4"
     And I should see the phrase "Get more information or help"
     And I take a screenshot
     # And I download "divorce_dissolution_separation_action_plan.pdf"
@@ -132,12 +174,21 @@ Scenario: Row #12
     | minor_children | True | |
     | other_case | False | |
     | residency | none | |
-    | residency_and_jurisdiction | False | |
     | military | False | |
     | continue_despite_no_residency | stop | |
   # And I take a screenshot
     And I should see the phrase "Your Personal Action Plan for asking the court for a divorce or legal separation in Alaska in 2 steps"
     And I should see the phrase "Decide if Alaska is the right state for your case"
+    And I tap the "#cGlja19jb3VydF9zdGVw .al_toggle" element and stay on the same page
+    And I should see the phrase "Pink"
+    And I should see the phrase "Green 1"
+    And I should see the phrase "All 1 (yellow)"
+    And I should see the phrase "Red not military"
+    And I should see the phrase "Green 2"
+    And I should see the phrase "All 2 (yellow)"
+    And I should see the phrase "Green 3"
+    And I should see the phrase "All 3 (yellow)"
+    And I should see the phrase "Green 4"
     And I should see the phrase "Get more information or help"
     And I take a screenshot
     # And I download "divorce_dissolution_separation_action_plan.pdf"
