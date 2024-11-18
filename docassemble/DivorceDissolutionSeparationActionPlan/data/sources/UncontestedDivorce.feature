@@ -12,6 +12,9 @@ Scenario: Row #16
     | minor_children | True | |
     | other_case | True | |
     | ongoing | yes | |
+    | residency | both | |
+    | couple_are_residents | True | |
+    | children_are_residents | False | |
     | military | True | |
     | other_state_case | continue | |
     | legal_separation_or_divorce | divorce | |
@@ -22,6 +25,16 @@ Scenario: Row #16
     | domestic_violence | True | |
     And I should see the phrase "Your Personal Action Plan for asking the court for an uncontested divorce in Alaska in 8 steps"
     And I should see the phrase "Decide which court should hear your case"
+    And I tap the "#cGlja19jb3VydF9zdGVw .al_toggle" element and stay on the same page
+    And I should see the phrase "Blue 1"
+    And I should see the phrase "Blue 2"
+    And I should see the phrase "All 1 (yellow)"
+    And I should see the phrase "Red military"
+    And I should see the phrase "Blue 3"
+    And I should see the phrase "All 2 (yellow)"
+    And I should see the phrase "Blue 4"
+    And I should see the phrase "All 3 (yellow)"
+    And I should see the phrase "Blue 5"
     And I should see the phrase "Learn about uncontested divorces"
     And I should see the phrase "Fill out the forms for an uncontested divorce"
     And I should see the phrase "File the original with your local court"
@@ -41,6 +54,9 @@ Scenario: Row #18
     | minor_children | True | |
     | other_case | True | |
     | ongoing | yes | |
+    | residency | both | |
+    | couple_are_residents | True | |
+    | children_are_residents | False | 
     | military | False  | |
     | other_state_case | continue | |
     | legal_separation_or_divorce | divorce | |
@@ -52,6 +68,16 @@ Scenario: Row #18
   # And I take a screenshot
     And I should see the phrase "Your Personal Action Plan for asking the court for an uncontested divorce in Alaska in 7 steps"
     And I should see the phrase "Decide which court should hear your case"
+    And I tap the "#cGlja19jb3VydF9zdGVw .al_toggle" element and stay on the same page
+    And I should see the phrase "Blue 1"
+    And I should see the phrase "Blue 2"
+    And I should see the phrase "All 1 (yellow)"
+    And I should see the phrase "Red not military"
+    And I should see the phrase "Blue 3"
+    And I should see the phrase "All 2 (yellow)"
+    And I should see the phrase "Blue 4"
+    And I should see the phrase "All 3 (yellow)"
+    And I should see the phrase "Blue 5"
     And I should see the phrase "Learn about uncontested divorces"
     And I should see the phrase "Fill out the forms for an uncontested divorce"
     And I should see the phrase "File the original with your local court"
@@ -70,6 +96,8 @@ Scenario: Row #21
     | minor_children | True | |
     | other_case | True | |
     | ongoing | yes | |
+    | residency | both | |
+    | couple_are_residents | False |
     | military | False  | |
     | other_state_case | continue | |
     | legal_separation_or_divorce | divorce | |
@@ -82,6 +110,16 @@ Scenario: Row #21
   # And I take a screenshot
     And I should see the phrase "Your Personal Action Plan for asking the court for an uncontested divorce in Alaska in 8 steps"
     And I should see the phrase "Decide which court should hear your case"
+    And I tap the "#cGlja19jb3VydF9zdGVw .al_toggle" element and stay on the same page
+    And I should see the phrase "Blue 1"
+    And I should see the phrase "Blue 2"
+    And I should see the phrase "All 1 (yellow)"
+    And I should see the phrase "Red not military"
+    And I should see the phrase "Blue 3"
+    And I should see the phrase "All 2 (yellow)"
+    And I should see the phrase "Blue 4"
+    And I should see the phrase "All 3 (yellow)"
+    And I should see the phrase "Blue 5"
     And I should see the phrase "Talk to your spouse to see if you agree"
     And I should see the phrase "Learn about uncontested divorces"
     And I should see the phrase "Fill out the forms for an uncontested divorce"
@@ -98,12 +136,15 @@ Scenario: Row #23
   Given I start the interview at "Divorce_dissolution_separation_action_plan.yml"
   And I get to the question id "final screen" with this data:
     | var | value | trigger |
-    | legal_separation_or_divorce | divorce | |
     | minor_children | True | |
     | other_case | True | |
     | ongoing | yes | |
-    | military | False | |
-    | other_state_case | continue | |
+    | residency | one | |
+    | couple_are_residents | True | |
+    | children_are_residents | True | 
+    # | military | False | |
+    # | other_state_case | continue | |
+    | legal_separation_or_divorce | divorce | |
     | agree_or_settle_kids | yes | |
     | have_property_and_debt | True | |
     | paternity | do not know | |
@@ -112,6 +153,16 @@ Scenario: Row #23
   # And I take a screenshot
     And I should see the phrase "Your Personal Action Plan for asking the court for an uncontested divorce in Alaska in 8 steps"
     And I should see the phrase "Decide which court should hear your case"
+    And I tap the "#cGlja19jb3VydF9zdGVw .al_toggle" element and stay on the same page
+    And I should see the phrase "Blue 1"
+    And I should see the phrase "Blue 2"
+    And I should see the phrase "All 1 (yellow)"
+    And I should see the phrase "Red not military"
+    And I should see the phrase "Blue 3"
+    And I should see the phrase "All 2 (yellow)"
+    And I should see the phrase "Blue 4"
+    And I should see the phrase "All 3 (yellow)"
+    And I should see the phrase "Blue 5"
     And I should see the phrase "Learn about uncontested divorces"
     And I should see the phrase "Fill out the forms for an uncontested divorce"
     And I should see the phrase "File the original with your local court"
@@ -130,7 +181,9 @@ Scenario: Row #24
     | var | value | trigger |
     | minor_children | True | |
     | other_case | False | |
-    | residency_and_jurisdiction | True | |
+    | residency | both | |
+    | couple_are_residents | True | |
+    | children_are_residents | True |
     | legal_separation_or_divorce | divorce | |
     | agree_or_settle_kids | do not know | |
     | have_property_and_debt | True | |
@@ -159,10 +212,13 @@ Scenario: Row #26
   And I get to the question id "final screen" with this data:
     | var | value | trigger |
     | minor_children | True | |
-    | other_case | True | |
+    | other_case | False | |
     | ongoing | yes | |
+    | residency | both | |
+    | couple_are_residents | True | |
+    | children_are_residents | False | |
     | military | False  | |
-    | other_state_case | continue | |
+    | continue_despite_no_residency | continue | |
     | legal_separation_or_divorce | divorce | |
     | agree_or_settle_kids | yes | |
     | have_property_and_debt | True | |
@@ -172,6 +228,15 @@ Scenario: Row #26
   # And I take a screenshot
     And I should see the phrase "Your Personal Action Plan for asking the court for an uncontested divorce in Alaska in 8 steps"
     And I should see the phrase "Decide which court should hear your case"
+    And I tap the "#cGlja19jb3VydF9zdGVw .al_toggle" element and stay on the same page
+    And I should see the phrase "Green 1"
+    And I should see the phrase "All 1 (yellow)"
+    And I should see the phrase "Red military"
+    And I should see the phrase "Green 2"
+    And I should see the phrase "All 2 (yellow)"
+    And I should see the phrase "Green 3"
+    And I should see the phrase "All 3 (yellow)"
+    And I should see the phrase "Green 4"
     And I should see the phrase "Learn about uncontested divorces"
     And I should see the phrase "Fill out the forms to start your case"
     And I should see the phrase "File the original with your local court"
@@ -190,7 +255,9 @@ Scenario: Row #29
     | var | value | trigger |
     | minor_children | True | |
     | other_case | False | |
-    | residency_and_jurisdiction | True | |
+    | residency | one | |
+    | couple_are_residents | True | |
+    | children_are_residents | True | |
     | legal_separation_or_divorce | divorce | |
     | agree_or_settle_kids | do not know | |
     | have_property_and_debt | False | |
@@ -219,7 +286,8 @@ Scenario: Row #33
     | minor_children | True | |
     | other_case | True | |
     | ongoing | no | |
-    | residency_and_jurisdiction | False | |
+    | residency | both | |
+    | couple_are_residents | False | |
     | military | True | |
     | continue_despite_no_residency | continue | |
     | legal_separation_or_divorce | divorce | |
@@ -231,6 +299,15 @@ Scenario: Row #33
   # And I take a screenshot
     And I should see the phrase "Your Personal Action Plan for asking the court for an uncontested divorce in Alaska in 7 steps"
     And I should see the phrase "Decide if Alaska is the right state for your case"
+    And I tap the "#cGlja19jb3VydF9zdGVw .al_toggle" element and stay on the same page
+    And I should see the phrase "Green 1"
+    And I should see the phrase "All 1 (yellow)"
+    And I should see the phrase "Red military"
+    And I should see the phrase "Green 2"
+    And I should see the phrase "All 2 (yellow)"
+    And I should see the phrase "Green 3"
+    And I should see the phrase "All 3 (yellow)"
+    And I should see the phrase "Green 4"
     And I should see the phrase "Learn about uncontested divorces"
     And I should see the phrase "Fill out the forms for an uncontested divorce"
     And I should see the phrase "File the original with your local court"
@@ -249,7 +326,9 @@ Scenario: Row #34
     | minor_children | True | |
     | other_case | True | |
     | ongoing | no | |
-    | residency_and_jurisdiction | False | |
+    | residency | one | |
+    | couple_are_residents | True | |
+    | children_are_residents | False | |
     | military | False | |
     | continue_despite_no_residency | continue | |
     | legal_separation_or_divorce | divorce | |
@@ -262,6 +341,15 @@ Scenario: Row #34
   # And I take a screenshot
     And I should see the phrase "Your Personal Action Plan for asking the court for an uncontested divorce in Alaska in 9 steps"
     And I should see the phrase "Decide if Alaska is the right state for your case"
+    And I tap the "#cGlja19jb3VydF9zdGVw .al_toggle" element and stay on the same page
+    And I should see the phrase "Green 1"
+    And I should see the phrase "All 1 (yellow)"
+    And I should see the phrase "Red not military"
+    And I should see the phrase "Green 2"
+    And I should see the phrase "All 2 (yellow)"
+    And I should see the phrase "Green 3"
+    And I should see the phrase "All 3 (yellow)"
+    And I should see the phrase "Green 4"
     And I should see the phrase "Talk to your spouse to see if you agree"
     And I should see the phrase "Learn about uncontested divorces"
     And I should see the phrase "Fill out the forms for an uncontested divorce"
@@ -281,7 +369,8 @@ Scenario: Row #38
     | var | value | trigger |
     | minor_children | True | |
     | other_case | False | |
-    | residency_and_jurisdiction | False | |
+    | residency | both | |
+    | couple_are_residents | False | |
     | military | False | |
     | continue_despite_no_residency | continue | |
     | legal_separation_or_divorce | divorce | |
@@ -293,6 +382,15 @@ Scenario: Row #38
   # And I take a screenshot
     And I should see the phrase "Your Personal Action Plan for asking the court for an uncontested divorce in Alaska in 8 steps"
     And I should see the phrase "Decide if Alaska is the right state for your case"
+    And I tap the "#cGlja19jb3VydF9zdGVw .al_toggle" element and stay on the same page
+    And I should see the phrase "Green 1"
+    And I should see the phrase "All 1 (yellow)"
+    And I should see the phrase "Red not military"
+    And I should see the phrase "Green 2"
+    And I should see the phrase "All 2 (yellow)"
+    And I should see the phrase "Green 3"
+    And I should see the phrase "All 3 (yellow)"
+    And I should see the phrase "Green 4"
     And I should see the phrase "Learn about uncontested divorces"
     And I should see the phrase "Fill out the forms for an uncontested divorce"
     And I should see the phrase "File the original with your local court"
@@ -311,7 +409,9 @@ Scenario: Row #42
     | var | value | trigger |
     | minor_children | True | |
     | other_case | False | |
-    | residency_and_jurisdiction | False | |
+    | residency | one | |
+    | couple_are_residents | True | |
+    | children_are_residents | False | |
     | military | True | |
     | continue_despite_no_residency | continue | |
     | legal_separation_or_divorce | divorce | |
@@ -323,6 +423,15 @@ Scenario: Row #42
   # And I take a screenshot
     And I should see the phrase "Your Personal Action Plan for asking the court for an uncontested divorce in Alaska in 8 steps"
     And I should see the phrase "Decide if Alaska is the right state for your case"
+    And I tap the "#cGlja19jb3VydF9zdGVw .al_toggle" element and stay on the same page
+    And I should see the phrase "Green 1"
+    And I should see the phrase "All 1 (yellow)"
+    And I should see the phrase "Red military"
+    And I should see the phrase "Green 2"
+    And I should see the phrase "All 2 (yellow)"
+    And I should see the phrase "Green 3"
+    And I should see the phrase "All 3 (yellow)"
+    And I should see the phrase "Green 4"
     And I should see the phrase "Learn about uncontested divorces"
     And I should see the phrase "Fill out the forms for an uncontested divorce"
     And I should see the phrase "File the original with your local court"
@@ -341,7 +450,8 @@ Scenario: Row #261
     | var | value | trigger |
     | minor_children | False | |
     | other_case | False | |
-    | residency_and_jurisdiction | True | |
+    | residency | both | |
+    | couple_are_residents | True | |
     | legal_separation_or_divorce | divorce | |
     | married_more_than_2 | False | |
     | pregnant | False | |
@@ -378,6 +488,8 @@ Scenario: Row #264
     | minor_children | False | |
     | other_case | True | |
     | ongoing | yes | |
+    | residency | both | |
+    | couple_are_residents | False | |
     | military | True | |
     | other_state_case | continue | |
     | legal_separation_or_divorce | divorce | |
@@ -390,6 +502,15 @@ Scenario: Row #264
   # And I take a screenshot
     And I should see the phrase "Your Personal Action Plan for asking the court for an uncontested divorce in Alaska in 8 steps"
     And I should see the phrase "Decide which court should hear your case"
+    And I tap the "#cGlja19jb3VydF9zdGVw .al_toggle" element and stay on the same page
+    And I should see the phrase "Green 1"
+    And I should see the phrase "All 1 (yellow)"
+    And I should see the phrase "Red military"
+    And I should see the phrase "Green 2"
+    And I should see the phrase "All 2 (yellow)"
+    And I should see the phrase "Green 3"
+    And I should see the phrase "All 3 (yellow)"
+    And I should see the phrase "Green 4"
     And I should see the phrase "Learn about uncontested divorces"
     And I should see the phrase "Fill out the forms to start your case"
     And I should see the phrase "File the original with your local court"
@@ -409,7 +530,8 @@ Scenario: Row #268
     | minor_children | False | |
     | other_case | True | |
     | ongoing | no | |
-    | residency_and_jurisdiction | True | |
+    | residency | both | |
+    | couple_are_residents | True | |
     | legal_separation_or_divorce | divorce | |
     | married_more_than_2 | True | |
     | agree_or_settle | agree | |
@@ -437,7 +559,8 @@ Scenario: Row #269
     | minor_children | False | |
     | other_case | True | |
     | ongoing | no | |
-    | residency_and_jurisdiction | False | |
+    | residency | both | |
+    | couple_are_residents | False | |
     | military | True | |
     | continue_despite_no_residency | continue | |
     | legal_separation_or_divorce | divorce | |
@@ -449,6 +572,15 @@ Scenario: Row #269
   # And I take a screenshot
     And I should see the phrase "Your Personal Action Plan for asking the court for an uncontested divorce in Alaska in 7 steps"
     And I should see the phrase "Decide if Alaska is the right state for your case"
+    And I tap the "#cGlja19jb3VydF9zdGVw .al_toggle" element and stay on the same page
+    And I should see the phrase "Green 1"
+    And I should see the phrase "All 1 (yellow)"
+    And I should see the phrase "Red military"
+    And I should see the phrase "Green 2"
+    And I should see the phrase "All 2 (yellow)"
+    And I should see the phrase "Green 3"
+    And I should see the phrase "All 3 (yellow)"
+    And I should see the phrase "Green 4"
     And I should see the phrase "Learn about uncontested divorces"
     And I should see the phrase "Fill out the forms for an uncontested divorce"
     And I should see the phrase "File the original with your local court"
@@ -466,7 +598,8 @@ Scenario: Row #271
     | var | value | trigger |
     | minor_children | False | |
     | other_case | False | |
-    | residency_and_jurisdiction | True | |
+    | residency | both | |
+    | couple_are_residents | True | |
     | legal_separation_or_divorce | divorce | |
     | married_more_than_2 | False | |
     | pregnant | True | |
@@ -494,7 +627,8 @@ Scenario: Row #272
     | var | value | trigger |
     | minor_children | False | |
     | other_case | False | |
-    | residency_and_jurisdiction | True | |
+    | residency | one | |
+    | couple_are_residents | True | |
     | legal_separation_or_divorce | divorce | |
     | married_more_than_2 | False | |
     | pregnant | True | |
@@ -524,7 +658,8 @@ Scenario: Row #275
     | var | value | trigger |
     | minor_children | False | |
     | other_case | False | |
-    | residency_and_jurisdiction | True | |
+    | residency | one | |
+    | couple_are_residents | True | |
     | legal_separation_or_divorce | divorce | |
     | married_more_than_2 | True | |
     | agree_or_settle | do not know | |
