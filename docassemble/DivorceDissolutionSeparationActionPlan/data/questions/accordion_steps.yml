@@ -158,7 +158,7 @@ code: |
 
   if (other_case \
         and ((ongoing == 'yes' and (residency_and_jurisdiction or (not residency_and_jurisdiction and other_state_case == 'continue'))) \
-          or (ongoing =='no' and continue_despite_no_residency == 'continue'))) \
+          or (ongoing =='no' and (residency_and_jurisdiction or (not residency_and_jurisdiction and continue_despite_no_residency == 'continue'))))) \
     or (not other_case and (residency_and_jurisdiction or (not residency_and_jurisdiction and continue_despite_no_residency == 'continue'))):
   
   
