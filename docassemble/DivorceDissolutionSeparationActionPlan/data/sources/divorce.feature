@@ -1,9 +1,9 @@
 @divorce
 Feature: User paths
 
-Background:
+Background: 
   Given the maximum seconds for each Step is 45
-  
+
 @row53
 Scenario: Row #53
   Given I start the interview at "Divorce_dissolution_separation_action_plan.yml"
@@ -11,7 +11,9 @@ Scenario: Row #53
     | var                         | value   | trigger | 
     | minor_children              | True    |         | 
     | other_case                  | False   |         | 
-    | residency_and_jurisdiction  | True    |         | 
+    | residency                   | both    |         | 
+    | couple_are_residents        | True    |         | 
+    | children_are_residents      | True    |         | 
     | legal_separation_or_divorce | divorce |         | 
     | agree_or_settle_kids        | no      |         | 
     | know_spouse_whereabouts     | True    |         | 
@@ -41,7 +43,9 @@ Scenario: Row #89
     | var                         | value   | trigger | 
     | minor_children              | True    |         | 
     | other_case                  | False   |         | 
-    | residency_and_jurisdiction  | True    |         | 
+    | residency                   | one     |         | 
+    | couple_are_residents        | True    |         | 
+    | children_are_residents      | True    |         | 
     | legal_separation_or_divorce | divorce |         | 
     | agree_or_settle_kids        | no      |         | 
     | know_spouse_whereabouts     | True    |         | 
@@ -71,7 +75,9 @@ Scenario: Row #148
     | var                         | value        | trigger | 
     | minor_children              | True         |         | 
     | other_case                  | False        |         | 
-    | residency_and_jurisdiction  | True         |         | 
+    | residency                   | both         |         | 
+    | couple_are_residents        | True         |         | 
+    | children_are_residents      | True         |         | 
     | legal_separation_or_divorce | divorce      |         | 
     | agree_or_settle_kids        | no           |         | 
     | know_spouse_whereabouts     | True         |         | 
@@ -104,7 +110,9 @@ Scenario: Row #181
     | var                         | value        | trigger | 
     | minor_children              | True         |         | 
     | other_case                  | False        |         | 
-    | residency_and_jurisdiction  | True         |         | 
+    | residency                   | one          |         | 
+    | couple_are_residents        | True         |         | 
+    | children_are_residents      | True         |         | 
     | legal_separation_or_divorce | divorce      |         | 
     | agree_or_settle_kids        | no           |         | 
     | know_spouse_whereabouts     | False        |         | 
@@ -135,7 +143,9 @@ Scenario: Row #205
     | var                         | value       | trigger | 
     | minor_children              | True        |         | 
     | other_case                  | False       |         | 
-    | residency_and_jurisdiction  | True        |         | 
+    | residency                   | one         |         | 
+    | couple_are_residents        | True        |         | 
+    | children_are_residents      | True        |         | 
     | legal_separation_or_divorce | divorce     |         | 
     | agree_or_settle_kids        | no          |         | 
     | know_spouse_whereabouts     | False       |         | 
@@ -166,7 +176,9 @@ Scenario: Row #240
     | var                         | value       | trigger | 
     | minor_children              | True        |         | 
     | other_case                  | False       |         | 
-    | residency_and_jurisdiction  | True        |         | 
+    | residency                   | both        |         | 
+    | couple_are_residents        | True        |         | 
+    | children_are_residents      | True        |         | 
     | legal_separation_or_divorce | divorce     |         | 
     | agree_or_settle_kids        | no          |         | 
     | know_spouse_whereabouts     | False       |         | 
@@ -199,6 +211,7 @@ Scenario: Row #262
     | minor_children                      | False    |         | 
     | other_case                          | True     |         | 
     | ongoing                             | yes      |         | 
+    | residency                           | none     |         | 
     | military                            | True     |         | 
     | other_state_case                    | continue |         | 
     | legal_separation_or_divorce         | divorce  |         | 
@@ -213,12 +226,22 @@ Scenario: Row #262
 #   | spouse_agrees['end marriage'] | False |  | 
 #   | spouse_agrees['no property']  | True  |  | 
 #   | spouse_agrees['no debt']      | True  |  | 
-    | no_prop_or_debt_agree | False | |
+    | no_prop_or_debt_agree   | False |  | 
     | know_spouse_whereabouts | True  |  | 
     | default_info            | False |  | 
 # And I take a screenshot
     And I should see the phrase "Your Personal Action Plan for asking the court for an uncontested divorce in Alaska in 9 steps"
     And I should see the phrase "Decide which court should hear your case"
+    And I tap the "#cGlja19jb3VydF9zdGVw .al_toggle" element and stay on the same page
+    And I should see the phrase "Blue 1"
+    And I should see the phrase "Blue 2"
+    And I should see the phrase "All 1 (yellow)"
+    And I should see the phrase "Red military"
+    And I should see the phrase "Blue 3"
+    And I should see the phrase "All 2 (yellow)"
+    And I should see the phrase "Blue 4"
+    And I should see the phrase "All 3 (yellow)"
+    And I should see the phrase "Blue 5"
 # And I should see the phrase "Review common situations where there are no marital assets and debts to divide"
     And I should see the phrase "Make sure you do not have marital assets and debts to divide"
     And I should see the phrase "Fill out the forms to start a divorce case"
@@ -240,6 +263,8 @@ Scenario: Row #263Dissolution
     | minor_children                      | False    |         | 
     | other_case                          | True     |         | 
     | ongoing                             | yes      |         | 
+    | residency                           | both     |         | 
+    | couple_are_residents                | False    |         | 
     | military                            | False    |         | 
     | other_state_case                    | continue |         | 
     | legal_separation_or_divorce         | divorce  |         | 
@@ -254,11 +279,21 @@ Scenario: Row #263Dissolution
 #   | spouse_agrees['end marriage'] | False |  | 
 #   | spouse_agrees['no property']  | True  |  | 
 #   | spouse_agrees['no debt']      | True  |  | 
-    | no_prop_or_debt_agree | False | |
+    | no_prop_or_debt_agree   | False |  | 
     | know_spouse_whereabouts | False |  | 
 # And I take a screenshot
     And I should see the phrase "Your Personal Action Plan for asking the court for an uncontested divorce in Alaska in 7 steps"
     And I should see the phrase "Decide which court should hear your case"
+    And I tap the "#cGlja19jb3VydF9zdGVw .al_toggle" element and stay on the same page
+    And I should see the phrase "Blue 1"
+    And I should see the phrase "Blue 2"
+    And I should see the phrase "All 1 (yellow)"
+    And I should see the phrase "Red not military"
+    And I should see the phrase "Blue 3"
+    And I should see the phrase "All 2 (yellow)"
+    And I should see the phrase "Blue 4"
+    And I should see the phrase "All 3 (yellow)"
+    And I should see the phrase "Blue 5"
     And I should see the phrase "Make sure you do not have marital assets and debts to divide"
     And I should see the phrase "File to end your marriage when you do not know where your spouse is, there are no children, and there is no property or debt to divide"
     And I should see the phrase "File the original with your local court"
@@ -275,7 +310,8 @@ Scenario: Row #263Divorce
     | var                                 | value   | trigger | 
     | minor_children                      | False   |         | 
     | other_case                          | False   |         | 
-    | residency_and_jurisdiction          | True    |         | 
+    | residency                           | both    |         | 
+    | couple_are_residents                | True    |         | 
     | legal_separation_or_divorce         | divorce |         | 
     | married_more_than_2                 | False   |         | 
     | pregnant                            | False   |         | 
@@ -289,7 +325,7 @@ Scenario: Row #263Divorce
 #   | spouse_agrees['end marriage'] | False |  | 
 #   | spouse_agrees['no property']  | True  |  | 
 #   | spouse_agrees['no debt']      | True  |  | 
-    | no_prop_or_debt_agree | False | |
+    | no_prop_or_debt_agree | False |  | 
 #   | can_sign_together       | False |  | 
     | know_spouse_whereabouts | False |  | 
 
@@ -309,20 +345,21 @@ Scenario: Row #263Divorce
 Scenario: Row #277
   Given I start the interview at "Divorce_dissolution_separation_action_plan.yml"
     And I get to the question id "final screen" with this data:
-    | var                                 | value   | trigger | 
-    | minor_children                      | False   |         | 
-    | other_case                          | False   |         | 
-    | residency_and_jurisdiction          | True    |         | 
-    | legal_separation_or_divorce         | divorce |         | 
-    | married_more_than_2                 | False   |         | 
-    | pregnant                            | True    |         | 
-    | agree_or_settle                     | no      |         | 
-    | know_spouse_whereabouts             | True    |         | 
-    | wife_is_pregnant                    | husband |         | 
-    | info_on_agree                       | True    |         | 
-    | domestic_violence                   | True    |         | 
-    | default_info                        | True    |         | 
-    | property_for_default                | False   |         | 
+    | var                         | value   | trigger | 
+    | minor_children              | False   |         | 
+    | other_case                  | False   |         | 
+    | residency                   | one     |         | 
+    | couple_are_residents        | True    |         | 
+    | legal_separation_or_divorce | divorce |         | 
+    | married_more_than_2         | False   |         | 
+    | pregnant                    | True    |         | 
+    | agree_or_settle             | no      |         | 
+    | know_spouse_whereabouts     | True    |         | 
+    | wife_is_pregnant            | husband |         | 
+    | info_on_agree               | True    |         | 
+    | domestic_violence           | True    |         | 
+    | default_info                | True    |         | 
+    | property_for_default        | False   |         | 
 # And I take a screenshot
     And I should see the phrase "Your Personal Action Plan for asking the court for a divorce in Alaska in 10 steps"
     And I should see the phrase "Fill out the forms to start a divorce case"
@@ -346,7 +383,8 @@ Scenario: Row #284
     | var                         | value   | trigger | 
     | minor_children              | False   |         | 
     | other_case                  | False   |         | 
-    | residency_and_jurisdiction  | True    |         | 
+    | residency                   | both    |         | 
+    | couple_are_residents        | True    |         | 
     | legal_separation_or_divorce | divorce |         | 
     | married_more_than_2         | False   |         | 
     | pregnant                    | True    |         | 
@@ -377,7 +415,8 @@ Scenario: Row #300
     | var                                 | value   | trigger | 
     | minor_children                      | False   |         | 
     | other_case                          | False   |         | 
-    | residency_and_jurisdiction          | True    |         | 
+    | residency                           | one     |         | 
+    | couple_are_residents                | True    |         | 
     | legal_separation_or_divorce         | divorce |         | 
     | married_more_than_2                 | False   |         | 
     | pregnant                            | False   |         | 
@@ -416,7 +455,8 @@ Scenario: Row #308
     | var                         | value        | trigger | 
     | minor_children              | False        |         | 
     | other_case                  | False        |         | 
-    | residency_and_jurisdiction  | True         |         | 
+    | residency                   | both         |         | 
+    | couple_are_residents        | True         |         | 
     | legal_separation_or_divorce | divorce      |         | 
     | married_more_than_2         | True         |         | 
     | agree_or_settle             | no           |         | 
@@ -446,7 +486,8 @@ Scenario: Row #327
     | var                         | value       | trigger | 
     | minor_children              | False       |         | 
     | other_case                  | False       |         | 
-    | residency_and_jurisdiction  | True        |         | 
+    | residency                   | both        |         | 
+    | couple_are_residents        | True        |         | 
     | legal_separation_or_divorce | divorce     |         | 
     | married_more_than_2         | False       |         | 
     | pregnant                    | True        |         | 
@@ -479,7 +520,8 @@ Scenario: Row #335
     | var                         | value       | trigger | 
     | minor_children              | False       |         | 
     | other_case                  | False       |         | 
-    | residency_and_jurisdiction  | True        |         | 
+    | residency                   | both        |         | 
+    | couple_are_residents        | True        |         | 
     | legal_separation_or_divorce | divorce     |         | 
     | married_more_than_2         | False       |         | 
     | pregnant                    | True        |         | 
