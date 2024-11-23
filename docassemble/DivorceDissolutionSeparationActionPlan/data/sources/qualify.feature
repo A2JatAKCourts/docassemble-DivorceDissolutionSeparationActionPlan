@@ -14,7 +14,7 @@ Scenario: Row #1
     And I should see the phrase "Review your options if a court in another state already ended your marriage"
     And I should see the phrase "Get more information or help"
     And I take a screenshot
-# And I download "divorce_dissolution_separation_action_plan.pdf"
+    And I download "divorce_dissolution_separation_action_plan.pdf"
     And I download "divorce_dissolution_separation_action_plan.docx"
 
 @row2  
@@ -76,7 +76,7 @@ Scenario: Row #4
     And I should see the phrase "Blue 5"
     And I should see the phrase "Get more information or help"
     And I take a screenshot
-# And I download "divorce_dissolution_separation_action_plan.pdf"
+    And I download "divorce_dissolution_separation_action_plan.pdf"
     And I download "divorce_dissolution_separation_action_plan.docx"
 
 @row6  
@@ -105,7 +105,7 @@ Scenario: Row #6
     And I should see the phrase "Green 4"
     And I should see the phrase "Get more information or help"
     And I take a screenshot
-# And I download "divorce_dissolution_separation_action_plan.pdf"
+    And I download "divorce_dissolution_separation_action_plan.pdf"
     And I download "divorce_dissolution_separation_action_plan.docx"
 
 @row8  
@@ -134,7 +134,7 @@ Scenario: Row #8
     And I should see the phrase "Green 4"
     And I should see the phrase "Get more information or help"
     And I take a screenshot
-# And I download "divorce_dissolution_separation_action_plan.pdf"
+    And I download "divorce_dissolution_separation_action_plan.pdf"
     And I download "divorce_dissolution_separation_action_plan.docx"
 
 @row10  
@@ -162,7 +162,7 @@ Scenario: Row #10
     And I should see the phrase "Green 4"
     And I should see the phrase "Get more information or help"
     And I take a screenshot
-# And I download "divorce_dissolution_separation_action_plan.pdf"
+    And I download "divorce_dissolution_separation_action_plan.pdf"
     And I download "divorce_dissolution_separation_action_plan.docx"
 
 @row12  
@@ -190,5 +190,5 @@ Scenario: Row #12
     And I should see the phrase "Green 4"
     And I should see the phrase "Get more information or help"
     And I take a screenshot
-# And I download "divorce_dissolution_separation_action_plan.pdf"
+    And I download "divorce_dissolution_separation_action_plan.pdf"
     And I download "divorce_dissolution_separation_action_plan.docx"
