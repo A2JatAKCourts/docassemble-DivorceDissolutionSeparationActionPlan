@@ -458,7 +458,7 @@ Scenario: Row #261
 # | spouse_agrees['end marriage'] | True | |
 # | spouse_agrees['no property'] | True | |
 # | spouse_agrees['no debt'] | True | |
-# | can_sign_together | True | |  
+# | can_sign_together | True | |
     | no_prop_or_debt_agree | True |  | 
 # And I take a screenshot
     And I should see the phrase "Your Personal Action Plan for asking the court for an uncontested divorce in Alaska in 6 steps"
@@ -538,6 +538,7 @@ Scenario: Row #268
     And I tap the "#cGlja19jb3VydF9zdGVw .al_toggle" element and stay on the same page
     And I should see the phrase "Green 1"
     And I should see the phrase "All 1 (yellow)"
+    And I should see the phrase "Red not military"
     And I should see the phrase "Green 2"
     And I should see the phrase "All 2 (yellow)"
     And I should see the phrase "Green 3"
