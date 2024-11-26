@@ -1,15 +1,5 @@
 comment: |
-  After testing:
-  1. Replace:
-      ${ al_user_bundle.download_list_html() }
-      [get the docx file](${ docx_changing_divorce_order_attachment.docx.url_for() })
-    with:
-      ${ download_buttons_html(al_user_bundle) }
-  2. comment out:
-       script: |
-         <script>
-           Array.from(document.querySelectorAll('.al_collapse_template .collapse')).forEach((elem) => { elem.className += " show" })
-         </script>
+  updated pick a court step template
 ---
 id: final screen
 decoration: pen-to-square
@@ -68,45 +58,120 @@ script: |
 ---
 code: |
   step_list = []
-    # if len(step_list) >= 2:
-    #  pdf_pap_multistep_subtitle = True
-    # images_list = []
-  
   user_need = 'divorce'
   other_party_in_case = 'your spouse'
   domestic_violence_question = ''
   domestic_violence_subquestion = ''
-    
+  
+  minor_children
+
   if other_case and ongoing == 'marriage ended':
     already_divorced
     add_unique_step((review_options_step, "review_options_idx"), step_list)
-    add_unique_step((get_help, "get_help_idx"), step_list)
-  elif other_case and ongoing == 'yes':
-    military
-    add_unique_step((pick_court_step, "pick_court_idx"), step_list)
-  elif other_case and ongoing == 'no' and not residency_and_jurisdiction:
-    military
-    add_unique_step((pick_court_step, "pick_court_idx"), step_list)
-  elif not other_case and not residency_and_jurisdiction:
-    military
-    add_unique_step((pick_court_step, "pick_court_idx"), step_list)
   
-  if (other_case \
-      and (ongoing == 'no' and (residency_and_jurisdiction  \
-        or (not residency_and_jurisdiction and (military or not military) and continue_despite_no_residency == 'continue')) \
-        or (ongoing == 'yes' and other_state_case == 'continue'))) \
-    or (not other_case \
-      and (residency_and_jurisdiction  \
-        or (not residency_and_jurisdiction and (military or not military) and continue_despite_no_residency == 'continue'))):
+  # Nov 15
+  if other_case and ongoing == 'yes':
+    #if residency in('both', 'one'): 
+    #  if residency_and_jurisdiction:
+    #    add_unique_step((pick_court_step, "pick_court_idx"), step_list)
+    #    legal_separation_or_divorce
+    #  else:
+    #    residency_and_jurisdiction = False
+    #    military
+    #    add_unique_step((pick_court_step, "pick_court_idx"), step_list)
+    #    if other_state_case == 'continue':
+    #      legal_separation_or_divorce
+    #if residency == 'none':
+    military
+    add_unique_step((pick_court_step, "pick_court_idx"), step_list)
+    if other_state_case == 'continue':
+      legal_separation_or_divorce
+  
+  #if other_case and ongoing == 'no':
+  # if residency in('both', 'one'): 
+  #   if residency_and_jurisdiction:
+  #     add_unique_step((pick_court_step, "pick_court_idx"), step_list)
+  #     legal_separation_or_divorce
+  #   else:
+  #     military
+  #     add_unique_step((pick_court_step, "pick_court_idx"), step_list)
+  #     if continue_despite_no_residency == 'continue':
+  #       legal_separation_or_divorce
+  # if residency == 'none':
+  #   residency_and_jurisdiction = False
+  #   military
+  #   add_unique_step((pick_court_step, "pick_court_idx"), step_list)
+  #   if continue_despite_no_residency == 'continue':
+  #     legal_separation_or_divorce
 
-    
-    # if not minor_children \
-    #   and legal_separation_or_divorce == 'divorce' and agree_or_settle == 'no prop debt or pregnancy':
-    #   # marriage_date
-    #   wife_is_pregnant = 'not pregnant'
-    #   if no_prop_or_debt_agree:
-    #     know_spouse_whereabouts = True
-    
+  ###### Make other_case and ongoing == 'no', identical to not other_case 2024-11 discussions
+  if not other_case or (other_case and ongoing == 'no'): 
+    if residency in('both', 'one'): 
+      if residency_and_jurisdiction:
+        military = False
+        legal_separation_or_divorce
+      else:
+        if couple_are_residents and not children_are_residents:
+          military = False
+        if not couple_are_residents:
+          military
+        add_unique_step((pick_court_step, "pick_court_idx"), step_list)
+        if continue_despite_no_residency == 'continue':
+          legal_separation_or_divorce
+    if residency == 'none': 
+      # if residency_and_jurisdiction:
+      #   legal_separation_or_divorce
+      # else:
+      military
+      add_unique_step((pick_court_step, "pick_court_idx"), step_list)
+      if continue_despite_no_residency == 'continue':
+        legal_separation_or_divorce
+
+  #  #### older version before residency and jurisdiction edits ####
+  #  if other_case and ongoing == 'marriage ended':
+  #  already_divorced
+  #  add_unique_step((review_options_step, "review_options_idx"), step_list)
+  #  add_unique_step((get_help, "get_help_idx"), step_list)
+  #elif other_case and ongoing == 'yes':
+  #  military
+  #  add_unique_step((pick_court_step, "pick_court_idx"), step_list)
+  #elif other_case and ongoing == 'no' and not residency_and_jurisdiction:
+  #  military
+  #  add_unique_step((pick_court_step, "pick_court_idx"), step_list)
+  #elif not other_case and not residency_and_jurisdiction:
+  #  military
+  #  add_unique_step((pick_court_step, "pick_court_idx"), step_list)
+  
+  # if (other_case \
+  #     and (ongoing == 'no' and (residency_and_jurisdiction  \
+  #       or (not residency_and_jurisdiction and (military or not military) and continue_despite_no_residency == 'continue')) \
+  #       or (ongoing == 'yes' and other_state_case == 'continue'))) \
+  #   or (not other_case \
+  #     and (residency_and_jurisdiction  \
+  #       or (not residency_and_jurisdiction and (military or not military) and continue_despite_no_residency == 'continue'))):
+  #   
+
+  # if (other_case  \
+  #     and ((ongoing in('yes', 'no') and residency in('both', 'one') and residency_and_jurisdiction) \
+  #       or (ongoing in('yes', 'no') and residency in('both', 'one') and not residency_and_jurisdiction and other_state_case == 'continue') \
+  #       or (ongoing =='yes' and residency == 'none' and other_state_case == 'continue') \
+  #       or (ongoing =='no' and residency == 'none' and continue_despite_no_residency == 'continue')))\
+  #   or (not other_case \
+  #     and((residency in('both', 'one') and residency_and_jurisdiction) \
+  #       or (residency in('both', 'one') and not residency_and_jurisdiction and continue_despite_no_residency == 'continue') \
+  #       or (residency == 'none' and continue_despite_no_residency == 'continue'))):
+
+  # if (other_case \
+  #       and ((ongoing == 'yes' and (residency_and_jurisdiction or (not residency_and_jurisdiction and other_state_case == 'continue'))) \
+  #         or (ongoing =='no' and (residency_and_jurisdiction or (not residency_and_jurisdiction and continue_despite_no_residency == 'continue'))))) \
+  #   or (not other_case and (residency_and_jurisdiction or (not residency_and_jurisdiction and continue_despite_no_residency == 'continue'))):
+
+  if (other_case \
+        and ((ongoing == 'yes' and other_state_case == 'continue') \
+          or (ongoing == 'no' and (residency_and_jurisdiction or (not residency_and_jurisdiction and continue_despite_no_residency == 'continue'))))) \
+  or (not other_case and (residency_and_jurisdiction or (not residency_and_jurisdiction and continue_despite_no_residency == 'continue'))):
+  
+  
     # quick uncontested divorce
     if not minor_children \
       and legal_separation_or_divorce == 'divorce' and not married_more_than_2 and not pregnant and property_division.all_true():
@@ -339,56 +404,125 @@ subject: |
   if Alaska is the right state for your case
   % endif
 content: |
-  
   % if other_case and ongoing == 'yes':
-   <div class="step-subheading">Background</div>
-  Only one state court can end a marriage.  If you and your spouse have an open case to end your marriage in another state, and you file a case in Alaska, one of the courts will close their case. 
+  <div class="step-subheading">Blue 1</div>
+   Only one state court can end a marriage.  If you and your spouse have an open case to end your marriage in another state, and you file a case in Alaska, one of the courts will close their case.
+  % endif 
+  % if (not other_case or (other_case and ongoing == 'no')) and residency == 'none':
+  <div class="step-subheading">Pink</div>
+  If neither you or your spouse live in Alaska, the Alaska court may not be able to end your marriage or enter all the necessary orders. If you both agree to an Alaska case, there are some things the court can do because you agree.
+  % if minor_children:
+  There are some things the court may not be able to do even if you agree, like enter a parenting plan custody order.
+  % endif
+  Jurisdiction can be very complicated and you should [talk to a lawyer](https://courts.alaska.gov/shc/shclawyer.htm).
+  % endif
+  % if other_case and ongoing == 'yes':
+  <div class="step-subheading">Blue 2</div>
   To decide the correct state for your case, the courts will look at:
   
   *	both spouses' "residency" and
   *	which court has the authority, called "jurisdiction", to end the marriage.
-  
-   <div class="step-subheading">Check if there is residency and jurisdiction in Alaska</div>
   % endif
-  There is a residency requirement in Alaska.  Generally, you meet the residency requirement for the court to end your marriage if either 
-  % if military:
-  you or your spouse are serving in the military and are continuously stationed at a military base in Alaska for at least 30 days, or
-  % endif
-  you or your spouse are in Alaska and intend to stay as a resident.
+
   
+  % if not other_case or (other_case and ongoing == 'no'):
+  <div class="step-subheading">Green 1</div>
+  To decide if Alaska is the correct state for your case, the court will look at:
+  
+  *	both spouses' "residency" and
+  *	if the Alaska court has the authority, called "jurisdiction," to enter the necessary court orders.
+  % endif
+  
+  <div class="step-subheading">All 1 (yellow)</div>
+  <div class="step-subheading">The court's power to grant a divorce is based on residency</div>
+  If the court cannot take other actions, the court may also decide not to grant your divorce.
+  % if not residency_and_jurisdiction and military:
+  <div class="step-subheading">Red military</div>
+  There are 3 options for where a military member or spouse can file a divorce case:
+    
+    * The state where the military member or spouse is stationed. If you or your spouse are serving in the military and are continuously stationed at a military base in Alaska for at least 30 days, you can file for a divorce.
+    * The state where the spouse is a resident. When filing for divorce or dissolution in Alaska, the spouse is generally an Alaska resident if the spouse is in Alaska and plans to stay.
+    * The state where the military member claims legal residency (place where military member plans to live after discharge or retirement).
+
+  Although either spouse may file for divorce in any of these locations, the court may not have the authority, called "jurisdiction," to take other actions. If the court cannot take other actions, the court may also decide not to grant your divorce.
+  % endif
+  % if residency_and_jurisdiction or (not residency_and_jurisdiction and not military):
+  <div class="step-subheading">Red not military</div>
+  You may file to end your marriage in Alaska as long as you or your spouse is an Alaska resident. When filing for divorce or dissolution, you are generally an Alaska resident if you are in Alaska and plan to stay.
+
+  If you or your spouse meets this residency requirement, an Alaska court generally can grant you a divorce and end your marriage.  But if your spouse does not live in Alaska, the court may not have the authority, called "jurisdiction", to take other actions.
+  
+  If the court cannot take other actions, the court may also decide not to grant your divorce.
+  % endif
+  <div class="step-subheading">The court's power to divide property and debt
   % if minor_children:
-  To enter a parenting plan, a child support order, or divide marital property and debt, the court also needs authority called “jurisdiction.”
-  
-  Children: Generally, only the court in the state where the child has lived for the last 6 months has jurisdiction to make decisions, enter a parenting plan, or order child support.  This is called the child’s "home state."
-  
-  Spouses: Generally, the court has jurisdiction if a married couple lived in Alaska for at least 6 months in a row within the 6 years before filing for divorce.
-  
-  Jurisdiction and residency can be very complicated.  For example, if a baby is less than 6 months old and has moved between states, there may not be a “home state.”  This is one example of an exception when the Alaska court may be able to decide issues about a child that hasn’t lived here for 6 months.
-  Similarly,
-  % else:
-  To divide marital property and debt, the court also needs authority called “jurisdiction.” Generally, the court has jurisdiction if a married couple lived in Alaska for at least 6 months in a row within the 6 years before filing for divorce.
-  
-  Jurisdiction and residency can be very complicated. For example,
+  and enter a parenting plan or custody order
   % endif
-   if you have property such as a home outside Alaska, the court may not have the authority to enforce any orders about that property if problems arise after the final order.
-   
-  % if defined('residency_and_jurisdiction') and not residency_and_jurisdiction:
-  If the Alaska court has residency and jurisdiction, you can start your case in Alaska, but only one state court can end your marriage.  If you and your spouse disagree about which state, the courts will decide which case to close after hearing both side's arguments.  The decision generally depends on each state's residency and jurisdiction laws.
+  is based on the court's authority, called "jurisdiction"</div>
+  % if not other_case or (other_case and ongoing == 'no'):
+  <div class="step-subheading">Green 2</div>
+  The Alaska court may not have the authority, called “jurisdiction” over all issues in your case.  
+  Examples where the court may be able to grant you a divorce and end your marriage, but not address other issues, or may dismiss your case:
+  % endif
+  % if other_case and ongoing == 'yes':
+  <div class="step-subheading">Blue 3</div>
+  When deciding which court should hear a divorce case, both courts will look at which court has the authority, called “jurisdiction” over the issues in your case.
+  Examples of jurisdiction for deciding which court should hear a case:
+  % endif
+  
+  <div class="step-subheading">All 2 (yellow)</div>
+  % if minor_children:
+    * Children need to live in Alaska for six months before you start your divorce case.  There are some exceptions, but generally if the child has not been in Alaska for 6 months, the court cannot enter a parenting plan custody order.
+  % endif
+    * If your spouse has not lived with you, while married, for 6 months in the last 6 years, the court may not be able to divide your marital property and debt.
+    * If you have property such as a home outside Alaska, the court may not have the authority to enforce orders about that property.
+  
+  % if not other_case or (other_case and ongoing == 'no'):
+  <div class="step-subheading">Green 3</div>
+  Jurisdiction is a very complicated subject and you should [talk to a lawyer](https://courts.alaska.gov/shc/shclawyer.htm) if you are not sure whether Alaska is the right place to file your case.
+  If you file a case in Alaska and your spouse disagrees that Alaska has jurisdiction, they may file a motion to dismiss the case.
+  If the court finds it does not have jurisdiction, it might dismiss your case.
+  % endif
+
+  % if other_case and ongoing == 'yes':
+  <div class="step-subheading">Blue 4</div>
+  You can start your case in Alaska, but only one state court can end your marriage. 
+  
+  If you and your spouse disagree about which state, the courts will decide which case to close after hearing both side's arguments about residency and jurisdiction. 
+  
+  The decision generally depends on each state's residency and jurisdiction laws.  
+  
+  You should [talk to a lawyer](https://courts.alaska.gov/shc/shclawyer.htm) if you are not sure whether Alaska is the right place to file your case
+  % endif
+
+  <div class="step-subheading">All 3 (yellow)</div>
+  Read about [Residency and jurisdiction](https://courts.alaska.gov/shc/family/shcstart.htm#residency) 
+
+  % if other_case and ongoing == 'yes':
+  <div class="step-subheading">Blue 5</div>
   <div class="step-subheading">To start a case in Alaska: file a complaint in Alaska and ask the court in the other state to close its case</div>
   **Fill out and file a complaint**
-  Fill out and file a Complaint form and tell the court what you want to happen in the divorce.
-  If you need information about filling out and filing a Complaint, return to the Guided Assist page and start over.  If you want to save this Action Plan, be sure to download, save, or print it.  
-  **Ask the other state to close its case**
-  You will have to ask the court in the other state to close its case.  Talk to a lawyer in the other state or search the Internet to learn about that state's self-help resources and forms.
-  **What to expect if you start a case in Alaska**
-  Every case is different, but sometimes it is clear only one of the courts has jurisdiction over the case.  When this happens, one state court may close its case.
-  If it is not clear, the Alaska court will often hold a hearing and call the other court to talk about which case will move forward. 
-  It is important to pay attention to what is happening in both cases until you know which state will decide the case.
-  Jurisdiction can be very complicated.  Talking to a lawyer can help you decide which is the best state for your case.
-  % else:
   
-  If your spouse has never been to Alaska or no longer lives in Alaska, it is possible he or she will ask the court to dismiss the case.  If the court finds it does not have jurisdiction, it might dismiss your case.  If you have any questions about whether Alaska is the right place for your case, you may want to talk to a lawyer. Review the options below to get more information or help.
+  Fill out and file a Complaint form and tell the court what you want to happen in the divorce.
+
+  % if (defined('other_state_case') and other_state_case == 'stop'):
+  If you need information about filling out and filing a Complaint, go [Back](#){.daquestionbackbutton} and pick "continue answering questions."
   % endif
+  
+  If you want to save this Action Plan, you can download it, or view and print it.
+
+  <div class="step-subheading">What to expect if you start a case in Alaska</div>
+  Every case is different, but sometimes it is clear only one of the courts has jurisdiction over the case. When this happens, one state court may close its case.
+
+  If it is not clear, the Alaska court will often hold a hearing and call the other court to talk about which case will move forward.
+
+  It is important to pay attention to what is happening in both cases until you know which state will decide the case.
+  % endif
+  % if (defined('continue_despite_no_residency') and continue_despite_no_residency == 'stop'):
+  <div class="step-subheading">Green 4</div>
+  If you need information about filling out and filing a Complaint, go [Back](#){ .daquestionbackbutton} and pick "continue answering questions..."
+  % endif
+  
 ---
 template: talk_to_spouse_step
 subject: |
@@ -429,7 +563,11 @@ content: |
   *	Explore creative solutions.
   *	Reach acceptable agreements.
   
-   Spouses can hire their own private mediators to help resolve any issue in the case.  If there was abuse or domestic violence in your marriage, be sure to hire someone with training and experience working with domestic violence, and tell your mediator if you want to bring a trusted support person with you.  [Read about mediation](http://www.courts.alaska.gov/mediation/index.htm).
+   Spouses can hire their own private mediators to help resolve any issue in the case.  If there was abuse or domestic violence in your marriage, be sure to hire someone with training and experience working with domestic violence, and tell your mediator if you want to bring a trusted support person with you.  
+  
+  [Read about mediation](http://www.courts.alaska.gov/mediation/index.htm).
+  
+  [Find a private mediator](https://www.alaskamediators.org/directory) on the Professional Mediators of  Alaska website. 
    
   <div class="step-subheading">Collaborative Law</div>
   The [Alaska Association of Collaborative Professionals](https://www.alaskacollaborative.org/) helps people resolve divorce cases outside of the court process without a judge making decisions.
@@ -438,7 +576,7 @@ content: |
   Watch [a short video that discusses resolving your case](https://youtu.be/4EuW9HET3nM) by reaching agreement with your spouse.  It discusses mediation and settlement conferences which may be available to you using free court programs once you file your case.
   
   <div class="step-subheading">Talk to a lawyer</div>
-  It is a good idea to get legal advice by talking to an attorney about an agreement. Both spouses need to understand how agreeing to each issue affects the other issues in the agreement. If you agree to something without thinking it through, there can be serious and long-standing consequences. Once a judge signs off on your agreement, it will be a binding court order that outlines each spouses’ responsibilities and rights regarding the issues in the case.
+  It is a good idea to get legal advice by talking to an attorney about an agreement. Both spouses need to understand how agreeing to each issue affects the other issues in the agreement. If you agree to something without thinking it through, there can be serious and long-standing consequences. Once a judge signs off on your agreement, it will be a binding court order that outlines each spouses' responsibilities and rights regarding the issues in the case.
   
   *	Many lawyers offer free or flat fee consultations without having to hire them for the whole case.  [Find a lawyer](http://courts.alaska.gov/shc/shclawyer.htm).
   *	Depending on your income, you may qualify for [free legal answers](https://alaska.freelegalanswers.org).  
@@ -503,13 +641,13 @@ content: |
   <div class="step-subheading">Very short marriage</div>
   Short marriages often result in each spouse keeping their own possessions and debts as if they had never gotten married.  This is common with marriages of 2 years or less if the couple did not buy a house together or save any significant money.  However, sometimes even in short marriages the spouses have bought expensive items like a home or taken on a lot of debt that needs to be divided.
   <div class="step-subheading">Very long separation</div>
-   Sometimes spouses have been separated many months or years and have divided all their property and money; paid or split up debt; taken each other’s names off bank accounts, credit cards, utilities, titles, etc.; and sold large joint property like houses.  If the division was fair, these couples may not need to divide anything else.
+   Sometimes spouses have been separated many months or years and have divided all their property and money; paid or split up debt; taken each other's names off bank accounts, credit cards, utilities, titles, etc.; and sold large joint property like houses.  If the division was fair, these couples may not need to divide anything else.
 ---
 template: do_not_have_common_step
 subject: |
   Step ${ do_not_have_common_idx }: Make sure you do not have marital assets and debts to divide
 content: |
-  When people get a divorce, the court signs an order dividing all the marital property.  Marital property is anything earned or bought during the marriage.  This commonly includes houses, land, vehicles, money, retirement accounts, pensions, household goods, furniture, snowmachines, four-wheelers and each spouse’s personal property. 
+  When people get a divorce, the court signs an order dividing all the marital property.  Marital property is anything earned or bought during the marriage.  This commonly includes houses, land, vehicles, money, retirement accounts, pensions, household goods, furniture, snowmachines, four-wheelers and each spouse's personal property. 
 
   Generally, the following are not considered marital property so the court will not divide them, unless one spouse did something that changed the separate property to marital:
   
@@ -534,10 +672,10 @@ content: |
   % if minor_children:
   , parenting plan including decision-making and schedule, paternity, and child support
   % endif
-  ) you can both sign forms to ask for a “dissolution” or “uncontested divorce.” 
+  ) you can both sign forms to ask for a "dissolution" or "uncontested divorce." 
   * Asking for a dissolution or uncontested divorce means you and your spouse agree on what will happen.  You do not have a trial.  Most courts will set a hearing to ask you about the agreement and make sure 
   % if minor_children:
-  the parenting plan is in the children’s best interest and 
+  the parenting plan is in the children's best interest and 
   % endif
   that the property and debt division is fair. 
 
@@ -645,14 +783,14 @@ content: |
   
   *	**Child Support Order**, [DR-300](https://public.courts.alaska.gov/web/forms/docs/dr-300.pdf)
   * **Finding of Fact and Conclusions of Law & Decree of Divorce**, [DR- 800 & 805](https://public.courts.alaska.gov/web/forms/docs/dr-800-805.pdf)
-  Fill out the “Findings of Fact” section
+  Fill out the "Findings of Fact" section
   % if not have_property_and_debt:
   
   *	**Decree and Judgment, SHC-525** [Word](https://www.courts.alaska.gov/shc/family/docs/shc-525.doc) | [PDF](https://www.courts.alaska.gov/shc/family/docs/shc-525n.pdf)
   % endif
   % else:
   
-  *	**Finding of Fact and Conclusions of Law, SHC-540** [Word](http://www.courts.alaska.gov/shc/family/docs/shc-540.doc) | [PDF](http://www.courts.alaska.gov/shc/family/docs/shc-540n.pdf) (fill out the “Findings of Fact” section)
+  *	**Finding of Fact and Conclusions of Law, SHC-540** [Word](http://www.courts.alaska.gov/shc/family/docs/shc-540.doc) | [PDF](http://www.courts.alaska.gov/shc/family/docs/shc-540n.pdf) (fill out the "Findings of Fact" section)
   *	**Decree and Judgment, SHC-545** [Word](https://www.courts.alaska.gov/shc/family/docs/shc-545.doc) | [PDF](https://www.courts.alaska.gov/shc/family/docs/shc-545n.pdf)
   % endif
   
@@ -666,7 +804,7 @@ content: |
   * **Joint Motion, Affidavit & Order to Bifurcate Divorce for Custody, SHC-155** [Word](http://courts.alaska.gov/shc/family/docs/shc-155.docx) | [PDF](http://courts.alaska.gov/shc/family/docs/shc-155n.pdf)</br>
   Do **not** sign the order section.
   % else:
-  If a wife is pregnant when a marriage ends, the law considers the husband to be the father.  If the husband is not the father, the court can remove the husband’s rights and responsibilities for that child.  This is called “disestablishing paternity.”  You can ask the court to divorce you before the child is born, and deal with the paternity after by filing:
+  If a wife is pregnant when a marriage ends, the law considers the husband to be the father.  If the husband is not the father, the court can remove the husband's rights and responsibilities for that child.  This is called "disestablishing paternity."  You can ask the court to divorce you before the child is born, and deal with the paternity after by filing:
   
   *	**Joint Request to Bifurcate Divorce and Decide Paternity After Birth, DR-525 [[Fill-in PDF](https://public.courts.alaska.gov/web/forms/docs/dr-525.pdf)]<br>
   and
@@ -678,7 +816,7 @@ content: |
   % if minor_children and paternity in('yes','do not know'):
   <div class="step-subheading">Paternity form</div>
   
-  If the husband is not the biological or adopted father of a child born during the marriage you can ask the court to remove the husband’s rights and responsibilities for that child. This is called “disestablishing paternity.” Use:
+  If the husband is not the biological or adopted father of a child born during the marriage you can ask the court to remove the husband's rights and responsibilities for that child. This is called "disestablishing paternity." Use:
   
   * **Three-Way Affidavit to Disestablish and Establish Paternity, SHC-151** [Word](http://courts.alaska.gov/shc/family/docs/shc-151.doc) | [PDF](http://courts.alaska.gov/shc/family/docs/shc-151n.pdf). This can be filled out by:
   
@@ -745,7 +883,7 @@ content: |
     
     *	If you believe that:
     
-      * Posting on the Alaska Court System’s legal notice website is not the best way to give notice to your spouse, and
+      * Posting on the Alaska Court System's legal notice website is not the best way to give notice to your spouse, and
       * e-mail, posting on social networking accounts, or some other method of notice would be more likely to give notice to your spouse, 
       
   note that on the **Affidavit of Diligent Inquiry**.
@@ -785,7 +923,7 @@ content: |
   % if not know_spouse_whereabouts:
   * **Request to Serve Defendant by Posting or Alternative Service, and Affidavit of Diligent Inquiry, CIV-145** [[Fill-in PDF](https://public.courts.alaska.gov/web/forms/docs/civ-145.pdf)].
   % endif
-  * If you think your spouse might not respond to your case, which is called “default,” file: **Property & Debt Worksheet, SHC-1000** [Word](http://courts.alaska.gov/shc/family/docs/shc-1000.doc) | [PDF](http://courts.alaska.gov/shc/family/docs/shc-1000n.pdf)
+  * If you think your spouse might not respond to your case, which is called "default," file: **Property & Debt Worksheet, SHC-1000** [Word](http://courts.alaska.gov/shc/family/docs/shc-1000.doc) | [PDF](http://courts.alaska.gov/shc/family/docs/shc-1000n.pdf)
 
   % if wife_is_pregnant in('husband', 'not husband'):
 
@@ -803,7 +941,7 @@ content: |
   1 parent files the motion on their own and the other parent will be able to file a response if they do not agree the divorce should move ahead before the child is born.<br>
   Do **not** sign the order section.
   % else:
-  If a wife is pregnant when a marriage ends the law considers the husband to be the father.  If the husband is not the father, the court can remove the husband’s rights and responsibilities for that child.  This is called “disestablishing paternity.”
+  If a wife is pregnant when a marriage ends the law considers the husband to be the father.  If the husband is not the father, the court can remove the husband's rights and responsibilities for that child.  This is called "disestablishing paternity."
 
   You usually cannot disestablish paternity before a child is born. You can file a motion asking the court to divorce you and deal with paternity after the child is born.
 
@@ -818,7 +956,7 @@ content: |
     
   % if minor_children and paternity in('yes', 'do not know'):
   <div class="step-subheading">Paternity Forms</div>
-  If a parent thinks the husband is not the biological or adopted father of a child born during the marriage, that parent can ask the court to remove the husband’s rights and responsibilities for that child. This is called “disestablishing paternity.”  You need clear and convincing evidence. There are different ways to do this depending on the facts of the situation. Every case is different so you need to figure out what will work in your case. Some options are:
+  If a parent thinks the husband is not the biological or adopted father of a child born during the marriage, that parent can ask the court to remove the husband's rights and responsibilities for that child. This is called "disestablishing paternity."  You need clear and convincing evidence. There are different ways to do this depending on the facts of the situation. Every case is different so you need to figure out what will work in your case. Some options are:
     * All of the people involved in the case sign an affidavit, the **Three-Way Affidavit to Disestablish and Establish Paternity, SHC-151** [Word](http://courts.alaska.gov/shc/family/docs/shc-151.doc) | [PDF](http://courts.alaska.gov/shc/family/docs/shc-151n.pdf). This can be filled out by:
 
     * The mother, the husband, and the man who is the father stating the husband is **not** the father and that the man is the biological father.
@@ -923,7 +1061,7 @@ content: |
   
   % else:
   
-  If a wife is pregnant when spouses legally separate the law considers the husband to be the father. If the husband is not the father, the court can remove the husband’s rights and responsibilities for that child.  This is called “disestablishing paternity.” You can ask the court to legally separate you before the child is born, and deal with the paternity after by filing:
+  If a wife is pregnant when spouses legally separate the law considers the husband to be the father. If the husband is not the father, the court can remove the husband's rights and responsibilities for that child.  This is called "disestablishing paternity". You can ask the court to legally separate you before the child is born, and deal with the paternity after by filing:
 
   * **Joint Motion, Affidavit and Order to Bifurcate Legal Separation for Subsequent Determination of Paternity, SHC-153a**
   Call the [Family Law Self-Help Center](https://courts.alaska.gov/shc/family/shcabout.htm#1c) for this form 
@@ -938,7 +1076,7 @@ content: |
   % if minor_children and paternity == 'yes':
 
   <div class="step-subheading">Paternity form</div>
-  If the husband is not the biological or adopted father of a child born during the marriage you can ask the court to remove the husband’s rights and responsibilities for that child. This is called “disestablishing paternity.” Use: 
+  If the husband is not the biological or adopted father of a child born during the marriage you can ask the court to remove the husband's rights and responsibilities for that child. This is called "disestablishing paternity." Use: 
 
   * **Three-Way Affidavit to Disestablish and Establish Paternity, SHC-151** 
   as a [Word](http://courts.alaska.gov/shc/family/docs/shc-151.doc) file
@@ -974,7 +1112,6 @@ template: legal_separation_do_not_agree_step
 subject: |
   Step ${ legal_separation_do_not_agree_idx }: Fill out the forms to start a legal separation case
 content: |
-  content: |
   You get your case number when you file your documents with the court.  Write the case number on your forms when you file them.
   <div class="step-subheading">Required forms</div>
   % if minor_children or wife_is_pregnant in('husband', 'not husband'):
@@ -1053,7 +1190,7 @@ content: |
   % else:
   If a wife is pregnant when spouses become legally separated, the law considers the husband to be the father.  
   
-  If the husband is not the father, the court can remove the husband’s rights and responsibilities for that child.  This is called “disestablishing paternity.”
+  If the husband is not the father, the court can remove the husband's rights and responsibilities for that child.  This is called "disestablishing paternity."
   
   You usually cannot disestablish paternity before a child is born. You can file a motion that asks the court to legally separate you and deal with paternity after the child is born. There is no guarantee the judge will grant your motion. The decision depends on if delaying your legal separation until after the child is born will harm one of the spouses.
   
@@ -1077,7 +1214,7 @@ content: |
 
   % if minor_children and paternity in('yes','do not know'):
   <div class="step-subheading">Paternity form</div>
-  If a parent thinks the husband is not the biological or adopted father of a child born during the marriage, that parent can ask the court to remove the husband’s rights and responsibilities for that child.   This is called “disestablishing paternity.”  You need clear and convincing evidence. There are different ways to do this depending on the facts of the situation. Every case is different so you need to figure out what will work in your case. Some options are:
+  If a parent thinks the husband is not the biological or adopted father of a child born during the marriage, that parent can ask the court to remove the husband's rights and responsibilities for that child.   This is called "disestablishing paternity."  You need clear and convincing evidence. There are different ways to do this depending on the facts of the situation. Every case is different so you need to figure out what will work in your case. Some options are:
 
     * All of the people involved in the case sign affidavits: **Three-Way Affidavit to Disestablish and Establish Paternity, SHC-151** 
     as a [Word](http://courts.alaska.gov/shc/family/docs/shc-151.doc) file
@@ -1108,7 +1245,7 @@ content: |
   as a [Word](http://www.courts.alaska.gov/shc/family/docs/shc-1342.doc) file
   as a [PDF](http://www.courts.alaska.gov/shc/family/docs/shc-1342n.pdf)
   Do **not** sign the Order section.
-  * If you think your spouse might not respond to your case, which is called “default,” file: **Property & Debt Worksheet, SHC-1000** [Word](http://courts.alaska.gov/shc/family/docs/shc-1000.doc) | [PDF](http://courts.alaska.gov/shc/family/docs/shc-1000n.pdf)
+  * If you think your spouse might not respond to your case, which is called "default," file: **Property & Debt Worksheet, SHC-1000** [Word](http://courts.alaska.gov/shc/family/docs/shc-1000.doc) | [PDF](http://courts.alaska.gov/shc/family/docs/shc-1000n.pdf)
 ---
 template: paternity_testing_step
 subject: |
@@ -1163,7 +1300,7 @@ subject: |
     Learn about abuse or domestic violence 
     % if not minor_children:
     % if (legal_separation_or_divorce == 'divorce' and agree_or_settle == 'no' and info_on_agree == False) \
-        or ( legal_separation_or_divorce == 'divorce' and agree_or_settle == 'no prop debt or pregnancy' and no_prop_or_debt_agree == False) \
+        or (legal_separation_or_divorce == 'divorce' and agree_or_settle == 'no prop debt or pregnancy' and no_prop_or_debt_agree == False) \
         or (legal_separation_or_divorce == 'legal separation' and agree_or_settle_kids == 'no'):
     resources 
     % else:
@@ -1182,7 +1319,7 @@ content: |
   People who have experienced domestic violence can be at greater risk when they separate from their spouse or start a court case to end the marriage.  During this time, safety is very important.  The dynamics in a relationship with domestic violence may also cause people to feel pressured to agree to something they do not want.  If this is your situation, these resources may help:
   
   *	Find a domestic violence program in your area to learn about what services they offer (counseling, financial assistance, housing and safe shelter, resources for children, and help with court).
-  *	You can get information about asking the court for a protective order by answering more questions.  If you want to save this Action Plan, be sure to download, save, or print it.  then return to the Guided Assist page and use the Guided Assist search box to find ""Protective Orders.”
+  *	You can get information about asking the court for a protective order by answering more questions.  If you want to save this Action Plan, be sure to download, save, or print it.  then return to the Guided Assist page and use the Guided Assist search box to find "Protective Orders."
     *	See if You Qualify For A Free Lawyer Through Your Local Domestic Violence Program.
     *	See if You Qualify For A Free Lawyer Through Alaska Legal Services.
   % if not minor_children:
@@ -1193,7 +1330,7 @@ content: |
   
       * the domestic violence does not make either spouse uncomfortable or afraid to ask for what they want in the property & debt division;
       * if the domestic violence does make a spouse uncomfortable or afraid, provisions are used to make the process of trying to reach an agreement feel safer (having a support person present, having a mediator or a trusted third person help with discussions, not meeting in-person, meeting in different rooms, or talking about an agreement through email, text or telephone);
-      * one spouse’s main goal is to finish the case and be done in a safe manner so they are willing to give up some things in the agreement that they may be entitled to under the law.
+      * one spouse's main goal is to finish the case and be done in a safe manner so they are willing to give up some things in the agreement that they may be entitled to under the law.
   
   You can decide whether you are comfortable trying to reach an agreement with your spouse based on the facts and circumstances of your case.
   % endif
@@ -1203,7 +1340,7 @@ content: |
 
   * the domestic violence does not make either spouse uncomfortable or afraid to ask for what they want in the property & debt division;
   * if the domestic violence does make a spouse uncomfortable or afraid, provisions are used to make the process of trying to reach an agreement feel safer (having a support person present, having a mediator or a trusted third person help with discussions, not meeting in-person, meeting in different rooms, or talking about an agreement through email, text or telephone);
-  * one spouse’s main goal is to finish the case and be done in a safe manner so they are willing to give up some things in the agreement that they may be entitled to under the law.
+  * one spouse's main goal is to finish the case and be done in a safe manner so they are willing to give up some things in the agreement that they may be entitled to under the law.
   
   You can decide whether you are comfortable trying to reach an agreement with your spouse based on the facts and circumstances of your case. As explained below, if you want to try to reach an agreement with your spouse about the parenting plan, your options may be limited if there has been domestic violence.
   
@@ -1213,7 +1350,7 @@ content: |
   <div class="step-subheading">How domestic violence affects a custody case</div> 
   % endif
   
-  * The law presumes that a parent with a ""history of domestic violence"" not get custody or unsupervised visitation unless he or she meets certain requirements. These may include completing a batterer’s intervention or substance abuse treatment program.
+  * The law presumes that a parent with a ""history of domestic violence"" not get custody or unsupervised visitation unless he or she meets certain requirements. These may include completing a batterer's intervention or substance abuse treatment program.
   * A "history of domestic violence" is defined by the law as either one incident of domestic violence that caused serious physical injury, or more than one incident. The 
   % if agree_or_settle_kids in('yes', 'do not know'):
   parent's 
@@ -1232,11 +1369,11 @@ content: |
   % else:
   <div class="step-subheading">Contact between parent and children</div>
   % endif
-  If you think the other parent should not have any contact with your children, you will need to convince the judge that it is in the children’s best interest. Generally, it is unusual for a judge in a divorce or custody case to decide that a parent cannot see his or her children. There is research that shows it is important for children to have a relationship with both parents if it can happen in a safe manner. If the judge finds the domestic violence presumption applies, the judge will usually permit supervised contact between the parent and the children while the parent is completing a batterer’s intervention or substance abuse treatment program. After the parent finishes the program and any other requirements the judge ordered, the judge may lift the supervision restriction and allow a different parenting schedule.
+  If you think the other parent should not have any contact with your children, you will need to convince the judge that it is in the children's best interest. Generally, it is unusual for a judge in a divorce or custody case to decide that a parent cannot see his or her children. There is research that shows it is important for children to have a relationship with both parents if it can happen in a safe manner. If the judge finds the domestic violence presumption applies, the judge will usually permit supervised contact between the parent and the children while the parent is completing a batterer's intervention or substance abuse treatment program. After the parent finishes the program and any other requirements the judge ordered, the judge may lift the supervision restriction and allow a different parenting schedule.
   % if agree_or_settle_kids == 'no':
   <div class="step-subheading">Tell the judge your concerns</div>
   % endif
-  The judge will only know about your domestic violence concerns if you state them in the documents you file and when you talk in court.  If you have concerns for the children’s safety when in the care of the other parent, or for yourself when interacting with the other parent, describe them to the judge.  If the judge is going to allow the other parent to have parenting time (visitation) with the children, you can suggest ways to address your concerns.  Some options include:
+  The judge will only know about your domestic violence concerns if you state them in the documents you file and when you talk in court.  If you have concerns for the children's safety when in the care of the other parent, or for yourself when interacting with the other parent, describe them to the judge.  If the judge is going to allow the other parent to have parenting time (visitation) with the children, you can suggest ways to address your concerns.  Some options include:
   
   *	no drugs or alcohol prior to or during the visits,
   * drug or alcohol testing and/or treatment,

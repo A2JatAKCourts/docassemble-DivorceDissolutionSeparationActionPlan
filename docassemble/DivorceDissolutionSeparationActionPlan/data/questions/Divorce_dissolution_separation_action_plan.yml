@@ -1,10 +1,9 @@
 comment: |
-  # docx template file: divorce_dissolution_separation_action_plan.docx
-  # number of steps works in this one:  docx template file: divorce_dissolution_separation_action_plan_do_not_qualify_ps_in_steps2.docx
-  docx template file: scratch12b1.docx
-  # scratch11b.docx
-  # scratch10c_minus_legal_sep.docx - works
-  # divorce_dissolution_separation_action_plan_w_steps_replaced_and_last_step_not_referenced.docx
+ jurisdiction and residency fixes 11/13/2024:
+ Restore to id: already divorced 
+  *  [Enforcing a Divorce Court Order](https://docassemble.akcourts.gov/start/EnforcingDivorceOrder), if we get that interview done before launch date. See line 148 
+  
+  
 ---
 include:
   - docassemble.AssemblyLine:assembly_line.yml
@@ -123,7 +122,6 @@ id: Other case
 question: |
   Have you or your spouse ever started a case to end your marriage in another state?
 fields:
-  
   - no label: other_case
     datatype: yesnoradio
 ---
@@ -140,13 +138,16 @@ fields:
 ---
 id: already divorced
 question: |
-  If the other state court already ended your marriage, the Alaska court will not hear another case to end your marriage.
+  If the other state court already ended your marriage, the Alaska court will not hear another case to end your marriage
 subquestion: |
-  If you are trying to enforce the other court order or change something about the order, you can use the Guided Assistants:
+  To change something about the other court order, you can use the Guided Assistant Interview [Changing a Divorce Court Order](https://docassemble.akcourts.gov/start/ChangingDivorceOrder/).  
   
-    *  [Enforcing a Divorce Court Order](https://docassemble.akcourts.gov/start/EnforcingDivorceOrder), or
-    *  [Changing a Divorce Court Order](https://docassemble.akcourts.gov/start/ChangingDivorceOrder).
+  
+  If you are trying to enforce the other court order you have to register that order in the Alaska state court in your community. Read [registering out-of-state orders](https://courts.alaska.gov/shc/family/shcforeign.htm) for the forms and procedure. 
 continue button field: already_divorced
+comment: |
+  When enforcing divorce order is finished - update this question to link to it:
+    *  [Enforcing a Divorce Court Order](https://docassemble.akcourts.gov/start/EnforcingDivorceOrder), 
 ---
 id: Military
 question: |
@@ -156,7 +157,7 @@ fields:
     datatype: yesnoradio
   - note: |
       #### <i class="fa-regular fa-lightbulb"></i> Learn more ####
-      % if other_case and ongoing:
+      % if other_case and ongoing == 'yes':
       Deciding which state court has the authority to grant a divorce depends on connections to each state, such as being stationed in one of the states.
       % endif
       % if defined('residency_and_jurisdiction') and not residency_and_jurisdiction:
@@ -175,47 +176,84 @@ subquestion: |
   
   Do you want to continue answering questions for more information about starting a case in Alaska, or stop and get your Action plan now to learn more about whether or not the Alaska court is likely to keep your Alaska case open?
 fields:
-  - no label: other_state_case
+  - I want to: other_state_case
     datatype: radio
     choices:
-      - Continue answering questions: continue
-      - Stop and get my Action Plan: stop
+      - continue answering questions.: continue
+      - stop and get my Action Plan.: stop
+---
+id: residency
+question: |
+  Where do you and your spouse live?
+subquestion: |
+  The Alaska court needs the authority, called "jurisdiction", to end your marriage and enter court orders.  Where you live can affect the court’s jurisdiction.
+fields:
+  - "Where do you live?": residency
+    input type: radio
+    choices:
+      - "We both live in Alaska.": both
+      - "Only one of us lives in Alaska.": one
+      - "Neither of us live in Alaska.": none
 ---
 id: residency and jurisdiction
 question: |
-  Have you and your spouse both lived in Alaska for at least 6 months in a row in the last 6 years
-  % if minor_children:
-  and have your children lived in Alaska for at least the last 6 months
-  % endif
-  ?
-subquestion: |
-  The Alaska case can move forward as long as you and your spouse have lived in Alaska long enough to give the Alaska court authority over you and the issues.
-  % if minor_children:
-  The Alaska case can move forward as long as you, your spouse, and your children have lived in Alaska long enough to give the Alaska court authority over you and the issues
-  % endif
+  Did you and your spouse live in Alaska as a married couple for at least 6 months in the last 6 years?
 fields:
-  - no label: residency_and_jurisdiction
+  - Did you?: couple_are_residents
     datatype: yesnoradio
+  - "Have your children lived in Alaska for the last 6 months?": children_are_residents
+    datatype: yesnoradio
+    show if: 
+      variable: couple_are_residents
+      is: True    
+      code: |
+        minor_children
+  - note:  |
+      #### <i class="fa-regular fa-lightbulb"></i> Learn more ####
+      If you and your spouse did not live in Alaska as a married couple for 6 months in the last 6 years the court may not have the authority, called jurisdiction, to enter the necessary court orders to end your marriage.  Your spouse could file to dismiss your case.
+  - note:  |      
+      Children need to live in Alaska for 6 months before you start your divorce case.  There are some exceptions, but generally if your child has not been in Alaska for 6 months, the court may not be able to enter a parenting plan custody order.  
+    show if: 
+      variable: couple_are_residents
+      is: True    
+      code: |
+        minor_children  
+---
+# on change:
+#   minor_children: |
+#     invalidate('residency_and_jurisdiction')
+# ---
+# on change:
+#   couple_are_residents: |
+#     invalidate('residency_and_jurisdiction')
+# ---
+# on change:
+#   children_are_residents: |
+#     invalidate('residency_and_jurisdiction')
+---
+depends on:
+  - minor_children
+  - residency
+  - couple_are_residents
+  - children_are_residents
+code: |
+  if other_case and ongoing == 'yes':
+    residency_and_jurisdiction = False
+  if not other_case or (other_case and ongoing == 'no'):
+    if residency in('both','one'):
+      if minor_children:
+        residency_and_jurisdiction = couple_are_residents and children_are_residents
+      else:
+        residency_and_jurisdiction = couple_are_residents
+    else:
+      residency_and_jurisdiction = False
+
 ---
 id: no residency
 question: |
   Do you want to learn more about starting a case in Alaska or stop and get your Action Plan now?
 subquestion: |
-  Generally, both spouses 
-  % if minor_children:
-  and children 
-  % endif
-  have to live in Alaska for at least 6 months in a row in the last 6 years for the Alaska court to have the authority, called "jurisdiction," to 
-  % if minor_children:
-  decide children's issues and 
-  % endif
-  enforce property and debt divisions
-  % if minor_children:
-  in a divorce
-  % endif
-  .   
-  
-  Information about jurisdiction has been added to your Action Plan.
+  Based on your answers, the Alaska court may not have the authority, called jurisdiction, to address all the issues in your case.
 fields:
   - I want to: continue_despite_no_residency
     datatype: radio
@@ -244,10 +282,8 @@ subquestion: |
   an order dividing marital property and debt. **This is not a step to a divorce.** It is a separate legal process.  
   
   Either spouse can turn the legal separation into a divorce without the other person's agreement by filing a document with the court.
-  
-  Which of these are you interested in?
 fields:
-  - no label: legal_separation_or_divorce
+  - "Which of these are you interested in?": legal_separation_or_divorce
     datatype: radio
     choices:
       - a divorce or dissolution: divorce
