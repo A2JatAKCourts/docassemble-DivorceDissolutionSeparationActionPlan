@@ -237,13 +237,17 @@ depends on:
   - couple_are_residents
   - children_are_residents
 code: |
-  if residency == 'none':
+  if other_case and ongoing == 'yes':
     residency_and_jurisdiction = False
-  else:
-    if minor_children:
-      residency_and_jurisdiction = (couple_are_residents and children_are_residents)
+  if not other_case or (other_case and ongoing == 'no'):
+    if residency in('both','one'):
+      if minor_children:
+        residency_and_jurisdiction = couple_are_residents and children_are_residents
+      else:
+        residency_and_jurisdiction = couple_are_residents
     else:
-      residency_and_jurisdiction = couple_are_residents
+      residency_and_jurisdiction = False
+
 ---
 id: no residency
 question: |

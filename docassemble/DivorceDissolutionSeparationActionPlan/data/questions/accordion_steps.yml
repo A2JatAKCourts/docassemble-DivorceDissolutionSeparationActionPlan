@@ -71,56 +71,61 @@ code: |
   
   # Nov 15
   if other_case and ongoing == 'yes':
-    if residency in('both', 'one'): 
-      if residency_and_jurisdiction:
-        add_unique_step((pick_court_step, "pick_court_idx"), step_list)
-        legal_separation_or_divorce
-      else:
-        residency_and_jurisdiction = False
-        military
-        add_unique_step((pick_court_step, "pick_court_idx"), step_list)
-        if other_state_case == 'continue':
-          legal_separation_or_divorce
-    if residency == 'none':
-      military
-      add_unique_step((pick_court_step, "pick_court_idx"), step_list)
-      if other_state_case == 'continue':
-        legal_separation_or_divorce
+    #if residency in('both', 'one'): 
+    #  if residency_and_jurisdiction:
+    #    add_unique_step((pick_court_step, "pick_court_idx"), step_list)
+    #    legal_separation_or_divorce
+    #  else:
+    #    residency_and_jurisdiction = False
+    #    military
+    #    add_unique_step((pick_court_step, "pick_court_idx"), step_list)
+    #    if other_state_case == 'continue':
+    #      legal_separation_or_divorce
+    #if residency == 'none':
+    military
+    add_unique_step((pick_court_step, "pick_court_idx"), step_list)
+    if other_state_case == 'continue':
+      legal_separation_or_divorce
   
-  if other_case and ongoing == 'no':
-    if residency in('both', 'one'): 
-      if residency_and_jurisdiction:
-        add_unique_step((pick_court_step, "pick_court_idx"), step_list)
-        legal_separation_or_divorce
-      else:
-        military
-        add_unique_step((pick_court_step, "pick_court_idx"), step_list)
-        if continue_despite_no_residency == 'continue':
-          legal_separation_or_divorce
-    if residency == 'none':
-      residency_and_jurisdiction = False
-      military
-      add_unique_step((pick_court_step, "pick_court_idx"), step_list)
-      if continue_despite_no_residency == 'continue':
-        legal_separation_or_divorce
+  #if other_case and ongoing == 'no':
+  # if residency in('both', 'one'): 
+  #   if residency_and_jurisdiction:
+  #     add_unique_step((pick_court_step, "pick_court_idx"), step_list)
+  #     legal_separation_or_divorce
+  #   else:
+  #     military
+  #     add_unique_step((pick_court_step, "pick_court_idx"), step_list)
+  #     if continue_despite_no_residency == 'continue':
+  #       legal_separation_or_divorce
+  # if residency == 'none':
+  #   residency_and_jurisdiction = False
+  #   military
+  #   add_unique_step((pick_court_step, "pick_court_idx"), step_list)
+  #   if continue_despite_no_residency == 'continue':
+  #     legal_separation_or_divorce
 
-  if not other_case: 
+  ###### Make other_case and ongoing == 'no', identical to not other_case 2024-11 discussions
+  if not other_case or (other_case and ongoing == 'no'): 
     if residency in('both', 'one'): 
       if residency_and_jurisdiction:
+        military = False
         legal_separation_or_divorce
       else:
-        military
+        if couple_are_residents and not children_are_residents:
+          military = False
+        if not couple_are_residents:
+          military
         add_unique_step((pick_court_step, "pick_court_idx"), step_list)
         if continue_despite_no_residency == 'continue':
           legal_separation_or_divorce
     if residency == 'none': 
-      if residency_and_jurisdiction:
+      # if residency_and_jurisdiction:
+      #   legal_separation_or_divorce
+      # else:
+      military
+      add_unique_step((pick_court_step, "pick_court_idx"), step_list)
+      if continue_despite_no_residency == 'continue':
         legal_separation_or_divorce
-      else:
-        military
-        add_unique_step((pick_court_step, "pick_court_idx"), step_list)
-        if continue_despite_no_residency == 'continue':
-          legal_separation_or_divorce
 
   #  #### older version before residency and jurisdiction edits ####
   #  if other_case and ongoing == 'marriage ended':
@@ -156,10 +161,15 @@ code: |
   #       or (residency in('both', 'one') and not residency_and_jurisdiction and continue_despite_no_residency == 'continue') \
   #       or (residency == 'none' and continue_despite_no_residency == 'continue'))):
 
+  # if (other_case \
+  #       and ((ongoing == 'yes' and (residency_and_jurisdiction or (not residency_and_jurisdiction and other_state_case == 'continue'))) \
+  #         or (ongoing =='no' and (residency_and_jurisdiction or (not residency_and_jurisdiction and continue_despite_no_residency == 'continue'))))) \
+  #   or (not other_case and (residency_and_jurisdiction or (not residency_and_jurisdiction and continue_despite_no_residency == 'continue'))):
+
   if (other_case \
-        and ((ongoing == 'yes' and (residency_and_jurisdiction or (not residency_and_jurisdiction and other_state_case == 'continue'))) \
-          or (ongoing =='no' and (residency_and_jurisdiction or (not residency_and_jurisdiction and continue_despite_no_residency == 'continue'))))) \
-    or (not other_case and (residency_and_jurisdiction or (not residency_and_jurisdiction and continue_despite_no_residency == 'continue'))):
+        and ((ongoing == 'yes' and other_state_case == 'continue') \
+          or (ongoing == 'no' and (residency_and_jurisdiction or (not residency_and_jurisdiction and continue_despite_no_residency == 'continue'))))) \
+  or (not other_case and (residency_and_jurisdiction or (not residency_and_jurisdiction and continue_despite_no_residency == 'continue'))):
   
   
     # quick uncontested divorce
@@ -398,13 +408,13 @@ content: |
   <div class="step-subheading">Blue 1</div>
    Only one state court can end a marriage.  If you and your spouse have an open case to end your marriage in another state, and you file a case in Alaska, one of the courts will close their case.
   % endif 
-  % if residency == 'none':
+  % if (not other_case or (other_case and ongoing == 'no')) and residency == 'none':
   <div class="step-subheading">Pink</div>
   If neither you or your spouse live in Alaska, the Alaska court may not be able to end your marriage or enter all the necessary orders. If you both agree to an Alaska case, there are some things the court can do because you agree.
   % if minor_children:
   There are some things the court may not be able to do even if you agree, like enter a parenting plan custody order.
   % endif
-  Jurisdiction can be very complicated and you should talk to a lawyer.
+  Jurisdiction can be very complicated and you should [talk to a lawyer](https://courts.alaska.gov/shc/shclawyer.htm).
   % endif
   % if other_case and ongoing == 'yes':
   <div class="step-subheading">Blue 2</div>
@@ -425,6 +435,7 @@ content: |
   
   <div class="step-subheading">All 1 (yellow)</div>
   <div class="step-subheading">The court's power to grant a divorce is based on residency</div>
+  If the court cannot take other actions, the court may also decide not to grant your divorce.
   % if not residency_and_jurisdiction and military:
   <div class="step-subheading">Red military</div>
   There are 3 options for where a military member or spouse can file a divorce case:
@@ -450,11 +461,7 @@ content: |
   is based on the court's authority, called "jurisdiction"</div>
   % if not other_case or (other_case and ongoing == 'no'):
   <div class="step-subheading">Green 2</div>
-  When spouses
-  % if minor_children:
-  and children
-  % endif
-  live in different states or have recently moved, the Alaska court may not have the authority, called “jurisdiction,” over all issues in your case. 
+  The Alaska court may not have the authority, called “jurisdiction” over all issues in your case.  
   Examples where the court may be able to grant you a divorce and end your marriage, but not address other issues, or may dismiss your case:
   % endif
   % if other_case and ongoing == 'yes':
@@ -472,7 +479,7 @@ content: |
   
   % if not other_case or (other_case and ongoing == 'no'):
   <div class="step-subheading">Green 3</div>
-  Jurisdiction is a very complicated subject and you should talk to a lawyer if you are not sure whether Alaska is the right place to file your case.
+  Jurisdiction is a very complicated subject and you should [talk to a lawyer](https://courts.alaska.gov/shc/shclawyer.htm) if you are not sure whether Alaska is the right place to file your case.
   If you file a case in Alaska and your spouse disagrees that Alaska has jurisdiction, they may file a motion to dismiss the case.
   If the court finds it does not have jurisdiction, it might dismiss your case.
   % endif

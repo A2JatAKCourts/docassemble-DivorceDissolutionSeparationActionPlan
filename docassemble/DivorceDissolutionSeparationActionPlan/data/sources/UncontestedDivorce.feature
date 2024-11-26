@@ -4,25 +4,91 @@ Feature: User paths
 Background: 
   Given the maximum seconds for each Step is 45
 
+@row14
+Scenario: Row #14
+  Given I start the interview at "Divorce_dissolution_separation_action_plan.yml"
+    And I get to the question id "final screen" with this data:
+    | var                         | value   | trigger | 
+    | minor_children              | True    |         | 
+    | other_case                  | True    |         | 
+    | ongoing                     | no      |         | 
+    | residency                   | both    |         | 
+    | couple_are_residents        | True    |         | 
+    | children_are_residents      | True    |         | 
+    | legal_separation_or_divorce | divorce |         | 
+    | agree_or_settle_kids        | yes     |         | 
+    | have_property_and_debt      | True    |         | 
+    | paternity                   | no      |         | 
+    | wife_is_pregnant            | husband |         | 
+    | domestic_violence           | False      |         | 
+    And I should see the phrase "Your Personal Action Plan for asking the court for an uncontested divorce in Alaska in 6 steps"
+    And I should see the phrase "Learn about uncontested divorces"
+    And I should see the phrase "Fill out the forms for an uncontested divorce"
+    And I should see the phrase "File the original with your local court"
+    And I should see the phrase "Read the "Domestic Relations Procedural Order" or Standing Order if the clerk gives you one when you file your case"
+    And I should see the phrase "What to expect after you file your Complaint"
+    And I should see the phrase "Get more information or help"
+    And I take a screenshot
+    And I download "divorce_dissolution_separation_action_plan.pdf"
+    And I download "divorce_dissolution_separation_action_plan.docx"
+
+@row14b
+Scenario: Row #14b
+  Given I start the interview at "Divorce_dissolution_separation_action_plan.yml"
+    And I get to the question id "final screen" with this data:
+    | var                           | value       | trigger | 
+    | minor_children                | True        |         | 
+    | other_case                    | True        |         | 
+    | ongoing                       | no          |         | 
+    | residency                     | both        |         | 
+    | couple_are_residents          | False       |         | 
+    | military                      | True        |         | 
+    | continue_despite_no_residency | continue    |         | 
+    | legal_separation_or_divorce   | divorce     |         | 
+    | agree_or_settle_kids          | yes         |         | 
+    | have_property_and_debt        | True        |         | 
+    | paternity                     | no          |         | 
+    | wife_is_pregnant              | not husband |         | 
+    | domestic_violence             | False       |         | 
+    And I should see the phrase "Your Personal Action Plan for asking the court for an uncontested divorce in Alaska in 7 steps"
+    And I should see the phrase "Decide if Alaska is the right state for your case"
+    And I tap the "#cGlja19jb3VydF9zdGVw .al_toggle" element and stay on the same page
+    And I should see the phrase "Green 1"
+    And I should see the phrase "All 1 (yellow)"
+    And I should see the phrase "Red military"
+    And I should see the phrase "Green 2"
+    And I should see the phrase "All 2 (yellow)"
+    And I should see the phrase "Green 3"
+    And I should see the phrase "All 3 (yellow)"
+    And I should see the phrase "Learn about uncontested divorces"
+    And I should see the phrase "Fill out the forms for an uncontested divorce"
+    And I should see the phrase "File the original with your local court"
+    And I should see the phrase "Read the "Domestic Relations Procedural Order" or Standing Order if the clerk gives you one when you file your case"
+    And I should see the phrase "What to expect after you file your Complaint"
+    And I should see the phrase "Get more information or help"
+    And I take a screenshot
+    And I download "divorce_dissolution_separation_action_plan.pdf"
+    And I download "divorce_dissolution_separation_action_plan.docx"
+
 @row16
 Scenario: Row #16
   Given I start the interview at "Divorce_dissolution_separation_action_plan.yml"
     And I get to the question id "final screen" with this data:
-    | var                         | value    | trigger | 
-    | minor_children              | True     |         | 
-    | other_case                  | True     |         | 
-    | ongoing                     | yes      |         | 
-    | residency                   | both     |         | 
-    | couple_are_residents        | True     |         | 
-    | children_are_residents      | False    |         | 
-    | military                    | True     |         | 
-    | other_state_case            | continue |         | 
-    | legal_separation_or_divorce | divorce  |         | 
-    | agree_or_settle_kids        | yes      |         | 
-    | have_property_and_debt      | True     |         | 
-    | paternity                   | yes      |         | 
-    | wife_is_pregnant            | husband  |         | 
-    | domestic_violence           | True     |         | 
+    | var            | value | trigger | 
+    | minor_children | True  |         | 
+    | other_case     | True  |         | 
+    | ongoing        | yes   |         | 
+#    | residency                   | both     |         |
+#    | couple_are_residents        | True     |         |
+#    | children_are_residents      | False    |         |
+    | military                    | True     |  | 
+    | other_state_case            | continue |  | 
+    | legal_separation_or_divorce | divorce  |  | 
+    | agree_or_settle_kids        | yes      |  | 
+    | have_property_and_debt      | True     |  | 
+    | paternity                   | yes      |  | 
+    | wife_is_pregnant            | husband  |  | 
+    | domestic_violence           | True     |  | 
     And I should see the phrase "Your Personal Action Plan for asking the court for an uncontested divorce in Alaska in 8 steps"
     And I should see the phrase "Decide which court should hear your case"
     And I tap the "#cGlja19jb3VydF9zdGVw .al_toggle" element and stay on the same page
@@ -50,21 +116,21 @@ Scenario: Row #16
 Scenario: Row #18
   Given I start the interview at "Divorce_dissolution_separation_action_plan.yml"
     And I get to the question id "final screen" with this data:
-    | var                         | value       | trigger | 
-    | minor_children              | True        |         | 
-    | other_case                  | True        |         | 
-    | ongoing                     | yes         |         | 
-    | residency                   | both        |         | 
-    | couple_are_residents        | True        |         | 
-    | children_are_residents      | False       |         | 
-    | military                    | False       |         | 
-    | other_state_case            | continue    |         | 
-    | legal_separation_or_divorce | divorce     |         | 
-    | agree_or_settle_kids        | yes         |         | 
-    | have_property_and_debt      | True        |         | 
-    | paternity                   | no          |         | 
-    | wife_is_pregnant            | not husband |         | 
-    | domestic_violence           | False       |         | 
+    | var            | value | trigger | 
+    | minor_children | True  |         | 
+    | other_case     | True  |         | 
+    | ongoing        | yes   |         | 
+#    | residency                   | both        |         |
+#    | couple_are_residents        | True        |         |
+#    | children_are_residents      | False       |         |
+    | military                    | False       |  | 
+    | other_state_case            | continue    |  | 
+    | legal_separation_or_divorce | divorce     |  | 
+    | agree_or_settle_kids        | yes         |  | 
+    | have_property_and_debt      | True        |  | 
+    | paternity                   | no          |  | 
+    | wife_is_pregnant            | not husband |  | 
+    | domestic_violence           | False       |  | 
 # And I take a screenshot
     And I should see the phrase "Your Personal Action Plan for asking the court for an uncontested divorce in Alaska in 7 steps"
     And I should see the phrase "Decide which court should hear your case"
@@ -92,21 +158,21 @@ Scenario: Row #18
 Scenario: Row #21
   Given I start the interview at "Divorce_dissolution_separation_action_plan.yml"
     And I get to the question id "final screen" with this data:
-    | var                         | value        | trigger | 
-    | minor_children              | True         |         | 
-    | other_case                  | True         |         | 
-    | ongoing                     | yes          |         | 
-    | residency                   | both         |         | 
-    | couple_are_residents        | False        |         | 
-    | military                    | False        |         | 
-    | other_state_case            | continue     |         | 
-    | legal_separation_or_divorce | divorce      |         | 
-    | agree_or_settle_kids        | do not know  |         | 
-    | talk_to_spouse              | True         |         | 
-    | have_property_and_debt      | True         |         | 
-    | paternity                   | yes          |         | 
-    | wife_is_pregnant            | not pregnant |         | 
-    | domestic_violence           | False        |         | 
+    | var            | value | trigger | 
+    | minor_children | True  |         | 
+    | other_case     | True  |         | 
+    | ongoing        | yes   |         | 
+#    | residency                   | both         |         |
+#    | couple_are_residents        | False        |         |
+    | military                    | False        |  | 
+    | other_state_case            | continue     |  | 
+    | legal_separation_or_divorce | divorce      |  | 
+    | agree_or_settle_kids        | do not know  |  | 
+    | talk_to_spouse              | True         |  | 
+    | have_property_and_debt      | True         |  | 
+    | paternity                   | yes          |  | 
+    | wife_is_pregnant            | not pregnant |  | 
+    | domestic_violence           | False        |  | 
 # And I take a screenshot
     And I should see the phrase "Your Personal Action Plan for asking the court for an uncontested divorce in Alaska in 8 steps"
     And I should see the phrase "Decide which court should hear your case"
@@ -135,15 +201,15 @@ Scenario: Row #21
 Scenario: Row #23
   Given I start the interview at "Divorce_dissolution_separation_action_plan.yml"
     And I get to the question id "final screen" with this data:
-    | var                    | value | trigger | 
-    | minor_children         | True  |         | 
-    | other_case             | True  |         | 
-    | ongoing                | yes   |         | 
-    | residency              | one   |         | 
-    | couple_are_residents   | True  |         | 
-    | children_are_residents | True  |         | 
-# | military | False | |
-# | other_state_case | continue | |
+    | var            | value | trigger | 
+    | minor_children | True  |         | 
+    | other_case     | True  |         | 
+    | ongoing        | yes   |         | 
+#    | residency                   | one          |         |
+#    | couple_are_residents        | True         |         |
+#    | children_are_residents      | True         |         |
+    | military                    | False        |  | 
+    | other_state_case            | continue     |  | 
     | legal_separation_or_divorce | divorce      |  | 
     | agree_or_settle_kids        | yes          |  | 
     | have_property_and_debt      | True         |  | 
@@ -209,21 +275,20 @@ Scenario: Row #24
 Scenario: Row #26
   Given I start the interview at "Divorce_dissolution_separation_action_plan.yml"
     And I get to the question id "final screen" with this data:
-    | var                           | value        | trigger | 
-    | minor_children                | True         |         | 
-    | other_case                    | False        |         | 
-    | ongoing                       | yes          |         | 
-    | residency                     | both         |         | 
-    | couple_are_residents          | True         |         | 
-    | children_are_residents        | False        |         | 
-    | military                      | False        |         | 
-    | continue_despite_no_residency | continue     |         | 
-    | legal_separation_or_divorce   | divorce      |         | 
-    | agree_or_settle_kids          | yes          |         | 
-    | have_property_and_debt        | True         |         | 
-    | paternity                     | no           |         | 
-    | wife_is_pregnant              | not pregnant |         | 
-    | domestic_violence             | True         |         | 
+    | var                    | value | trigger | 
+    | minor_children         | True  |         | 
+    | other_case             | False |         | 
+    | residency              | both  |         | 
+    | couple_are_residents   | True  |         | 
+    | children_are_residents | False |         | 
+#    | military                      | False        |  | 
+    | continue_despite_no_residency | continue     |  | 
+    | legal_separation_or_divorce   | divorce      |  | 
+    | agree_or_settle_kids          | yes          |  | 
+    | have_property_and_debt        | True         |  | 
+    | paternity                     | no           |  | 
+    | wife_is_pregnant              | not pregnant |  | 
+    | domestic_violence             | True         |  | 
 # And I take a screenshot
     And I should see the phrase "Your Personal Action Plan for asking the court for an uncontested divorce in Alaska in 8 steps"
     And I should see the phrase "Decide if Alaska is the right state for your case"
@@ -319,22 +384,22 @@ Scenario: Row #33
 Scenario: Row #34
   Given I start the interview at "Divorce_dissolution_separation_action_plan.yml"
     And I get to the question id "final screen" with this data:
-    | var                           | value       | trigger | 
-    | minor_children                | True        |         | 
-    | other_case                    | True        |         | 
-    | ongoing                       | no          |         | 
-    | residency                     | one         |         | 
-    | couple_are_residents          | True        |         | 
-    | children_are_residents        | False       |         | 
-    | military                      | False       |         | 
-    | continue_despite_no_residency | continue    |         | 
-    | legal_separation_or_divorce   | divorce     |         | 
-    | agree_or_settle_kids          | do not know |         | 
-    | talk_to_spouse                | True        |         | 
-    | have_property_and_debt        | False       |         | 
-    | paternity                     | no          |         | 
-    | wife_is_pregnant              | husband     |         | 
-    | domestic_violence             | True        |         | 
+    | var                    | value | trigger | 
+    | minor_children         | True  |         | 
+    | other_case             | True  |         | 
+    | ongoing                | no    |         | 
+    | residency              | one   |         | 
+    | couple_are_residents   | True  |         | 
+    | children_are_residents | False |         | 
+#    | military                      | False       |         |
+    | continue_despite_no_residency | continue    |  | 
+    | legal_separation_or_divorce   | divorce     |  | 
+    | agree_or_settle_kids          | do not know |  | 
+    | talk_to_spouse                | True        |  | 
+    | have_property_and_debt        | False       |  | 
+    | paternity                     | no          |  | 
+    | wife_is_pregnant              | husband     |  | 
+    | domestic_violence             | True        |  | 
 # And I take a screenshot
     And I should see the phrase "Your Personal Action Plan for asking the court for an uncontested divorce in Alaska in 9 steps"
     And I should see the phrase "Decide if Alaska is the right state for your case"
@@ -401,27 +466,27 @@ Scenario: Row #38
 Scenario: Row #42
   Given I start the interview at "Divorce_dissolution_separation_action_plan.yml"
     And I get to the question id "final screen" with this data:
-    | var                           | value       | trigger | 
-    | minor_children                | True        |         | 
-    | other_case                    | False       |         | 
-    | residency                     | one         |         | 
-    | couple_are_residents          | True        |         | 
-    | children_are_residents        | False       |         | 
-    | military                      | True        |         | 
-    | continue_despite_no_residency | continue    |         | 
-    | legal_separation_or_divorce   | divorce     |         | 
-    | agree_or_settle_kids          | yes         |         | 
-    | have_property_and_debt        | False       |         | 
-    | paternity                     | do not know |         | 
-    | wife_is_pregnant              | not husband |         | 
-    | domestic_violence             | False       |         | 
+    | var                    | value | trigger | 
+    | minor_children         | True  |         | 
+    | other_case             | False |         | 
+    | residency              | one   |         | 
+    | couple_are_residents   | True  |         | 
+    | children_are_residents | False |         | 
+#    | military                      | True        |         |
+    | continue_despite_no_residency | continue    |  | 
+    | legal_separation_or_divorce   | divorce     |  | 
+    | agree_or_settle_kids          | yes         |  | 
+    | have_property_and_debt        | False       |  | 
+    | paternity                     | do not know |  | 
+    | wife_is_pregnant              | not husband |  | 
+    | domestic_violence             | False       |  | 
 # And I take a screenshot
     And I should see the phrase "Your Personal Action Plan for asking the court for an uncontested divorce in Alaska in 8 steps"
     And I should see the phrase "Decide if Alaska is the right state for your case"
     And I tap the "#cGlja19jb3VydF9zdGVw .al_toggle" element and stay on the same page
     And I should see the phrase "Green 1"
     And I should see the phrase "All 1 (yellow)"
-    And I should see the phrase "Red military"
+    And I should see the phrase "Red not military"
     And I should see the phrase "Green 2"
     And I should see the phrase "All 2 (yellow)"
     And I should see the phrase "Green 3"
@@ -533,16 +598,16 @@ Scenario: Row #268
     | wife_is_pregnant            | not pregnant |         | 
     | domestic_violence           | True         |         | 
 # And I take a screenshot
-    And I should see the phrase "Your Personal Action Plan for asking the court for an uncontested divorce in Alaska in 8 steps"
-    And I should see the phrase "Decide if Alaska is the right state for your case"
-    And I tap the "#cGlja19jb3VydF9zdGVw .al_toggle" element and stay on the same page
-    And I should see the phrase "Green 1"
-    And I should see the phrase "All 1 (yellow)"
-    And I should see the phrase "Red not military"
-    And I should see the phrase "Green 2"
-    And I should see the phrase "All 2 (yellow)"
-    And I should see the phrase "Green 3"
-    And I should see the phrase "All 3 (yellow)"
+    And I should see the phrase "Your Personal Action Plan for asking the court for an uncontested divorce in Alaska in 7 steps"
+# And I should see the phrase "Decide if Alaska is the right state for your case"
+# And I tap the "#cGlja19jb3VydF9zdGVw .al_toggle" element and stay on the same page
+# And I should see the phrase "Green 1"
+# And I should see the phrase "All 1 (yellow)"
+# And I should see the phrase "Red not military"
+# And I should see the phrase "Green 2"
+# And I should see the phrase "All 2 (yellow)"
+# And I should see the phrase "Green 3"
+# And I should see the phrase "All 3 (yellow)"
     And I should see the phrase "Learn about uncontested divorces"
     And I should see the phrase "Fill out the forms to start your case"
     And I should see the phrase "File the original with your local court"
@@ -679,3 +744,6 @@ Scenario: Row #275
     And I take a screenshot
     And I download "divorce_dissolution_separation_action_plan.pdf"
     And I download "divorce_dissolution_separation_action_plan.docx"
+
+
+

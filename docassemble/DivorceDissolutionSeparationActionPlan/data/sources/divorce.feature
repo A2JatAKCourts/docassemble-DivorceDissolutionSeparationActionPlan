@@ -207,25 +207,25 @@ Scenario: Row #240
 Scenario: Row #262
   Given I start the interview at "Divorce_dissolution_separation_action_plan.yml"
     And I get to the question id "final screen" with this data:
-    | var                                 | value    | trigger | 
-    | minor_children                      | False    |         | 
-    | other_case                          | True     |         | 
-    | ongoing                             | yes      |         | 
-    | residency                           | none     |         | 
-    | military                            | True     |         | 
-    | other_state_case                    | continue |         | 
-    | legal_separation_or_divorce         | divorce  |         | 
-    | married_more_than_2                 | False    |         | 
-    | pregnant                            | False    |         | 
-    | property_division['divided']        | True     |         | 
-    | property_division['joint debts']    | True     |         | 
-    | property_division['joint property'] | True     |         | 
-    | property_division['retirement']     | True     |         | 
-    | property_division['responsibility'] | True     |         | 
-#   | agree_or_settle | no prop debt or pregnancy | | 
-#   | spouse_agrees['end marriage'] | False |  | 
-#   | spouse_agrees['no property']  | True  |  | 
-#   | spouse_agrees['no debt']      | True  |  | 
+    | var            | value | trigger | 
+    | minor_children | False |         | 
+    | other_case     | True  |         | 
+    | ongoing        | yes   |         | 
+# | residency                           | none     |         |
+    | military                            | True     |  | 
+    | other_state_case                    | continue |  | 
+    | legal_separation_or_divorce         | divorce  |  | 
+    | married_more_than_2                 | False    |  | 
+    | pregnant                            | False    |  | 
+    | property_division['divided']        | True     |  | 
+    | property_division['joint debts']    | True     |  | 
+    | property_division['joint property'] | True     |  | 
+    | property_division['retirement']     | True     |  | 
+    | property_division['responsibility'] | True     |  | 
+#   | agree_or_settle | no prop debt or pregnancy | |
+#   | spouse_agrees['end marriage'] | False |  |
+#   | spouse_agrees['no property']  | True  |  |
+#   | spouse_agrees['no debt']      | True  |  |
     | no_prop_or_debt_agree   | False |  | 
     | know_spouse_whereabouts | True  |  | 
     | default_info            | False |  | 
@@ -259,26 +259,26 @@ Scenario: Row #262
 Scenario: Row #263Dissolution
   Given I start the interview at "Divorce_dissolution_separation_action_plan.yml"
     And I get to the question id "final screen" with this data:
-    | var                                 | value    | trigger | 
-    | minor_children                      | False    |         | 
-    | other_case                          | True     |         | 
-    | ongoing                             | yes      |         | 
-    | residency                           | both     |         | 
-    | couple_are_residents                | False    |         | 
-    | military                            | False    |         | 
-    | other_state_case                    | continue |         | 
-    | legal_separation_or_divorce         | divorce  |         | 
-    | married_more_than_2                 | False    |         | 
-    | pregnant                            | False    |         | 
-    | property_division['divided']        | True     |         | 
-    | property_division['joint debts']    | True     |         | 
-    | property_division['joint property'] | True     |         | 
-    | property_division['retirement']     | True     |         | 
-    | property_division['responsibility'] | True     |         | 
-#   | agree_or_settle | no prop debt or pregnancy | | 
-#   | spouse_agrees['end marriage'] | False |  | 
-#   | spouse_agrees['no property']  | True  |  | 
-#   | spouse_agrees['no debt']      | True  |  | 
+    | var            | value | trigger | 
+    | minor_children | False |         | 
+    | other_case     | True  |         | 
+    | ongoing        | yes   |         | 
+# | residency                           | both     |         |
+# | couple_are_residents                | False    |         |
+    | military                            | False    |  | 
+    | other_state_case                    | continue |  | 
+    | legal_separation_or_divorce         | divorce  |  | 
+    | married_more_than_2                 | False    |  | 
+    | pregnant                            | False    |  | 
+    | property_division['divided']        | True     |  | 
+    | property_division['joint debts']    | True     |  | 
+    | property_division['joint property'] | True     |  | 
+    | property_division['retirement']     | True     |  | 
+    | property_division['responsibility'] | True     |  | 
+#   | agree_or_settle | no prop debt or pregnancy | |
+#   | spouse_agrees['end marriage'] | False |  |
+#   | spouse_agrees['no property']  | True  |  |
+#   | spouse_agrees['no debt']      | True  |  |
     | no_prop_or_debt_agree   | False |  | 
     | know_spouse_whereabouts | False |  | 
 # And I take a screenshot
@@ -301,7 +301,7 @@ Scenario: Row #263Dissolution
     And I should see the phrase "What to expect after you file your Complaint"
     And I should see the phrase "Get more information or help"
     And I download "divorce_dissolution_separation_action_plan.pdf"
-    And I download "divorce_dissolution_separation_action_plan.docx"    
+    And I download "divorce_dissolution_separation_action_plan.docx"
 
 @row263Divorce
 Scenario: Row #263Divorce
@@ -321,12 +321,12 @@ Scenario: Row #263Divorce
     | property_division['retirement']     | True    |         | 
     | property_division['responsibility'] | True    |         | 
 #| agree_or_settle | no prop debt or pregnancy | |
-#   | agree_or_settle | no prop debt or pregnancy | | 
-#   | spouse_agrees['end marriage'] | False |  | 
-#   | spouse_agrees['no property']  | True  |  | 
-#   | spouse_agrees['no debt']      | True  |  | 
+#   | agree_or_settle | no prop debt or pregnancy | |
+#   | spouse_agrees['end marriage'] | False |  |
+#   | spouse_agrees['no property']  | True  |  |
+#   | spouse_agrees['no debt']      | True  |  |
     | no_prop_or_debt_agree | False |  | 
-#   | can_sign_together       | False |  | 
+#   | can_sign_together       | False |  |
     | know_spouse_whereabouts | False |  | 
 
 # And I take a screenshot
@@ -543,3 +543,5 @@ Scenario: Row #335
     And I take a screenshot
     And I download "divorce_dissolution_separation_action_plan.pdf"
     And I download "divorce_dissolution_separation_action_plan.docx"
+
+
