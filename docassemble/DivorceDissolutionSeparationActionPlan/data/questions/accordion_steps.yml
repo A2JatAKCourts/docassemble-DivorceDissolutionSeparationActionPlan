@@ -405,11 +405,9 @@ subject: |
   % endif
 content: |
   % if other_case and ongoing == 'yes':
-  <div class="step-subheading">Blue 1</div>
    Only one state court can end a marriage.  If you and your spouse have an open case to end your marriage in another state, and you file a case in Alaska, one of the courts will close their case.
   % endif 
   % if (not other_case or (other_case and ongoing == 'no')) and residency == 'none':
-  <div class="step-subheading">Pink</div>
   If neither you or your spouse live in Alaska, the Alaska court may not be able to end your marriage or enter all the necessary orders. If you both agree to an Alaska case, there are some things the court can do because you agree.
   % if minor_children:
   There are some things the court may not be able to do even if you agree, like enter a parenting plan custody order.
@@ -417,27 +415,22 @@ content: |
   Jurisdiction can be very complicated and you should [talk to a lawyer](https://courts.alaska.gov/shc/shclawyer.htm).
   % endif
   % if other_case and ongoing == 'yes':
-  <div class="step-subheading">Blue 2</div>
   To decide the correct state for your case, the courts will look at:
   
   *	both spouses' "residency" and
   *	which court has the authority, called "jurisdiction", to end the marriage.
   % endif
 
-  
   % if not other_case or (other_case and ongoing == 'no'):
-  <div class="step-subheading">Green 1</div>
   To decide if Alaska is the correct state for your case, the court will look at:
   
   *	both spouses' "residency" and
   *	if the Alaska court has the authority, called "jurisdiction," to enter the necessary court orders.
   % endif
   
-  <div class="step-subheading">All 1 (yellow)</div>
   <div class="step-subheading">The court's power to grant a divorce is based on residency</div>
   If the court cannot take other actions, the court may also decide not to grant your divorce.
   % if not residency_and_jurisdiction and military:
-  <div class="step-subheading">Red military</div>
   There are 3 options for where a military member or spouse can file a divorce case:
     
     * The state where the military member or spouse is stationed. If you or your spouse are serving in the military and are continuously stationed at a military base in Alaska for at least 30 days, you can file for a divorce.
@@ -447,7 +440,6 @@ content: |
   Although either spouse may file for divorce in any of these locations, the court may not have the authority, called "jurisdiction," to take other actions. If the court cannot take other actions, the court may also decide not to grant your divorce.
   % endif
   % if residency_and_jurisdiction or (not residency_and_jurisdiction and not military):
-  <div class="step-subheading">Red not military</div>
   You may file to end your marriage in Alaska as long as you or your spouse is an Alaska resident. When filing for divorce or dissolution, you are generally an Alaska resident if you are in Alaska and plan to stay.
 
   If you or your spouse meets this residency requirement, an Alaska court generally can grant you a divorce and end your marriage.  But if your spouse does not live in Alaska, the court may not have the authority, called "jurisdiction", to take other actions.
@@ -460,17 +452,14 @@ content: |
   % endif
   is based on the court's authority, called "jurisdiction"</div>
   % if not other_case or (other_case and ongoing == 'no'):
-  <div class="step-subheading">Green 2</div>
   The Alaska court may not have the authority, called “jurisdiction” over all issues in your case.  
   Examples where the court may be able to grant you a divorce and end your marriage, but not address other issues, or may dismiss your case:
   % endif
   % if other_case and ongoing == 'yes':
-  <div class="step-subheading">Blue 3</div>
   When deciding which court should hear a divorce case, both courts will look at which court has the authority, called “jurisdiction” over the issues in your case.
   Examples of jurisdiction for deciding which court should hear a case:
   % endif
   
-  <div class="step-subheading">All 2 (yellow)</div>
   % if minor_children:
     * Children need to live in Alaska for six months before you start your divorce case.  There are some exceptions, but generally if the child has not been in Alaska for 6 months, the court cannot enter a parenting plan custody order.
   % endif
@@ -478,14 +467,14 @@ content: |
     * If you have property such as a home outside Alaska, the court may not have the authority to enforce orders about that property.
   
   % if not other_case or (other_case and ongoing == 'no'):
-  <div class="step-subheading">Green 3</div>
   Jurisdiction is a very complicated subject and you should [talk to a lawyer](https://courts.alaska.gov/shc/shclawyer.htm) if you are not sure whether Alaska is the right place to file your case.
+
   If you file a case in Alaska and your spouse disagrees that Alaska has jurisdiction, they may file a motion to dismiss the case.
+
   If the court finds it does not have jurisdiction, it might dismiss your case.
   % endif
 
   % if other_case and ongoing == 'yes':
-  <div class="step-subheading">Blue 4</div>
   You can start your case in Alaska, but only one state court can end your marriage. 
   
   If you and your spouse disagree about which state, the courts will decide which case to close after hearing both side's arguments about residency and jurisdiction. 
@@ -495,11 +484,9 @@ content: |
   You should [talk to a lawyer](https://courts.alaska.gov/shc/shclawyer.htm) if you are not sure whether Alaska is the right place to file your case
   % endif
 
-  <div class="step-subheading">All 3 (yellow)</div>
   Read about [Residency and jurisdiction](https://courts.alaska.gov/shc/family/shcstart.htm#residency) 
 
   % if other_case and ongoing == 'yes':
-  <div class="step-subheading">Blue 5</div>
   <div class="step-subheading">To start a case in Alaska: file a complaint in Alaska and ask the court in the other state to close its case</div>
   **Fill out and file a complaint**
   

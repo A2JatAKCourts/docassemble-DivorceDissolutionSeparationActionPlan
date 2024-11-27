@@ -26,16 +26,16 @@ Scenario: Row #348
 # And I take a screenshot
     And I should see the phrase "Your Personal Action Plan for asking the court for a legal separation in Alaska in 8 steps"
     And I should see the phrase "Decide which court should hear your case"
-    And I tap the "#cGlja19jb3VydF9zdGVw .al_toggle" element and stay on the same page
-    And I should see the phrase "Blue 1"
-    And I should see the phrase "Blue 2"
-    And I should see the phrase "All 1 (yellow)"
-    And I should see the phrase "Red military"
-    And I should see the phrase "Blue 3"
-    And I should see the phrase "All 2 (yellow)"
-    And I should see the phrase "Blue 4"
-    And I should see the phrase "All 3 (yellow)"
-    And I should see the phrase "Blue 5"
+# And I tap the "#cGlja19jb3VydF9zdGVw .al_toggle" element and stay on the same page
+# And I should see the phrase "Blue 1"
+# And I should see the phrase "Blue 2"
+# And I should see the phrase "All 1 (yellow)"
+# And I should see the phrase "Red military"
+# And I should see the phrase "Blue 3"
+# And I should see the phrase "All 2 (yellow)"
+# And I should see the phrase "Blue 4"
+# And I should see the phrase "All 3 (yellow)"
+# And I should see the phrase "Blue 5"
     And I should see the phrase "Learn about legal separation"
     And I should see the phrase "Fill out the forms to start a legal separation case"
     And I should see the phrase "File the original with your local court"
@@ -99,16 +99,16 @@ Scenario: Row #356
 # And I take a screenshot
     And I should see the phrase "Your Personal Action Plan for asking the court for a legal separation in Alaska in 8 steps"
     And I should see the phrase "Decide which court should hear your case"
-    And I tap the "#cGlja19jb3VydF9zdGVw .al_toggle" element and stay on the same page
-    And I should see the phrase "Blue 1"
-    And I should see the phrase "Blue 2"
-    And I should see the phrase "All 1 (yellow)"
-    And I should see the phrase "Red not military"
-    And I should see the phrase "Blue 3"
-    And I should see the phrase "All 2 (yellow)"
-    And I should see the phrase "Blue 4"
-    And I should see the phrase "All 3 (yellow)"
-    And I should see the phrase "Blue 5"
+# And I tap the "#cGlja19jb3VydF9zdGVw .al_toggle" element and stay on the same page
+# And I should see the phrase "Blue 1"
+# And I should see the phrase "Blue 2"
+# And I should see the phrase "All 1 (yellow)"
+# And I should see the phrase "Red not military"
+# And I should see the phrase "Blue 3"
+# And I should see the phrase "All 2 (yellow)"
+# And I should see the phrase "Blue 4"
+# And I should see the phrase "All 3 (yellow)"
+# And I should see the phrase "Blue 5"
     And I should see the phrase "Learn about legal separation"
     And I should see the phrase "Fill out the forms to start a legal separation case"
     And I should see the phrase "File the original with your local court"
@@ -172,13 +172,13 @@ Scenario: Row #360
 # And I take a screenshot
     And I should see the phrase "Your Personal Action Plan for asking the court for a legal separation in Alaska in 9 steps"
     And I should see the phrase "Decide if Alaska is the right state for your case"
-    And I tap the "#cGlja19jb3VydF9zdGVw .al_toggle" element and stay on the same page
-    And I should see the phrase "All 1 (yellow)"
-    And I should see the phrase "Red military"
-    And I should see the phrase "Green 1"
-    And I should see the phrase "All 2 (yellow)"
-    And I should see the phrase "Green 2"
-    And I should see the phrase "All 3 (yellow)"
+# And I tap the "#cGlja19jb3VydF9zdGVw .al_toggle" element and stay on the same page
+# And I should see the phrase "All 1 (yellow)"
+# And I should see the phrase "Red military"
+# And I should see the phrase "Green 1"
+# And I should see the phrase "All 2 (yellow)"
+# And I should see the phrase "Green 2"
+# And I should see the phrase "All 3 (yellow)"
     And I should see the phrase "Learn about legal separation"
     And I should see the phrase "Fill out the forms to start a legal separation case"
     And I should see the phrase "File the original with your local court"
@@ -241,15 +241,15 @@ Scenario: Row #414
 # And I take a screenshot
     And I should see the phrase "Your Personal Action Plan for asking the court for a legal separation in Alaska in 8 steps"
     And I should see the phrase "Decide if Alaska is the right state for your case"
-    And I tap the "#cGlja19jb3VydF9zdGVw .al_toggle" element and stay on the same page
-    And I should see the phrase "Pink"
-    And I should see the phrase "Green 1"
-    And I should see the phrase "All 1 (yellow)"
-    And I should see the phrase "Red not military"
-    And I should see the phrase "Green 2"
-    And I should see the phrase "All 2 (yellow)"
-    And I should see the phrase "Green 3"
-    And I should see the phrase "All 3 (yellow)"
+# And I tap the "#cGlja19jb3VydF9zdGVw .al_toggle" element and stay on the same page
+# And I should see the phrase "Pink"
+# And I should see the phrase "Green 1"
+# And I should see the phrase "All 1 (yellow)"
+# And I should see the phrase "Red not military"
+# And I should see the phrase "Green 2"
+# And I should see the phrase "All 2 (yellow)"
+# And I should see the phrase "Green 3"
+# And I should see the phrase "All 3 (yellow)"
     And I should see the phrase "Learn about legal separation"
     And I should see the phrase "Fill out the forms to start a legal separation case"
     And I should see the phrase "File the original with your local court"
@@ -309,13 +309,13 @@ Scenario: Row #416
 # And I take a screenshot
     And I should see the phrase "Your Personal Action Plan for asking the court for a legal separation in Alaska in 8 steps"
     And I should see the phrase "Decide if Alaska is the right state for your case"
-    And I tap the "#cGlja19jb3VydF9zdGVw .al_toggle" element and stay on the same page
-    And I should see the phrase "All 1 (yellow)"
-    And I should see the phrase "Red military"
-    And I should see the phrase "Green 1"
-    And I should see the phrase "All 2 (yellow)"
-    And I should see the phrase "Green 2"
-    And I should see the phrase "All 3 (yellow)"
+# And I tap the "#cGlja19jb3VydF9zdGVw .al_toggle" element and stay on the same page
+# And I should see the phrase "All 1 (yellow)"
+# And I should see the phrase "Red military"
+# And I should see the phrase "Green 1"
+# And I should see the phrase "All 2 (yellow)"
+# And I should see the phrase "Green 2"
+# And I should see the phrase "All 3 (yellow)"
     And I should see the phrase "Learn about legal separation"
     And I should see the phrase "Fill out the forms to start a legal separation case"
     And I should see the phrase "File the original with your local court"
@@ -346,13 +346,13 @@ Scenario: Row #417
 # And I take a screenshot
     And I should see the phrase "Your Personal Action Plan for asking the court for a legal separation in Alaska in 7 steps"
     And I should see the phrase "Decide if Alaska is the right state for your case"
-    And I tap the "#cGlja19jb3VydF9zdGVw .al_toggle" element and stay on the same page
-    And I should see the phrase "All 1 (yellow)"
-    And I should see the phrase "Red not military"
-    And I should see the phrase "Green 1"
-    And I should see the phrase "All 2 (yellow)"
-    And I should see the phrase "Green 2"
-    And I should see the phrase "All 3 (yellow)"
+# And I tap the "#cGlja19jb3VydF9zdGVw .al_toggle" element and stay on the same page
+# And I should see the phrase "All 1 (yellow)"
+# And I should see the phrase "Red not military"
+# And I should see the phrase "Green 1"
+# And I should see the phrase "All 2 (yellow)"
+# And I should see the phrase "Green 2"
+# And I should see the phrase "All 3 (yellow)"
     And I should see the phrase "Learn about legal separation"
     And I should see the phrase "Fill out the forms to start a legal separation case"
     And I should see the phrase "File the original with your local court"
@@ -420,5 +420,6 @@ Scenario: Row #419
     And I take a screenshot
     And I download "divorce_dissolution_separation_action_plan.pdf"
     And I download "divorce_dissolution_separation_action_plan.docx"
+
 
 

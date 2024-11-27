@@ -232,16 +232,16 @@ Scenario: Row #262
 # And I take a screenshot
     And I should see the phrase "Your Personal Action Plan for asking the court for an uncontested divorce in Alaska in 9 steps"
     And I should see the phrase "Decide which court should hear your case"
-    And I tap the "#cGlja19jb3VydF9zdGVw .al_toggle" element and stay on the same page
-    And I should see the phrase "Blue 1"
-    And I should see the phrase "Blue 2"
-    And I should see the phrase "All 1 (yellow)"
-    And I should see the phrase "Red military"
-    And I should see the phrase "Blue 3"
-    And I should see the phrase "All 2 (yellow)"
-    And I should see the phrase "Blue 4"
-    And I should see the phrase "All 3 (yellow)"
-    And I should see the phrase "Blue 5"
+# And I tap the "#cGlja19jb3VydF9zdGVw .al_toggle" element and stay on the same page
+# And I should see the phrase "Blue 1"
+# And I should see the phrase "Blue 2"
+# And I should see the phrase "All 1 (yellow)"
+# And I should see the phrase "Red military"
+# And I should see the phrase "Blue 3"
+# And I should see the phrase "All 2 (yellow)"
+# And I should see the phrase "Blue 4"
+# And I should see the phrase "All 3 (yellow)"
+# And I should see the phrase "Blue 5"
 # And I should see the phrase "Review common situations where there are no marital assets and debts to divide"
     And I should see the phrase "Make sure you do not have marital assets and debts to divide"
     And I should see the phrase "Fill out the forms to start a divorce case"
@@ -284,16 +284,16 @@ Scenario: Row #263Dissolution
 # And I take a screenshot
     And I should see the phrase "Your Personal Action Plan for asking the court for an uncontested divorce in Alaska in 7 steps"
     And I should see the phrase "Decide which court should hear your case"
-    And I tap the "#cGlja19jb3VydF9zdGVw .al_toggle" element and stay on the same page
-    And I should see the phrase "Blue 1"
-    And I should see the phrase "Blue 2"
-    And I should see the phrase "All 1 (yellow)"
-    And I should see the phrase "Red not military"
-    And I should see the phrase "Blue 3"
-    And I should see the phrase "All 2 (yellow)"
-    And I should see the phrase "Blue 4"
-    And I should see the phrase "All 3 (yellow)"
-    And I should see the phrase "Blue 5"
+# And I tap the "#cGlja19jb3VydF9zdGVw .al_toggle" element and stay on the same page
+# And I should see the phrase "Blue 1"
+# And I should see the phrase "Blue 2"
+# And I should see the phrase "All 1 (yellow)"
+# And I should see the phrase "Red not military"
+# And I should see the phrase "Blue 3"
+# And I should see the phrase "All 2 (yellow)"
+# And I should see the phrase "Blue 4"
+# And I should see the phrase "All 3 (yellow)"
+# And I should see the phrase "Blue 5"
     And I should see the phrase "Make sure you do not have marital assets and debts to divide"
     And I should see the phrase "File to end your marriage when you do not know where your spouse is, there are no children, and there is no property or debt to divide"
     And I should see the phrase "File the original with your local court"
@@ -543,5 +543,3 @@ Scenario: Row #335
     And I take a screenshot
     And I download "divorce_dissolution_separation_action_plan.pdf"
     And I download "divorce_dissolution_separation_action_plan.docx"
-
-
