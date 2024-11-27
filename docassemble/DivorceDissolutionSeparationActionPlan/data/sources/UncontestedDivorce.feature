@@ -20,7 +20,7 @@ Scenario: Row #14
     | have_property_and_debt      | True    |         |
     | paternity                   | no      |         |
     | wife_is_pregnant            | husband |         |
-    | domestic_violence           | no      |         |
+    | domestic_violence           | False   |         |
   And I should see the phrase "Your Personal Action Plan for asking the court for an uncontested divorce in Alaska in 6 steps"
   And I should see the phrase "Learn about uncontested divorces"
   And I should see the phrase "Fill out the forms for an uncontested divorce"
