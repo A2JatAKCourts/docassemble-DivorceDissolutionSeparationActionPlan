@@ -8,21 +8,34 @@ Background:
 Scenario: Row #348
   Given I start the interview at "Divorce_dissolution_separation_action_plan.yml"
     And I get to the question id "final screen" with this data:
-    | var                         | value            | trigger | 
-    | minor_children              | True             |         | 
-    | other_case                  | True             |         | 
-    | ongoing                     | yes              |         | 
-    | military                    | True             |         | 
-    | other_state_case            | continue         |         | 
-    | legal_separation_or_divorce | legal separation |         | 
-    | agree_or_settle_kids        | yes              |         | 
-# | know_spouse_whereabouts     | True             |         | 
+    | var            | value | trigger | 
+    | minor_children | True  |         | 
+    | other_case     | True  |         | 
+    | ongoing        | yes   |         | 
+# | residency                   | both             |         |
+# | couple_are_residents        | True             |         |
+# | children_are_residents      | False            |         |
+    | military                    | True             |  | 
+    | other_state_case            | continue         |  | 
+    | legal_separation_or_divorce | legal separation |  | 
+    | agree_or_settle_kids        | yes              |  | 
+# | know_spouse_whereabouts     | True             |         |
     | paternity         | yes     |  | 
     | wife_is_pregnant  | husband |  | 
     | domestic_violence | True    |  | 
 # And I take a screenshot
     And I should see the phrase "Your Personal Action Plan for asking the court for a legal separation in Alaska in 8 steps"
     And I should see the phrase "Decide which court should hear your case"
+# And I tap the "#cGlja19jb3VydF9zdGVw .al_toggle" element and stay on the same page
+# And I should see the phrase "Blue 1"
+# And I should see the phrase "Blue 2"
+# And I should see the phrase "All 1 (yellow)"
+# And I should see the phrase "Red military"
+# And I should see the phrase "Blue 3"
+# And I should see the phrase "All 2 (yellow)"
+# And I should see the phrase "Blue 4"
+# And I should see the phrase "All 3 (yellow)"
+# And I should see the phrase "Blue 5"
     And I should see the phrase "Learn about legal separation"
     And I should see the phrase "Fill out the forms to start a legal separation case"
     And I should see the phrase "File the original with your local court"
@@ -42,7 +55,9 @@ Scenario: Row #351
     | var                         | value            | trigger | 
     | minor_children              | True             |         | 
     | other_case                  | False            |         | 
-    | residency_and_jurisdiction  | True             |         | 
+    | residency                   | both             |         | 
+    | couple_are_residents        | True             |         | 
+    | children_are_residents      | True             |         | 
     | legal_separation_or_divorce | legal separation |         | 
     | agree_or_settle_kids        | yes              |         | 
 # | know_spouse_whereabouts     | False            |         |
@@ -67,21 +82,33 @@ Scenario: Row #351
 Scenario: Row #356
   Given I start the interview at "Divorce_dissolution_separation_action_plan.yml"
     And I get to the question id "final screen" with this data:
-    | var                         | value            | trigger | 
-    | minor_children              | True             |         | 
-    | other_case                  | True             |         | 
-    | ongoing                     | yes              |         | 
-    | military                    | False            |         | 
-    | other_state_case            | continue         |         | 
-    | legal_separation_or_divorce | legal separation |         | 
-    | agree_or_settle_kids        | yes              |         | 
-# | know_spouse_whereabouts     | True             |         | 
+    | var            | value | trigger | 
+    | minor_children | True  |         | 
+    | other_case     | True  |         | 
+    | ongoing        | yes   |         | 
+# | residency                   | both             |         |
+# | couple_are_residents        | False            |         |
+    | military                    | False            |  | 
+    | other_state_case            | continue         |  | 
+    | legal_separation_or_divorce | legal separation |  | 
+    | agree_or_settle_kids        | yes              |  | 
+# | know_spouse_whereabouts     | True             |         |
     | paternity         | no          |  | 
     | wife_is_pregnant  | not husband |  | 
     | domestic_violence | True        |  | 
 # And I take a screenshot
     And I should see the phrase "Your Personal Action Plan for asking the court for a legal separation in Alaska in 8 steps"
     And I should see the phrase "Decide which court should hear your case"
+# And I tap the "#cGlja19jb3VydF9zdGVw .al_toggle" element and stay on the same page
+# And I should see the phrase "Blue 1"
+# And I should see the phrase "Blue 2"
+# And I should see the phrase "All 1 (yellow)"
+# And I should see the phrase "Red not military"
+# And I should see the phrase "Blue 3"
+# And I should see the phrase "All 2 (yellow)"
+# And I should see the phrase "Blue 4"
+# And I should see the phrase "All 3 (yellow)"
+# And I should see the phrase "Blue 5"
     And I should see the phrase "Learn about legal separation"
     And I should see the phrase "Fill out the forms to start a legal separation case"
     And I should see the phrase "File the original with your local court"
@@ -101,7 +128,9 @@ Scenario: Row #359
     | var                         | value            | trigger | 
     | minor_children              | True             |         | 
     | other_case                  | False            |         | 
-    | residency_and_jurisdiction  | True             |         | 
+    | residency                   | both             |         | 
+    | couple_are_residents        | True             |         | 
+    | children_are_residents      | True             |         | 
     | legal_separation_or_divorce | legal separation |         | 
     | agree_or_settle_kids        | yes              |         | 
 # | know_spouse_whereabouts     | False            |         |
@@ -130,18 +159,26 @@ Scenario: Row #360
     | minor_children                | True             |         | 
     | other_case                    | True             |         | 
     | ongoing                       | no               |         | 
-    | residency_and_jurisdiction    | False            |         | 
+    | residency                     | both             |         | 
+    | couple_are_residents          | False            |         | 
     | military                      | True             |         | 
     | continue_despite_no_residency | continue         |         | 
     | legal_separation_or_divorce   | legal separation |         | 
     | agree_or_settle_kids          | yes              |         | 
-# | know_spouse_whereabouts       | True             |         | 
+# | know_spouse_whereabouts       | True             |         |
     | paternity         | do not know |  | 
     | wife_is_pregnant  | husband     |  | 
     | domestic_violence | True        |  | 
 # And I take a screenshot
     And I should see the phrase "Your Personal Action Plan for asking the court for a legal separation in Alaska in 9 steps"
     And I should see the phrase "Decide if Alaska is the right state for your case"
+# And I tap the "#cGlja19jb3VydF9zdGVw .al_toggle" element and stay on the same page
+# And I should see the phrase "All 1 (yellow)"
+# And I should see the phrase "Red military"
+# And I should see the phrase "Green 1"
+# And I should see the phrase "All 2 (yellow)"
+# And I should see the phrase "Green 2"
+# And I should see the phrase "All 3 (yellow)"
     And I should see the phrase "Learn about legal separation"
     And I should see the phrase "Fill out the forms to start a legal separation case"
     And I should see the phrase "File the original with your local court"
@@ -162,7 +199,9 @@ Scenario: Row #365
     | var                         | value            | trigger | 
     | minor_children              | True             |         | 
     | other_case                  | False            |         | 
-    | residency_and_jurisdiction  | True             |         | 
+    | residency                   | both             |         | 
+    | couple_are_residents        | True             |         | 
+    | children_are_residents      | True             |         | 
     | legal_separation_or_divorce | legal separation |         | 
     | agree_or_settle_kids        | yes              |         | 
 # | know_spouse_whereabouts     | False            |         |
@@ -191,17 +230,26 @@ Scenario: Row #414
     | var                           | value            | trigger | 
     | minor_children                | False            |         | 
     | other_case                    | False            |         | 
-    | residency_and_jurisdiction    | False            |         | 
+    | residency                     | none             |         | 
     | military                      | False            |         | 
     | continue_despite_no_residency | continue         |         | 
     | legal_separation_or_divorce   | legal separation |         | 
     | agree_or_settle_kids          | yes              |         | 
-# | know_spouse_whereabouts       | True             |         | 
+# | know_spouse_whereabouts       | True             |         |
     | wife_is_pregnant  | husband |  | 
     | domestic_violence | True    |  | 
 # And I take a screenshot
     And I should see the phrase "Your Personal Action Plan for asking the court for a legal separation in Alaska in 8 steps"
     And I should see the phrase "Decide if Alaska is the right state for your case"
+# And I tap the "#cGlja19jb3VydF9zdGVw .al_toggle" element and stay on the same page
+# And I should see the phrase "Pink"
+# And I should see the phrase "Green 1"
+# And I should see the phrase "All 1 (yellow)"
+# And I should see the phrase "Red not military"
+# And I should see the phrase "Green 2"
+# And I should see the phrase "All 2 (yellow)"
+# And I should see the phrase "Green 3"
+# And I should see the phrase "All 3 (yellow)"
     And I should see the phrase "Learn about legal separation"
     And I should see the phrase "Fill out the forms to start a legal separation case"
     And I should see the phrase "File the original with your local court"
@@ -221,7 +269,8 @@ Scenario: Row #415
     | var                         | value            | trigger | 
     | minor_children              | False            |         | 
     | other_case                  | False            |         | 
-    | residency_and_jurisdiction  | True             |         | 
+    | residency                   | both             |         | 
+    | couple_are_residents        | True             |         | 
     | legal_separation_or_divorce | legal separation |         | 
     | agree_or_settle_kids        | yes              |         | 
 # | know_spouse_whereabouts     | False            |         |
@@ -248,17 +297,25 @@ Scenario: Row #416
     | var                           | value            | trigger | 
     | minor_children                | False            |         | 
     | other_case                    | False            |         | 
-    | residency_and_jurisdiction    | False            |         | 
+    | residency                     | one              |         | 
+    | couple_are_residents          | False            |         | 
     | military                      | True             |         | 
     | continue_despite_no_residency | continue         |         | 
     | legal_separation_or_divorce   | legal separation |         | 
     | agree_or_settle_kids          | yes              |         | 
-# | know_spouse_whereabouts       | True             |         | 
+# | know_spouse_whereabouts       | True             |         |
     | wife_is_pregnant  | not husband |  | 
     | domestic_violence | True        |  | 
 # And I take a screenshot
     And I should see the phrase "Your Personal Action Plan for asking the court for a legal separation in Alaska in 8 steps"
     And I should see the phrase "Decide if Alaska is the right state for your case"
+# And I tap the "#cGlja19jb3VydF9zdGVw .al_toggle" element and stay on the same page
+# And I should see the phrase "All 1 (yellow)"
+# And I should see the phrase "Red military"
+# And I should see the phrase "Green 1"
+# And I should see the phrase "All 2 (yellow)"
+# And I should see the phrase "Green 2"
+# And I should see the phrase "All 3 (yellow)"
     And I should see the phrase "Learn about legal separation"
     And I should see the phrase "Fill out the forms to start a legal separation case"
     And I should see the phrase "File the original with your local court"
@@ -278,17 +335,24 @@ Scenario: Row #417
     | var                           | value            | trigger | 
     | minor_children                | False            |         | 
     | other_case                    | False            |         | 
-    | residency_and_jurisdiction    | False            |         | 
+    | residency                     | none             |         | 
     | military                      | False            |         | 
     | continue_despite_no_residency | continue         |         | 
     | legal_separation_or_divorce   | legal separation |         | 
     | agree_or_settle_kids          | yes              |         | 
-# | know_spouse_whereabouts       | False            |         | 
+# | know_spouse_whereabouts       | False            |         |
     | wife_is_pregnant  | not husband |  | 
     | domestic_violence | False       |  | 
 # And I take a screenshot
     And I should see the phrase "Your Personal Action Plan for asking the court for a legal separation in Alaska in 7 steps"
     And I should see the phrase "Decide if Alaska is the right state for your case"
+# And I tap the "#cGlja19jb3VydF9zdGVw .al_toggle" element and stay on the same page
+# And I should see the phrase "All 1 (yellow)"
+# And I should see the phrase "Red not military"
+# And I should see the phrase "Green 1"
+# And I should see the phrase "All 2 (yellow)"
+# And I should see the phrase "Green 2"
+# And I should see the phrase "All 3 (yellow)"
     And I should see the phrase "Learn about legal separation"
     And I should see the phrase "Fill out the forms to start a legal separation case"
     And I should see the phrase "File the original with your local court"
@@ -308,12 +372,13 @@ Scenario: Row #418
     | var                         | value            | trigger | 
     | minor_children              | False            |         | 
     | other_case                  | False            |         | 
-    | residency_and_jurisdiction  | True             |         | 
+    | residency                   | one              |         | 
+    | couple_are_residents        | True             |         | 
     | legal_separation_or_divorce | legal separation |         | 
     | agree_or_settle_kids        | yes              |         | 
-# | know_spouse_whereabouts     | True             |         | 
-    | wife_is_pregnant            | not pregnant     |         | 
-    | domestic_violence           | True             |         | 
+# | know_spouse_whereabouts     | True             |         |
+    | wife_is_pregnant  | not pregnant |  | 
+    | domestic_violence | True         |  | 
 # And I take a screenshot
     And I should see the phrase "Your Personal Action Plan for asking the court for a legal separation in Alaska in 7 steps"
     And I should see the phrase "Learn about legal separation"
@@ -335,7 +400,8 @@ Scenario: Row #419
     | var                         | value            | trigger | 
     | minor_children              | False            |         | 
     | other_case                  | False            |         | 
-    | residency_and_jurisdiction  | True             |         | 
+    | residency                   | both             |         | 
+    | couple_are_residents        | True             |         | 
     | legal_separation_or_divorce | legal separation |         | 
     | agree_or_settle_kids        | yes              |         | 
 # | know_spouse_whereabouts     | False            |         |
@@ -354,3 +420,6 @@ Scenario: Row #419
     And I take a screenshot
     And I download "divorce_dissolution_separation_action_plan.pdf"
     And I download "divorce_dissolution_separation_action_plan.docx"
+
+
+
