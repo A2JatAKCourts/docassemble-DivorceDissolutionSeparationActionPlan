@@ -149,6 +149,8 @@ comment: |
   When enforcing divorce order is finished - update this question to link to it:
     *  [Enforcing a Divorce Court Order](https://docassemble.akcourts.gov/start/EnforcingDivorceOrder), 
 ---
+comment: |
+  [GitHub issue #45](https://github.com/A2JatAKCourts/docassemble-DivorceIssues/issues/45)
 id: Military
 question: |
   Are you or your spouse in the military and stationed in Alaska?
@@ -157,18 +159,21 @@ fields:
     datatype: yesnoradio
   - note: |
       #### <i class="fa-regular fa-lightbulb"></i> Learn more ####
-      % if other_case and ongoing == 'yes':
-      Deciding which state court has the authority to grant a divorce depends on connections to each state, such as being stationed in one of the states.
-      % endif
-      % if defined('residency_and_jurisdiction') and not residency_and_jurisdiction:
-      % if minor_children:
-      The Alaska court only has the authority to grant a divorce for people who have connections to Alaska. If you haven't lived in Alaska for 6 months, being stationed in Alaska may give you enough connection for the court to grant a divorce, but authority over parenting plan or custody orders may be limited.
+      % if not other_case or (other_case and ongoing == 'no'):
+      Generally, the court can grant a divorce if you are in Alaska and plan to stay.
+
+      If you did not live in Alaska with your spouse as a married couple for 6 months in the last 6 years, you may need another connection to Alaska for the court to have the authority, called "jurisdiction", to take other steps.
       % else:
-      The Alaska court only has the authority to grant a divorce for people who have connections to Alaska. If you and your spouse haven't lived in Alaska for 6 months, being stationed in Alaska may give you enough connection for the court to grant a divorce, but authority over enforcing property and debt orders may be limited.
+      If you start a case in Alaska while a case is going on in a different state, only 1 case can move forward.
+      
+      One court will close their case.
+      
+      Deciding which court should grant the divorce depends on both spouses’ connections to each state.
       % endif
-      % endif
+      
+      A military connection, such as being stationed in Alaska, could give the Alaska court the authority to grant you a divorce.
 ---
-id: Want more information about starting case in Alaska
+id: Want more information about starting a case in Alaska
 question: |
   Do you want more information about starting a case in Alaska?
 subquestion: |
