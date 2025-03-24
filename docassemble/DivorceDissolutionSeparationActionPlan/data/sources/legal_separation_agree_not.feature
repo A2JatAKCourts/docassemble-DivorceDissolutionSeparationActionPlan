@@ -23,7 +23,7 @@ Scenario: Row #366
     | domestic_violence           | True             |         |
     | default_info                | True             |         |
   # And I take a screenshot
-  And I should see the phrase "Your Action Plan for asking the court for a legal separation in Alaska in 11 steps"
+  And I should see the phrase "Your Action Plan for asking the court for a legal separation in 11 steps"
   And I should see the phrase "Learn about legal separation"
   And I should see the phrase "Fill out the forms to start a legal separation case"
   And I should see the phrase "File the original with your local court"
@@ -61,7 +61,7 @@ Scenario: Row #377
     | domestic_violence           | False            |         |
     | default_info                | False            |         |
   # And I take a screenshot
-  And I should see the phrase "Your Action Plan for asking the court for a legal separation in Alaska in 10 steps"
+  And I should see the phrase "Your Action Plan for asking the court for a legal separation in 10 steps"
   And I should see the phrase "Decide which court should hear your case"
   # And I tap the "#cGlja19jb3VydF9zdGVw .al_toggle" element and stay on the same page
   # And I should see the phrase "Blue 1"
@@ -105,7 +105,7 @@ Scenario: Row #387
     | domestic_violence           | True             |         |
     | default_info                | False            |         |
   # And I take a screenshot
-  And I should see the phrase "Your Action Plan for asking the court for a legal separation in Alaska in 9 steps"
+  And I should see the phrase "Your Action Plan for asking the court for a legal separation in 9 steps"
   And I should see the phrase "Learn about legal separation"
   And I should see the phrase "Fill out the forms to start a legal separation case"
   And I should see the phrase "File the original with your local court"
@@ -141,7 +141,7 @@ Scenario: Row #395
     | domestic_violence           | True             |         |
     | default_info                | False            |         |
   # And I take a screenshot
-  And I should see the phrase "Your Action Plan for asking the court for a legal separation in Alaska in 12 steps"
+  And I should see the phrase "Your Action Plan for asking the court for a legal separation in 12 steps"
   And I should see the phrase "Decide which court should hear your case"
   # And I tap the "#cGlja19jb3VydF9zdGVw .al_toggle" element and stay on the same page
   # And I should see the phrase "Blue 1"
@@ -187,7 +187,7 @@ Scenario: Row #400
     | domestic_violence           | False            |         |
     | default_info                | True             |         |
   # And I take a screenshot
-  And I should see the phrase "Your Action Plan for asking the court for a legal separation in Alaska in 12 steps"
+  And I should see the phrase "Your Action Plan for asking the court for a legal separation in 12 steps"
   And I should see the phrase "Learn about legal separation"
   And I should see the phrase "Fill out the forms to start a legal separation case"
   And I should see the phrase "File the original with your local court"
@@ -224,7 +224,7 @@ Scenario: Row #408
     | domestic_violence             | False            |         |
     | default_info                  | True             |         |
   # And I take a screenshot
-  And I should see the phrase "Your Action Plan for asking the court for a legal separation in Alaska in 12 steps"
+  And I should see the phrase "Your Action Plan for asking the court for a legal separation in 12 steps"
   And I should see the phrase "Decide if Alaska is the right state for your case"
   # And I tap the "#cGlja19jb3VydF9zdGVw .al_toggle" element and stay on the same page
   # And I should see the phrase "All 1 (yellow)"
@@ -266,7 +266,7 @@ Scenario: Row #420
     | domestic_violence           | True             |         |
     | default_info                | True             |         |
   # And I take a screenshot
-  And I should see the phrase "Your Action Plan for asking the court for a legal separation in Alaska in 11 steps"
+  And I should see the phrase "Your Action Plan for asking the court for a legal separation in 11 steps"
   And I should see the phrase "Learn about legal separation"
   And I should see the phrase "Fill out the forms to start a legal separation case"
   And I should see the phrase "File the original with your local court"
@@ -301,7 +301,7 @@ Scenario: Row #425
     | domestic_violence             | True             |         |
     | default_info                  | False            |         |
   # And I take a screenshot
-  And I should see the phrase "Your Action Plan for asking the court for a legal separation in Alaska in 10 steps"
+  And I should see the phrase "Your Action Plan for asking the court for a legal separation in 10 steps"
   And I should see the phrase "Decide if Alaska is the right state for your case"
   # And I tap the "#cGlja19jb3VydF9zdGVw .al_toggle" element and stay on the same page
   # And I should see the phrase "All 1 (yellow)"
@@ -340,7 +340,7 @@ Scenario: Row #430
     | domestic_violence           | False            |         |
     | default_info                | True             |         |
   # And I take a screenshot
-  And I should see the phrase "Your Action Plan for asking the court for a legal separation in Alaska in 11 steps"
+  And I should see the phrase "Your Action Plan for asking the court for a legal separation in 11 steps"
   And I should see the phrase "Learn about legal separation"
   And I should see the phrase "Fill out the forms to start a legal separation case"
   And I should see the phrase "File the original with your local court"
@@ -375,7 +375,7 @@ Scenario: Row #435
     | domestic_violence             | False            |         |
     | default_info                  | False            |         |
   # And I take a screenshot
-  And I should see the phrase "Your Action Plan for asking the court for a legal separation in Alaska in 10 steps"
+  And I should see the phrase "Your Action Plan for asking the court for a legal separation in 10 steps"
   And I should see the phrase "Decide if Alaska is the right state for your case"
   # And I tap the "#cGlja19jb3VydF9zdGVw .al_toggle" element and stay on the same page
   # And I should see the phrase "All 1 (yellow)"
@@ -416,7 +416,7 @@ Scenario: Row #436
     | domestic_violence             | True             |         |
     | default_info                  | True             |         |
   # And I take a screenshot
-  And I should see the phrase "Your Action Plan for asking the court for a legal separation in Alaska in 12 steps"
+  And I should see the phrase "Your Action Plan for asking the court for a legal separation in 12 steps"
   And I should see the phrase "Decide if Alaska is the right state for your case"
   # And I tap the "#cGlja19jb3VydF9zdGVw .al_toggle" element and stay on the same page
   # And I should see the phrase "All 1 (yellow)"
@@ -457,7 +457,7 @@ Scenario: Row #441
     | domestic_violence           | True             |         |
     | default_info                | False            |         |
   # And I take a screenshot
-  And I should see the phrase "Your Action Plan for asking the court for a legal separation in Alaska in 9 steps"
+  And I should see the phrase "Your Action Plan for asking the court for a legal separation in 9 steps"
   And I should see the phrase "Learn about legal separation"
   And I should see the phrase "Fill out the forms to start a legal separation case"
   And I should see the phrase "File the original with your local court"
