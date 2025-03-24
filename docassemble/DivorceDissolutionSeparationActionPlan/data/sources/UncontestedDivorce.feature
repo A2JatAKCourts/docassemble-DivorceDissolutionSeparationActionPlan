@@ -21,7 +21,7 @@ Scenario: Row #14
     | paternity                   | no      |         |
     | wife_is_pregnant            | husband |         |
     | domestic_violence           | False   |         |
-  And I should see the phrase "Your Personal Action Plan for asking the court for an uncontested divorce in Alaska in 6 steps"
+  And I should see the phrase "Your Action Plan for asking the court for an uncontested divorce in Alaska in 6 steps"
   And I should see the phrase "Learn about uncontested divorces"
   And I should see the phrase "Fill out the forms for an uncontested divorce"
   And I should see the phrase "File the original with your local court"
@@ -50,7 +50,7 @@ Scenario: Row #14b
     | paternity                     | no          |         |
     | wife_is_pregnant              | not husband |         |
     | domestic_violence             | False       |         |
-  And I should see the phrase "Your Personal Action Plan for asking the court for an uncontested divorce in Alaska in 7 steps"
+  And I should see the phrase "Your Action Plan for asking the court for an uncontested divorce in Alaska in 7 steps"
   And I should see the phrase "Decide if Alaska is the right state for your case"
   And I tap the "#cGlja19jb3VydF9zdGVw .al_toggle" element and stay on the same page
   # And I should see the phrase "Green 1"
@@ -89,7 +89,7 @@ Scenario: Row #16
     | paternity                   | yes      |         |
     | wife_is_pregnant            | husband  |         |
     | domestic_violence           | True     |         |
-  And I should see the phrase "Your Personal Action Plan for asking the court for an uncontested divorce in Alaska in 8 steps"
+  And I should see the phrase "Your Action Plan for asking the court for an uncontested divorce in Alaska in 8 steps"
   And I should see the phrase "Decide which court should hear your case"
   And I tap the "#cGlja19jb3VydF9zdGVw .al_toggle" element and stay on the same page
   # And I should see the phrase "Blue 1"
@@ -132,7 +132,7 @@ Scenario: Row #18
     | wife_is_pregnant            | not husband |         |
     | domestic_violence           | False       |         |
   # And I take a screenshot
-  And I should see the phrase "Your Personal Action Plan for asking the court for an uncontested divorce in Alaska in 7 steps"
+  And I should see the phrase "Your Action Plan for asking the court for an uncontested divorce in Alaska in 7 steps"
   And I should see the phrase "Decide which court should hear your case"
   And I tap the "#cGlja19jb3VydF9zdGVw .al_toggle" element and stay on the same page
   # And I should see the phrase "Blue 1"
@@ -174,7 +174,7 @@ Scenario: Row #21
     | wife_is_pregnant            | not pregnant |         |
     | domestic_violence           | False        |         |
   # And I take a screenshot
-  And I should see the phrase "Your Personal Action Plan for asking the court for an uncontested divorce in Alaska in 8 steps"
+  And I should see the phrase "Your Action Plan for asking the court for an uncontested divorce in Alaska in 8 steps"
   And I should see the phrase "Decide which court should hear your case"
   And I tap the "#cGlja19jb3VydF9zdGVw .al_toggle" element and stay on the same page
   # And I should see the phrase "Blue 1"
@@ -217,7 +217,7 @@ Scenario: Row #23
     | wife_is_pregnant            | not pregnant |         |
     | domestic_violence           | False        |         |
   # And I take a screenshot
-  And I should see the phrase "Your Personal Action Plan for asking the court for an uncontested divorce in Alaska in 8 steps"
+  And I should see the phrase "Your Action Plan for asking the court for an uncontested divorce in Alaska in 8 steps"
   And I should see the phrase "Decide which court should hear your case"
   And I tap the "#cGlja19jb3VydF9zdGVw .al_toggle" element and stay on the same page
   # And I should see the phrase "Blue 1"
@@ -258,7 +258,7 @@ Scenario: Row #24
     | wife_is_pregnant            | not husband |         |
     | domestic_violence           | False       |         |
   # And I take a screenshot
-  And I should see the phrase "Your Personal Action Plan for asking the court for an uncontested divorce in Alaska in 8 steps"
+  And I should see the phrase "Your Action Plan for asking the court for an uncontested divorce in Alaska in 8 steps"
   And I should see the phrase "Talk to your spouse to see if you agree"
   And I should see the phrase "Learn about uncontested divorces"
   And I should see the phrase "Fill out the forms for an uncontested divorce"
@@ -290,7 +290,7 @@ Scenario: Row #26
     | wife_is_pregnant              | not pregnant |         |
     | domestic_violence             | True         |         |
   # And I take a screenshot
-  And I should see the phrase "Your Personal Action Plan for asking the court for an uncontested divorce in Alaska in 8 steps"
+  And I should see the phrase "Your Action Plan for asking the court for an uncontested divorce in Alaska in 8 steps"
   And I should see the phrase "Decide if Alaska is the right state for your case"
   And I tap the "#cGlja19jb3VydF9zdGVw .al_toggle" element and stay on the same page
   # And I should see the phrase "Green 1"
@@ -329,7 +329,7 @@ Scenario: Row #29
     | wife_is_pregnant            | husband     |         |
     | domestic_violence           | False       |         |
   # And I take a screenshot
-  And I should see the phrase "Your Personal Action Plan for asking the court for an uncontested divorce in Alaska in 7 steps"
+  And I should see the phrase "Your Action Plan for asking the court for an uncontested divorce in Alaska in 7 steps"
   And I should see the phrase "Talk to your spouse to see if you agree"
   And I should see the phrase "Learn about uncontested divorces"
   And I should see the phrase "Fill out the forms for an uncontested divorce"
@@ -360,7 +360,7 @@ Scenario: Row #33
     | wife_is_pregnant              | not pregnant |         |
     | domestic_violence             | False        |         |
   # And I take a screenshot
-  And I should see the phrase "Your Personal Action Plan for asking the court for an uncontested divorce in Alaska in 7 steps"
+  And I should see the phrase "Your Action Plan for asking the court for an uncontested divorce in Alaska in 7 steps"
   And I should see the phrase "Decide if Alaska is the right state for your case"
   And I tap the "#cGlja19jb3VydF9zdGVw .al_toggle" element and stay on the same page
   # And I should see the phrase "Green 1"
@@ -401,7 +401,7 @@ Scenario: Row #34
     | wife_is_pregnant              | husband     |         |
     | domestic_violence             | True        |         |
   # And I take a screenshot
-  And I should see the phrase "Your Personal Action Plan for asking the court for an uncontested divorce in Alaska in 9 steps"
+  And I should see the phrase "Your Action Plan for asking the court for an uncontested divorce in Alaska in 9 steps"
   And I should see the phrase "Decide if Alaska is the right state for your case"
   And I tap the "#cGlja19jb3VydF9zdGVw .al_toggle" element and stay on the same page
   # And I should see the phrase "Green 1"
@@ -441,7 +441,7 @@ Scenario: Row #38
     | wife_is_pregnant              | not pregnant |         |
     | domestic_violence             | True         |         |
   # And I take a screenshot
-  And I should see the phrase "Your Personal Action Plan for asking the court for an uncontested divorce in Alaska in 8 steps"
+  And I should see the phrase "Your Action Plan for asking the court for an uncontested divorce in Alaska in 8 steps"
   And I should see the phrase "Decide if Alaska is the right state for your case"
   And I tap the "#cGlja19jb3VydF9zdGVw .al_toggle" element and stay on the same page
   # And I should see the phrase "Green 1"
@@ -481,7 +481,7 @@ Scenario: Row #42
     | wife_is_pregnant              | not husband |         |
     | domestic_violence             | False       |         |
   # And I take a screenshot
-  And I should see the phrase "Your Personal Action Plan for asking the court for an uncontested divorce in Alaska in 8 steps"
+  And I should see the phrase "Your Action Plan for asking the court for an uncontested divorce in Alaska in 8 steps"
   And I should see the phrase "Decide if Alaska is the right state for your case"
   And I tap the "#cGlja19jb3VydF9zdGVw .al_toggle" element and stay on the same page
   # And I should see the phrase "Green 1"
@@ -526,7 +526,7 @@ Scenario: Row #261
     # | can_sign_together | True | |
     | no_prop_or_debt_agree               | True    |         |
   # And I take a screenshot
-  And I should see the phrase "Your Personal Action Plan for asking the court for an uncontested divorce in Alaska in 6 steps"
+  And I should see the phrase "Your Action Plan for asking the court for an uncontested divorce in Alaska in 6 steps"
   #  And I should see the phrase "Review common situations where there are no marital assets and debts to divide"
   And I should see the phrase "Make sure you do not have marital assets and debts to divide"
   And I should see the phrase "Fill out the forms to start a divorce case when there are no children & no assets or debts to divide"
@@ -558,7 +558,7 @@ Scenario: Row #264
     | wife_is_pregnant            | husband  |         |
     | domestic_violence           | True     |         |
   # And I take a screenshot
-  And I should see the phrase "Your Personal Action Plan for asking the court for an uncontested divorce in Alaska in 8 steps"
+  And I should see the phrase "Your Action Plan for asking the court for an uncontested divorce in Alaska in 8 steps"
   And I should see the phrase "Decide which court should hear your case"
   And I tap the "#cGlja19jb3VydF9zdGVw .al_toggle" element and stay on the same page
   # And I should see the phrase "Blue 1"
@@ -598,7 +598,7 @@ Scenario: Row #268
     | wife_is_pregnant            | not pregnant |         |
     | domestic_violence           | True         |         |
   # And I take a screenshot
-  And I should see the phrase "Your Personal Action Plan for asking the court for an uncontested divorce in Alaska in 7 steps"
+  And I should see the phrase "Your Action Plan for asking the court for an uncontested divorce in Alaska in 7 steps"
   # And I should see the phrase "Decide if Alaska is the right state for your case"
   # And I tap the "#cGlja19jb3VydF9zdGVw .al_toggle" element and stay on the same page
   # And I should see the phrase "Green 1"
@@ -638,7 +638,7 @@ Scenario: Row #269
     | wife_is_pregnant              | not husband |         |
     | domestic_violence             | False       |         |
   # And I take a screenshot
-  And I should see the phrase "Your Personal Action Plan for asking the court for an uncontested divorce in Alaska in 7 steps"
+  And I should see the phrase "Your Action Plan for asking the court for an uncontested divorce in Alaska in 7 steps"
   And I should see the phrase "Decide if Alaska is the right state for your case"
   And I tap the "#cGlja19jb3VydF9zdGVw .al_toggle" element and stay on the same page
   # And I should see the phrase "Green 1"
@@ -675,7 +675,7 @@ Scenario: Row #271
     | wife_is_pregnant            | husband     |         |
     | domestic_violence           | False       |         |
   # And I take a screenshot
-  And I should see the phrase "Your Personal Action Plan for asking the court for an uncontested divorce in Alaska in 7 steps"
+  And I should see the phrase "Your Action Plan for asking the court for an uncontested divorce in Alaska in 7 steps"
   And I should see the phrase "Talk to your spouse to see if you agree"
   And I should see the phrase "Learn about uncontested divorces"
   And I should see the phrase "Fill out the forms for an uncontested divorce"
@@ -704,7 +704,7 @@ Scenario: Row #272
     | wife_is_pregnant            | not husband |         |
     | domestic_violence           | True        |         |
   # And I take a screenshot
-  And I should see the phrase "Your Personal Action Plan for asking the court for an uncontested divorce in Alaska in 8 steps"
+  And I should see the phrase "Your Action Plan for asking the court for an uncontested divorce in Alaska in 8 steps"
   And I should see the phrase "Talk to your spouse to see if you agree"
   And I should see the phrase "Learn about uncontested divorces"
   And I should see the phrase "Fill out the forms for an uncontested divorce"
@@ -733,7 +733,7 @@ Scenario: Row #275
     | wife_is_pregnant            | not pregnant |         |
     | domestic_violence           | False        |         |
   # And I take a screenshot
-  And I should see the phrase "Your Personal Action Plan for asking the court for an uncontested divorce in Alaska in 7 steps"
+  And I should see the phrase "Your Action Plan for asking the court for an uncontested divorce in Alaska in 7 steps"
   And I should see the phrase "Talk to your spouse to see if you agree"
   And I should see the phrase "Learn about uncontested divorces"
   And I should see the phrase "Fill out the forms for an uncontested divorce"

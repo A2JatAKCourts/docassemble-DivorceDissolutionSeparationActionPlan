@@ -40,7 +40,7 @@ code: |
   github_repo_name =  'docassemble-DivorceIssues'
 ---
 code: |
-  interview_short_title = "Get a Personal Action Plan for asking the court for a divorce, dissolution or legal separation"
+  interview_short_title = "Get an Action Plan for asking the court to end your marriage"
 ---
 code: |
   al_form_type = "other" 
@@ -104,7 +104,7 @@ continue button field: Divorce_dissolution_separation_action_plan_intro
 question: |
   Divorce dissolution separation action plan
 subquestion: |
-  This Guided Assistant asks you questions and uses your answers to build a Personal Action Plan - a list of steps to help you ask the court for a divorce, dissolution or legal separation in Alaska.
+  This Court Guide Action Plan asks you questions and uses your answers to build a list of steps to help you ask the court for a divorce, dissolution or legal separation in Alaska.
 ---
 id: Minor children
 question: |
@@ -140,10 +140,10 @@ id: already divorced
 question: |
   If the other state court already ended your marriage, the Alaska court will not hear another case to end your marriage
 subquestion: |
-  To change something about the other court order, you can use the Guided Assistant Interview [Changing a Divorce Court Order](https://docassemble.akcourts.gov/start/ChangingDivorceOrder/).  
+  To change something about the other court order, you can use the Court Guide Action Plan [Changing a Divorce Court Order](https://docassemble.akcourts.gov/start/ChangingDivorceOrder/).  
   
   
-  If you are trying to enforce the other court order you have to register that order in the Alaska state court in your community. Read [registering out-of-state orders](https://courts.alaska.gov/shc/family/shcforeign.htm) for the forms and procedure. 
+  If you are trying to enforce the other court order, you have to register that order in the Alaska state court in your community. Read [registering out-of-state orders](https://courts.alaska.gov/shc/family/shcforeign.htm) for the forms and procedure. 
 continue button field: already_divorced
 comment: |
   When enforcing divorce order is finished - update this question to link to it:
