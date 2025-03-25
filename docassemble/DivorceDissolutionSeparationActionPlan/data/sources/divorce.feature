@@ -23,7 +23,7 @@ Scenario: Row #53
     | domestic_violence           | True    |         | 
     | default_info                | False   |         | 
 # And I take a screenshot
-    And I should see the phrase "Your Personal Action Plan for asking the court for a divorce in Alaska in 8 steps"
+    And I should see the phrase "Your Action Plan for asking the court for a divorce in 8 steps"
     And I should see the phrase "Fill out the forms to start a divorce case"
     And I should see the phrase "File the original with your local court"
     And I should see the phrase "Read the "Domestic Relations Procedural Order" or Standing Order if the clerk gives you one when you file your case"
@@ -55,7 +55,7 @@ Scenario: Row #89
     | domestic_violence           | True    |         | 
     | default_info                | False   |         | 
 # And I take a screenshot
-    And I should see the phrase "Your Personal Action Plan for asking the court for a divorce in Alaska in 8 steps"
+    And I should see the phrase "Your Action Plan for asking the court for a divorce in 8 steps"
     And I should see the phrase "Fill out the forms to start a divorce case"
     And I should see the phrase "File the original with your local court"
     And I should see the phrase "Read the "Domestic Relations Procedural Order" or Standing Order if the clerk gives you one when you file your case"
@@ -88,7 +88,7 @@ Scenario: Row #148
     | default_info                | True         |         | 
     | property_for_default        | False        |         | 
 # And I take a screenshot
-    And I should see the phrase "Your Personal Action Plan for asking the court for a divorce in Alaska in 10 steps"
+    And I should see the phrase "Your Action Plan for asking the court for a divorce in 10 steps"
     And I should see the phrase "Fill out the forms to start a divorce case"
     And I should see the phrase "File the original with your local court"
     And I should see the phrase "Read the "Domestic Relations Procedural Order" or Standing Order if the clerk gives you one when you file your case"
@@ -122,7 +122,7 @@ Scenario: Row #181
     | default_info                | True         |         | 
     | property_for_default        | False        |         | 
 # And I take a screenshot
-    And I should see the phrase "Your Personal Action Plan for asking the court for a divorce in Alaska in 9 steps"
+    And I should see the phrase "Your Action Plan for asking the court for a divorce in 9 steps"
     And I should see the phrase "Fill out the forms to start a divorce case"
     And I should see the phrase "File the original with your local court"
     And I should see the phrase "Read the "Domestic Relations Procedural Order" or Standing Order if the clerk gives you one when you file your case"
@@ -155,7 +155,7 @@ Scenario: Row #205
     | default_info                | True        |         | 
     | property_for_default        | False       |         | 
 # And I take a screenshot
-    And I should see the phrase "Your Personal Action Plan for asking the court for a divorce in Alaska in 9 steps"
+    And I should see the phrase "Your Action Plan for asking the court for a divorce in 9 steps"
     And I should see the phrase "Fill out the forms to start a divorce case"
     And I should see the phrase "File the original with your local court"
     And I should see the phrase "Read the "Domestic Relations Procedural Order" or Standing Order if the clerk gives you one when you file your case"
@@ -188,7 +188,7 @@ Scenario: Row #240
     | default_info                | True        |         | 
     | property_for_default        | True        |         | 
 # And I take a screenshot
-    And I should see the phrase "Your Personal Action Plan for asking the court for a divorce in Alaska in 10 steps"
+    And I should see the phrase "Your Action Plan for asking the court for a divorce in 10 steps"
     And I should see the phrase "Fill out the forms to start a divorce case"
     And I should see the phrase "File the original with your local court"
     And I should see the phrase "Read the "Domestic Relations Procedural Order" or Standing Order if the clerk gives you one when you file your case"
@@ -230,7 +230,7 @@ Scenario: Row #262
     | know_spouse_whereabouts | True  |  | 
     | default_info            | False |  | 
 # And I take a screenshot
-    And I should see the phrase "Your Personal Action Plan for asking the court for an uncontested divorce in Alaska in 9 steps"
+    And I should see the phrase "Your Action Plan for asking the court for an uncontested divorce in 9 steps"
     And I should see the phrase "Decide which court should hear your case"
 # And I tap the "#cGlja19jb3VydF9zdGVw .al_toggle" element and stay on the same page
 # And I should see the phrase "Blue 1"
@@ -282,7 +282,7 @@ Scenario: Row #263Dissolution
     | no_prop_or_debt_agree   | False |  | 
     | know_spouse_whereabouts | False |  | 
 # And I take a screenshot
-    And I should see the phrase "Your Personal Action Plan for asking the court for an uncontested divorce in Alaska in 7 steps"
+    And I should see the phrase "Your Action Plan for asking the court for an uncontested divorce in 7 steps"
     And I should see the phrase "Decide which court should hear your case"
 # And I tap the "#cGlja19jb3VydF9zdGVw .al_toggle" element and stay on the same page
 # And I should see the phrase "Blue 1"
@@ -330,7 +330,7 @@ Scenario: Row #263Divorce
     | know_spouse_whereabouts | False |  | 
 
 # And I take a screenshot
-    And I should see the phrase "Your Personal Action Plan for asking the court for an uncontested divorce in Alaska in 6 steps"
+    And I should see the phrase "Your Action Plan for asking the court for an uncontested divorce in 6 steps"
     And I should see the phrase "Make sure you do not have marital assets and debts to divide"
     And I should see the phrase "File to end your marriage when you do not know where your spouse is, there are no children, and there is no property or debt to divide"
     And I should see the phrase "File the original with your local court"
@@ -361,7 +361,7 @@ Scenario: Row #277
     | default_info                | True    |         | 
     | property_for_default        | False   |         | 
 # And I take a screenshot
-    And I should see the phrase "Your Personal Action Plan for asking the court for a divorce in Alaska in 10 steps"
+    And I should see the phrase "Your Action Plan for asking the court for a divorce in 10 steps"
     And I should see the phrase "Fill out the forms to start a divorce case"
     And I should see the phrase "File the original with your local court"
     And I should see the phrase "Read the "Domestic Relations Procedural Order" or Standing Order if the clerk gives you one when you file your case"
@@ -395,7 +395,7 @@ Scenario: Row #284
     | domestic_violence           | True    |         | 
     | default_info                | False   |         | 
 # And I take a screenshot
-    And I should see the phrase "Your Personal Action Plan for asking the court for a divorce in Alaska in 8 steps"
+    And I should see the phrase "Your Action Plan for asking the court for a divorce in 8 steps"
     And I should see the phrase "Fill out the forms to start a divorce case"
     And I should see the phrase "File the original with your local court"
     And I should see the phrase "Read the "Domestic Relations Procedural Order" or Standing Order if the clerk gives you one when you file your case"
@@ -433,7 +433,7 @@ Scenario: Row #300
     | default_info         | True |  | 
     | property_for_default | True |  | 
 # And I take a screenshot
-    And I should see the phrase "Your Personal Action Plan for asking the court for a divorce in Alaska in 10 steps"
+    And I should see the phrase "Your Action Plan for asking the court for a divorce in 10 steps"
     And I should see the phrase "Fill out the forms to start a divorce case"
     And I should see the phrase "File the original with your local court"
     And I should see the phrase "Read the "Domestic Relations Procedural Order" or Standing Order if the clerk gives you one when you file your case"
@@ -466,7 +466,7 @@ Scenario: Row #308
     | domestic_violence           | True         |         | 
     | default_info                | False        |         | 
 # And I take a screenshot
-    And I should see the phrase "Your Personal Action Plan for asking the court for a divorce in Alaska in 8 steps"
+    And I should see the phrase "Your Action Plan for asking the court for a divorce in 8 steps"
     And I should see the phrase "Fill out the forms to start a divorce case"
     And I should see the phrase "File the original with your local court"
     And I should see the phrase "Read the "Domestic Relations Procedural Order" or Standing Order if the clerk gives you one when you file your case"
@@ -499,7 +499,7 @@ Scenario: Row #327
     | default_info                | True        |         | 
     | property_for_default        | True        |         | 
 # And I take a screenshot
-    And I should see the phrase "Your Personal Action Plan for asking the court for a divorce in Alaska in 9 steps"
+    And I should see the phrase "Your Action Plan for asking the court for a divorce in 9 steps"
     And I should see the phrase "Fill out the forms to start a divorce case"
     And I should see the phrase "File the original with your local court"
     And I should see the phrase "Read the "Domestic Relations Procedural Order" or Standing Order if the clerk gives you one when you file your case"
@@ -531,7 +531,7 @@ Scenario: Row #335
     | domestic_violence           | False       |         | 
     | default_info                | False       |         | 
 # And I take a screenshot
-    And I should see the phrase "Your Personal Action Plan for asking the court for a divorce in Alaska in 8 steps"
+    And I should see the phrase "Your Action Plan for asking the court for a divorce in 8 steps"
     And I should see the phrase "Fill out the forms to start a divorce case"
     And I should see the phrase "File the original with your local court"
     And I should see the phrase "Read the "Domestic Relations Procedural Order" or Standing Order if the clerk gives you one when you file your case"

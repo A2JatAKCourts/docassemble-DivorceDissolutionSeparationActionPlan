@@ -24,7 +24,7 @@ Scenario: Row #348
     | wife_is_pregnant  | husband |  | 
     | domestic_violence | True    |  | 
 # And I take a screenshot
-    And I should see the phrase "Your Personal Action Plan for asking the court for a legal separation in Alaska in 8 steps"
+    And I should see the phrase "Your Action Plan for asking the court for a legal separation in 8 steps"
     And I should see the phrase "Decide which court should hear your case"
 # And I tap the "#cGlja19jb3VydF9zdGVw .al_toggle" element and stay on the same page
 # And I should see the phrase "Blue 1"
@@ -65,7 +65,7 @@ Scenario: Row #351
     | wife_is_pregnant  | not husband |  | 
     | domestic_violence | False       |  | 
 # And I take a screenshot
-    And I should see the phrase "Your Personal Action Plan for asking the court for a legal separation in Alaska in 6 steps"
+    And I should see the phrase "Your Action Plan for asking the court for a legal separation in 6 steps"
     And I should see the phrase "Learn about legal separation"
     And I should see the phrase "Fill out the forms to start a legal separation case"
     And I should see the phrase "File the original with your local court"
@@ -97,7 +97,7 @@ Scenario: Row #356
     | wife_is_pregnant  | not husband |  | 
     | domestic_violence | True        |  | 
 # And I take a screenshot
-    And I should see the phrase "Your Personal Action Plan for asking the court for a legal separation in Alaska in 8 steps"
+    And I should see the phrase "Your Action Plan for asking the court for a legal separation in 8 steps"
     And I should see the phrase "Decide which court should hear your case"
 # And I tap the "#cGlja19jb3VydF9zdGVw .al_toggle" element and stay on the same page
 # And I should see the phrase "Blue 1"
@@ -138,7 +138,7 @@ Scenario: Row #359
     | wife_is_pregnant  | not pregnant |  | 
     | domestic_violence | False        |  | 
 # And I take a screenshot
-    And I should see the phrase "Your Personal Action Plan for asking the court for a legal separation in Alaska in 6 steps"
+    And I should see the phrase "Your Action Plan for asking the court for a legal separation in 6 steps"
     And I should see the phrase "Learn about legal separation"
     And I should see the phrase "Fill out the forms to start a legal separation case"
     And I should see the phrase "File the original with your local court"
@@ -170,7 +170,7 @@ Scenario: Row #360
     | wife_is_pregnant  | husband     |  | 
     | domestic_violence | True        |  | 
 # And I take a screenshot
-    And I should see the phrase "Your Personal Action Plan for asking the court for a legal separation in Alaska in 9 steps"
+    And I should see the phrase "Your Action Plan for asking the court for a legal separation in 9 steps"
     And I should see the phrase "Decide if Alaska is the right state for your case"
 # And I tap the "#cGlja19jb3VydF9zdGVw .al_toggle" element and stay on the same page
 # And I should see the phrase "All 1 (yellow)"
@@ -209,7 +209,7 @@ Scenario: Row #365
     | wife_is_pregnant  | not pregnant |  | 
     | domestic_violence | False        |  | 
 # And I take a screenshot
-    And I should see the phrase "Your Personal Action Plan for asking the court for a legal separation in Alaska in 7 steps"
+    And I should see the phrase "Your Action Plan for asking the court for a legal separation in 7 steps"
     And I should see the phrase "Learn about legal separation"
     And I should see the phrase "Fill out the forms to start a legal separation case"
     And I should see the phrase "File the original with your local court"
@@ -239,7 +239,7 @@ Scenario: Row #414
     | wife_is_pregnant  | husband |  | 
     | domestic_violence | True    |  | 
 # And I take a screenshot
-    And I should see the phrase "Your Personal Action Plan for asking the court for a legal separation in Alaska in 8 steps"
+    And I should see the phrase "Your Action Plan for asking the court for a legal separation in 8 steps"
     And I should see the phrase "Decide if Alaska is the right state for your case"
 # And I tap the "#cGlja19jb3VydF9zdGVw .al_toggle" element and stay on the same page
 # And I should see the phrase "Pink"
@@ -277,7 +277,7 @@ Scenario: Row #415
     | wife_is_pregnant  | husband |  | 
     | domestic_violence | False   |  | 
 # And I take a screenshot
-    And I should see the phrase "Your Personal Action Plan for asking the court for a legal separation in Alaska in 6 steps"
+    And I should see the phrase "Your Action Plan for asking the court for a legal separation in 6 steps"
     And I should see the phrase "Learn about legal separation"
     And I should see the phrase "Fill out the forms to start a legal separation case"
     And I should see the phrase "File the original with your local court"
@@ -307,7 +307,7 @@ Scenario: Row #416
     | wife_is_pregnant  | not husband |  | 
     | domestic_violence | True        |  | 
 # And I take a screenshot
-    And I should see the phrase "Your Personal Action Plan for asking the court for a legal separation in Alaska in 8 steps"
+    And I should see the phrase "Your Action Plan for asking the court for a legal separation in 8 steps"
     And I should see the phrase "Decide if Alaska is the right state for your case"
 # And I tap the "#cGlja19jb3VydF9zdGVw .al_toggle" element and stay on the same page
 # And I should see the phrase "All 1 (yellow)"
@@ -344,7 +344,7 @@ Scenario: Row #417
     | wife_is_pregnant  | not husband |  | 
     | domestic_violence | False       |  | 
 # And I take a screenshot
-    And I should see the phrase "Your Personal Action Plan for asking the court for a legal separation in Alaska in 7 steps"
+    And I should see the phrase "Your Action Plan for asking the court for a legal separation in 7 steps"
     And I should see the phrase "Decide if Alaska is the right state for your case"
 # And I tap the "#cGlja19jb3VydF9zdGVw .al_toggle" element and stay on the same page
 # And I should see the phrase "All 1 (yellow)"
@@ -380,7 +380,7 @@ Scenario: Row #418
     | wife_is_pregnant  | not pregnant |  | 
     | domestic_violence | True         |  | 
 # And I take a screenshot
-    And I should see the phrase "Your Personal Action Plan for asking the court for a legal separation in Alaska in 7 steps"
+    And I should see the phrase "Your Action Plan for asking the court for a legal separation in 7 steps"
     And I should see the phrase "Learn about legal separation"
     And I should see the phrase "Fill out the forms to start a legal separation case"
     And I should see the phrase "File the original with your local court"
@@ -408,7 +408,7 @@ Scenario: Row #419
     | wife_is_pregnant  | not pregnant |  | 
     | domestic_violence | False        |  | 
 # And I take a screenshot
-    And I should see the phrase "Your Personal Action Plan for asking the court for a legal separation in Alaska in 6 steps"
+    And I should see the phrase "Your Action Plan for asking the court for a legal separation in 6 steps"
     And I should see the phrase "Learn about legal separation"
     And I should see the phrase "Fill out the forms to start a legal separation case"
     And I should see the phrase "File the original with your local court"

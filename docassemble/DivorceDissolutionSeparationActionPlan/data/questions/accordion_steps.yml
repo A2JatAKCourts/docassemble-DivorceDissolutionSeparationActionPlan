@@ -1,5 +1,34 @@
-comment: |
-  updated pick a court step template
+---
+generic object: ALDocumentBundle
+template: x.get_email_copy
+content: |
+  Email a copy of your Action Plan to yourself or someone else
+---
+generic object: ALDocumentBundle
+template: x.send_email_template
+subject: |
+  % if not defined('legal_separation_or_divorce'):
+  Your Action Plan for asking the court to end your marriage
+  % else:
+  % if legal_separation_or_divorce == 'divorce':
+  % if (minor_children and agree_or_settle_kids in ('yes', 'do not know')) \
+    or (minor_children == False and agree_or_settle in ('no prop debt or pregnancy', 'agree', 'do not know')):
+  Your Action Plan for asking the court for an uncontested divorce
+  % else:
+  Your Action Plan for asking the court for a divorce
+  % endif
+  % else:
+  Your Action Plan for asking the court for a legal separation
+  % endif  
+  % endif 
+content: |
+  Thank you for using the Alaska Court System’s Court Guide Action Plan.
+
+  Your Action Plan is attached.
+
+  Get [more information and a list of all the Court Guide Action Plans](https://ak-courts.info/plans).
+  
+  [ak-courts.info/plans](https://ak-courts.info/plans).
 ---
 id: final screen
 decoration: pen-to-square
@@ -8,21 +37,21 @@ question: |
   % if len(step_list) < 2:
   Get more information or help
   % else:
-  # <i class="fa-thin fa-list"></i>Your Personal Action Plan is ready!
+  # <i class="fa-thin fa-list"></i>Your Court Guide Action Plan is ready!
   % endif
 subquestion: |
   % if not defined('legal_separation_or_divorce'):
-  #### Your Personal Action Plan for asking the court for a divorce or legal separation in Alaska in ${ len(step_list) } steps
+  #### Your Action Plan for asking the court to end your marriage in ${ len(step_list) } steps
   % else:
   % if legal_separation_or_divorce == 'divorce':
   % if (minor_children and agree_or_settle_kids in ('yes', 'do not know')) \
     or (minor_children == False and agree_or_settle in ('no prop debt or pregnancy', 'agree', 'do not know')):
-  #### Your Personal Action Plan for asking the court for an uncontested divorce in Alaska in ${ len(step_list) } steps
+  #### Your Action Plan for asking the court for an uncontested divorce in ${ len(step_list) } steps
   % else:
-  #### Your Personal Action Plan for asking the court for a divorce in Alaska in ${ len(step_list) } steps
+  #### Your Action Plan for asking the court for a divorce in ${ len(step_list) } steps
   % endif
   % else:
-  #### Your Personal Action Plan for asking the court for a legal separation in Alaska in ${ len(step_list) } steps
+  #### Your Action Plan for asking the court for a legal separation in ${ len(step_list) } steps
   % endif  
   % endif 
   
@@ -211,7 +240,7 @@ code: |
         wife_is_pregnant = 'not pregnant'
     
     if legal_separation_or_divorce == 'divorce' \
-      and (minor_children and agree_or_settle_kids in('yes', 'do not know') \
+      and ((minor_children and agree_or_settle_kids in('yes', 'do not know')) \
         or (not minor_children and not married_more_than_2 and not pregnant and  property_division.any_false() and agree_or_settle in('agree','do not know')) \
         or (not minor_children and not married_more_than_2 and pregnant and agree_or_settle in('agree','do not know')) \
         or (not minor_children and married_more_than_2 and agree_or_settle in('agree','do not know'))):
@@ -392,7 +421,7 @@ subject: |
 content: |
   If a court in a different state already ended your marriage, the Alaska court will not hear a case to end your marriage.
   
-  If you are trying to enforce a court order from another state or change something about the order, try the Guided Assistant Interview,
+  If you are trying to enforce a court order from another state or change something about the order, use the Court Guide Action Plan,
   [Changing a Divorce Court Order](https://docassemble.akcourts.gov/start/ChangingDivorce/).
 ---
 template: pick_court_step
@@ -587,7 +616,7 @@ content: |
   % else:
   <div class="step-subheading">What to do if you reach an agreement</div>
   
-  Before you start a case in court  –You can get the right forms for your case by re-taking this Guided Assistant and answering questions for spouses that agree, or fill out 
+  Before you start a case in court  – You can get the right forms for your case by starting this Court Guide Action Plan over and answering questions for spouses that agree, or fill out 
   % if legal_separation_or_divorce == 'divorce':
   % if minor_children:
   [Uncontested Divorce With Children Packet](https://courts.alaska.gov/shc/family/shcforms.htm#shc-pac9a).
@@ -1306,14 +1335,15 @@ subject: |
     % endif
     % endif
 content: |
-  **If you are in immediate danger, call 911.**
+  <div class='step-subheading'>If you are in immediate danger, call 911</div>
 
   People who have experienced domestic violence can be at greater risk when they separate from their spouse or start a court case to end the marriage.  During this time, safety is very important.  The dynamics in a relationship with domestic violence may also cause people to feel pressured to agree to something they do not want.  If this is your situation, these resources may help:
   
-  *	Find a domestic violence program in your area to learn about what services they offer (counseling, financial assistance, housing and safe shelter, resources for children, and help with court).
-  *	You can get information about asking the court for a protective order by answering more questions.  If you want to save this Action Plan, be sure to download, save, or print it.  then return to the Guided Assist page and use the Guided Assist search box to find "Protective Orders."
-    *	See if You Qualify For A Free Lawyer Through Your Local Domestic Violence Program.
-    *	See if You Qualify For A Free Lawyer Through Alaska Legal Services.
+  *	Find a <a href="https://www.andvsa.org/communitys-programs">domestic violence program</a> in your area to learn about services they offer (counseling, financial  assistance, housing and safe shelter, resources for children, and help with court).
+  *	Ask the  court for a protective order.  See the Court Guide Action Plan, [Protective Orders](https://docassemble.AKcourts.gov/start/ProtectiveOrders).
+  * See if  you qualify for legal  assistance through:
+      * [your local domestic violence program](https://www.andvsa.org/for-survivors/") or 
+      * [Alaska Legal Services](https://www.alsc-law.org/apply-for-services).
   % if not minor_children:
   % if (legal_separation_or_divorce == 'divorce' and agree_or_settle == 'no prop debt or pregnancy' and no_prop_or_debt_agree) \
     or (legal_separation_or_divorce == 'divorce' and agree_or_settle in ('yes','do not know')) \

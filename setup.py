@@ -44,7 +44,7 @@ def find_package_data(where='.', package='', exclude=standard_exclude, exclude_d
     return out
 
 setup(name='docassemble.DivorceDissolutionSeparationActionPlan',
-      version='25.03.06',
+      version='25.03.24',
       description=('Divorce dissolution separation action plan'),
       long_description='# docassemble.DivorceDissolutionSeparationActionPlan\r\n\r\nDivorce dissolution separation action plan\r\n\r\n## Author\r\n\r\nCaroline Robinson\r\n\r\n',
       long_description_content_type='text/markdown',
@@ -54,7 +54,7 @@ setup(name='docassemble.DivorceDissolutionSeparationActionPlan',
       url='https://courtformsonline.org',
       packages=find_packages(),
       namespace_packages=['docassemble'],
-      install_requires=['docassemble.AssemblyLine>=3.2.0', 'docassemble-AKA2JBranding @ https://github.com/A2JatAKCourts/docassemble-AKA2JBranding/archive/main.zip'],
+      install_requires=['docassemble.AKA2JBranding>=25.3.7', 'docassemble.AssemblyLine>=3.2.0'],
       zip_safe=False,
       package_data=find_package_data(where='docassemble/DivorceDissolutionSeparationActionPlan/', package='docassemble.DivorceDissolutionSeparationActionPlan'),
      )
